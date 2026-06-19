@@ -1,0 +1,138 @@
+Optoelectronic HCI Lab
+PHOENIX Lab 
+Light-Driven Matter, Interfaces, and Future Technologies
+Phoenix Lab takes an interdisciplinary approach to exploring optical technologies as a generative medium for reimagining matter, interfaces, energy, and future interactive systems. At the intersection of Optical Technologies and Human-Computer Interaction, we create programmable materials, physical interfaces, robotic and energy systems, and AI-enabled experiences that reshape how people interact with and through the physical world.
+Phoenix Lab is led by Prof. Yuhua Jin at The Chinese University of Hong Kong, Shenzhen.
+
+导航栏用这几个：
+Home | Projects | People | Publications | Teaching | Join Us | Contact
+
+
+Home：
+
+Latest News
+2026.06 — PHOENIX Lab website is under construction.
+
+Featured Projects:
+Photo-Chromeleon
+Reprogrammable color-changing materials that allow physical objects to be digitally recolored using light.
+Tags: Programmable Matter / Color / Fabrication
+Links: Project / Paper / Video
+BlimpMate
+A quiet, long-endurance flying display that explores soft, situated, and embodied interaction in physical space.
+Tags: Flying Display / Robotics / HCI
+Links: Project / Paper / Video
+Laser-Powered Interaction
+Wireless interactive devices powered and controlled by light, enabling battery-free tactile and physical interfaces.
+Tags: Laser Power / Tactile Interfaces / UbiComp
+Links: Project / Paper
+
+
+Projects:
+	
+Photo-Chromeleon
+Recolor physical objects like a chameleon using light.
+A reprogrammable color-changing material system that allows physical objects to be digitally recolored after fabrication. By projecting light onto coated objects, users can write, erase, and update color patterns on real-world surfaces.
+
+Tags: Programmable Matter / Color-Changing Materials / Optical Fabrication / HCI
+Links: Video / Paper / PDF / DOI / Media
+
+
+视觉上就是：
+左边：静态 hero image
+鼠标悬停：切换成 loop video / GIF，展示最酷的 demo moment
+右边：项目名 + punchline + 简介 + tags + links
+其中最重要的是 punchline。它不是论文标题，而是让外行也能立刻懂的“酷点”。
+
+
+
+
+
+
+People:
+Principal Investigator/ Director
+	
+Prof. Yuhua Jin
+Assistant Professor, School of Science and Engineering
+The Chinese University of Hong Kong, Shenzhen
+一小段介绍，研究方向、MIT/Photo-Chromeleon背景、现在实验室 vision。
+Email / 
+Personal Website / 
+
+
+Current Members 
+
+Name
+Postdoc
+Materials
+
+
+Publications:
+https://tangible.media.mit.edu/papers/
+
+ 
+
+
+Teaching:
+
+ 
+
+https://hcie.csail.mit.edu/classes.html
+
+
+Join Us:
+
+Join PHOENIX Lab
+PHOENIX Lab welcomes curious, creative, and hands-on researchers who are excited about light-driven matter, interfaces, energy systems, and future interactive technologies.
+We are an interdisciplinary lab at the intersection of optical technologies and human-computer interaction. We welcome people from diverse backgrounds, including HCI, computer science, optical engineering, electronic engineering, materials science, mechanical engineering, robotics, design, and related fields. If you are interested in building new physical systems, exploring unconventional ideas, and creating technologies for the yet-to-come future, we would be happy to hear from you.
+Navigate: Postdocs | PhD & MPhil | Research Assistants & Interns | How to Apply
+
+Postdoctoral Researchers
+We are recruiting postdoctoral researchers interested in interdisciplinary research related to light-driven materials, programmable matter, optical systems, physical interfaces, robotic systems, energy systems, fabrication, AI-enabled interactive systems, and human-computer interaction.
+Strong candidates may have expertise in one or more of the following areas:
+Optical engineering, photonics, or optoelectronic systems
+Human-computer interaction, interactive systems, or physical computing
+Photoresponsive materials, programmable materials, or smart materials
+Digital fabrication, mechanical design, or prototyping
+Robotics, sensing, actuation, or energy systems
+Computational design, AI-enabled systems, or creative computing
+Applicants with strong independent research ability, hands-on prototyping skills, and a publication record in related areas are especially encouraged to apply. Candidates interested in applying for external fellowships or university-level postdoctoral funding are also welcome to reach out to discuss potential research directions.
+
+PhD and MPhil Students
+We welcome prospective PhD and MPhil students who are interested in creating future physical and interactive technologies at the intersection of optical technologies and human-computer interaction.
+Students with backgrounds in HCI, computer science, electronic engineering, optical engineering, materials science, mechanical engineering, robotics, design, or related fields are encouraged to apply. We especially value applicants who combine technical depth with imagination, curiosity, and the willingness to work across disciplinary boundaries.
+Prospective students are encouraged to contact Prof. Yuhua Jin before applying through the official university application system.
+
+Research Assistants & Interns
+We welcome research assistants, visiting students, undergraduate interns, and master’s interns who are interested in hands-on interdisciplinary research.
+Depending on the project, students may contribute to optical experiments, material systems, interactive prototypes, hardware design, robotic platforms, software development, AI-enabled interaction, user studies, video production, or visual documentation.
+Longer-term commitments are preferred, especially for projects that require experimental training, system building, or iterative prototyping.
+
+Wildcard
+If your background is not listed above but you see a strong and creative connection with PHOENIX Lab, please feel free to reach out. We are always open to unusual combinations of ideas, skills, and disciplines.
+
+How to Apply
+Interested applicants may email Prof. Yuhua Jin with the following materials:
+A brief introduction of your background and research interests
+Your CV
+Representative publications, portfolios, project videos, GitHub links, or design works, if available
+Transcripts, if applicable
+A short explanation of why you are interested in PHOENIX Lab
+Prof. Yuhua Jin
+yuhuajin@cuhk.edu.cn
+
+
+Contact:
+PHOENIX Lab
+Research Complex 625
+School of Science and Engineering
+The Chinese University of Hong Kong, Shenzhen
+2001 Longxiang Boulevard, Longgang District
+Shenzhen, Guangdong, China
+
+Prof. Yuhua Jin
+Email: yuhuajin@cuhk.edu.cn
+
+For prospective students, postdoctoral researchers, research assistants, and interns, please visit the Join Us page before contacting us.
+[Google Map / Campus Map]
+
