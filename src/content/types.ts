@@ -48,6 +48,8 @@ export type Publication = {
   title: string
   venue: string
   year: string
+  abstract: string
+  doiHref: string
   links: LinkItem[]
 }
 
@@ -55,6 +57,7 @@ export type TeachingItem = {
   id: string
   title: string
   description: string
+  imageUrl: string
   links: LinkItem[]
 }
 

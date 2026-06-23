@@ -4,15 +4,19 @@ type SectionProps = {
   eyebrow?: string
   title: string
   id: string
+  action?: ReactNode
   children: ReactNode
 }
 
-export function Section({ eyebrow, title, id, children }: SectionProps) {
+export function Section({ eyebrow, title, id, action, children }: SectionProps) {
   return (
     <section className="section" id={id}>
       <div className="section-heading">
-        {eyebrow ? <span>{eyebrow}</span> : null}
-        <h2>{title}</h2>
+        <div>
+          {eyebrow ? <span>{eyebrow}</span> : null}
+          <h2>{title}</h2>
+        </div>
+        {action ? <div className="section-action">{action}</div> : null}
       </div>
       {children}
     </section>

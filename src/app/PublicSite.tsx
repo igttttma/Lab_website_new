@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { BrandHeader } from '../components/BrandHeader'
 import { Section } from '../components/Section'
 import type { LabContent, PersonGroup, Project } from '../content/types'
-import { loadContent } from '../services/contentRepository'
+import { fetchContent, loadContent } from '../services/contentRepository'
 
 type PublicSiteProps = {
   currentPath: string
@@ -24,11 +24,17 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
   return (
     <article className={compact ? 'project-card compact' : 'project-card'}>
       <div className="project-media" aria-hidden="true">
-        <div className="media-orbit">
-          <span />
-          <span />
-        </div>
-        <strong>{project.title.slice(0, 2).toUpperCase()}</strong>
+        {project.mediaKind === 'image' && project.mediaUrl ? (
+          <img src={project.mediaUrl} alt="" />
+        ) : (
+          <>
+            <div className="media-orbit">
+              <span />
+              <span />
+            </div>
+            <strong>{project.title.slice(0, 2).toUpperCase()}</strong>
+          </>
+        )}
       </div>
       <div className="project-copy">
         <p className="punchline">{project.punchline}</p>
@@ -51,7 +57,7 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
   )
 }
 
-function HomePage({ content }: { content: LabContent }) {
+function HomePage({ content, onNavigate }: { content: LabContent; onNavigate: (path: string) => void }) {
   const featuredProjects = content.projects.filter((project) => project.featured)
 
   return (
@@ -68,7 +74,7 @@ function HomePage({ content }: { content: LabContent }) {
         </div>
       </section>
 
-      <Section id="latest-news" eyebrow="Home" title="Latest News">
+      <Section id="latest-news" title="Latest News">
         <div className="news-grid">
           {content.news.map((item) => (
             <article className="news-item" key={item.id}>
@@ -79,10 +85,25 @@ function HomePage({ content }: { content: LabContent }) {
         </div>
       </Section>
 
-      <Section id="featured-projects" eyebrow="Selected Work" title="Featured Projects">
+      <Section
+        id="featured-projects"
+        title="Featured Projects"
+        action={
+          <a
+            className="text-action"
+            href="/projects"
+            onClick={(event) => {
+              event.preventDefault()
+              onNavigate('/projects')
+            }}
+          >
+            View All
+          </a>
+        }
+      >
         <div className="featured-grid">
           {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} compact={project.id !== 'photo-chromeleon'} />
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </Section>
@@ -93,7 +114,7 @@ function HomePage({ content }: { content: LabContent }) {
 function ProjectsPage({ content }: { content: LabContent }) {
   return (
     <main>
-      <Section id="projects" eyebrow="Projects" title="Projects">
+      <Section id="projects" title="Projects">
         <div className="project-list">
           {content.projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
@@ -107,7 +128,7 @@ function ProjectsPage({ content }: { content: LabContent }) {
 function PeoplePage({ content }: { content: LabContent }) {
   return (
     <main>
-      <Section id="people" eyebrow="People" title="Lab Members">
+      <Section id="people" title="Lab Members">
         <div className="people-sections">
           {peopleOrder.map((group) => {
             const people = content.people.filter((person) => person.group === group)
@@ -122,18 +143,25 @@ function PeoplePage({ content }: { content: LabContent }) {
                 <div className="people-grid">
                   {people.map((person) => (
                     <article className="person-card" key={person.id}>
-                      <div className="person-photo">
-                        {person.photoUrl ? <img src={person.photoUrl} alt={person.name} /> : <span>{person.name.slice(0, 1)}</span>}
-                      </div>
-                      <div>
-                        <h4>{person.name}</h4>
-                        <p className="role">{person.role}</p>
-                        <p>{person.affiliation}</p>
-                        <p>{person.bio}</p>
-                        <div className="text-links">
-                          {person.email ? <a href={`mailto:${person.email}`}>Email</a> : null}
-                          {person.website ? <a href={person.website}>Personal Website</a> : null}
+                      <div className="person-photo-wrap">
+                        <div className="person-photo-accent" />
+                        <div className="person-photo">
+                          {person.photoUrl ? <img src={person.photoUrl} alt={person.name} /> : <span>{person.name.slice(0, 1)}</span>}
                         </div>
+                      </div>
+                      <div className="person-copy">
+                        <div>
+                          <h4>{person.name}</h4>
+                          <p className="role">{person.role}</p>
+                          <p className="affiliation">{person.affiliation}</p>
+                        </div>
+                        <p>{person.bio}</p>
+                        {person.email || person.website ? (
+                          <div className="text-links">
+                            {person.email ? <a href={`mailto:${person.email}`}>Email</a> : null}
+                            {person.website ? <a href={person.website}>Personal Website</a> : null}
+                          </div>
+                        ) : null}
                       </div>
                     </article>
                   ))}
@@ -150,7 +178,7 @@ function PeoplePage({ content }: { content: LabContent }) {
 function PublicationsPage({ content }: { content: LabContent }) {
   return (
     <main>
-      <Section id="publications" eyebrow="Research Output" title="Publications">
+      <Section id="publications" title="Publications">
         <div className="list-panel">
           {content.publications.map((publication) => (
             <article key={publication.id}>
@@ -158,13 +186,20 @@ function PublicationsPage({ content }: { content: LabContent }) {
               <p>
                 {publication.venue} · {publication.year}
               </p>
-              <div className="text-links">
-                {publication.links.map((link) => (
-                  <a href={link.href} key={link.label}>
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+              <details className="publication-abstract">
+                <summary>Abstract</summary>
+                <p>{publication.abstract}</p>
+              </details>
+              {publication.doiHref || publication.links.length > 0 ? (
+                <div className="text-links">
+                  {publication.doiHref ? <a href={publication.doiHref}>{publication.doiHref}</a> : null}
+                  {publication.links.map((link) => (
+                    <a href={link.href} key={link.label}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
             </article>
           ))}
         </div>
@@ -176,18 +211,25 @@ function PublicationsPage({ content }: { content: LabContent }) {
 function TeachingPage({ content }: { content: LabContent }) {
   return (
     <main>
-      <Section id="teaching" eyebrow="Teaching" title="Courses & Materials">
+      <Section id="teaching" title="Courses & Materials">
         <div className="list-panel two-column">
           {content.teaching.map((item) => (
-            <article key={item.id}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <div className="text-links">
-                {item.links.map((link) => (
-                  <a href={link.href} key={link.label}>
-                    {link.label}
-                  </a>
-                ))}
+            <article className="teaching-card" key={item.id}>
+              <div className="teaching-media" aria-hidden="true">
+                {item.imageUrl ? <img src={item.imageUrl} alt="" /> : <span>{item.title.slice(0, 2).toUpperCase()}</span>}
+              </div>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                {item.links.length > 0 ? (
+                  <div className="text-links">
+                    {item.links.map((link) => (
+                      <a href={link.href} key={link.label}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </article>
           ))}
@@ -198,22 +240,35 @@ function TeachingPage({ content }: { content: LabContent }) {
 }
 
 function JoinPage({ content }: { content: LabContent }) {
+  const positionSections = content.join.sections.filter((section) => section.id !== 'how-to-apply')
+  const howToApply = content.join.sections.find((section) => section.id === 'how-to-apply')
+
   return (
     <main>
-      <Section id="join-us" eyebrow="Open Positions" title={content.join.title}>
+      <Section id="join-us" title={content.join.title}>
         <div className="join-layout">
           <p className="join-intro">{content.join.intro}</p>
           <div className="join-sections">
-            {content.join.sections.map((section) => (
+            {positionSections.map((section) => (
               <article key={section.id}>
                 <h3>{section.title}</h3>
                 <p>{section.body}</p>
               </article>
             ))}
           </div>
-          <a className="primary-action" href={`mailto:${content.join.applyEmail}`}>
-            Apply by Email
-          </a>
+          {howToApply ? (
+            <section className="apply-section">
+              <h3>{howToApply.title}</h3>
+              <p>{howToApply.body}</p>
+              <p className="email-line">
+                Email: <a href={`mailto:${content.join.applyEmail}`}>{content.join.applyEmail}</a>
+              </p>
+            </section>
+          ) : (
+            <p className="email-line">
+              Email: <a href={`mailto:${content.join.applyEmail}`}>{content.join.applyEmail}</a>
+            </p>
+          )}
         </div>
       </Section>
     </main>
@@ -221,9 +276,11 @@ function JoinPage({ content }: { content: LabContent }) {
 }
 
 function ContactPage({ content }: { content: LabContent }) {
+  const visibleLinks = content.contact.links.filter((link) => !['Google Map', 'Campus Map'].includes(link.label))
+
   return (
     <main>
-      <Section id="contact" eyebrow="Contact" title={content.contact.labName}>
+      <Section id="contact" title={content.contact.labName}>
         <div className="contact-grid">
           <address>
             {content.contact.addressLines.map((line) => (
@@ -234,21 +291,32 @@ function ContactPage({ content }: { content: LabContent }) {
             <h3>{content.contact.contactName}</h3>
             <a href={`mailto:${content.contact.email}`}>{content.contact.email}</a>
             <p>{content.contact.note}</p>
-            <div className="text-links">
-              {content.contact.links.map((link) => (
-                <a key={link.label} href={link.href}>
-                  {link.label}
-                </a>
-              ))}
-            </div>
+            {visibleLinks.length > 0 ? (
+              <div className="text-links">
+                {visibleLinks.map((link) => (
+                  <a key={link.label} href={link.href}>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </div>
+        </div>
+        <div className="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.085926492482!2d114.2073560750936!3d22.687844979409768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404769e8e03db83%3A0x72bee586ac015803!2z6aaZ5riv5Lit5paH5aSn5a2m77yI5rex5Zyz77yJ!5e0!3m2!1sen!2shk!4v1782220747490!5m2!1sen!2shk"
+            title="PHOENIX Lab map"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </Section>
     </main>
   )
 }
 
-function CurrentPage({ path, content }: { path: string; content: LabContent }) {
+function CurrentPage({ path, content, onNavigate }: { path: string; content: LabContent; onNavigate: (path: string) => void }) {
   switch (path) {
     case '/projects':
       return <ProjectsPage content={content} />
@@ -263,7 +331,7 @@ function CurrentPage({ path, content }: { path: string; content: LabContent }) {
     case '/contact':
       return <ContactPage content={content} />
     default:
-      return <HomePage content={content} />
+      return <HomePage content={content} onNavigate={onNavigate} />
   }
 }
 
@@ -271,9 +339,20 @@ export function PublicSite({ currentPath, onNavigate }: PublicSiteProps) {
   const [content, setContent] = useState<LabContent>(() => loadContent())
 
   useEffect(() => {
-    const onFocus = () => setContent(loadContent())
-    window.addEventListener('focus', onFocus)
-    return () => window.removeEventListener('focus', onFocus)
+    const refreshContent = () => {
+      fetchContent()
+        .then(setContent)
+        .catch(() => setContent(loadContent()))
+    }
+
+    refreshContent()
+    window.addEventListener('focus', refreshContent)
+    window.addEventListener('phoenix-content-updated', refreshContent)
+
+    return () => {
+      window.removeEventListener('focus', refreshContent)
+      window.removeEventListener('phoenix-content-updated', refreshContent)
+    }
   }, [])
 
   return (
@@ -283,7 +362,7 @@ export function PublicSite({ currentPath, onNavigate }: PublicSiteProps) {
         navigation={content.navigation}
         onNavigate={onNavigate}
       />
-      <CurrentPage content={content} path={currentPath} />
+      <CurrentPage content={content} onNavigate={onNavigate} path={currentPath} />
       <footer className="site-footer">
         <img src="/assets/brand/char_only.svg" alt="PHOENIX Lab" />
         <span>© 2026 PHOENIX Lab</span>
@@ -291,3 +370,4 @@ export function PublicSite({ currentPath, onNavigate }: PublicSiteProps) {
     </>
   )
 }
+

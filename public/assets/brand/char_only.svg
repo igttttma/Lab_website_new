@@ -3,7 +3,14 @@
   <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
   <defs>
     <style>
-      .st0, .st1 {
+      @font-face {
+        font-family: 'Orbitron-SemiBold';
+        src: url('../fonts/Orbitron_SemiBold.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+.st0, .st1 {
         fill: #082255;
       }
 
