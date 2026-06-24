@@ -9,6 +9,7 @@
     "start": "node server/index.mjs",
     "server": "node server/index.mjs",
     "backup:content": "node server/backupContent.mjs",
+    "build:brand": "python scripts/build-brand-assets.py",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
