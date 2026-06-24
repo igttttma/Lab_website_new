@@ -12,11 +12,11 @@
   --muted: #60708a;
   --line: #d9e0ea;
   --soft: #f5f7fa;
-  --max: 1180px;
-  --text-small: 14px;
-  --text-body: 18px;
-  --text-accent: 24px;
-  --text-heading: 38px;
+  --max: 1100px;
+  --text-small: 13px;
+  --text-body: 17px;
+  --text-accent: 21px;
+  --text-heading: 34px;
 }
 
 @font-face {
@@ -93,16 +93,20 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
 }
 
 .brand-icon {
   width: 76px;
   height: 76px;
+  flex: 0 0 auto;
 }
 
 .brand-wordmark {
   width: 310px;
   height: auto;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .nav-links {
@@ -515,7 +519,7 @@ p {
 h1 {
   margin-bottom: 14px;
   color: var(--navy);
-  font-size: clamp(48px, 8vw, 94px);
+  font-size: clamp(42px, 7vw, 82px);
   line-height: 0.96;
 }
 
@@ -1032,7 +1036,34 @@ address {
 
   .nav-links {
     justify-content: start;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    overflow-x: visible;
+  }
+
+  .site-header-inner {
+    gap: 18px;
+    padding: 14px 0;
+  }
+
+  .brand-lockup {
+    width: 100%;
+    gap: clamp(8px, 2.2vw, 12px);
+  }
+
+  .brand-icon {
+    width: clamp(52px, 14vw, 76px);
+    height: clamp(52px, 14vw, 76px);
+  }
+
+  .brand-wordmark {
+    width: auto;
+    flex: 1 1 auto;
+    max-width: calc(100vw - 40px - clamp(52px, 14vw, 76px) - clamp(8px, 2.2vw, 12px));
+  }
+
+  .nav-links a {
+    padding-bottom: 6px;
   }
 
   .hero-panel {
@@ -1064,6 +1095,4 @@ address {
   }
 
 }
-
-
 
