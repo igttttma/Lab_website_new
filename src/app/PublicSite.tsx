@@ -190,9 +190,13 @@ function PublicationsPage({ content }: { content: LabContent }) {
                 <summary>Abstract</summary>
                 <p>{publication.abstract}</p>
               </details>
-              {publication.doiHref || publication.links.length > 0 ? (
-                <div className="text-links">
-                  {publication.doiHref ? <a href={publication.doiHref}>{publication.doiHref}</a> : null}
+              {publication.doiHref ? (
+                <a className="doi-link" href={publication.doiHref}>
+                  {publication.doiHref}
+                </a>
+              ) : null}
+              {publication.links.length > 0 ? (
+                <div className="text-links publication-links">
                   {publication.links.map((link) => (
                     <a href={link.href} key={link.label}>
                       {link.label}

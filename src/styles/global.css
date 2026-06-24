@@ -36,25 +36,9 @@
 }
 
 @font-face {
-  font-family: "IBM Plex Sans";
-  src: url("/assets/fonts/IBM_Plex_Sans_Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Orbitron-SemiBold";
   src: url("/assets/fonts/Orbitron_SemiBold.ttf") format("truetype");
   font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Orbitron-Regular";
-  src: url("/assets/fonts/Orbitron_Regular.ttf") format("truetype");
-  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -750,6 +734,26 @@ address {
 
 .publication-abstract p {
   margin: 10px 0 0;
+}
+
+.doi-link {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 16px;
+  border-bottom: 1px solid rgba(96, 112, 138, 0.55);
+  color: var(--muted);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.doi-link:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.publication-links {
+  margin-top: 12px;
 }
 
 .teaching-card {
