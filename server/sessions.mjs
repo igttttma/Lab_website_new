@@ -69,9 +69,11 @@ export async function destroySession(token) {
 
 export function buildSessionCookie(token) {
   const maxAge = Math.floor(serverConfig.sessionTtlMs / 1000)
-  return `${serverConfig.sessionCookie}=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${maxAge}`
+  const secure = serverConfig.secureCookies ? '; Secure' : ''
+  return `${serverConfig.sessionCookie}=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${maxAge}${secure}`
 }
 
 export function clearSessionCookie() {
-  return `${serverConfig.sessionCookie}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0`
+  const secure = serverConfig.secureCookies ? '; Secure' : ''
+  return `${serverConfig.sessionCookie}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0${secure}`
 }

@@ -102,6 +102,7 @@ You can override:
 - `HOST`
 - `PORT`
 - `ADMIN_PASSWORD`
+- `SECURE_COOKIES`
 
 The server serves:
 
@@ -120,6 +121,7 @@ This project does not require third-party CMS authentication. For a university d
 4. Ensure `content/lab.json` is writable by the Node process.
 5. Back up `content/lab.json` regularly.
 6. Serve the site over HTTPS so the admin password and session cookie are protected in transit.
+7. Keep `SECURE_COOKIES` enabled in production. Only set `SECURE_COOKIES=false` for local non-HTTPS development.
 
 For example:
 
@@ -133,3 +135,9 @@ https://phoenix.example.edu/admin  admin UI
 Content is stored in `content/lab.json`. Admin saves write the whole validated content object back to that file using an atomic temporary-file rename.
 
 Session data is stored in `data/sessions.json`, which is ignored by Git.
+
+Create a manual content backup:
+
+```bash
+npm run backup:content
+```

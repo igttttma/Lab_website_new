@@ -46,4 +46,5 @@ export const serverConfig = {
   sessionCookie: 'phoenix_admin_session',
   sessionTtlMs: 1000 * 60 * 60 * 12,
   adminPassword: process.env.ADMIN_PASSWORD || '',
+  secureCookies: process.env.SECURE_COOKIES !== 'false',
 }

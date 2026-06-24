@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "node server/dev.mjs",
     "dev:site": "vite",
+    "start": "node server/index.mjs",
     "server": "node server/index.mjs",
+    "backup:content": "node server/backupContent.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
