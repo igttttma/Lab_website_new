@@ -11,8 +11,9 @@ export type Project = {
   tags: string[]
   links: LinkItem[]
   featured: boolean
-  mediaKind: 'placeholder' | 'image' | 'video'
+  mediaKind: 'placeholder' | 'image'
   mediaUrl: string
+  gifUrl?: string
 }
 
 export type NewsItem = {

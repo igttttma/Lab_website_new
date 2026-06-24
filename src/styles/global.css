@@ -441,6 +441,50 @@ a {
   resize: vertical;
 }
 
+.cms-image-field {
+  align-items: start;
+}
+
+.cms-image-preview {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.cms-image-preview img {
+  width: 120px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  object-fit: cover;
+}
+
+.cms-image-preview span {
+  overflow-wrap: anywhere;
+}
+
+.cms-image-empty {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.cms-image-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cms-native-file {
+  display: none;
+}
+
+.cms-field-error {
+  color: #b42318;
+  font-weight: 650;
+}
+
 .cms-check {
   display: flex;
   gap: 10px;
@@ -656,6 +700,28 @@ h4 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.project-media .project-gif {
+  display: block;
+}
+
+.project-media.has-hover-gif img {
+  position: absolute;
+  inset: 0;
+  transition: opacity 180ms ease;
+}
+
+.project-media.has-hover-gif .project-gif {
+  opacity: 0;
+}
+
+.project-media.has-hover-gif:hover .project-still {
+  opacity: 0;
+}
+
+.project-media.has-hover-gif:hover .project-gif {
+  opacity: 1;
 }
 
 .media-orbit span {
@@ -1095,4 +1161,3 @@ address {
   }
 
 }
-

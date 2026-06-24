@@ -35,6 +35,7 @@ loadEnvFile()
 export const paths = {
   root: rootDir,
   content: resolve(rootDir, 'content/lab.json'),
+  uploads: resolve(rootDir, 'content/uploads'),
   sessions: resolve(rootDir, 'data/sessions.json'),
   dist: resolve(rootDir, 'dist'),
 }

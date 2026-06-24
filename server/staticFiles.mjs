@@ -14,6 +14,7 @@ const mimeTypes = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
+  '.gif': 'image/gif',
   '.ico': 'image/x-icon',
 }
 
@@ -29,8 +30,27 @@ function safeResolveStatic(pathname) {
   return filePath
 }
 
+function safeResolveUpload(pathname) {
+  const cleanPath = normalize(decodeURIComponent(pathname.replace(/^\/uploads\//, ''))).replace(/^(\.\.[/\\])+/, '')
+  const filePath = resolve(paths.uploads, cleanPath)
+  const rel = relative(paths.uploads, filePath)
+
+  if (rel.startsWith('..') || rel === '') {
+    return null
+  }
+
+  return filePath
+}
+
 export async function serveStatic(request, response, url) {
-  let filePath = safeResolveStatic(url.pathname)
+  const isUpload = url.pathname.startsWith('/uploads/')
+  let filePath = isUpload ? safeResolveUpload(url.pathname) : safeResolveStatic(url.pathname)
+
+  if (!filePath) {
+    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
+    response.end('Not found')
+    return
+  }
 
   try {
     const info = await stat(filePath)
@@ -39,6 +59,12 @@ export async function serveStatic(request, response, url) {
       filePath = join(filePath, 'index.html')
     }
   } catch {
+    if (isUpload) {
+      response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
+      response.end('Not found')
+      return
+    }
+
     filePath = join(paths.dist, 'index.html')
   }
 

@@ -21,11 +21,17 @@ const peopleOrder: PersonGroup[] = [
 ]
 
 function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
+  const hasImage = project.mediaKind === 'image' && Boolean(project.mediaUrl)
+  const hasGif = project.mediaKind === 'image' && Boolean(project.gifUrl)
+
   return (
     <article className={compact ? 'project-card compact' : 'project-card'}>
-      <div className="project-media" aria-hidden="true">
-        {project.mediaKind === 'image' && project.mediaUrl ? (
-          <img src={project.mediaUrl} alt="" />
+      <div className={hasImage && hasGif ? 'project-media has-hover-gif' : 'project-media'} aria-hidden="true">
+        {hasImage || hasGif ? (
+          <>
+            {hasImage ? <img className="project-still" src={project.mediaUrl} alt="" /> : null}
+            {hasGif ? <img className="project-gif" src={project.gifUrl} alt="" /> : null}
+          </>
         ) : (
           <>
             <div className="media-orbit">

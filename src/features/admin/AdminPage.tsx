@@ -82,6 +82,7 @@ function addItem(content: LabContent, category: AdminCategory): { content: LabCo
       featured: false,
       mediaKind: 'placeholder',
       mediaUrl: '',
+      gifUrl: '',
     }
     return { content: { ...content, projects: [...content.projects, item] }, selection: { category, id: item.id } }
   }

@@ -1,6 +1,6 @@
 import type { LabContent, NewsItem, Person, PersonGroup, Project, Publication, TeachingItem } from '../../content/types'
 import type { ReactNode } from 'react'
-import { CheckboxField, LinksField, SelectField, StringListField, TextAreaField, TextField } from './EditorControls'
+import { CheckboxField, ImageUploadField, LinksField, SelectField, StringListField, TextAreaField, TextField } from './EditorControls'
 
 export type AdminCategory = 'identity' | 'news' | 'projects' | 'people' | 'publications' | 'teaching' | 'join' | 'contact'
 
@@ -101,6 +101,11 @@ export function AdminItemForm({ content, selection, onChange, onSave, onDelete, 
     const item = content.projects.find((project) => project.id === selection.id)
     if (!item) return null
     const update = (patch: Partial<Project>) => onChange({ ...content, projects: content.projects.map((project) => (project.id === item.id ? { ...project, ...patch } : project)) })
+    const updateVisualMedia = (patch: Partial<Project>) => {
+      const nextMediaUrl = patch.mediaUrl ?? item.mediaUrl
+      const nextGifUrl = patch.gifUrl ?? item.gifUrl ?? ''
+      update({ ...patch, mediaKind: nextMediaUrl || nextGifUrl ? 'image' : 'placeholder' })
+    }
 
     return (
       <FormShell dirty={dirty} eyebrow="Project" onDelete={onDelete} onSave={onSave} status={status} title={item.title || 'Project'}>
@@ -109,8 +114,19 @@ export function AdminItemForm({ content, selection, onChange, onSave, onDelete, 
         <TextAreaField label="Description" value={item.description} onChange={(description) => update({ description })} />
         <StringListField label="Tags" values={item.tags} onChange={(tags) => update({ tags })} />
         <CheckboxField label="Featured on homepage" checked={item.featured} onChange={(featured) => update({ featured })} />
-        <SelectField label="Media type" value={item.mediaKind} options={['placeholder', 'image', 'video']} onChange={(mediaKind) => update({ mediaKind })} />
-        <TextField label="Media URL" value={item.mediaUrl} onChange={(mediaUrl) => update({ mediaUrl })} />
+        <SelectField label="Media type" value={item.mediaKind} options={['placeholder', 'image']} onChange={(mediaKind) => update({ mediaKind })} />
+        {item.mediaKind === 'image' ? (
+          <>
+            <ImageUploadField label="Static image" value={item.mediaUrl} onChange={(mediaUrl) => updateVisualMedia({ mediaUrl })} />
+            <ImageUploadField
+              label="Hover GIF"
+              value={item.gifUrl ?? ''}
+              accept="image/gif"
+              fileType="GIF"
+              onChange={(gifUrl) => updateVisualMedia({ gifUrl })}
+            />
+          </>
+        ) : null}
         <LinksField links={item.links} onChange={(links) => update({ links })} />
       </FormShell>
     )
@@ -130,7 +146,7 @@ export function AdminItemForm({ content, selection, onChange, onSave, onDelete, 
         <TextAreaField label="Bio" value={item.bio} onChange={(bio) => update({ bio })} />
         <TextField label="Email" value={item.email ?? ''} onChange={(email) => update({ email })} />
         <TextField label="Website" value={item.website ?? ''} onChange={(website) => update({ website })} />
-        <TextField label="Photo URL" value={item.photoUrl ?? ''} onChange={(photoUrl) => update({ photoUrl })} />
+        <ImageUploadField label="Photo" value={item.photoUrl ?? ''} onChange={(photoUrl) => update({ photoUrl })} />
       </FormShell>
     )
   }
@@ -161,7 +177,7 @@ export function AdminItemForm({ content, selection, onChange, onSave, onDelete, 
       <FormShell dirty={dirty} eyebrow="Teaching" onDelete={onDelete} onSave={onSave} status={status} title={item.title || 'Teaching item'}>
         <TextField label="Title" value={item.title} onChange={(title) => update({ title })} />
         <TextAreaField label="Description" value={item.description} onChange={(description) => update({ description })} />
-        <TextField label="Image URL" value={item.imageUrl} onChange={(imageUrl) => update({ imageUrl })} />
+        <ImageUploadField label="Image" value={item.imageUrl} onChange={(imageUrl) => update({ imageUrl })} />
         <LinksField links={item.links} onChange={(links) => update({ links })} />
       </FormShell>
     )

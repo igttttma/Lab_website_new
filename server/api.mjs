@@ -1,5 +1,6 @@
 import { readContent, writeContent } from './contentStore.mjs'
 import { getSessionToken, readJson, sendJson } from './http.mjs'
+import { deleteUploadByUrl, isLocalUploadUrl, saveUploadedImage } from './uploads.mjs'
 import {
   buildSessionCookie,
   clearSessionCookie,
@@ -22,6 +23,41 @@ function isContentShape(value) {
       Array.isArray(value.teaching) &&
       value.join &&
       value.contact,
+  )
+}
+
+function collectUploadUrls(content) {
+  const urls = new Set()
+
+  for (const project of content.projects || []) {
+    if (isLocalUploadUrl(project.mediaUrl)) urls.add(project.mediaUrl)
+    if (isLocalUploadUrl(project.gifUrl)) urls.add(project.gifUrl)
+  }
+
+  for (const person of content.people || []) {
+    if (isLocalUploadUrl(person.photoUrl)) urls.add(person.photoUrl)
+  }
+
+  for (const item of content.teaching || []) {
+    if (isLocalUploadUrl(item.imageUrl)) urls.add(item.imageUrl)
+  }
+
+  return urls
+}
+
+async function cleanupRemovedUploads(previousContent, nextContent) {
+  const previousUrls = collectUploadUrls(previousContent)
+  const nextUrls = collectUploadUrls(nextContent)
+  const removedUrls = [...previousUrls].filter((url) => !nextUrls.has(url))
+
+  await Promise.all(
+    removedUrls.map(async (url) => {
+      try {
+        await deleteUploadByUrl(url)
+      } catch (error) {
+        console.warn(`Could not delete unused upload ${url}:`, error)
+      }
+    }),
   )
 }
 
@@ -88,8 +124,25 @@ export async function handleApi(request, response, url) {
       return true
     }
 
+    const previousContent = await readContent()
+
     await writeContent(body)
+    await cleanupRemovedUploads(previousContent, body)
     sendJson(response, 200, { saved: true, content: body })
+    return true
+  }
+
+  if (request.method === 'POST' && url.pathname === '/api/admin/uploads/image') {
+    if (!(await requireAdmin(request, response))) {
+      return true
+    }
+
+    try {
+      sendJson(response, 200, await saveUploadedImage(request))
+    } catch (error) {
+      sendJson(response, 400, { error: error.message || 'Upload failed' })
+    }
+
     return true
   }
 

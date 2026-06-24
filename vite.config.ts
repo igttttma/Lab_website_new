@@ -8,6 +8,7 @@ export default defineConfig({
     proxy: process.env.API_PROXY_TARGET
       ? {
           '/api': process.env.API_PROXY_TARGET,
+          '/uploads': process.env.API_PROXY_TARGET,
         }
       : undefined,
   },

@@ -7,6 +7,7 @@ The production model is intentionally simple and university-friendly:
 - Public visitors browse the website normally.
 - Admin users visit `/admin`, enter the site password, edit content, and save.
 - The server writes content to `content/lab.json`.
+- Uploaded images are stored under `content/uploads` and served from `/uploads/...`.
 - The public site reads content from `/api/content`, so edits are visible immediately after save.
 - No third-party login, hosted CMS, Git gateway, or external permission service is required.
 
@@ -32,6 +33,7 @@ Read this file before every implementation pass.
 
 ```text
 content/lab.json           Editable lab content
+content/uploads/           Admin-uploaded images
 server/                    Self-hosted Node API, auth, and static server
 public/assets/brand/       Official copied SVG brand assets
 public/assets/fonts/       Bundled site and brand fonts
@@ -107,6 +109,7 @@ You can override:
 The server serves:
 
 - Static frontend from `dist`
+- Uploaded images from `/uploads/*`
 - Public content API at `/api/content`
 - Admin login/content APIs under `/api/admin/*`
 - Browser app routes such as `/admin`, `/people`, `/contact`
@@ -118,8 +121,8 @@ This project does not require third-party CMS authentication. For a university d
 1. Build with `npm run build`.
 2. Run `npm run server` behind the university web server or reverse proxy.
 3. Set `ADMIN_PASSWORD` as a server-side environment variable.
-4. Ensure `content/lab.json` is writable by the Node process.
-5. Back up `content/lab.json` regularly.
+4. Ensure `content/lab.json` and `content/uploads` are writable by the Node process.
+5. Back up `content/lab.json` and `content/uploads` regularly.
 6. Serve the site over HTTPS so the admin password and session cookie are protected in transit.
 7. Keep `SECURE_COOKIES` enabled in production. Only set `SECURE_COOKIES=false` for local non-HTTPS development.
 

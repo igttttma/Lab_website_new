@@ -16,6 +16,8 @@ dist-ssr
 !.env.example
 data/sessions.json
 backups/
+content/uploads/*
+!content/uploads/.gitkeep
 
 # Editor directories and files
 .vscode/*

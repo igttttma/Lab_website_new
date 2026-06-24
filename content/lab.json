@@ -58,7 +58,8 @@
       ],
       "featured": true,
       "mediaKind": "placeholder",
-      "mediaUrl": ""
+      "mediaUrl": "",
+      "gifUrl": ""
     },
     {
       "id": "blimpmate",
@@ -85,8 +86,9 @@
         }
       ],
       "featured": true,
-      "mediaKind": "placeholder",
-      "mediaUrl": ""
+      "mediaKind": "image",
+      "mediaUrl": "/uploads/image-1782290966298-40086a20251ac800.jpg",
+      "gifUrl": "/uploads/image-1782291722248-3a02a0511616c1e9.gif"
     },
     {
       "id": "laser-powered-interaction",
@@ -110,7 +112,8 @@
       ],
       "featured": true,
       "mediaKind": "placeholder",
-      "mediaUrl": ""
+      "mediaUrl": "",
+      "gifUrl": ""
     }
   ],
   "people": [

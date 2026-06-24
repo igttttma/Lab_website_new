@@ -47,3 +47,24 @@ export async function saveAdminContent(content: LabContent) {
     body: JSON.stringify(content),
   })
 }
+
+export async function uploadAdminImage(file: File) {
+  const body = new FormData()
+  body.append('image', file)
+
+  const response = await fetch('/api/admin/uploads/image', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+    },
+    body,
+  })
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}))
+    throw new Error(body.error || 'Upload failed')
+  }
+
+  return response.json() as Promise<{ url: string; filename: string; contentType: string; size: number }>
+}

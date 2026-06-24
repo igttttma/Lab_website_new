@@ -19,6 +19,11 @@ const server = createServer(async (request, response) => {
       return
     }
 
+    if (mode === 'api' && url.pathname.startsWith('/uploads/')) {
+      await serveStatic(request, response, url)
+      return
+    }
+
     if (mode === 'api') {
       sendJson(response, 404, { error: 'Not found' })
       return
