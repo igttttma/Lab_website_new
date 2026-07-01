@@ -48,4 +48,8 @@ export const serverConfig = {
   sessionTtlMs: 1000 * 60 * 60 * 12,
   adminPassword: process.env.ADMIN_PASSWORD || '',
   secureCookies: process.env.SECURE_COOKIES !== 'false',
+  trustProxy: process.env.TRUST_PROXY === 'true',
+  loginMaxFailures: Number(process.env.LOGIN_MAX_FAILURES || 5),
+  loginFailureWindowMs: Number(process.env.LOGIN_FAILURE_WINDOW_MS || 1000 * 60 * 15),
+  loginLockoutMs: Number(process.env.LOGIN_LOCKOUT_MS || 1000 * 60 * 10),
 }

@@ -1,5 +1,6 @@
 import { readContent, writeContent } from './contentStore.mjs'
 import { getSessionToken, readJson, sendJson } from './http.mjs'
+import { clearLoginFailures, getLoginLockout, getLoginSource, recordFailedLogin } from './loginRateLimit.mjs'
 import { deleteUploadByUrl, isLocalUploadUrl, saveUploadedImage, saveUploadedMedia } from './uploads.mjs'
 import {
   buildSessionCookie,
@@ -88,13 +89,39 @@ export async function handleApi(request, response, url) {
   }
 
   if (request.method === 'POST' && url.pathname === '/api/admin/login') {
+    const loginSource = getLoginSource(request)
+    const activeLockout = getLoginLockout(loginSource)
+
+    if (activeLockout) {
+      sendJson(
+        response,
+        429,
+        { error: 'Too many failed login attempts. Please try again later.' },
+        { 'Retry-After': String(activeLockout.retryAfterSeconds) },
+      )
+      return true
+    }
+
     const body = await readJson(request)
 
     if (!verifyPassword(body?.password || '')) {
+      const nextLockout = recordFailedLogin(loginSource)
+
+      if (nextLockout) {
+        sendJson(
+          response,
+          429,
+          { error: 'Too many failed login attempts. Please try again later.' },
+          { 'Retry-After': String(nextLockout.retryAfterSeconds) },
+        )
+        return true
+      }
+
       sendJson(response, 401, { error: 'Invalid password' })
       return true
     }
 
+    clearLoginFailures(loginSource)
     const token = await createSession()
     sendJson(response, 200, { authenticated: true }, { 'Set-Cookie': buildSessionCookie(token) })
     return true
