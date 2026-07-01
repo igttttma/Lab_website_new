@@ -19,7 +19,7 @@ const categories: Array<{ id: AdminCategory; label: string; description: string 
   { id: 'projects', label: 'Projects', description: 'Project cards and links.' },
   { id: 'people', label: 'People', description: 'Lab member profiles.' },
   { id: 'publications', label: 'Publications', description: 'Papers and abstracts.' },
-  { id: 'teaching', label: 'Teaching', description: 'Courses and materials.' },
+  { id: 'teaching', label: 'Teaching', description: 'Classes taught by the lab lead.' },
   { id: 'join', label: 'Join Us', description: 'Recruiting information.' },
   { id: 'contact', label: 'Contact', description: 'Address and contact info.' },
 ]
@@ -42,7 +42,7 @@ function getDefaultSelection(content: LabContent, category: AdminCategory): Admi
 function getItems(content: LabContent, category: AdminCategory): Array<{ id: string; label: string; meta?: string }> {
   switch (category) {
     case 'identity':
-      return [{ id: '__identity', label: 'Homepage Identity', meta: content.identity.tagline }]
+      return [{ id: '__identity', label: 'Homepage Identity', meta: content.identity.title }]
     case 'contact':
       return [{ id: '__contact', label: 'Contact Details', meta: content.contact.email }]
     case 'news':
@@ -50,7 +50,7 @@ function getItems(content: LabContent, category: AdminCategory): Array<{ id: str
     case 'projects':
       return content.projects.map((item) => ({ id: item.id, label: item.title, meta: item.featured ? 'Featured' : item.punchline }))
     case 'people':
-      return content.people.map((item) => ({ id: item.id, label: item.name, meta: item.group }))
+      return content.people.map((item) => ({ id: item.id, label: item.name, meta: item.role }))
     case 'publications':
       return content.publications.map((item) => ({ id: item.id, label: item.title, meta: `${item.venue} ${item.year}` }))
     case 'teaching':
@@ -91,13 +91,11 @@ function addItem(content: LabContent, category: AdminCategory): { content: LabCo
     const item: Person = {
       id: makeId('person'),
       name: 'New Member',
-      role: 'Role',
-      affiliation: 'PHOENIX Lab',
-      bio: 'Profile coming soon.',
-      email: '',
-      website: '',
+      major: '',
+      role: 'PhD Student',
+      affiliation: '',
       photoUrl: '',
-      group: 'PhD',
+      profileUrl: '',
     }
     return { content: { ...content, people: [...content.people, item] }, selection: { category, id: item.id } }
   }
@@ -108,7 +106,7 @@ function addItem(content: LabContent, category: AdminCategory): { content: LabCo
   }
 
   if (category === 'teaching') {
-    const item: TeachingItem = { id: makeId('teaching'), title: 'New Teaching Item', description: 'Description.', imageUrl: '', links: [] }
+    const item: TeachingItem = { id: makeId('teaching'), title: 'New Teaching Item', description: 'Description.', mediaKind: 'placeholder', mediaUrl: '', links: [] }
     return { content: { ...content, teaching: [...content.teaching, item] }, selection: { category, id: item.id } }
   }
 

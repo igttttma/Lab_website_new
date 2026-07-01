@@ -1,6 +1,6 @@
 import type { LinkItem } from '../../content/types'
 import { useRef, useState } from 'react'
-import { uploadAdminImage } from './adminApi'
+import { uploadAdminImage, uploadAdminMedia } from './adminApi'
 
 type FieldProps = {
   label: string
@@ -176,6 +176,83 @@ export function ImageUploadField({
         {value ? (
           <button type="button" disabled={uploading} onClick={() => onChange('')}>
             Remove Image
+          </button>
+        ) : null}
+      </div>
+      <input
+        ref={inputRef}
+        aria-label={chooseLabel}
+        className="cms-native-file"
+        accept={accept}
+        disabled={uploading}
+        type="file"
+        onChange={(event) => void upload(event.target.files?.[0])}
+      />
+      {error ? <span className="cms-field-error">{error}</span> : null}
+      {uploading ? <span className="cms-image-empty">Uploading...</span> : null}
+    </div>
+  )
+}
+
+export function MediaUploadField({
+  label,
+  value,
+  onChange,
+  accept = 'image/png,image/jpeg,image/webp,image/svg+xml,image/gif,video/mp4,video/webm,video/ogg',
+  fileType = 'Media',
+}: {
+  label: string
+  value: string
+  onChange: (value: string) => void
+  accept?: string
+  fileType?: string
+}) {
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const [error, setError] = useState('')
+  const [uploading, setUploading] = useState(false)
+  const chooseLabel = value ? `Replace ${fileType}` : `Choose ${fileType}`
+  const isVideo = /\.(mp4|webm|ogv|ogg)(?:$|\?)/i.test(value)
+
+  const upload = async (file: File | undefined) => {
+    if (!file) {
+      return
+    }
+
+    setError('')
+    setUploading(true)
+
+    try {
+      const result = await uploadAdminMedia(file)
+      onChange(result.url)
+    } catch (uploadError) {
+      setError(uploadError instanceof Error ? uploadError.message : 'Upload failed')
+    } finally {
+      setUploading(false)
+
+      if (inputRef.current) {
+        inputRef.current.value = ''
+      }
+    }
+  }
+
+  return (
+    <div className="cms-field cms-image-field">
+      <span className="cms-field-label">{label}</span>
+      {value ? (
+        <div className="cms-image-preview">
+          {isVideo ? <video muted playsInline src={value} /> : <img src={value} alt="" />}
+          <span>{value}</span>
+        </div>
+      ) : (
+        <span className="cms-image-empty">No media selected</span>
+      )}
+      <div className="cms-image-actions">
+        <button type="button" disabled={uploading} onClick={() => inputRef.current?.click()}>
+          {chooseLabel}
+        </button>
+        {value ? (
+          <button type="button" disabled={uploading} onClick={() => onChange('')}>
+            Remove {fileType}
           </button>
         ) : null}
       </div>

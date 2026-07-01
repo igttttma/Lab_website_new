@@ -22,26 +22,14 @@ export type NewsItem = {
   text: string
 }
 
-export type PersonGroup =
-  | 'Professor'
-  | 'Postdoc'
-  | 'PhD'
-  | 'MPhil'
-  | 'Research Assistant'
-  | 'Intern'
-  | 'Visiting Student'
-  | 'Alumni'
-
 export type Person = {
   id: string
   name: string
+  major: string
   role: string
   affiliation: string
-  bio: string
-  email?: string
-  website?: string
   photoUrl?: string
-  group: PersonGroup
+  profileUrl: string
 }
 
 export type Publication = {
@@ -58,7 +46,8 @@ export type TeachingItem = {
   id: string
   title: string
   description: string
-  imageUrl: string
+  mediaKind: 'placeholder' | 'image' | 'gif' | 'video'
+  mediaUrl: string
   links: LinkItem[]
 }
 
@@ -72,9 +61,10 @@ export type LabContent = {
   identity: {
     title: string
     shortName: string
-    tagline: string
     introduction: string
     leaderLine: string
+    heroMediaKind: 'placeholder' | 'image' | 'gif' | 'video'
+    heroMediaUrl: string
   }
   navigation: string[]
   news: NewsItem[]

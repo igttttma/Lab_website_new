@@ -1,6 +1,6 @@
 import { readContent, writeContent } from './contentStore.mjs'
 import { getSessionToken, readJson, sendJson } from './http.mjs'
-import { deleteUploadByUrl, isLocalUploadUrl, saveUploadedImage } from './uploads.mjs'
+import { deleteUploadByUrl, isLocalUploadUrl, saveUploadedImage, saveUploadedMedia } from './uploads.mjs'
 import {
   buildSessionCookie,
   clearSessionCookie,
@@ -29,6 +29,8 @@ function isContentShape(value) {
 function collectUploadUrls(content) {
   const urls = new Set()
 
+  if (isLocalUploadUrl(content.identity?.heroMediaUrl)) urls.add(content.identity.heroMediaUrl)
+
   for (const project of content.projects || []) {
     if (isLocalUploadUrl(project.mediaUrl)) urls.add(project.mediaUrl)
     if (isLocalUploadUrl(project.gifUrl)) urls.add(project.gifUrl)
@@ -40,6 +42,7 @@ function collectUploadUrls(content) {
 
   for (const item of content.teaching || []) {
     if (isLocalUploadUrl(item.imageUrl)) urls.add(item.imageUrl)
+    if (isLocalUploadUrl(item.mediaUrl)) urls.add(item.mediaUrl)
   }
 
   return urls
@@ -139,6 +142,20 @@ export async function handleApi(request, response, url) {
 
     try {
       sendJson(response, 200, await saveUploadedImage(request))
+    } catch (error) {
+      sendJson(response, 400, { error: error.message || 'Upload failed' })
+    }
+
+    return true
+  }
+
+  if (request.method === 'POST' && url.pathname === '/api/admin/uploads/media') {
+    if (!(await requireAdmin(request, response))) {
+      return true
+    }
+
+    try {
+      sendJson(response, 200, await saveUploadedMedia(request))
     } catch (error) {
       sendJson(response, 400, { error: error.message || 'Upload failed' })
     }

@@ -1,24 +1,13 @@
 import { useEffect, useState } from 'react'
 import { BrandHeader } from '../components/BrandHeader'
 import { Section } from '../components/Section'
-import type { LabContent, PersonGroup, Project } from '../content/types'
+import type { LabContent, Project } from '../content/types'
 import { fetchContent, loadContent } from '../services/contentRepository'
 
 type PublicSiteProps = {
   currentPath: string
   onNavigate: (path: string) => void
 }
-
-const peopleOrder: PersonGroup[] = [
-  'Professor',
-  'Postdoc',
-  'PhD',
-  'MPhil',
-  'Research Assistant',
-  'Intern',
-  'Visiting Student',
-  'Alumni',
-]
 
 function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
   const hasImage = project.mediaKind === 'image' && Boolean(project.mediaUrl)
@@ -43,8 +32,9 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
         )}
       </div>
       <div className="project-copy">
-        <p className="punchline">{project.punchline}</p>
-        <h3>{project.title}</h3>
+        <h3>
+          {project.title} <span>{project.punchline}</span>
+        </h3>
         <p>{project.description}</p>
         <div className="tags">
           {project.tags.map((tag) => (
@@ -63,6 +53,27 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
   )
 }
 
+function PersonCard({ person, alumni = false }: { person: LabContent['people'][number]; alumni?: boolean }) {
+  return (
+    <article className="person-card" key={person.id}>
+      <div className="person-photo-wrap">
+        <div className="person-photo-accent" />
+        <div className="person-photo">
+          {person.photoUrl ? <img src={person.photoUrl} alt={person.name} /> : <span>{person.name.slice(0, 1)}</span>}
+        </div>
+      </div>
+      <div className="person-copy">
+        <h4>
+          {person.profileUrl ? <a href={person.profileUrl}>{person.name}</a> : person.name}
+        </h4>
+        {person.major ? <p className="major">{person.major}</p> : null}
+        {alumni ? null : <p className="role">{person.role}</p>}
+        {alumni && person.affiliation ? <p className="affiliation">{person.affiliation}</p> : null}
+      </div>
+    </article>
+  )
+}
+
 function HomePage({ content, onNavigate }: { content: LabContent; onNavigate: (path: string) => void }) {
   const featuredProjects = content.projects.filter((project) => project.featured)
 
@@ -70,13 +81,18 @@ function HomePage({ content, onNavigate }: { content: LabContent; onNavigate: (p
     <main>
       <section className="hero-section" id="home">
         <div className="hero-copy">
-          <p className="eyebrow">{content.identity.title}</p>
-          <p className="tagline">{content.identity.tagline}</p>
+          <p className="tagline">{content.identity.title}</p>
           <p>{content.identity.introduction}</p>
           <p className="leader-line">{content.identity.leaderLine}</p>
         </div>
         <div className="hero-panel" aria-label="PHOENIX Lab identity">
-          <img src="/assets/brand/icon_with_char.svg" alt="PHOENIX Lab" />
+          {content.identity.heroMediaKind === 'video' && content.identity.heroMediaUrl ? (
+            <video autoPlay loop muted playsInline src={content.identity.heroMediaUrl} />
+          ) : content.identity.heroMediaUrl ? (
+            <img src={content.identity.heroMediaUrl} alt="PHOENIX Lab" />
+          ) : (
+            <img src="/assets/brand/icon_with_char.svg" alt="PHOENIX Lab" />
+          )}
         </div>
       </section>
 
@@ -85,7 +101,7 @@ function HomePage({ content, onNavigate }: { content: LabContent; onNavigate: (p
           {content.news.map((item) => (
             <article className="news-item" key={item.id}>
               <time>{item.date}</time>
-              <p>{item.text}</p>
+              <span>{item.text}</span>
             </article>
           ))}
         </div>
@@ -132,85 +148,82 @@ function ProjectsPage({ content }: { content: LabContent }) {
 }
 
 function PeoplePage({ content }: { content: LabContent }) {
+  const members = content.people.filter((person) => person.role !== 'Alumni')
+  const alumni = content.people.filter((person) => person.role === 'Alumni')
+
   return (
     <main>
       <Section id="people" title="Lab Members">
-        <div className="people-sections">
-          {peopleOrder.map((group) => {
-            const people = content.people.filter((person) => person.group === group)
-
-            if (people.length === 0) {
-              return null
-            }
-
-            return (
-              <section className="people-group" key={group}>
-                <h3>{group}</h3>
-                <div className="people-grid">
-                  {people.map((person) => (
-                    <article className="person-card" key={person.id}>
-                      <div className="person-photo-wrap">
-                        <div className="person-photo-accent" />
-                        <div className="person-photo">
-                          {person.photoUrl ? <img src={person.photoUrl} alt={person.name} /> : <span>{person.name.slice(0, 1)}</span>}
-                        </div>
-                      </div>
-                      <div className="person-copy">
-                        <div>
-                          <h4>{person.name}</h4>
-                          <p className="role">{person.role}</p>
-                          <p className="affiliation">{person.affiliation}</p>
-                        </div>
-                        <p>{person.bio}</p>
-                        {person.email || person.website ? (
-                          <div className="text-links">
-                            {person.email ? <a href={`mailto:${person.email}`}>Email</a> : null}
-                            {person.website ? <a href={person.website}>Personal Website</a> : null}
-                          </div>
-                        ) : null}
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
-            )
-          })}
+        <div className="people-grid">
+          {members.map((person) => <PersonCard key={person.id} person={person} />)}
         </div>
+        {alumni.length > 0 ? (
+          <section className="alumni-section">
+            <h3>Alumni</h3>
+            <div className="people-grid alumni-grid">
+              {alumni.map((person) => <PersonCard alumni key={person.id} person={person} />)}
+            </div>
+          </section>
+        ) : null}
       </Section>
     </main>
   )
 }
 
 function PublicationsPage({ content }: { content: LabContent }) {
+  const publicationGroups = [...content.publications]
+    .sort((a, b) => b.year.localeCompare(a.year))
+    .reduce<Array<{ year: string; publications: typeof content.publications }>>((groups, publication) => {
+      const group = groups.find((item) => item.year === publication.year)
+
+      if (group) {
+        group.publications.push(publication)
+      } else {
+        groups.push({ year: publication.year, publications: [publication] })
+      }
+
+      return groups
+    }, [])
+
   return (
     <main>
       <Section id="publications" title="Publications">
-        <div className="list-panel">
-          {content.publications.map((publication) => (
-            <article key={publication.id}>
-              <h3>{publication.title}</h3>
-              <p>
-                {publication.venue} · {publication.year}
-              </p>
-              <details className="publication-abstract">
-                <summary>Abstract</summary>
-                <p>{publication.abstract}</p>
-              </details>
-              {publication.doiHref ? (
-                <a className="doi-link" href={publication.doiHref}>
-                  {publication.doiHref}
-                </a>
-              ) : null}
-              {publication.links.length > 0 ? (
-                <div className="text-links publication-links">
-                  {publication.links.map((link) => (
-                    <a href={link.href} key={link.label}>
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              ) : null}
-            </article>
+        <div className="publication-list">
+          {publicationGroups.map((group) => (
+            <section className="publication-year-group" key={group.year}>
+              <h3>{group.year}</h3>
+              <div className="list-panel publication-items">
+                {group.publications.map((publication) => (
+                  <article className="publication-item" key={publication.id}>
+                    <div className="publication-main-line">
+                      <h4>{publication.title}</h4>
+                      <span>{publication.venue}</span>
+                      <time>{publication.year}</time>
+                    </div>
+                    <details className="publication-abstract">
+                      <summary>
+                        <span>Abstract</span>
+                        {publication.doiHref || publication.links.length > 0 ? (
+                          <span className="publication-actions">
+                            {publication.doiHref ? (
+                              <a className="doi-link" href={publication.doiHref}>
+                                {publication.doiHref}
+                              </a>
+                            ) : null}
+                            {publication.links.map((link) => (
+                              <a href={link.href} key={link.label}>
+                                {link.label}
+                              </a>
+                            ))}
+                          </span>
+                        ) : null}
+                      </summary>
+                      <p>{publication.abstract}</p>
+                    </details>
+                  </article>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       </Section>
@@ -221,12 +234,18 @@ function PublicationsPage({ content }: { content: LabContent }) {
 function TeachingPage({ content }: { content: LabContent }) {
   return (
     <main>
-      <Section id="teaching" title="Courses & Materials">
-        <div className="list-panel two-column">
+      <Section id="teaching" title="Classes">
+        <div className="classes-grid">
           {content.teaching.map((item) => (
             <article className="teaching-card" key={item.id}>
               <div className="teaching-media" aria-hidden="true">
-                {item.imageUrl ? <img src={item.imageUrl} alt="" /> : <span>{item.title.slice(0, 2).toUpperCase()}</span>}
+                {item.mediaKind === 'video' && item.mediaUrl ? (
+                  <video autoPlay loop muted playsInline src={item.mediaUrl} />
+                ) : item.mediaUrl ? (
+                  <img src={item.mediaUrl} alt="" />
+                ) : (
+                  <span>{item.title.slice(0, 2).toUpperCase()}</span>
+                )}
               </div>
               <div>
                 <h3>{item.title}</h3>
@@ -375,7 +394,10 @@ export function PublicSite({ currentPath, onNavigate }: PublicSiteProps) {
       <CurrentPage content={content} onNavigate={onNavigate} path={currentPath} />
       <footer className="site-footer">
         <img src="/assets/brand/char_only.svg" alt="PHOENIX Lab" />
-        <span>© 2026 PHOENIX Lab</span>
+        <span className="footer-credit">
+          <span>© 2026 PHOENIX Lab</span>
+          <span>Built by Shan Lin</span>
+        </span>
       </footer>
     </>
   )

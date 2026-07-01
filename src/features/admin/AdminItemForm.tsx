@@ -1,6 +1,6 @@
-import type { LabContent, NewsItem, Person, PersonGroup, Project, Publication, TeachingItem } from '../../content/types'
+import type { LabContent, NewsItem, Person, Project, Publication, TeachingItem } from '../../content/types'
 import type { ReactNode } from 'react'
-import { CheckboxField, ImageUploadField, LinksField, SelectField, StringListField, TextAreaField, TextField } from './EditorControls'
+import { CheckboxField, ImageUploadField, LinksField, MediaUploadField, SelectField, StringListField, TextAreaField, TextField } from './EditorControls'
 
 export type AdminCategory = 'identity' | 'news' | 'projects' | 'people' | 'publications' | 'teaching' | 'join' | 'contact'
 
@@ -19,7 +19,16 @@ type ItemFormProps = {
   status: string
 }
 
-const personGroups: PersonGroup[] = ['Professor', 'Postdoc', 'PhD', 'MPhil', 'Research Assistant', 'Intern', 'Visiting Student', 'Alumni']
+const personRoleOptions = [
+  'Postdoctoral Researcher',
+  'PhD Student',
+  'MPhil Student',
+  'Research Assistant',
+  'Undergraduate Intern',
+  'Visiting Student',
+  'Alumni',
+]
+const customPersonRoleOption = 'Other'
 
 function FormShell({ title, eyebrow, children, onSave, onDelete, dirty, status }: {
   title: string
@@ -59,14 +68,20 @@ export function AdminItemForm({ content, selection, onChange, onSave, onDelete, 
     const update = (key: keyof LabContent['identity'], value: string) => {
       onChange({ ...content, identity: { ...content.identity, [key]: value } })
     }
+    const updateHeroMedia = (heroMediaUrl: string) => {
+      const extension = heroMediaUrl.split('?')[0]?.split('.').pop()?.toLowerCase()
+      const heroMediaKind = heroMediaUrl ? (['mp4', 'webm', 'ogv', 'ogg'].includes(extension || '') ? 'video' : extension === 'gif' ? 'gif' : 'image') : 'placeholder'
+
+      onChange({ ...content, identity: { ...content.identity, heroMediaKind, heroMediaUrl } })
+    }
 
     return (
       <FormShell dirty={dirty} eyebrow="Identity" onDelete={null} onSave={onSave} status={status} title="Homepage Identity">
-        <TextField label="Lab title" value={content.identity.title} onChange={(value) => update('title', value)} />
+        <TextField label="Title" value={content.identity.title} onChange={(value) => update('title', value)} />
         <TextField label="Short name" value={content.identity.shortName} onChange={(value) => update('shortName', value)} />
-        <TextField label="Tagline" value={content.identity.tagline} onChange={(value) => update('tagline', value)} />
         <TextAreaField label="Introduction" value={content.identity.introduction} onChange={(value) => update('introduction', value)} />
         <TextField label="Leader line" value={content.identity.leaderLine} onChange={(value) => update('leaderLine', value)} />
+        <MediaUploadField label="Hero media" value={content.identity.heroMediaUrl} onChange={updateHeroMedia} />
       </FormShell>
     )
   }
@@ -136,16 +151,25 @@ export function AdminItemForm({ content, selection, onChange, onSave, onDelete, 
     const item = content.people.find((person) => person.id === selection.id)
     if (!item) return null
     const update = (patch: Partial<Person>) => onChange({ ...content, people: content.people.map((person) => (person.id === item.id ? { ...person, ...patch } : person)) })
+    const roleSelectValue = personRoleOptions.includes(item.role) ? item.role : customPersonRoleOption
 
     return (
       <FormShell dirty={dirty} eyebrow="Person" onDelete={onDelete} onSave={onSave} status={status} title={item.name || 'Person'}>
-        <SelectField label="Group" value={item.group} options={personGroups} onChange={(group) => update({ group })} />
         <TextField label="Name" value={item.name} onChange={(name) => update({ name })} />
-        <TextField label="Role" value={item.role} onChange={(role) => update({ role })} />
-        <TextField label="Affiliation" value={item.affiliation} onChange={(affiliation) => update({ affiliation })} />
-        <TextAreaField label="Bio" value={item.bio} onChange={(bio) => update({ bio })} />
-        <TextField label="Email" value={item.email ?? ''} onChange={(email) => update({ email })} />
-        <TextField label="Website" value={item.website ?? ''} onChange={(website) => update({ website })} />
+        <TextField label="Major" value={item.major} onChange={(major) => update({ major })} />
+        <SelectField
+          label="Role"
+          value={roleSelectValue}
+          options={[...personRoleOptions, customPersonRoleOption]}
+          onChange={(role) => update({ role: role === customPersonRoleOption ? '' : role, affiliation: role === 'Alumni' ? item.affiliation : '' })}
+        />
+        {roleSelectValue === customPersonRoleOption ? (
+          <TextField label="Custom role" value={item.role} onChange={(role) => update({ role })} />
+        ) : null}
+        {item.role === 'Alumni' ? (
+          <TextField label="Destination" value={item.affiliation} onChange={(affiliation) => update({ affiliation })} />
+        ) : null}
+        <TextField label="Profile link" value={item.profileUrl} onChange={(profileUrl) => update({ profileUrl })} />
         <ImageUploadField label="Photo" value={item.photoUrl ?? ''} onChange={(photoUrl) => update({ photoUrl })} />
       </FormShell>
     )
@@ -172,12 +196,18 @@ export function AdminItemForm({ content, selection, onChange, onSave, onDelete, 
     const item = content.teaching.find((teaching) => teaching.id === selection.id)
     if (!item) return null
     const update = (patch: Partial<TeachingItem>) => onChange({ ...content, teaching: content.teaching.map((teaching) => (teaching.id === item.id ? { ...teaching, ...patch } : teaching)) })
+    const updateMedia = (mediaUrl: string) => {
+      const extension = mediaUrl.split('?')[0]?.split('.').pop()?.toLowerCase()
+      const mediaKind = mediaUrl ? (['mp4', 'webm', 'ogv', 'ogg'].includes(extension || '') ? 'video' : extension === 'gif' ? 'gif' : 'image') : 'placeholder'
+
+      update({ mediaUrl, mediaKind })
+    }
 
     return (
       <FormShell dirty={dirty} eyebrow="Teaching" onDelete={onDelete} onSave={onSave} status={status} title={item.title || 'Teaching item'}>
         <TextField label="Title" value={item.title} onChange={(title) => update({ title })} />
         <TextAreaField label="Description" value={item.description} onChange={(description) => update({ description })} />
-        <ImageUploadField label="Image" value={item.imageUrl} onChange={(imageUrl) => update({ imageUrl })} />
+        <MediaUploadField label="Media" value={item.mediaUrl} onChange={updateMedia} />
         <LinksField links={item.links} onChange={(links) => update({ links })} />
       </FormShell>
     )

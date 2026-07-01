@@ -4,14 +4,20 @@ import { randomBytes } from 'node:crypto'
 import { paths } from './config.mjs'
 
 const maxImageBytes = 8 * 1024 * 1024
+const maxMediaBytes = 80 * 1024 * 1024
 
-const imageTypes = {
+const mediaTypes = {
   'image/jpeg': '.jpg',
   'image/png': '.png',
   'image/webp': '.webp',
   'image/svg+xml': '.svg',
   'image/gif': '.gif',
+  'video/mp4': '.mp4',
+  'video/webm': '.webm',
+  'video/ogg': '.ogv',
 }
+
+const imageTypes = Object.fromEntries(Object.entries(mediaTypes).filter(([type]) => type.startsWith('image/')))
 
 function parseContentDisposition(value = '') {
   return Object.fromEntries(
@@ -35,8 +41,8 @@ async function readBody(request) {
   for await (const chunk of request) {
     total += chunk.length
 
-    if (total > maxImageBytes + 1024 * 1024) {
-      throw new Error('Image is too large')
+    if (total > maxMediaBytes + 1024 * 1024) {
+      throw new Error('Upload is too large')
     }
 
     chunks.push(chunk)
@@ -45,7 +51,7 @@ async function readBody(request) {
   return Buffer.concat(chunks)
 }
 
-function parseMultipartImage(request, body) {
+function parseMultipartUpload(request, body) {
   const type = request.headers['content-type'] || ''
   const boundary = type.match(/boundary=(?:"([^"]+)"|([^;]+))/)?.[1] || type.match(/boundary=(?:"([^"]+)"|([^;]+))/)?.[2]
 
@@ -102,7 +108,7 @@ function parseMultipartImage(request, body) {
     )
     const disposition = parseContentDisposition(headers['content-disposition'])
 
-    if (disposition.name !== 'image' || !disposition.filename) {
+    if (!['image', 'media'].includes(disposition.name) || !disposition.filename) {
       continue
     }
 
@@ -113,12 +119,12 @@ function parseMultipartImage(request, body) {
     }
   }
 
-  throw new Error('Missing image file')
+  throw new Error('Missing upload file')
 }
 
 export async function saveUploadedImage(request) {
   const body = await readBody(request)
-  const image = parseMultipartImage(request, body)
+  const image = parseMultipartUpload(request, body)
   const fallbackExt = extname(image.filename).toLowerCase()
   const ext = imageTypes[image.contentType] || (Object.values(imageTypes).includes(fallbackExt) ? fallbackExt : '')
 
@@ -142,6 +148,36 @@ export async function saveUploadedImage(request) {
     filename,
     contentType: image.contentType,
     size: image.content.length,
+  }
+}
+
+export async function saveUploadedMedia(request) {
+  const body = await readBody(request)
+  const media = parseMultipartUpload(request, body)
+  const fallbackExt = extname(media.filename).toLowerCase()
+  const ext = mediaTypes[media.contentType] || (Object.values(mediaTypes).includes(fallbackExt) ? fallbackExt : '')
+
+  if (!ext) {
+    throw new Error('Unsupported media type')
+  }
+
+  if (media.content.length > maxMediaBytes) {
+    throw new Error('Upload is too large')
+  }
+
+  await mkdir(paths.uploads, { recursive: true })
+
+  const prefix = media.contentType.startsWith('video/') ? 'video' : 'image'
+  const filename = `${prefix}-${Date.now()}-${randomBytes(8).toString('hex')}${ext}`
+  const filePath = resolve(paths.uploads, filename)
+
+  await writeFile(filePath, media.content)
+
+  return {
+    url: `/uploads/${filename}`,
+    filename,
+    contentType: media.contentType,
+    size: media.content.length,
   }
 }
 

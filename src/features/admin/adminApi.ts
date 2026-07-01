@@ -68,3 +68,24 @@ export async function uploadAdminImage(file: File) {
 
   return response.json() as Promise<{ url: string; filename: string; contentType: string; size: number }>
 }
+
+export async function uploadAdminMedia(file: File) {
+  const body = new FormData()
+  body.append('media', file)
+
+  const response = await fetch('/api/admin/uploads/media', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+    },
+    body,
+  })
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}))
+    throw new Error(body.error || 'Upload failed')
+  }
+
+  return response.json() as Promise<{ url: string; filename: string; contentType: string; size: number }>
+}

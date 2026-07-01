@@ -1,10 +1,11 @@
 {
   "identity": {
-    "title": "Optoelectronic HCI Lab",
+    "title": "Light-Driven Matter, Interfaces, and Future Technologies",
     "shortName": "PHOENIX Lab",
-    "tagline": "Light-Driven Matter, Interfaces, and Future Technologies",
     "introduction": "Phoenix Lab takes an interdisciplinary approach to exploring optical technologies as a generative medium for reimagining matter, interfaces, energy, and future interactive systems. At the intersection of Optical Technologies and Human-Computer Interaction, we create programmable materials, physical interfaces, robotic and energy systems, and AI-enabled experiences that reshape how people interact with and through the physical world.",
-    "leaderLine": "Phoenix Lab is led by Prof. Yuhua Jin at The Chinese University of Hong Kong, Shenzhen."
+    "leaderLine": "Phoenix Lab is led by Prof. Yuhua Jin at The Chinese University of Hong Kong, Shenzhen.",
+    "heroMediaKind": "gif",
+    "heroMediaUrl": "/uploads/image-1782833769022-894f96cc0de48ff5.gif"
   },
   "navigation": [
     "Home",
@@ -87,7 +88,7 @@
       ],
       "featured": true,
       "mediaKind": "image",
-      "mediaUrl": "/uploads/image-1782290966298-40086a20251ac800.jpg",
+      "mediaUrl": "/uploads/image-1782889955956-855ad08c0296c701.jpg",
       "gifUrl": "/uploads/image-1782291722248-3a02a0511616c1e9.gif"
     },
     {
@@ -120,99 +121,83 @@
     {
       "id": "yuhua-jin",
       "name": "Prof. Yuhua Jin",
-      "role": "Assistant Professor, School of Science and Engineering",
-      "affiliation": "The Chinese University of Hong Kong, Shenzhen",
-      "bio": "Researcher in optoelectronic HCI, programmable materials, physical interfaces, and light-driven future technologies, with prior work including Photo-Chromeleon at MIT.",
-      "email": "yuhuajin@cuhk.edu.cn",
-      "website": "#",
+      "role": "Assistant Professor",
+      "affiliation": "",
       "photoUrl": "",
-      "group": "Professor"
+      "major": "Optoelectronic HCI",
+      "profileUrl": "https://ultra-jin.com/"
     },
     {
       "id": "postdoc-placeholder-1",
       "name": "Dr. Alex Chen [TEST]",
       "role": "Postdoctoral Researcher",
-      "affiliation": "PHOENIX Lab",
-      "bio": "Works on optical fabrication, programmable materials, and experimental systems for light-mediated physical interfaces.",
-      "photoUrl": "",
-      "group": "Postdoc"
+      "affiliation": "",
+      "photoUrl": "/uploads/image-1782889826166-d2b1c827998140b2.jpg",
+      "major": "Optical Fabrication",
+      "profileUrl": ""
     },
     {
       "id": "phd-placeholder-1",
       "name": "Mia Zhang [TEST]",
       "role": "PhD Student",
-      "affiliation": "School of Science and Engineering",
-      "bio": "Explores soft robotic interfaces and battery-free interactive devices powered or controlled through projected light.",
-      "email": "",
-      "website": "",
-      "photoUrl": "",
-      "group": "PhD"
+      "affiliation": "",
+      "photoUrl": "/uploads/image-1782889837092-715c566ed52b53d6.jpg",
+      "major": "Soft Robotics",
+      "profileUrl": ""
     },
     {
       "id": "phd-placeholder-2",
       "name": "Leo Wang [TEST]",
       "role": "PhD Student",
-      "affiliation": "PHOENIX Lab",
-      "bio": "Studies AI-assisted design tools for physical prototyping, optoelectronic sensing, and human-material interaction.",
-      "email": "",
-      "website": "",
+      "affiliation": "",
       "photoUrl": "",
-      "group": "PhD"
+      "major": "AI-Assisted Design",
+      "profileUrl": ""
     },
     {
       "id": "mphil-placeholder-1",
       "name": "Iris Liu [TEST]",
       "role": "MPhil Student",
-      "affiliation": "PHOENIX Lab",
-      "bio": "Builds interactive material samples and evaluates how optical actuation can support tangible user experiences.",
-      "email": "",
-      "website": "",
+      "affiliation": "",
       "photoUrl": "",
-      "group": "MPhil"
+      "major": "Interactive Materials",
+      "profileUrl": ""
     },
     {
       "id": "ra-placeholder-1",
       "name": "Noah Ho [TEST]",
       "role": "Research Assistant",
-      "affiliation": "PHOENIX Lab",
-      "bio": "Supports hardware prototyping, fabrication workflows, documentation, and lab-scale experimental validation.",
-      "email": "",
-      "website": "",
+      "affiliation": "",
       "photoUrl": "",
-      "group": "Research Assistant"
+      "major": "Hardware Prototyping",
+      "profileUrl": ""
     },
     {
       "id": "intern-placeholder-1",
       "name": "Ava Lin [TEST]",
       "role": "Undergraduate Intern",
-      "affiliation": "The Chinese University of Hong Kong, Shenzhen",
-      "bio": "Contributes to interface demos, visual assets, and exploratory prototypes for light-driven interaction.",
-      "email": "",
-      "website": "",
+      "affiliation": "",
       "photoUrl": "",
-      "group": "Intern"
+      "major": "Interaction Design",
+      "profileUrl": ""
     },
     {
       "id": "visiting-placeholder-1",
       "name": "Sam Rivera [TEST]",
       "role": "Visiting Student",
-      "affiliation": "Exchange Research Program",
-      "bio": "Investigates sensing and display techniques for spatial interaction in shared physical environments.",
-      "email": "",
-      "website": "",
+      "affiliation": "",
       "photoUrl": "",
-      "group": "Visiting Student"
+      "major": "Spatial Interaction",
+      "profileUrl": ""
     },
     {
       "id": "alumni-placeholder-1",
       "name": "Grace Park [TEST]",
       "role": "Alumni",
       "affiliation": "PHOENIX Lab",
-      "bio": "Previously worked on early prototypes for optical interfaces and documentation systems.",
-      "email": "",
-      "website": "",
       "photoUrl": "",
-      "group": "Alumni"
+      "major": "Optical Interfaces",
+      "profileUrl": ""
     }
   ],
   "publications": [
@@ -270,10 +255,19 @@
   "teaching": [
     {
       "id": "teaching-placeholder",
-      "title": "Teaching information coming soon.",
-      "description": "Course pages and teaching materials will be added here.",
-      "imageUrl": "",
-      "links": []
+      "title": "Classes information coming soon.",
+      "description": "Classes taught by the lab lead will be introduced here.",
+      "links": [],
+      "mediaUrl": "",
+      "mediaKind": "placeholder"
+    },
+    {
+      "id": "teaching-1782831685500",
+      "title": "New Teaching Item",
+      "description": "Description.",
+      "links": [],
+      "mediaUrl": "",
+      "mediaKind": "placeholder"
     }
   ],
   "join": {
@@ -293,7 +287,7 @@
       {
         "id": "research-assistants-interns",
         "title": "Research Assistants & Interns",
-        "body": "We welcome research assistants, visiting students, undergraduate interns, and master’s interns interested in hands-on interdisciplinary research across experiments, prototypes, hardware, software, AI-enabled interaction, user studies, and visual documentation."
+        "body": "We welcome research assistants, visiting students, undergraduate interns, and master鈥檚 interns interested in hands-on interdisciplinary research across experiments, prototypes, hardware, software, AI-enabled interaction, user studies, and visual documentation."
       },
       {
         "id": "wildcard",
