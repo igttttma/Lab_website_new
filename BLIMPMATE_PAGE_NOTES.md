@@ -1,64 +1,57 @@
-# BlimpMate product-page refinement
+# BlimpMate product-page and Agent Lab notes
 
-## Design reference and page structure
+## Design reference
 
-The BlimpMate page now follows the presentation rhythm and interaction patterns observed in the supplied MacBook Neo archive, while retaining BlimpMate-specific content and visual identity. The page uses:
+The BlimpMate experience uses the supplied MacBook Neo archive only as a reference for product-page hierarchy, pacing, and interaction grammar. The retained page structure includes a sticky local product navigation, centered hero, highlights rail, large editorial transitions, a product/system viewer, scroll-driven performance storytelling, rounded evidence cards, tabs, accordions, and “plus” actions that reveal production briefs.
 
-- a compact sticky product navigation with section state and reading progress;
-- a centered product marquee with a restrained research-prototype label;
-- a horizontal “Get the highlights” gallery with arrows, pagination, pause/play, swipe/trackpad synchronization, and an active slide count;
-- a large editorial statement followed by a specified hero-film placeholder;
-- a “Take a closer look” product viewer with subsystem tabs and 3D rotation;
-- a long sticky, scroll-scrubbed performance narrative;
-- large rounded evidence cards, tabbed presentation-state and scenario galleries, and expandable specifications;
-- Apple-style “plus” actions that open production-brief dialogs for every missing image or video.
+No Apple product media, copy, fonts, or page code is included.
 
-No Apple product images, videos, copy, or page code are included. The reference is used only for information hierarchy, pacing, card behavior, and interaction grammar.
+## Paper-grounded presentation
 
-## Paper-grounded changes in this revision
+The product page uses the supplied BlimpMate paper and its figures for the research claim, hardware platform, projection subsystem, flight-control architecture, networked interaction architecture, measured display/power/noise evidence, task-guidance examples, context-aware assistance, and telepresence scenarios.
 
-- The bundled `public/assets/blimpmate/research/blimpmate-paper.pdf` is byte-identical to the supplied `uist26-53.pdf` source (13 pages; SHA-256 `3ad86f9849d4f35f96a67fc3e6edff9e803b6a3a7f940dec73c7ee20eba62547`).
-- Restored the supplied paper’s acoustic table: ambient background 46.0 dB(A), routine hovering 47.1 dB(A), active vertical repositioning 50.5 dB(A), active yaw rotation 48.3 dB(A), and active horizontal repositioning 49.7 dB(A), with the reported trial-maximum values shown separately.
-- Restored the supplied paper’s hover-plus-multimedia result: 45 min at 14.75 W. The page no longer labels this measured condition as pending.
-- Corrected application-source labels to match the supplied paper: task guidance is Figure 8, context-aware assistance is Figure 9, and telepresence is Figure 10.
-- Restored the supplied paper metadata: named authors, UIST ’26 in Detroit, 13 pages, and DOI `10.1145/3830398.3830527`.
-- Replaced the non-source acoustic image card with a rendered Table 3 evidence card; the supplied paper’s Figure 8 is the task-guidance scenario figure.
-- Added an image fallback when the 3D model cannot be rendered.
+Important measured values represented by the current page include:
+
+- 33-inch approximate usable projection diagonal;
+- average screen luminance of 305.7 cd/m² under the reported static test;
+- 73 minutes for hover plus lightweight visual content at 8.68 W;
+- 45 minutes for hover plus multimedia playback at 14.75 W;
+- 47.1 dB(A) mean routine-hover sound level under the reported setup;
+- task guidance in Figure 8, context-aware assistance in Figure 9, and telepresence in Figure 10.
+
+The page labels the system as a research prototype. Application scenes are presented as proof-of-concept demonstrations rather than an evaluated end-to-end autonomous agent.
+
+## Agent Lab extension
+
+The main product story now includes an `Agent` chapter and a dedicated digital-twin experience under `/projects/blimpmate/agent-lab/*`. Six cards/subpages expose one interaction loop at a time:
+
+- procedural guidance;
+- left-behind reminder;
+- meal-time nutrition feedback;
+- situated safety check;
+- telepresence state;
+- user-relative positioning preview.
+
+Each scene shows the rendered display state, backend subsystem, provenance, latency, tool trace, browser-session history, and an explicit “physical control off” boundary. Positioning computes a request-local, unconnected setpoint and never engages the vehicle.
 
 ## Blank media-card convention
 
-Missing media remains visible as a designed production card rather than being replaced with fabricated imagery. Each card states the asset type, target ratio, intended content, and capture/evaluation constraints. Selecting “View production brief” opens a larger modal with the same specification.
+Unavailable images or video are not replaced with fabricated assets. The page renders a designed blank card containing the required media type, target ratio, intended content, and capture/evaluation constraints. Agent Lab adds briefs for an end-to-end agent-loop film and synchronized physical-prototype/browser-twin footage.
 
-The convention is used for the hero interaction film, in-flight readability study, sensing close-up, presentation-state UI studies, user-study evidence, future-direction concepts, and the complete media production plan.
+## Relevant source files
 
-## Main source files
+- `src/features/blimpmate/BlimpMatePage.tsx`
+- `src/features/blimpmate/agent/`
+- `src/app/PublicSite.tsx`
+- `server/blimpmateAgent.mjs`
+- `server/api.mjs`
+- `server/config.mjs`
+- `src/styles/global.css`
+- `blimpmate-extended-preview.html`
+- `blimpmate-agent-lab-preview.html`
 
-- `src/features/blimpmate/BlimpMatePage.tsx` — page composition, scroll state, local navigation, reading progress, and highlight synchronization
-- `src/features/blimpmate/BlimpExperienceSections.tsx` — highlights, design story, product viewer, display, intelligence, presentation states, scenarios, and human compatibility
-- `src/features/blimpmate/BlimpTechnicalSections.tsx` — measured evidence, system, contributions, comparison, specifications, roadmap, production plan, and paper details
-- `src/features/blimpmate/BlimpVisuals.tsx` — reusable visual components, placeholders, and production-brief dialog
-- `src/features/blimpmate/BlimpModel.tsx` — model viewer and image fallback
-- `src/features/blimpmate/blimpmateData.ts` — source-grounded metrics, labels, state definitions, and production briefs
-- `src/styles/global.css` — page layout, modal, evidence, pending-data, and responsive states
-- `blimpmate-extended-preview.html` — no-build static review version with equivalent interactions
+## Verification in this environment
 
-## Run locally
+Completed checks include Node syntax validation, backend-bridge offline and connected smoke tests, request validation and size-limit checks, TypeScript syntax and isolated semantic checks, CSS/HTML parsing, static-preview inline-script syntax checks, and desktop/390 px responsive layout inspection without horizontal overflow. All referenced static assets were also verified to exist and return HTTP 200 from a local static server.
 
-```bash
-npm install
-npm run dev
-```
-
-Open `/projects/blimpmate`. The static review version can be served from the project directory:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000/blimpmate-extended-preview.html`.
-
-## Verification in this revision environment
-
-The modified TS/TSX files passed TypeScript syntax transpilation and an isolated type check with local React stubs. The static preview’s inline JavaScript passed `node --check`. Browser checks covered desktop and 390 px mobile layouts, no horizontal overflow, the acoustic figure, highlight synchronization, production-brief opening/closing, and the model-image fallback.
-
-A full Vite production build was not run in this container because project dependencies could not be installed from the configured package registry. Run a clean `npm install` or `npm ci`, followed by `npm run build` and `npm run lint`, on the target development machine.
+Direct Chromium navigation was blocked by the container’s browser policy, so responsive visual inspection used an in-memory page load. A full Vite production build and ESLint run were not completed because the configured package source returned a 404 while installing `zod-validation-error-4.0.2`. Run a clean dependency install followed by `npm run build` and `npm run lint` on the target development machine.

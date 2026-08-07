@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react'
 import type { Project } from '../../content/types'
 import { BlimpModel } from './BlimpModel'
 import { BlimpWaveField } from './BlimpVisuals'
+import { AgentExperienceSection } from './agent/AgentExperienceSection'
 import {
   DesignStorySection,
   DisplayStoriesSection,
@@ -45,6 +46,7 @@ const pageNavItems = [
   { id: 'overview', label: 'Overview' },
   { id: 'performance', label: 'Performance' },
   { id: 'display', label: 'Display' },
+  { id: 'agent', label: 'Agent' },
   { id: 'scenarios', label: 'Applications' },
   { id: 'system', label: 'System' },
   { id: 'tech-specs', label: 'Tech Specs' },
@@ -236,7 +238,7 @@ export function BlimpMatePage({ project, onNavigate }: BlimpMatePageProps) {
           <h1>BlimpMate</h1>
           <p className="blimp-hero-tagline">A display that comes to you.</p>
           <p className="blimp-hero-description">{description}</p>
-          <div className="blimp-hero-actions"><a className="blimp-pill blimp-pill--dark" href="#story">Explore BlimpMate</a><a className="blimp-text-link" href={researchAsset('blimpmate-paper.pdf')} target="_blank" rel="noreferrer">Read the research <span aria-hidden="true">↗</span></a></div>
+          <div className="blimp-hero-actions"><a className="blimp-pill blimp-pill--dark" href="#story">Explore BlimpMate</a><a className="blimp-text-link" href="/projects/blimpmate/agent-lab/reminder" onClick={(event) => { event.preventDefault(); onNavigate('/projects/blimpmate/agent-lab/reminder') }}>Try the agent twin <span aria-hidden="true">↗</span></a><a className="blimp-text-link" href={researchAsset('blimpmate-paper.pdf')} target="_blank" rel="noreferrer">Read the research <span aria-hidden="true">↗</span></a></div>
           <a className="blimp-scroll-cue" href="#story"><span aria-hidden="true" />Scroll to explore</a>
         </div>
         <div className="blimp-hero-art">
@@ -289,6 +291,7 @@ export function BlimpMatePage({ project, onNavigate }: BlimpMatePageProps) {
       <PerformanceEvidenceSection />
       <DisplayStoriesSection />
       <IntelligenceSection />
+      <AgentExperienceSection onNavigate={onNavigate} />
       <PresentationStatesSection activeId={activePresentationId} onChange={setActivePresentationId} />
       <ScenariosSection activeId={activeScenarioId} onChange={setActiveScenarioId} />
       <HumanCompatibilitySection />

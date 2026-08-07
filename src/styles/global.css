@@ -5761,3 +5761,1893 @@ address {
     font-size: 11px;
   }
 }
+
+/* BlimpMate Agent Lab: paper-backed, browser-safe digital-twin experience. */
+.blimp-agent-experience {
+  padding: clamp(110px, 14vw, 210px) 0;
+  background:
+    radial-gradient(circle at 76% 9%, rgba(255, 100, 43, 0.12), transparent 24%),
+    linear-gradient(180deg, #f5f5f7 0%, #ffffff 72%);
+}
+
+.blimp-agent-experience-head,
+.blimp-agent-observability > header,
+.blimp-agent-architecture > header {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-agent-experience-head h2,
+.blimp-agent-observability h2,
+.blimp-agent-architecture h2,
+.blimp-agent-controls h2,
+.blimp-agent-lab-media h2 {
+  max-width: 980px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(46px, 7vw, 96px);
+  font-weight: 700;
+  letter-spacing: -0.068em;
+  line-height: 0.95;
+}
+
+.blimp-agent-experience-head > p:last-child,
+.blimp-agent-observability > header > p,
+.blimp-agent-architecture > header > p {
+  max-width: 660px;
+  margin: 34px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.42;
+}
+
+.blimp-agent-live-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.34fr) minmax(330px, 0.66fr);
+  width: min(1280px, calc(100% - 48px));
+  margin: clamp(58px, 8vw, 110px) auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 36px;
+  background: #ffffff;
+  box-shadow: 0 28px 90px rgba(29, 29, 31, 0.08);
+}
+
+.blimp-agent-live-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid rgba(29, 29, 31, 0.1);
+  padding: clamp(38px, 5vw, 72px);
+}
+
+.blimp-agent-live-copy h3,
+.blimp-agent-scenario-card h3,
+.blimp-agent-production-brief > article h3,
+.blimp-agent-inspector h2 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(36px, 4.8vw, 68px);
+  letter-spacing: -0.062em;
+  line-height: 0.97;
+}
+
+.blimp-agent-live-copy > p:not(.blimp-eyebrow),
+.blimp-agent-production-brief > article > p:not(.blimp-eyebrow) {
+  margin: 24px 0 0;
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.52;
+}
+
+.blimp-agent-live-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 44px;
+}
+
+.blimp-agent-live-status span,
+.blimp-agent-twin-header > span,
+.blimp-agent-twin-header > div,
+.blimp-agent-stage-caption,
+.blimp-agent-panel-title,
+.blimp-agent-inspector-reason > span {
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.blimp-agent-live-status span {
+  border: 1px solid rgba(29, 29, 31, 0.14);
+  border-radius: 999px;
+  color: #6e6e73;
+  padding: 7px 10px;
+}
+
+.blimp-agent-live-status span:first-child[data-connected="true"] {
+  border-color: rgba(35, 151, 79, 0.22);
+  background: rgba(35, 151, 79, 0.08);
+  color: #14723a;
+}
+
+.blimp-agent-live-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.blimp-agent-run,
+.blimp-agent-open,
+.blimp-agent-card-link {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.blimp-agent-run {
+  background: #1d1d1f;
+  color: #ffffff;
+  padding: 14px 20px;
+}
+
+.blimp-agent-run:hover:not(:disabled),
+.blimp-agent-run:focus-visible:not(:disabled) {
+  background: var(--blimp-orange);
+  box-shadow: 0 14px 30px rgba(255, 100, 43, 0.22);
+  transform: translateY(-1px);
+}
+
+.blimp-agent-run:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.blimp-agent-open {
+  background: #f0f0f2;
+  color: #1d1d1f;
+  padding: 14px 18px;
+}
+
+.blimp-agent-open:hover,
+.blimp-agent-open:focus-visible,
+.blimp-agent-card-link:hover,
+.blimp-agent-card-link:focus-visible {
+  background: #1d1d1f;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.blimp-agent-result-note {
+  display: grid;
+  gap: 4px;
+  margin: 24px 0 0;
+  border-left: 2px solid var(--blimp-orange);
+  color: #6e6e73;
+  font-size: 12px;
+  line-height: 1.45;
+  padding-left: 14px;
+}
+
+.blimp-agent-result-note strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.blimp-agent-result-note.is-error,
+.blimp-agent-inspector-error,
+.blimp-agent-upload small.is-error {
+  color: #a22525;
+}
+
+.blimp-agent-scenario-rail {
+  display: grid;
+  grid-auto-columns: minmax(330px, 31vw);
+  grid-auto-flow: column;
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 24px auto 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 8px 0 22px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: #c7c7cc transparent;
+}
+
+.blimp-agent-scenario-card {
+  display: flex;
+  min-height: 620px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 30px;
+  background: #ffffff;
+  scroll-snap-align: start;
+  transition: border 220ms ease, box-shadow 220ms ease, transform 260ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-agent-scenario-card[data-active="true"] {
+  border-color: rgba(255, 100, 43, 0.45);
+  box-shadow: 0 24px 70px rgba(29, 29, 31, 0.1);
+  transform: translateY(-4px);
+}
+
+.blimp-agent-scenario-select {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.blimp-agent-scenario-select figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.18;
+  margin: 0;
+  overflow: hidden;
+  background: #e9e9eb;
+}
+
+.blimp-agent-scenario-select img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-agent-scenario-card:hover img {
+  transform: scale(1.035);
+}
+
+.blimp-agent-scenario-select figcaption,
+.blimp-agent-lab-source figcaption,
+.blimp-agent-architecture figcaption {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  border-radius: 999px;
+  background: rgba(7, 9, 13, 0.78);
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  padding: 7px 9px;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.blimp-agent-scenario-select > div {
+  padding: 30px 30px 24px;
+}
+
+.blimp-agent-scenario-select > div > span {
+  display: block;
+  margin-bottom: 40px;
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-agent-scenario-card h3 {
+  font-size: clamp(30px, 3.2vw, 46px);
+}
+
+.blimp-agent-scenario-card .blimp-eyebrow {
+  margin-bottom: 12px;
+  font-size: 9px;
+}
+
+.blimp-agent-scenario-card p:last-child {
+  margin: 18px 0 0;
+  color: #6e6e73;
+  font-size: 15px;
+  line-height: 1.48;
+}
+
+.blimp-agent-card-link {
+  align-self: flex-start;
+  margin: 0 30px 30px;
+  background: #f0f0f2;
+  color: #1d1d1f;
+  padding: 12px 15px;
+}
+
+.blimp-agent-production-brief {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 40px auto 0;
+}
+
+.blimp-agent-production-brief > .blimp-media-placeholder,
+.blimp-agent-production-brief > article {
+  min-height: 520px;
+  border-radius: 30px;
+}
+
+.blimp-agent-production-brief > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(38px, 5vw, 68px);
+  background: #1d1d1f;
+  color: #ffffff;
+}
+
+.blimp-agent-production-brief > article h3 {
+  color: #ffffff;
+  font-size: clamp(38px, 4.6vw, 62px);
+}
+
+.blimp-agent-production-brief > article > p:not(.blimp-eyebrow) {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.blimp-agent-production-brief > article .blimp-agent-open {
+  width: fit-content;
+  margin-top: 34px;
+  background: #ffffff;
+}
+
+/* Digital twin visual */
+.blimp-agent-twin {
+  min-width: 0;
+  overflow: hidden;
+  background: #0d1016;
+  color: #ffffff;
+}
+
+.blimp-agent-twin-header {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 0 18px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.blimp-agent-twin-header > div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.blimp-agent-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff9a73;
+  box-shadow: 0 0 0 4px rgba(255, 100, 43, 0.1);
+}
+
+.blimp-agent-status-dot.is-connected {
+  background: #5bd582;
+  box-shadow: 0 0 0 4px rgba(91, 213, 130, 0.1);
+}
+
+.blimp-agent-twin-stage {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 100, 43, 0.16), transparent 24%),
+    radial-gradient(circle at 17% 24%, rgba(77, 112, 190, 0.17), transparent 28%),
+    linear-gradient(180deg, #171b25, #090b10 78%);
+  isolation: isolate;
+}
+
+.blimp-agent-room-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.3;
+  perspective: 600px;
+}
+
+.blimp-agent-room-grid::before,
+.blimp-agent-room-grid::after {
+  position: absolute;
+  content: "";
+}
+
+.blimp-agent-room-grid::before {
+  inset: 52% -20% -30%;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 54px 54px;
+  transform: rotateX(62deg) translateY(-9%);
+  transform-origin: top;
+}
+
+.blimp-agent-room-grid::after {
+  top: 0;
+  bottom: 48%;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.15));
+}
+
+.blimp-agent-room-grid i {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 1px;
+  height: 90%;
+  background: linear-gradient(rgba(255, 255, 255, 0.12), transparent);
+  transform-origin: top;
+}
+
+.blimp-agent-room-grid i:nth-child(1) { transform: rotate(26deg); }
+.blimp-agent-room-grid i:nth-child(2) { transform: rotate(-26deg); }
+.blimp-agent-room-grid i:nth-child(3) { transform: rotate(50deg); }
+.blimp-agent-room-grid i:nth-child(4) { transform: rotate(-50deg); }
+.blimp-agent-room-grid i:nth-child(5) { transform: rotate(90deg); opacity: 0.35; }
+
+.blimp-agent-room-label {
+  position: absolute;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.34);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-agent-room-label--camera { top: 22px; left: 22px; }
+.blimp-agent-room-label--backend { top: 22px; right: 22px; }
+
+.blimp-agent-twin-model {
+  position: absolute;
+  top: 44%;
+  left: 37%;
+  z-index: 1;
+  width: min(54%, 480px);
+  transform: translate(-50%, -50%);
+}
+
+.blimp-agent-twin-model.blimp-model-motion {
+  width: min(54%, 480px);
+}
+
+.blimp-agent-user-marker {
+  position: absolute;
+  top: var(--agent-user-y);
+  left: var(--agent-user-x);
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  transform: translate(-50%, -50%);
+  transition: top 500ms ease, left 500ms ease;
+}
+
+.blimp-agent-user-marker i {
+  position: relative;
+  display: block;
+  width: 19px;
+  height: 19px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+}
+
+.blimp-agent-user-marker i::after {
+  position: absolute;
+  top: 21px;
+  left: 50%;
+  width: 30px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  border-radius: 16px 16px 8px 8px;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.blimp-agent-sensing-line {
+  position: absolute;
+  top: 47%;
+  left: 38%;
+  z-index: 0;
+  width: 34%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 100, 43, 0.75), transparent);
+  opacity: 0.7;
+  transform: rotate(var(--agent-bearing));
+  transform-origin: left;
+  transition: transform 500ms ease;
+}
+
+.blimp-agent-sensing-line::before {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgba(255, 100, 43, 0.7);
+  border-radius: 50%;
+  content: "";
+}
+
+.blimp-agent-projected-ui {
+  position: absolute;
+  top: 50%;
+  right: clamp(22px, 5vw, 68px);
+  z-index: 4;
+  width: min(43%, 430px);
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 27px;
+  padding: 30px;
+  background:
+    linear-gradient(145deg, rgba(33, 39, 52, 0.92), rgba(10, 12, 18, 0.82)),
+    rgba(15, 18, 25, 0.92);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.38), inset 0 0 60px rgba(255, 255, 255, 0.025);
+  transform: translateY(-50%);
+  backdrop-filter: blur(18px);
+}
+
+.blimp-agent-projected-ui::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 12%, rgba(255, 255, 255, 0.06) 36%, transparent 54%);
+  content: "";
+  pointer-events: none;
+  transform: translateX(-100%);
+  animation: blimp-agent-screen-sheen 7s ease-in-out infinite;
+}
+
+.blimp-agent-face {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  background: #050608;
+}
+
+.blimp-agent-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blimp-agent-projected-ui > p {
+  margin: 22px 0 0;
+  color: #ff9a73;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-agent-projected-ui h3 {
+  max-width: 13ch;
+  margin: 10px 0 0;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(25px, 3.1vw, 42px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-agent-projected-body {
+  max-width: 36ch;
+  margin-top: 15px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  line-height: 1.42;
+}
+
+.blimp-agent-metric-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.blimp-agent-metric-row span {
+  display: grid;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 9px;
+  line-height: 1.2;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.blimp-agent-metric-row strong {
+  margin-bottom: 4px;
+  color: #ffffff;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.blimp-agent-output-list {
+  display: grid;
+  gap: 7px;
+  margin-top: 19px;
+}
+
+.blimp-agent-output-list > div {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  padding-top: 7px;
+}
+
+.blimp-agent-output-list i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6e7686;
+}
+
+.blimp-agent-output-list i[data-state="active"],
+.blimp-agent-output-list i[data-state="warning"],
+.blimp-agent-output-list i[data-state="danger"],
+.blimp-agent-output-list i[data-state="critical"] {
+  background: var(--blimp-orange);
+  box-shadow: 0 0 0 3px rgba(255, 100, 43, 0.1);
+}
+
+.blimp-agent-output-list i[data-state="done"],
+.blimp-agent-output-list i[data-state="clear"] {
+  background: #5bd582;
+}
+
+.blimp-agent-output-list b {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.blimp-agent-stage-caption {
+  position: absolute;
+  bottom: 17px;
+  left: 18px;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.blimp-agent-stage-caption strong {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.blimp-agent-twin-telemetry {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.blimp-agent-twin-telemetry > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 15px 16px;
+}
+
+.blimp-agent-twin-telemetry > div:first-child { border-left: 0; }
+
+.blimp-agent-twin-telemetry span {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.36);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blimp-agent-twin-telemetry strong {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.blimp-agent-twin--compact .blimp-agent-twin-stage {
+  min-height: 570px;
+}
+
+.blimp-agent-twin--compact .blimp-agent-projected-ui {
+  width: min(44%, 360px);
+  min-height: 315px;
+  padding: 25px;
+}
+
+.blimp-agent-twin--compact .blimp-agent-twin-model.blimp-model-motion {
+  width: min(52%, 420px);
+}
+
+/* Full Agent Lab */
+.blimp-agent-lab-page {
+  background: #f5f5f7;
+}
+
+.blimp-agent-lab-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: center;
+  min-height: 54px;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.12);
+  padding: 7px max(24px, calc((100vw - 1280px) / 2));
+  background: rgba(245, 245, 247, 0.88);
+  backdrop-filter: blur(20px);
+}
+
+.blimp-agent-lab-nav button {
+  border: 0;
+  background: transparent;
+  color: #6e6e73;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.blimp-agent-lab-nav > button:first-child {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: #1d1d1f;
+  font-weight: 650;
+}
+
+.blimp-agent-lab-nav nav {
+  display: flex;
+  min-width: 0;
+  justify-content: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.blimp-agent-lab-nav nav::-webkit-scrollbar { display: none; }
+
+.blimp-agent-lab-nav nav button {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 7px 10px;
+}
+
+.blimp-agent-lab-nav nav button[aria-current="page"] {
+  background: #1d1d1f;
+  color: #ffffff;
+}
+
+.blimp-agent-lab-nav > div {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.blimp-agent-lab-nav > div > span {
+  border-radius: 999px;
+  background: rgba(255, 100, 43, 0.1);
+  color: #9c3b18;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  padding: 6px 8px;
+}
+
+.blimp-agent-lab-nav > div > span[data-connected="true"] {
+  background: rgba(35, 151, 79, 0.1);
+  color: #14723a;
+}
+
+.blimp-agent-lab-nav > div button {
+  border: 1px solid rgba(29, 29, 31, 0.12);
+  border-radius: 999px;
+  padding: 6px 9px;
+}
+
+.blimp-agent-lab-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: clamp(36px, 7vw, 100px);
+  align-items: center;
+  width: min(1280px, calc(100% - 48px));
+  min-height: 720px;
+  margin: 0 auto;
+  padding: clamp(84px, 10vw, 150px) 0;
+}
+
+.blimp-agent-lab-hero-copy h1 {
+  max-width: 820px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(58px, 8vw, 114px);
+  letter-spacing: -0.074em;
+  line-height: 0.89;
+}
+
+.blimp-agent-lab-hero-copy > p:not(.blimp-eyebrow) {
+  max-width: 650px;
+  margin: 34px 0 0;
+  color: #6e6e73;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.42;
+}
+
+.blimp-agent-lab-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 58px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 18px;
+  background: rgba(29, 29, 31, 0.1);
+}
+
+.blimp-agent-lab-hero-meta span {
+  display: grid;
+  gap: 6px;
+  background: #ffffff;
+  color: #86868b;
+  font-size: 10px;
+  padding: 18px;
+  text-transform: uppercase;
+}
+
+.blimp-agent-lab-hero-meta strong {
+  overflow: hidden;
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blimp-agent-lab-source {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #dedee1;
+  box-shadow: 0 30px 80px rgba(29, 29, 31, 0.12);
+  transform: rotate(1.5deg);
+}
+
+.blimp-agent-lab-source img {
+  display: block;
+  width: 100%;
+  min-height: 520px;
+  object-fit: cover;
+}
+
+.blimp-agent-lab-source figcaption {
+  display: grid;
+  gap: 3px;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.blimp-agent-lab-source figcaption span { color: rgba(255, 255, 255, 0.58); }
+.blimp-agent-lab-source figcaption strong { color: #ffffff; }
+
+.blimp-agent-tab-section {
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 18px 0;
+  background: #ffffff;
+}
+
+.blimp-agent-tabs {
+  display: grid;
+  grid-auto-columns: minmax(210px, 1fr);
+  grid-auto-flow: column;
+  gap: 8px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.blimp-agent-tabs button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 12px;
+  align-items: center;
+  min-height: 82px;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 17px;
+  padding: 15px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.blimp-agent-tabs button:hover,
+.blimp-agent-tabs button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.blimp-agent-tabs button[data-active="true"] {
+  border-color: #1d1d1f;
+  background: #1d1d1f;
+  color: #ffffff;
+}
+
+.blimp-agent-tabs span {
+  grid-row: 1 / span 2;
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+}
+
+.blimp-agent-tabs strong {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.blimp-agent-tabs small {
+  overflow: hidden;
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 7px;
+  letter-spacing: 0.07em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blimp-agent-tabs button[data-active="true"] small,
+.blimp-agent-tabs button[data-active="true"] span { color: rgba(255, 255, 255, 0.52); }
+
+.blimp-agent-lab-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.46fr) minmax(300px, 0.54fr);
+  width: min(1280px, calc(100% - 48px));
+  margin: clamp(60px, 8vw, 110px) auto 0;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #ffffff;
+  box-shadow: 0 30px 100px rgba(29, 29, 31, 0.1);
+}
+
+.blimp-agent-inspector {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(34px, 4vw, 64px);
+}
+
+.blimp-agent-inspector h2 {
+  font-size: clamp(36px, 4.2vw, 58px);
+}
+
+.blimp-agent-inspector > p:not(.blimp-eyebrow) {
+  margin: 23px 0 0;
+  color: #6e6e73;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.blimp-agent-inspector dl {
+  display: grid;
+  margin: 40px 0 0;
+  border-top: 1px solid rgba(29, 29, 31, 0.12);
+}
+
+.blimp-agent-inspector dl div {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1.4fr);
+  gap: 12px;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 13px 0;
+}
+
+.blimp-agent-inspector dt {
+  color: #86868b;
+  font-size: 11px;
+}
+
+.blimp-agent-inspector dd {
+  overflow-wrap: anywhere;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.blimp-agent-inspector-reason {
+  margin-top: 30px;
+  border-radius: 16px;
+  background: #f5f5f7;
+  padding: 18px;
+}
+
+.blimp-agent-inspector-reason > span { color: var(--blimp-orange); }
+.blimp-agent-inspector-reason p { margin: 9px 0 0; color: #6e6e73; font-size: 12px; line-height: 1.46; }
+.blimp-agent-inspector-error { margin-top: 16px; font-size: 12px; }
+
+/* Scenario controls */
+.blimp-agent-controls {
+  width: min(1280px, calc(100% - 48px));
+  margin: clamp(110px, 14vw, 190px) auto 0;
+}
+
+.blimp-agent-controls > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: 60px;
+  align-items: end;
+}
+
+.blimp-agent-controls h2 {
+  max-width: 820px;
+  font-size: clamp(46px, 6vw, 82px);
+}
+
+.blimp-agent-controls > header > p {
+  margin: 0;
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.blimp-agent-control-panel {
+  margin-top: 48px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 0 24px 80px rgba(29, 29, 31, 0.07);
+}
+
+.blimp-agent-control-panel label,
+.blimp-agent-control-panel fieldset {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  color: #1d1d1f;
+  font-size: 13px;
+  font-weight: 650;
+  padding: 0;
+}
+
+.blimp-agent-control-panel legend {
+  margin-bottom: 14px;
+  color: #1d1d1f;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.blimp-agent-control-panel input:not([type="range"]):not([type="checkbox"]):not([type="file"]),
+.blimp-agent-control-panel textarea,
+.blimp-agent-control-panel select {
+  width: 100%;
+  border: 1px solid rgba(29, 29, 31, 0.14);
+  border-radius: 13px;
+  outline: 0;
+  background: #f8f8fa;
+  color: #1d1d1f;
+  font: inherit;
+  font-weight: 450;
+  padding: 13px 14px;
+  resize: vertical;
+  transition: border 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.blimp-agent-control-panel input:focus,
+.blimp-agent-control-panel textarea:focus,
+.blimp-agent-control-panel select:focus {
+  border-color: rgba(0, 102, 204, 0.55);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.09);
+}
+
+.blimp-agent-control-panel label > small,
+.blimp-agent-upload small {
+  color: #86868b;
+  font-size: 10px;
+  font-weight: 450;
+  line-height: 1.4;
+}
+
+.blimp-agent-guidance-control,
+.blimp-agent-form-grid,
+.blimp-agent-slider-grid {
+  padding: clamp(30px, 5vw, 64px);
+}
+
+.blimp-agent-guidance-control {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.68fr) minmax(0, 1.32fr);
+  gap: 34px;
+  align-items: stretch;
+}
+
+.blimp-agent-stepper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.blimp-agent-stepper > button {
+  width: 86px;
+  border: 0;
+  border-radius: 16px;
+  background: #f0f0f2;
+  color: #1d1d1f;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.blimp-agent-stepper > button:disabled { cursor: not-allowed; opacity: 0.42; }
+
+.blimp-agent-stepper > div {
+  display: flex;
+  min-height: 160px;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 18px;
+  background: #1d1d1f;
+  color: #ffffff;
+  padding: 26px;
+}
+
+.blimp-agent-stepper span {
+  color: rgba(255, 255, 255, 0.45);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-agent-stepper strong {
+  margin-top: 8px;
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 13px;
+}
+
+.blimp-agent-stepper p {
+  margin: 18px 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(23px, 2.5vw, 35px);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.blimp-agent-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+}
+
+.blimp-agent-check {
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.09);
+  cursor: pointer;
+  padding: 11px 0;
+}
+
+.blimp-agent-check input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--blimp-orange);
+}
+
+.blimp-agent-check small {
+  color: #86868b;
+  font-size: 10px;
+  font-weight: 450;
+}
+
+.blimp-agent-upload {
+  position: relative;
+  align-content: start;
+}
+
+.blimp-agent-upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.blimp-agent-upload > span {
+  display: grid;
+  min-height: 124px;
+  place-items: center;
+  border: 1px dashed rgba(29, 29, 31, 0.22);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, transparent 49%, rgba(29, 29, 31, 0.035) 50%, transparent 51%),
+    #f8f8fa;
+  color: #6e6e73;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 20px;
+  text-align: center;
+}
+
+.blimp-agent-segmented {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 5px;
+  border-radius: 15px;
+  background: #f0f0f2;
+}
+
+.blimp-agent-segmented button {
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: #6e6e73;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  padding: 11px;
+  text-transform: capitalize;
+}
+
+.blimp-agent-segmented button[aria-pressed="true"] {
+  background: #ffffff;
+  color: #1d1d1f;
+  box-shadow: 0 3px 12px rgba(29, 29, 31, 0.08);
+}
+
+.blimp-agent-slider-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.blimp-agent-range {
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 18px;
+  background: #f8f8fa;
+  padding: 22px;
+}
+
+.blimp-agent-range > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.blimp-agent-range strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 15px;
+}
+
+.blimp-agent-range input {
+  width: 100%;
+  margin-top: 24px;
+  accent-color: var(--blimp-orange);
+}
+
+.blimp-agent-control-footer {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 24px clamp(30px, 5vw, 64px);
+  background: #fafafa;
+}
+
+.blimp-agent-control-footer p {
+  max-width: 720px;
+  margin: 0;
+  color: #6e6e73;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.blimp-agent-control-footer strong { color: #1d1d1f; }
+
+/* Observability and architecture */
+.blimp-agent-observability,
+.blimp-agent-architecture,
+.blimp-agent-lab-media {
+  padding: clamp(110px, 15vw, 210px) 0;
+}
+
+.blimp-agent-observability > header,
+.blimp-agent-architecture > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(310px, 0.75fr);
+  gap: 60px;
+  align-items: end;
+}
+
+.blimp-agent-observability h2,
+.blimp-agent-architecture h2 {
+  font-size: clamp(46px, 6vw, 82px);
+}
+
+.blimp-agent-observability > header > p,
+.blimp-agent-architecture > header > p { margin: 0; }
+
+.blimp-agent-observability-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 50px auto 0;
+}
+
+.blimp-agent-timeline,
+.blimp-agent-capabilities {
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 28px;
+  background: #ffffff;
+}
+
+.blimp-agent-panel-title {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  color: #86868b;
+  padding: 0 22px;
+}
+
+.blimp-agent-panel-title strong {
+  color: #1d1d1f;
+  font-size: 12px;
+}
+
+.blimp-agent-event {
+  display: grid;
+  grid-template-columns: 8px 72px minmax(0, 1fr) auto;
+  gap: 13px;
+  align-items: center;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.08);
+  padding: 17px 22px;
+}
+
+.blimp-agent-event > i,
+.blimp-agent-capabilities button > i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #86868b;
+}
+
+.blimp-agent-event > i[data-mode="real"],
+.blimp-agent-capabilities button > i[data-mode="real"] { background: #23974f; }
+.blimp-agent-event > i[data-mode="fallback"],
+.blimp-agent-capabilities button > i[data-mode="fallback"] { background: #3178c6; }
+.blimp-agent-event > i[data-mode="mock"],
+.blimp-agent-capabilities button > i[data-mode="mock"] { background: var(--blimp-orange); }
+.blimp-agent-event > i[data-mode="manual/Wizard-of-Oz"],
+.blimp-agent-capabilities button > i[data-mode="manual/Wizard-of-Oz"],
+.blimp-agent-capabilities button > i[data-mode="manual"] { background: #8b62d7; }
+
+.blimp-agent-event time {
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+}
+
+.blimp-agent-event > div {
+  display: grid;
+  min-width: 0;
+}
+
+.blimp-agent-event > div strong {
+  overflow: hidden;
+  color: #1d1d1f;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blimp-agent-event > div span {
+  overflow: hidden;
+  margin-top: 3px;
+  color: #86868b;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blimp-agent-event em,
+.blimp-agent-capabilities button em {
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.blimp-agent-empty-event {
+  display: grid;
+  min-height: 430px;
+  align-content: center;
+  justify-items: center;
+  color: #86868b;
+  text-align: center;
+}
+
+.blimp-agent-empty-event span {
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-agent-empty-event p { max-width: 260px; margin: 12px 0 0; font-size: 12px; }
+
+.blimp-agent-capabilities button {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  gap: 13px;
+  align-items: center;
+  width: 100%;
+  min-height: 66px;
+  border: 0;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.08);
+  padding: 12px 22px;
+  background: #ffffff;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.blimp-agent-capabilities button[data-active="true"] { background: #f5f5f7; }
+.blimp-agent-capabilities button:hover { background: #fafafa; }
+
+.blimp-agent-capabilities button span {
+  display: grid;
+  min-width: 0;
+}
+
+.blimp-agent-capabilities button strong { font-size: 13px; }
+.blimp-agent-capabilities button small { color: #86868b; font-size: 9px; }
+
+.blimp-agent-architecture {
+  background: #ffffff;
+}
+
+.blimp-agent-architecture figure {
+  position: relative;
+  width: min(1280px, calc(100% - 48px));
+  margin: 58px auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 30px;
+  background: #f5f5f7;
+}
+
+.blimp-agent-architecture figure img {
+  display: block;
+  width: 100%;
+  max-height: 820px;
+  object-fit: contain;
+  padding: clamp(18px, 4vw, 52px);
+}
+
+.blimp-agent-architecture-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 18px auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  border-radius: 24px;
+  background: rgba(29, 29, 31, 0.1);
+}
+
+.blimp-agent-architecture-steps article {
+  min-height: 250px;
+  background: #f5f5f7;
+  padding: 28px;
+}
+
+.blimp-agent-architecture-steps span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+}
+
+.blimp-agent-architecture-steps h3 {
+  margin: 52px 0 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.045em;
+}
+
+.blimp-agent-architecture-steps p {
+  margin: 13px 0 0;
+  color: #6e6e73;
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.blimp-agent-lab-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1.17fr) minmax(330px, 0.83fr);
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-agent-lab-media > .blimp-media-placeholder,
+.blimp-agent-lab-media > article {
+  min-height: 520px;
+  border-radius: 30px;
+}
+
+.blimp-agent-lab-media > article {
+  padding: clamp(40px, 5vw, 70px);
+  background: #1d1d1f;
+  color: #ffffff;
+}
+
+.blimp-agent-lab-media h2 {
+  color: #ffffff;
+  font-size: clamp(38px, 4.3vw, 62px);
+}
+
+.blimp-agent-lab-media > article > p:not(.blimp-eyebrow) {
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.blimp-agent-lab-media ul {
+  display: grid;
+  gap: 10px;
+  margin: 38px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.blimp-agent-lab-media li {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  padding: 12px 0 0 18px;
+}
+
+.blimp-agent-lab-media li::before {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blimp-orange);
+  content: "";
+}
+
+@keyframes blimp-agent-screen-sheen {
+  0%, 58%, 100% { transform: translateX(-100%); }
+  72% { transform: translateX(100%); }
+}
+
+@media (max-width: 1100px) {
+  .blimp-agent-live-shell,
+  .blimp-agent-lab-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-live-copy {
+    border-top: 1px solid rgba(29, 29, 31, 0.1);
+    border-left: 0;
+  }
+
+  .blimp-agent-live-copy h3 { max-width: 12ch; }
+
+  .blimp-agent-lab-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-lab-source {
+    width: min(760px, 100%);
+    transform: none;
+  }
+
+  .blimp-agent-lab-stage > .blimp-agent-twin {
+    border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  }
+
+  .blimp-agent-controls > header,
+  .blimp-agent-observability > header,
+  .blimp-agent-architecture > header {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .blimp-agent-controls > header > p,
+  .blimp-agent-observability > header > p,
+  .blimp-agent-architecture > header > p {
+    max-width: 620px;
+  }
+
+  .blimp-agent-observability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-architecture-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .blimp-agent-experience-head,
+  .blimp-agent-live-shell,
+  .blimp-agent-scenario-rail,
+  .blimp-agent-production-brief,
+  .blimp-agent-lab-hero,
+  .blimp-agent-tabs,
+  .blimp-agent-lab-stage,
+  .blimp-agent-controls,
+  .blimp-agent-observability > header,
+  .blimp-agent-observability-grid,
+  .blimp-agent-architecture > header,
+  .blimp-agent-architecture figure,
+  .blimp-agent-architecture-steps,
+  .blimp-agent-lab-media {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .blimp-agent-production-brief,
+  .blimp-agent-lab-media {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-lab-nav {
+    grid-template-columns: auto 1fr;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .blimp-agent-lab-nav nav { display: none; }
+  .blimp-agent-lab-nav > div { justify-self: end; }
+
+  .blimp-agent-twin-stage {
+    min-height: 760px;
+  }
+
+  .blimp-agent-twin-model,
+  .blimp-agent-twin-model.blimp-model-motion,
+  .blimp-agent-twin--compact .blimp-agent-twin-model.blimp-model-motion {
+    top: 29%;
+    left: 50%;
+    width: min(78%, 430px);
+  }
+
+  .blimp-agent-projected-ui,
+  .blimp-agent-twin--compact .blimp-agent-projected-ui {
+    top: auto;
+    right: 20px;
+    bottom: 48px;
+    left: 20px;
+    width: auto;
+    min-height: 320px;
+    transform: none;
+  }
+
+  .blimp-agent-sensing-line { display: none; }
+  .blimp-agent-user-marker { top: 36%; }
+
+  .blimp-agent-guidance-control,
+  .blimp-agent-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-slider-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-control-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .blimp-agent-control-footer .blimp-agent-run { width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .blimp-agent-experience {
+    padding-top: 92px;
+    padding-bottom: 110px;
+  }
+
+  .blimp-agent-experience-head h2,
+  .blimp-agent-lab-hero-copy h1 {
+    font-size: clamp(50px, 16vw, 76px);
+  }
+
+  .blimp-agent-live-shell,
+  .blimp-agent-lab-stage,
+  .blimp-agent-control-panel,
+  .blimp-agent-architecture figure,
+  .blimp-agent-production-brief > .blimp-media-placeholder,
+  .blimp-agent-production-brief > article,
+  .blimp-agent-lab-media > .blimp-media-placeholder,
+  .blimp-agent-lab-media > article {
+    border-radius: 22px;
+  }
+
+  .blimp-agent-live-copy,
+  .blimp-agent-inspector {
+    padding: 36px 24px;
+  }
+
+  .blimp-agent-live-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .blimp-agent-live-actions button { width: 100%; }
+
+  .blimp-agent-scenario-rail {
+    grid-auto-columns: minmax(286px, 86vw);
+  }
+
+  .blimp-agent-scenario-card {
+    min-height: 570px;
+    border-radius: 22px;
+  }
+
+  .blimp-agent-scenario-select > div { padding: 26px 24px 20px; }
+  .blimp-agent-card-link { margin-right: 24px; margin-left: 24px; }
+
+  .blimp-agent-twin-header > span:nth-child(2) { display: none; }
+  .blimp-agent-twin-stage { min-height: 700px; }
+  .blimp-agent-twin--compact .blimp-agent-twin-stage { min-height: 680px; }
+
+  .blimp-agent-projected-ui,
+  .blimp-agent-twin--compact .blimp-agent-projected-ui {
+    right: 12px;
+    bottom: 44px;
+    left: 12px;
+    min-height: 330px;
+    border-radius: 20px;
+    padding: 22px;
+  }
+
+  .blimp-agent-projected-ui h3 { font-size: 30px; }
+  .blimp-agent-twin-telemetry { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blimp-agent-twin-telemetry > div:nth-child(3) { border-left: 0; }
+
+  .blimp-agent-lab-hero {
+    min-height: 0;
+    padding: 76px 0;
+  }
+
+  .blimp-agent-lab-hero-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-lab-source img { min-height: 360px; }
+
+  .blimp-agent-tabs {
+    grid-auto-columns: minmax(190px, 74vw);
+  }
+
+  .blimp-agent-guidance-control,
+  .blimp-agent-form-grid,
+  .blimp-agent-slider-grid {
+    padding: 28px 20px;
+  }
+
+  .blimp-agent-stepper {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .blimp-agent-stepper > div {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .blimp-agent-stepper > button {
+    width: auto;
+    min-height: 48px;
+  }
+
+  .blimp-agent-control-footer { padding: 22px 20px; }
+
+  .blimp-agent-event {
+    grid-template-columns: 8px minmax(0, 1fr);
+  }
+
+  .blimp-agent-event time,
+  .blimp-agent-event em { display: none; }
+
+  .blimp-agent-architecture-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-agent-architecture-steps article { min-height: 220px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blimp-agent-projected-ui::after { animation: none; }
+  .blimp-agent-user-marker,
+  .blimp-agent-sensing-line,
+  .blimp-agent-scenario-select img { transition: none; }
+}

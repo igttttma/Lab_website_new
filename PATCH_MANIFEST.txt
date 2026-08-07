@@ -1,18 +1,33 @@
-BlimpMate Apple-style product-page patch
+BlimpMate product-page + Agent Lab website patch
 
-Overlay these paths onto the original Lab_website_new-main project:
+Overlay these paths onto the supplied Lab_website_new project:
 
+.env.example
+README.md
+AGENT_LAB_IMPLEMENTATION.md
 BLIMPMATE_PAGE_NOTES.md
 IMPLEMENTATION_SUMMARY.md
+PATCH_MANIFEST.txt
 PATCH_README.md
+blimpmate-agent-lab-preview.html
 blimpmate-extended-preview.html
+server/api.mjs
+server/blimpmateAgent.mjs
+server/config.mjs
+src/app/PublicSite.tsx
 src/features/blimpmate/BlimpMatePage.tsx
-src/features/blimpmate/BlimpExperienceSections.tsx
-src/features/blimpmate/BlimpTechnicalSections.tsx
-src/features/blimpmate/BlimpVisuals.tsx
-src/features/blimpmate/BlimpModel.tsx
-src/features/blimpmate/blimpmateData.ts
+src/features/blimpmate/agent/AgentExperienceSection.tsx
+src/features/blimpmate/agent/AgentScenarioControls.tsx
+src/features/blimpmate/agent/BlimpAgentLabPage.tsx
+src/features/blimpmate/agent/BlimpAgentTwin.tsx
+src/features/blimpmate/agent/blimpmateAgentClient.ts
+src/features/blimpmate/agent/blimpmateAgentData.ts
+src/features/blimpmate/agent/useBlimpAgent.ts
 src/styles/global.css
-public/assets/blimpmate/research/blimpmate-paper.pdf (verified byte-identical to supplied uist26-53.pdf)
 
-No font files, Apple archive files, node_modules, or generated dependency folders are included.
+The patch expects the original project's existing public/assets/blimpmate and
+public/assets/brand files. It does not include font files, Apple archive files,
+node_modules, build output, caches, or generated dependency directories.
+
+The same integration bundle also contains the Python host-service overlay under
+backend-patch/. Apply it to /Users/suwen/Documents/blimpmate/BlimpMate_agent.

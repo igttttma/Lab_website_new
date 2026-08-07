@@ -1,3 +1,4 @@
+import { handleBlimpMateAgent } from './blimpmateAgent.mjs'
 import { readContent, writeContent } from './contentStore.mjs'
 import { getSessionToken, readJson, sendJson } from './http.mjs'
 import { clearLoginFailures, getLoginLockout, getLoginSource, recordFailedLogin } from './loginRateLimit.mjs'
@@ -78,6 +79,10 @@ async function requireAdmin(request, response) {
 }
 
 export async function handleApi(request, response, url) {
+  if (await handleBlimpMateAgent(request, response, url)) {
+    return true
+  }
+
   if (request.method === 'GET' && url.pathname === '/api/content') {
     sendJson(response, 200, await readContent())
     return true

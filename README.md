@@ -144,3 +144,27 @@ Create a manual content backup:
 ```bash
 npm run backup:content
 ```
+
+## BlimpMate Agent Lab
+
+The BlimpMate product page now includes an explorable digital twin at `/projects/blimpmate/agent-lab`. Six isolated scenes are available: guidance, left-behind reminder, nutrition feedback, safety check, telepresence state, and user-relative positioning.
+
+The browser calls the same-origin Node bridge:
+
+```text
+GET  /api/blimpmate-agent/snapshot
+POST /api/blimpmate-agent/action
+```
+
+The bridge forwards only to the BlimpMate host service's side-effect-limited `/experience/*` contract. It does not expose flight arming, raw motor or RC writes, manual flight mode, or an autonomous navigation run loop. When the host service is unavailable, the website returns a deterministic demo response with explicit `fallback`, `mock`, or `manual/Wizard-of-Oz` provenance so the product page remains reviewable without misrepresenting backend state.
+
+Configure the bridge with:
+
+```text
+BLIMPMATE_AGENT_URL=http://127.0.0.1:5050
+BLIMPMATE_AGENT_TIMEOUT_MS=3500
+BLIMPMATE_AGENT_MAX_REQUEST_BYTES=8500000
+BLIMPMATE_AGENT_DEMO_FALLBACK=true
+```
+
+For an integrated local run, start the Python host service from `/Users/suwen/Documents/blimpmate/BlimpMate_agent/host-service`; its macOS `run.sh` default is port 5050, which avoids the ControlCenter service commonly occupying port 5000. Then run `npm run dev`. The Node API remains the recommended browser boundary. The bridge applies an 8.5 MB bounded JSON reader, forwards upstream 4xx validation errors instead of masking them with a demo, and uses the deterministic fallback only for unavailable/5xx upstream states. The React client preserves the same distinction: validation errors remain visible, while network/5xx failures may use the labelled local preview. Public backend snapshots expose redacted state and aggregate metrics only. `VITE_BLIMPMATE_AGENT_DIRECT_URL` is only for environments that deliberately configure CORS and direct browser access; `VITE_BLIMPMATE_AGENT_TIMEOUT_MS` can optionally bound direct requests.

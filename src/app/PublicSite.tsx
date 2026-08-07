@@ -4,6 +4,7 @@ import { Section } from '../components/Section'
 import type { LabContent, Project } from '../content/types'
 import { fetchContent, loadContent } from '../services/contentRepository'
 import { BlimpCube, BlimpMatePage } from '../features/blimpmate/BlimpMatePage'
+import { BlimpAgentLabPage } from '../features/blimpmate/agent/BlimpAgentLabPage'
 
 type PublicSiteProps = {
   currentPath: string
@@ -358,6 +359,10 @@ function ContactPage({ content }: { content: LabContent }) {
 }
 
 function CurrentPage({ path, content, onNavigate }: { path: string; content: LabContent; onNavigate: (path: string) => void }) {
+  if (path.startsWith('/projects/blimpmate/agent-lab')) {
+    return <BlimpAgentLabPage path={path} onNavigate={onNavigate} />
+  }
+
   switch (path) {
     case '/projects':
       return <ProjectsPage content={content} onNavigate={onNavigate} />
