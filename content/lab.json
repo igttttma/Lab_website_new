@@ -75,7 +75,7 @@
       "links": [
         {
           "label": "Project",
-          "href": "#"
+          "href": "/projects/blimpmate"
         },
         {
           "label": "Paper",
@@ -87,9 +87,9 @@
         }
       ],
       "featured": true,
-      "mediaKind": "image",
-      "mediaUrl": "/uploads/image-1782889955956-855ad08c0296c701.jpg",
-      "gifUrl": "/uploads/image-1782291722248-3a02a0511616c1e9.gif"
+      "mediaKind": "placeholder",
+      "mediaUrl": "",
+      "gifUrl": ""
     },
     {
       "id": "laser-powered-interaction",

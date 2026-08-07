@@ -1,0 +1,5415 @@
+<!DOCTYPE html>
+<!-- BlimpMate standalone preview generated from the React source and archived rendered snapshot. Serve the project directory over HTTP for full 3D module support. -->
+
+<!-- BlimpMate rendered HTML snapshot from http://localhost:5173/projects/blimpmate; scripts removed for static archival. --><html lang="en"><head>
+<meta charset="utf-8"/>
+<link href="public/assets/brand/icon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BlimpMate — Extended Product Page Preview</title>
+<style data-vite-dev-id="/Users/suwen/Documents/blimpmate/Lab_website_new/src/styles/global.css" type="text/css">:root {
+  color: #082255;
+  background: #ffffff;
+  font-family:
+    Rajdhani, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  --navy: #082255;
+  --orange: #fc5508;
+  --ink: #102747;
+  --muted: #60708a;
+  --line: #d9e0ea;
+  --soft: #f5f7fa;
+  --max: 1100px;
+  --text-small: 13px;
+  --text-body: 17px;
+  --text-accent: 21px;
+  --text-heading: 26px;
+}
+
+/* BlimpMate research-story integration */
+.blimp-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.blimp-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.blimp-pill--light {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.blimp-pill:hover,
+.blimp-pill:focus-visible {
+  background: var(--blimp-orange);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.blimp-text-link,
+.blimp-paper-link {
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.blimp-text-link:hover,
+.blimp-text-link:focus-visible,
+.blimp-paper-link:hover,
+.blimp-paper-link:focus-visible {
+  color: var(--blimp-orange);
+}
+
+.blimp-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  padding: 0 clamp(24px, 8vw, 120px);
+  background: var(--blimp-black);
+  color: #f5f5f7;
+}
+
+.blimp-facts div {
+  display: grid;
+  gap: 6px;
+  padding: 32px 0 38px;
+  border-top: 1px solid rgba(245, 245, 247, 0.18);
+}
+
+.blimp-facts strong {
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(22px, 3vw, 34px);
+  letter-spacing: 0.02em;
+}
+
+.blimp-facts span {
+  color: #a1a1a6;
+  font-size: 13px;
+}
+
+.blimp-highlights {
+  padding: clamp(90px, 12vw, 170px) 0 clamp(100px, 13vw, 190px);
+  background: #ffffff;
+}
+
+.blimp-highlights-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto 54px;
+}
+
+.blimp-highlights-head h2,
+.blimp-evidence-intro h2,
+.blimp-media-plan-head h2,
+.blimp-research-head h2 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(42px, 6vw, 84px);
+  letter-spacing: -0.065em;
+  line-height: 0.96;
+}
+
+.blimp-highlights-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.blimp-highlights-controls button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(29, 29, 31, 0.2);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1d1d1f;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.blimp-highlights-controls button:hover,
+.blimp-highlights-controls button:focus-visible {
+  background: #1d1d1f;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.blimp-highlights-rail {
+  display: flex;
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: #c7c7cc transparent;
+}
+
+.blimp-highlight-card {
+  position: relative;
+  display: flex;
+  flex: 0 0 min(440px, 72vw);
+  min-height: 440px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: #f5f5f7;
+}
+
+.blimp-highlight-card--image {
+  color: #ffffff;
+}
+
+.blimp-highlight-card--image::after {
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(180deg, transparent, rgba(7, 9, 13, 0.78));
+  content: "";
+}
+
+.blimp-highlight-card--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blimp-highlight-card--image > div {
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+  left: 30px;
+  z-index: 1;
+}
+
+.blimp-highlight-card--image p {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.blimp-highlight-card h3 {
+  max-width: 370px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-highlight-card--metric {
+  display: grid;
+  align-content: center;
+  padding: 34px;
+}
+
+.blimp-highlight-card--metric strong {
+  display: block;
+  margin: 38px 0 14px;
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(54px, 7vw, 92px);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.blimp-highlight-card--metric h3 {
+  color: #1d1d1f;
+}
+
+.blimp-highlight-card--metric > span {
+  max-width: 270px;
+  margin-top: 22px;
+  color: #6e6e73;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.blimp-highlight-card--orange {
+  background: #ffb08d;
+}
+
+.blimp-highlight-card--blue {
+  background: #b6c9ed;
+}
+
+.blimp-story-evidence {
+  position: absolute;
+  right: 0;
+  bottom: 8%;
+  z-index: 2;
+  width: clamp(150px, 18vw, 226px);
+  margin: 0;
+  overflow: hidden;
+  border: 8px solid rgba(245, 245, 247, 0.88);
+  background: #ffffff;
+  box-shadow: 0 18px 38px rgba(29, 29, 31, 0.16);
+  transform: rotate(4deg);
+}
+
+.blimp-story-evidence img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  object-fit: cover;
+}
+
+.blimp-story-evidence figcaption {
+  padding: 7px 8px 8px;
+  color: #6e6e73;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.blimp-scenario-shell {
+  overflow: hidden;
+  background: #f5f5f7;
+}
+
+.blimp-scenario-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.14);
+  scrollbar-width: none;
+}
+
+.blimp-scenario-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.blimp-scenario-tabs button,
+.blimp-system-tabs button {
+  flex: 0 0 auto;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #86868b;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 19px 22px 16px;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.blimp-scenario-tabs button[aria-selected="true"],
+.blimp-system-tabs button[aria-selected="true"] {
+  border-bottom-color: var(--blimp-orange);
+  color: #1d1d1f;
+}
+
+.blimp-scenario-tabs button:hover,
+.blimp-scenario-tabs button:focus-visible,
+.blimp-system-tabs button:hover,
+.blimp-system-tabs button:focus-visible {
+  color: #1d1d1f;
+}
+
+.blimp-scenario-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.84fr);
+  min-height: 560px;
+}
+
+.blimp-scenario-stage figure {
+  position: relative;
+  min-height: 420px;
+  margin: 0;
+  overflow: hidden;
+  background: #d7dce5;
+}
+
+.blimp-scenario-stage figure::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(7, 9, 13, 0.16), transparent 55%);
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-scenario-stage figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blimp-scenario-stage figcaption {
+  position: absolute;
+  right: 22px;
+  bottom: 20px;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-scenario-stage-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 5vw, 72px);
+}
+
+.blimp-scenario-stage-copy h3 {
+  max-width: 430px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.blimp-scenario-stage-copy > p:not(.blimp-eyebrow) {
+  max-width: 420px;
+  margin: 24px 0 28px;
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.38;
+}
+
+.blimp-scenario-stage-copy > span {
+  color: #9a9aa0;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-system-copy {
+  grid-column: 1;
+}
+
+.blimp-system-copy .blimp-paper-link {
+  display: inline-block;
+  margin-top: 30px;
+  color: #f5f5f7;
+}
+
+.blimp-system-viewer {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.blimp-system-viewer-stage {
+  position: relative;
+  min-height: 390px;
+  margin: 0;
+  overflow: hidden;
+  background: #151922;
+}
+
+.blimp-system-viewer-stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  object-fit: cover;
+}
+
+.blimp-system-viewer-stage figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  color: rgba(245, 245, 247, 0.65);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-system-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(245, 245, 247, 0.16);
+  scrollbar-width: none;
+}
+
+.blimp-system-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.blimp-system-tabs button {
+  padding-right: 16px;
+  padding-left: 16px;
+  color: #a1a1a6;
+}
+
+.blimp-system-tabs button[aria-selected="true"] {
+  color: #f5f5f7;
+}
+
+.blimp-system-viewer-copy {
+  padding: 24px 4px 0;
+}
+
+.blimp-system-viewer-copy .blimp-eyebrow {
+  margin-bottom: 12px;
+  color: var(--blimp-orange);
+  font-size: 10px;
+}
+
+.blimp-system-viewer-copy h3 {
+  margin: 0;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.055em;
+}
+
+.blimp-system-viewer-copy > p:last-child {
+  max-width: 520px;
+  margin: 14px 0 0;
+  color: #a1a1a6;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.blimp-system-layer-grid {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 38px;
+  background: rgba(245, 245, 247, 0.18);
+}
+
+.blimp-system-layer-grid article {
+  min-height: 205px;
+  padding: 22px;
+  background: var(--blimp-black);
+}
+
+.blimp-system-layer-grid article > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-system-layer-grid h3 {
+  margin: 58px 0 10px;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 25px;
+}
+
+.blimp-system-layer-grid p {
+  margin: 0;
+  color: #a1a1a6;
+  line-height: 1.35;
+}
+
+.blimp-performance-evidence {
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+  background: #ffffff;
+}
+
+.blimp-evidence-intro {
+  display: grid;
+  max-width: 780px;
+  margin-bottom: 72px;
+}
+
+.blimp-evidence-intro > p:last-child,
+.blimp-media-plan-head > p,
+.blimp-research-head > p {
+  max-width: 560px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.35;
+}
+
+.blimp-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.blimp-metric-card {
+  display: grid;
+  align-content: start;
+  min-height: 230px;
+  padding: 28px;
+  background: #f5f5f7;
+}
+
+.blimp-metric-card--hero {
+  grid-row: span 2;
+  min-height: 474px;
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.blimp-metric-card > span {
+  color: #6e6e73;
+  font-size: 13px;
+}
+
+.blimp-metric-card--hero > span {
+  color: #a1a1a6;
+}
+
+.blimp-metric-card strong {
+  margin-top: 54px;
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.blimp-metric-card--hero strong {
+  color: #f5f5f7;
+  font-size: clamp(64px, 8vw, 116px);
+}
+
+.blimp-metric-card em {
+  margin-top: 8px;
+  color: var(--blimp-orange);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.blimp-metric-card p {
+  max-width: 300px;
+  margin: 18px 0 0;
+  color: #6e6e73;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.blimp-metric-card--hero p {
+  color: #a1a1a6;
+}
+
+.blimp-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.blimp-evidence-card {
+  margin: 0;
+  overflow: hidden;
+  background: #f5f5f7;
+}
+
+.blimp-evidence-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+
+.blimp-evidence-card figcaption {
+  display: grid;
+  gap: 7px;
+  padding: 20px 24px 24px;
+}
+
+.blimp-evidence-card figcaption strong {
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 23px;
+  letter-spacing: -0.04em;
+}
+
+.blimp-evidence-card figcaption span {
+  color: #6e6e73;
+  font-size: 14px;
+}
+
+.blimp-noise-comparison {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(35px, 8vw, 120px);
+  align-items: center;
+  margin-top: 18px;
+  padding: clamp(30px, 5vw, 60px);
+  background: #f5f5f7;
+}
+
+.blimp-noise-comparison h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(32px, 4vw, 54px);
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.blimp-noise-comparison p:last-child {
+  max-width: 380px;
+  margin: 20px 0 0;
+  color: #6e6e73;
+  line-height: 1.4;
+}
+
+.blimp-bar-chart {
+  display: grid;
+  gap: 13px;
+}
+
+.blimp-bar-chart > div {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr) 46px;
+  gap: 12px;
+  align-items: center;
+  color: #6e6e73;
+  font-size: 12px;
+}
+
+.blimp-bar-chart i {
+  position: relative;
+  display: block;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d7d7dc;
+}
+
+.blimp-bar-chart i::after {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc((var(--bar-value) - 45) * 16.6667%);
+  border-radius: inherit;
+  background: var(--blimp-orange);
+  content: "";
+}
+
+.blimp-bar-chart strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 12px;
+  text-align: right;
+}
+
+.blimp-media-plan,
+.blimp-research {
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+}
+
+.blimp-media-plan {
+  background: #f5f5f7;
+}
+
+.blimp-media-plan-head,
+.blimp-research-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+  gap: 50px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+
+.blimp-media-plan-head > p,
+.blimp-research-head > p {
+  margin: 0;
+}
+
+.blimp-media-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: #d6d6da;
+}
+
+.blimp-media-plan-card {
+  display: grid;
+  align-content: start;
+  min-height: 270px;
+  padding: 26px;
+  background: #f5f5f7;
+}
+
+.blimp-media-plan-card > span {
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-media-plan-card strong {
+  margin-top: 54px;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.blimp-media-plan-card p {
+  max-width: 360px;
+  margin: 14px 0 0;
+  color: #6e6e73;
+  font-size: 14px;
+  line-height: 1.38;
+}
+
+.blimp-research {
+  background: #ffffff;
+}
+
+.blimp-research-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 18px;
+}
+
+.blimp-research-accordions {
+  border-top: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-research-accordions details {
+  border-bottom: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-research-accordions summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  color: #1d1d1f;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.blimp-research-accordions summary::-webkit-details-marker {
+  display: none;
+}
+
+.blimp-research-accordions summary span {
+  color: var(--blimp-orange);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.blimp-research-accordions details[open] summary span {
+  transform: rotate(45deg);
+}
+
+.blimp-research-accordions details p {
+  max-width: 700px;
+  margin: -2px 0 24px;
+  color: #6e6e73;
+  line-height: 1.45;
+}
+
+.blimp-paper-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: clamp(28px, 4vw, 48px);
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.blimp-paper-card h3 {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-paper-card > p:not(.blimp-eyebrow) {
+  margin: 22px 0 0;
+  color: #a1a1a6;
+  line-height: 1.4;
+}
+
+.blimp-paper-card dl {
+  display: grid;
+  width: 100%;
+  gap: 12px;
+  margin: 30px 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(245, 245, 247, 0.18);
+}
+
+.blimp-paper-card dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.blimp-paper-card dt {
+  color: #86868b;
+}
+
+.blimp-paper-card dd {
+  margin: 0;
+  color: #f5f5f7;
+  text-align: right;
+}
+
+@media (max-width: 820px) {
+  .blimp-facts {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .blimp-highlights-head {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .blimp-highlights-rail {
+    width: calc(100% - 48px);
+  }
+
+  .blimp-scenario-stage,
+  .blimp-noise-comparison,
+  .blimp-research-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-scenario-stage {
+    min-height: 0;
+  }
+
+  .blimp-scenario-stage figure {
+    min-height: 340px;
+  }
+
+  .blimp-system-copy,
+  .blimp-system-viewer,
+  .blimp-system-layer-grid {
+    grid-column: 1 / -1;
+  }
+
+  .blimp-system-viewer {
+    margin-top: 28px;
+  }
+
+  .blimp-system-layer-grid,
+  .blimp-media-plan-grid,
+  .blimp-metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .blimp-metric-card--hero {
+    grid-row: span 1;
+    min-height: 300px;
+  }
+
+  .blimp-media-plan-head,
+  .blimp-research-head {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .blimp-hero-actions {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .blimp-facts {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-facts div {
+    padding: 22px 0;
+  }
+
+  .blimp-highlights-head,
+  .blimp-highlights-rail {
+    width: calc(100% - 40px);
+  }
+
+  .blimp-highlight-card {
+    flex-basis: 82vw;
+    min-height: 360px;
+  }
+
+  .blimp-highlight-card--metric strong {
+    margin-top: 28px;
+  }
+
+  .blimp-story-evidence {
+    right: -2%;
+    width: 150px;
+  }
+
+  .blimp-scenario-tabs button {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .blimp-scenario-stage figure {
+    min-height: 260px;
+  }
+
+  .blimp-scenario-stage-copy {
+    padding: 30px 22px 38px;
+  }
+
+  .blimp-system-viewer-stage,
+  .blimp-system-viewer-stage img {
+    min-height: 260px;
+  }
+
+  .blimp-system-layer-grid,
+  .blimp-media-plan-grid,
+  .blimp-metric-grid,
+  .blimp-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-metric-card,
+  .blimp-metric-card--hero {
+    min-height: 220px;
+  }
+
+  .blimp-metric-card strong,
+  .blimp-metric-card--hero strong {
+    margin-top: 34px;
+    font-size: clamp(52px, 18vw, 82px);
+  }
+
+  .blimp-evidence-card img {
+    aspect-ratio: 1.3;
+  }
+
+  .blimp-noise-comparison {
+    padding: 28px 20px;
+  }
+
+  .blimp-bar-chart > div {
+    grid-template-columns: 68px minmax(0, 1fr) 42px;
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .blimp-media-plan-card strong {
+    margin-top: 38px;
+  }
+
+  .blimp-paper-card dl div {
+    align-items: start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .blimp-paper-card dd {
+    text-align: left;
+  }
+}
+
+/* BlimpMate product story */
+.blimpmate-page {
+  --blimp-black: #07090d;
+  --blimp-cloud: #f5f5f7;
+  --blimp-orange: #ff642b;
+  overflow: clip;
+  background: var(--blimp-cloud);
+  color: #1d1d1f;
+}
+
+.blimpmate-page [id] {
+  scroll-margin-top: 120px;
+}
+
+.blimpmate-page button,
+.blimpmate-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.blimpmate-local-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.12);
+  background: rgba(245, 245, 247, 0.78);
+  backdrop-filter: blur(18px);
+  transition: box-shadow 220ms ease, background 220ms ease;
+}
+
+.blimpmate-local-nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 26px;
+  align-items: center;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 12px 0;
+  transition: padding 220ms ease;
+}
+
+.blimpmate-local-nav--compact {
+  background: rgba(245, 245, 247, 0.94);
+  box-shadow: 0 8px 26px rgba(29, 29, 31, 0.08);
+}
+
+.blimpmate-local-nav--compact .blimpmate-local-nav-inner {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.blimpmate-local-brand {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blimpmate-local-brand span {
+  color: #86868b;
+  font-family: Rajdhani, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.blimpmate-local-nav nav {
+  display: flex;
+  gap: 22px;
+  color: #6e6e73;
+  font-size: 14px;
+}
+
+.blimpmate-local-nav nav a:hover,
+.blimpmate-local-nav nav a:focus-visible {
+  color: #1d1d1f;
+}
+
+.blimpmate-local-nav button,
+.blimp-back-button {
+  border: 0;
+  border-radius: 999px;
+  background: #1d1d1f;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 9px 15px;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.blimpmate-local-nav button:hover,
+.blimpmate-local-nav button:focus-visible,
+.blimp-back-button:hover,
+.blimp-back-button:focus-visible {
+  background: var(--blimp-orange);
+  transform: translateY(-1px);
+}
+
+.blimp-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+  min-height: min(860px, calc(100svh - 126px));
+  overflow: hidden;
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 8vw, 120px);
+  background:
+    radial-gradient(circle at 78% 48%, rgba(255, 100, 43, 0.22), transparent 25%),
+    radial-gradient(circle at 58% 18%, rgba(57, 83, 140, 0.26), transparent 26%),
+    var(--blimp-black);
+  color: #f5f5f7;
+}
+
+.blimp-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.blimp-eyebrow {
+  margin: 0 0 22px;
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.blimp-hero h1,
+.blimp-intro-panel h2,
+.blimp-story-block h2,
+.blimp-scenarios-header h2,
+.blimp-system h2,
+.blimp-project h2 {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.065em;
+}
+
+.blimp-hero h1 {
+  max-width: 780px;
+  color: #f5f5f7;
+  font-size: clamp(54px, 8vw, 124px);
+  line-height: 0.92;
+}
+
+.blimp-hero h1 em {
+  color: #8f96a7;
+  font-style: normal;
+}
+
+.blimp-hero-description {
+  max-width: 460px;
+  margin: 34px 0 0;
+  color: #b1b5c0;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
+}
+
+.blimp-scroll-cue {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 56px;
+  color: #f5f5f7;
+  font-size: 15px;
+}
+
+.blimp-scroll-cue span {
+  display: block;
+  width: 30px;
+  height: 46px;
+  border: 1px solid rgba(245, 245, 247, 0.55);
+  border-radius: 999px;
+  position: relative;
+}
+
+.blimp-scroll-cue span::after {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blimp-orange);
+  content: "";
+  transform: translateX(-50%);
+  animation: blimp-scroll-dot 1.8s ease-in-out infinite;
+}
+
+.blimp-hero-art {
+  position: relative;
+  display: grid;
+  min-height: min(62vw, 650px);
+  place-items: center;
+  perspective: 1200px;
+}
+
+.blimp-hero-art > p {
+  position: absolute;
+  right: 4%;
+  bottom: 7%;
+  margin: 0;
+  color: rgba(245, 245, 247, 0.48);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: rotate(-90deg) translateX(100%);
+  transform-origin: right bottom;
+}
+
+.blimp-cube-motion {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: clamp(260px, 38vw, 480px);
+  aspect-ratio: 1;
+  place-items: center;
+  animation: blimp-cube-float 7s ease-in-out infinite;
+}
+
+.blimp-cube-motion--interactive {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.blimp-cube-motion--interactive:active {
+  cursor: grabbing;
+}
+
+.blimp-model-motion {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: clamp(260px, 38vw, 480px);
+  aspect-ratio: 1;
+  place-items: center;
+  animation: blimp-cube-float 7s ease-in-out infinite;
+}
+
+.blimp-model-motion--interactive {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.blimp-model-motion--interactive:active {
+  cursor: grabbing;
+}
+
+.blimp-model-viewer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  --poster-color: transparent;
+  --progress-bar-color: var(--blimp-orange);
+  touch-action: pan-y;
+}
+
+.blimp-model-status {
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+  z-index: 2;
+  color: rgba(245, 245, 247, 0.48);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.blimp-model-motion[data-model-status="ready"] .blimp-model-status {
+  opacity: 0;
+}
+
+.blimp-model-motion[data-model-status="error"] .blimp-model-status {
+  color: var(--blimp-orange);
+  opacity: 1;
+}
+
+.blimp-cube {
+  --cube-size: clamp(170px, 26vw, 326px);
+  width: var(--cube-size);
+  height: var(--cube-size);
+  transform-style: preserve-3d;
+  transition: transform 900ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-cube-motion--lift .blimp-cube {
+  transform: rotateX(-18deg) rotateY(-32deg) rotateZ(3deg);
+}
+
+.blimp-cube-motion--listen .blimp-cube {
+  transform: rotateX(-12deg) rotateY(34deg) rotateZ(-2deg);
+}
+
+.blimp-cube-motion--glow .blimp-cube {
+  transform: rotateX(17deg) rotateY(-42deg) rotateZ(4deg);
+}
+
+.blimp-cube-face {
+  position: absolute;
+  display: flex;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  backface-visibility: hidden;
+  color: #ffffff;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blimp-cube-face::before {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  content: "";
+}
+
+.blimp-cube-face span,
+.blimp-cube-face strong {
+  position: relative;
+  z-index: 1;
+}
+
+.blimp-cube-face span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(10px, 1vw, 13px);
+}
+
+.blimp-cube-face strong {
+  margin-top: 8px;
+  font-size: clamp(18px, 2.7vw, 36px);
+}
+
+.blimp-cube-face--front {
+  background: linear-gradient(145deg, #ff6b30, #b52d0b);
+  transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--back {
+  background: #1d2738;
+  transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--right {
+  background: linear-gradient(160deg, #334a72, #101722);
+  transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--left {
+  background: linear-gradient(145deg, #182b4f, #080c14);
+  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--top {
+  background: linear-gradient(145deg, #f5f5f7, #aeb7c9);
+  color: #111827;
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--top span {
+  color: #465470;
+}
+
+.blimp-cube-face--bottom {
+  background: #090b10;
+  transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-orbit {
+  position: absolute;
+  width: min(62vw, 570px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(245, 245, 247, 0.14);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.blimp-orbit--one {
+  transform: rotateX(68deg) rotateZ(16deg);
+}
+
+.blimp-orbit--two {
+  width: min(48vw, 440px);
+  border-color: rgba(255, 100, 43, 0.35);
+  transform: rotateY(66deg) rotateZ(-22deg);
+}
+
+.blimp-intro-panel {
+  display: grid;
+  justify-items: center;
+  min-height: 680px;
+  padding: clamp(120px, 18vw, 250px) 24px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.blimp-intro-panel h2 {
+  max-width: 930px;
+  font-size: clamp(42px, 7vw, 96px);
+  line-height: 0.98;
+}
+
+.blimp-intro-panel > p:last-child {
+  max-width: 500px;
+  margin: 34px 0 0;
+  color: #6e6e73;
+  font-size: clamp(19px, 2.2vw, 26px);
+  line-height: 1.3;
+}
+
+.blimp-performance {
+  position: relative;
+  min-height: 640vh;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f7f8 100%);
+}
+
+.blimp-performance-sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(30px, 7vw, 120px);
+  align-items: center;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 92px) clamp(24px, 8vw, 120px);
+  isolation: isolate;
+}
+
+.blimp-performance-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.blimp-performance-copy h2 {
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(46px, 6vw, 94px);
+  letter-spacing: -0.065em;
+  line-height: 0.94;
+}
+
+.blimp-performance-copy h2 span {
+  color: #86868b;
+}
+
+.blimp-performance-copy > p:last-child {
+  max-width: 370px;
+  margin: 30px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.35;
+}
+
+.blimp-performance-chapter-list {
+  position: relative;
+  min-height: 238px;
+  margin-top: 42px;
+}
+
+.blimp-performance-chapter {
+  position: absolute;
+  inset: 0 auto auto 0;
+  max-width: 480px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 480ms ease, transform 700ms cubic-bezier(0.2, 0.72, 0.2, 1);
+  pointer-events: none;
+}
+
+.blimp-performance-chapter[data-active="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.blimp-performance-chapter .blimp-eyebrow {
+  margin-bottom: 12px;
+  color: #86868b;
+  font-size: 10px;
+}
+
+.blimp-performance-chapter h3 {
+  max-width: 420px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-performance-chapter > p:not(.blimp-eyebrow) {
+  max-width: 410px;
+  margin: 16px 0 18px;
+  color: #6e6e73;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.blimp-performance-chapter > span {
+  color: #9a9aa0;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-performance-stage {
+  position: relative;
+  display: grid;
+  min-height: min(58vw, 620px);
+  place-items: center;
+  perspective: 1400px;
+  z-index: 1;
+}
+
+.blimp-performance-stage::before,
+.blimp-performance-stage::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-performance-stage::before {
+  width: min(66vw, 720px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(255, 100, 43, 0.2), rgba(255, 100, 43, 0) 65%);
+}
+
+.blimp-performance-stage::after {
+  width: min(54vw, 580px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  transform: rotateX(68deg) rotateZ(-18deg);
+}
+
+.blimp-performance-stage--steps {
+  --stage-accent: #ff642b;
+}
+
+.blimp-performance-stage--scan {
+  --stage-accent: #4e7cc9;
+}
+
+.blimp-performance-stage--wave {
+  --stage-accent: #ff642b;
+}
+
+.blimp-performance-stage--presence {
+  --stage-accent: #735bd6;
+}
+
+.blimp-wave-field {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  opacity: var(--wave-opacity);
+  pointer-events: none;
+  transform: rotate(var(--wave-rotation));
+  transition: opacity 300ms ease, transform 700ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-wave-field::before {
+  position: absolute;
+  width: min(54vw, 620px);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--stage-accent, var(--blimp-orange)) 45%, transparent);
+  border-radius: 50%;
+  content: "";
+  transform: scale(var(--wave-scale, 0.86));
+}
+
+.blimp-wave-rings {
+  position: absolute;
+  width: min(50vw, 560px);
+  aspect-ratio: 1;
+}
+
+.blimp-wave-rings span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--stage-accent, var(--blimp-orange)) 32%, transparent);
+  border-radius: 50%;
+  opacity: 0.72;
+  transform: scale(calc(0.36 + var(--ring-index, 0) * 0.17));
+  animation: blimp-wave-pulse 2.8s var(--wave-delay) ease-in-out infinite;
+}
+
+.blimp-wave-rings span:nth-child(1) { --ring-index: 0; }
+.blimp-wave-rings span:nth-child(2) { --ring-index: 1; }
+.blimp-wave-rings span:nth-child(3) { --ring-index: 2; }
+.blimp-wave-rings span:nth-child(4) { --ring-index: 3; }
+
+.blimp-wave-beam {
+  position: absolute;
+  display: flex;
+  width: min(50vw, 580px);
+  height: min(50vw, 580px);
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-18deg) scale(var(--wave-scale, 0.86));
+}
+
+.blimp-wave-beam span {
+  position: absolute;
+  width: 78%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--stage-accent, var(--blimp-orange)) 65%, transparent), transparent);
+  transform: rotate(calc((var(--beam-index, 0) - 1) * 7deg));
+}
+
+.blimp-wave-beam span:nth-child(1) { --beam-index: 0; opacity: 0.42; }
+.blimp-wave-beam span:nth-child(2) { --beam-index: 1; opacity: 0.82; }
+.blimp-wave-beam span:nth-child(3) { --beam-index: 2; opacity: 0.42; }
+
+.blimp-wave-bars {
+  position: absolute;
+  display: flex;
+  width: min(26vw, 300px);
+  height: 110px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transform: rotate(var(--wave-rotation));
+}
+
+.blimp-wave-bars span {
+  display: block;
+  width: 3px;
+  height: var(--bar-height);
+  border-radius: 999px;
+  background: var(--stage-accent, var(--blimp-orange));
+  opacity: 0.65;
+  transition: height 240ms ease;
+}
+
+.blimp-performance-stage-label {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  margin: 0;
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-degree-readout {
+  position: absolute;
+  right: 5%;
+  bottom: 8%;
+  display: grid;
+  gap: 4px;
+  color: #86868b;
+  text-align: right;
+}
+
+.blimp-degree-readout strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.08em;
+}
+
+.blimp-degree-readout span {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-performance-progress {
+  position: absolute;
+  right: clamp(24px, 8vw, 120px);
+  bottom: 34px;
+  left: clamp(24px, 8vw, 120px);
+  height: 2px;
+  overflow: hidden;
+  background: #d2d2d7;
+}
+
+.blimp-performance-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--blimp-orange);
+  transition: width 120ms linear;
+}
+
+.blimp-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: clamp(30px, 8vw, 140px);
+  padding: clamp(100px, 12vw, 180px) clamp(24px, 8vw, 120px);
+  background: var(--blimp-cloud);
+}
+
+.blimp-story-art-sticky {
+  position: sticky;
+  top: 20vh;
+  display: grid;
+  height: 60vh;
+  min-height: 420px;
+  place-items: center;
+  align-content: center;
+  perspective: 1200px;
+}
+
+.blimp-story-art-sticky::before {
+  position: absolute;
+  width: min(46vw, 500px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 100, 43, 0.22), rgba(255, 100, 43, 0) 68%);
+  content: "";
+}
+
+.blimp-scene-label {
+  position: absolute;
+  right: 16%;
+  bottom: 4%;
+  margin: 0;
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blimp-story-copy {
+  display: grid;
+  gap: 8vh;
+}
+
+.blimp-story-block {
+  display: grid;
+  align-content: center;
+  min-height: 68vh;
+  max-width: 530px;
+}
+
+.blimp-story-block h2,
+.blimp-system h2,
+.blimp-project h2 {
+  font-size: clamp(40px, 5vw, 76px);
+  line-height: 0.98;
+}
+
+.blimp-story-block > p:last-child,
+.blimp-system-copy > p:last-child {
+  max-width: 450px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.32;
+}
+
+.blimp-scenarios {
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+  background: #ffffff;
+}
+
+.blimp-scenarios-header {
+  display: grid;
+  max-width: 760px;
+  margin-bottom: 76px;
+}
+
+.blimp-scenarios-header h2 {
+  max-width: 740px;
+  font-size: clamp(42px, 6vw, 84px);
+  line-height: 0.96;
+}
+
+.blimp-scenarios-header > p:last-child {
+  max-width: 560px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.35;
+}
+
+.blimp-scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.blimp-scenario-card {
+  display: grid;
+  min-height: 620px;
+  overflow: hidden;
+  background: #f5f5f7;
+}
+
+.blimp-scenario-card-copy {
+  display: grid;
+  align-content: start;
+  padding: 28px clamp(24px, 3vw, 42px) 38px;
+}
+
+.blimp-scenario-card-copy .blimp-eyebrow {
+  margin-bottom: 14px;
+  color: #86868b;
+  font-size: 10px;
+}
+
+.blimp-scenario-card-copy h3 {
+  max-width: 400px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-scenario-card-copy > p:not(.blimp-eyebrow) {
+  max-width: 430px;
+  margin: 18px 0 24px;
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.blimp-scenario-card-copy > span {
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-media-placeholder {
+  position: relative;
+  display: grid;
+  min-height: 330px;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  padding: 34px;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.92), transparent 22%),
+    linear-gradient(145deg, #d6dbe4, #aeb7c8);
+  color: #1d1d1f;
+  text-align: center;
+}
+
+.blimp-media-placeholder::before,
+.blimp-media-placeholder::after {
+  position: absolute;
+  border: 1px solid rgba(29, 29, 31, 0.16);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-media-placeholder::before {
+  width: 70%;
+  aspect-ratio: 1;
+  transform: rotateX(65deg) rotateZ(-18deg);
+}
+
+.blimp-media-placeholder::after {
+  width: 46%;
+  aspect-ratio: 1;
+  border-color: rgba(255, 100, 43, 0.34);
+  transform: rotateY(65deg) rotateZ(18deg);
+}
+
+.blimp-media-placeholder-kicker,
+.blimp-media-placeholder strong,
+.blimp-media-placeholder p {
+  position: relative;
+  z-index: 1;
+}
+
+.blimp-media-placeholder-kicker {
+  color: #5f6c80;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+.blimp-media-placeholder strong {
+  margin-top: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(22px, 2.5vw, 34px);
+  letter-spacing: -0.045em;
+}
+
+.blimp-media-placeholder p {
+  max-width: 240px;
+  margin: 12px 0 0;
+  color: #5f6c80;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.blimp-placeholder-mark {
+  position: absolute;
+  right: 28px;
+  bottom: 25px;
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 34px;
+  opacity: 0.62;
+}
+
+.blimp-placeholder-mark span {
+  display: block;
+  width: 3px;
+  height: 100%;
+  border-radius: 999px;
+  background: #ff642b;
+}
+
+.blimp-placeholder-mark span:nth-child(1) { height: 45%; }
+.blimp-placeholder-mark span:nth-child(2) { height: 85%; }
+.blimp-placeholder-mark span:nth-child(3) { height: 62%; }
+
+.blimp-system {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(40px, 9vw, 160px);
+  align-items: center;
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+  background: var(--blimp-black);
+  color: #f5f5f7;
+}
+
+.blimp-system-copy {
+  max-width: 560px;
+}
+
+.blimp-system-copy > p:last-child {
+  color: #a1a1a6;
+}
+
+.blimp-system-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(245, 245, 247, 0.18);
+}
+
+.blimp-system-grid article {
+  min-height: 240px;
+  padding: 22px;
+  background: var(--blimp-black);
+}
+
+.blimp-system-grid article > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-system-grid h3 {
+  margin: 72px 0 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 26px;
+}
+
+.blimp-system-grid p {
+  margin: 0;
+  color: #a1a1a6;
+  line-height: 1.35;
+}
+
+.blimp-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  min-height: 720px;
+  background: #e9e9ed;
+}
+
+.blimp-project-media {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  overflow: hidden;
+  place-items: center;
+  background: #c7ccd7;
+}
+
+.blimp-project-media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(7, 9, 13, 0.28), transparent 50%);
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-project-media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blimp-project-media .blimp-cube-motion {
+  transform: scale(1.18);
+}
+
+.blimp-project-media-note {
+  position: absolute;
+  right: 26px;
+  bottom: 24px;
+  z-index: 2;
+  margin: 0;
+  color: rgba(29, 29, 31, 0.58);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-project-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(48px, 8vw, 120px);
+}
+
+.blimp-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 34px 0 42px;
+}
+
+.blimp-project-tags span {
+  border: 1px solid rgba(29, 29, 31, 0.22);
+  border-radius: 999px;
+  color: #6e6e73;
+  font-size: 13px;
+  padding: 7px 11px;
+}
+
+.blimp-back-button {
+  align-self: start;
+}
+
+.blimp-reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 800ms ease, transform 800ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes blimp-cube-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@keyframes blimp-scroll-dot {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 16px);
+  }
+}
+
+@keyframes blimp-wave-pulse {
+  0%,
+  100% {
+    opacity: 0.24;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+@media (max-width: 820px) {
+  .blimpmate-local-nav-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .blimpmate-local-nav nav {
+    display: none;
+  }
+
+  .blimp-hero,
+  .blimp-performance-sticky,
+  .blimp-story,
+  .blimp-scenarios-grid,
+  .blimp-system,
+  .blimp-project {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-hero {
+    min-height: 0;
+    padding-top: 100px;
+    padding-bottom: 70px;
+  }
+
+  .blimp-hero-art {
+    min-height: 500px;
+  }
+
+  .blimp-performance {
+    min-height: 520vh;
+  }
+
+  .blimp-performance-sticky {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
+
+  .blimp-performance-stage {
+    min-height: 440px;
+  }
+
+  .blimp-performance-chapter-list {
+    min-height: 220px;
+  }
+
+  .blimp-story-art-sticky {
+    position: relative;
+    top: auto;
+    height: 500px;
+  }
+
+  .blimp-story-block {
+    min-height: 0;
+    padding: 70px 0;
+  }
+
+  .blimp-system-grid {
+    margin-top: 30px;
+  }
+
+  .blimp-project-media {
+    min-height: 440px;
+  }
+
+  .blimp-scenarios-header {
+    margin-bottom: 48px;
+  }
+
+  .blimp-scenario-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .blimpmate-local-nav-inner {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .blimpmate-local-brand {
+    font-size: 12px;
+  }
+
+  .blimpmate-local-brand span {
+    display: none;
+  }
+
+  .blimp-hero {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-hero h1 {
+    font-size: clamp(48px, 14vw, 72px);
+  }
+
+  .blimp-hero-art {
+    min-height: 380px;
+  }
+
+  .blimp-performance-sticky {
+    min-height: 100svh;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-performance {
+    min-height: 430vh;
+  }
+
+  .blimp-performance-stage {
+    min-height: 360px;
+  }
+
+  .blimp-performance-chapter-list {
+    min-height: 270px;
+    margin-top: 32px;
+  }
+
+  .blimp-performance-stage-label {
+    top: 2%;
+    left: 0;
+    font-size: 8px;
+  }
+
+  .blimp-cube-motion {
+    width: 88vw;
+  }
+
+  .blimp-model-motion {
+    width: 88vw;
+  }
+
+  .blimp-cube {
+    --cube-size: min(58vw, 250px);
+  }
+
+  .blimp-orbit {
+    width: 86vw;
+  }
+
+  .blimp-intro-panel,
+  .blimp-story,
+  .blimp-system {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-system-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-system-grid article {
+    min-height: 0;
+  }
+
+  .blimp-system-grid h3 {
+    margin-top: 34px;
+  }
+
+  .blimp-project-copy {
+    padding: 54px 20px 70px;
+  }
+
+  .blimp-scenarios {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-media-placeholder {
+    min-height: 260px;
+  }
+
+  .blimp-project-media-note {
+    right: 20px;
+    bottom: 18px;
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blimpmate-page *,
+  .blimpmate-page *::before,
+  .blimpmate-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .blimp-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@font-face {
+  font-family: Rajdhani;
+  src: url("public/assets/fonts/Rajdhani_Medium.ttf") format("truetype");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Rajdhani;
+  src: url("public/assets/fonts/Rajdhani_SemiBold.ttf") format("truetype");
+  font-weight: 600 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron-SemiBold";
+  src: url("public/assets/fonts/Orbitron_SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #ffffff;
+  font-size: var(--text-body);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  overflow: visible;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.site-header--blimpmate {
+  position: relative;
+  top: auto;
+}
+
+.site-header-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 42px;
+  align-items: center;
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  min-width: 0;
+}
+
+.brand-icon {
+  width: 92px;
+  height: 92px;
+  flex: 0 0 auto;
+  transform: scale(1.32);
+  transform-origin: left center;
+}
+
+.brand-wordmark {
+  width: 310px;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+  color: var(--muted);
+  font-size: var(--text-body);
+}
+
+.nav-links a {
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 220ms ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+.nav-links a.active,
+.nav-links a:hover,
+.text-links a:hover,
+.text-action:hover {
+  color: var(--orange);
+}
+
+.primary-action,
+.admin-form-actions button,
+.cms-form button,
+.admin-login button {
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: #ffffff;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.hero-section,
+.section,
+.site-footer {
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 58px;
+  align-items: start;
+  min-height: 0;
+  padding: 44px 0 28px;
+}
+
+.section-heading span {
+  color: var(--orange);
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: var(--orange);
+  font-size: var(--text-accent);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.admin-login-shell {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 40px;
+  background: #ffffff;
+}
+
+.admin-login {
+  display: grid;
+  gap: 22px;
+  width: min(520px, 100%);
+  border-top: 3px solid var(--navy);
+  padding-top: 30px;
+}
+
+.admin-login img {
+  width: min(320px, 100%);
+}
+
+.admin-login h1 {
+  margin-bottom: 16px;
+  font-size: var(--text-heading);
+  line-height: 1.1;
+}
+
+.admin-login p {
+  color: var(--ink);
+  font-size: var(--text-body);
+}
+
+.admin-app {
+  display: grid;
+  grid-template-columns: 260px 330px minmax(0, 1fr);
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+
+.admin-nav {
+  position: sticky;
+  top: 0;
+  display: grid;
+  align-content: start;
+  gap: 24px;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid var(--line);
+  background: #ffffff;
+  padding: 24px;
+}
+
+.admin-nav img {
+  width: 190px;
+}
+
+.admin-nav nav {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-nav button {
+  display: grid;
+  gap: 4px;
+  border: 1px solid transparent;
+  background: #ffffff;
+  color: var(--navy);
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-nav button span {
+  color: var(--muted);
+  font-size: var(--text-small);
+}
+
+.admin-nav button.active,
+.admin-nav button:hover {
+  border-color: var(--line);
+  background: var(--soft);
+}
+
+.admin-nav-actions {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.admin-item-list {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+  height: 100vh;
+  overflow: hidden;
+  border-right: 1px solid var(--line);
+  background: #fbfcfe;
+  padding: 24px;
+}
+
+.admin-item-list header {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-item-list h2 {
+  font-size: var(--text-accent);
+}
+
+.admin-item-list p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.admin-item-list nav {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.admin-item-list button {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--navy);
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-item-list button span {
+  color: var(--muted);
+  font-size: var(--text-small);
+}
+
+.admin-item-list button.active,
+.admin-item-list button:hover {
+  border-color: var(--orange);
+}
+
+.admin-panel {
+  display: grid;
+  align-content: start;
+  gap: 24px;
+  padding: 38px;
+}
+
+.admin-form-shell {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-form-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+}
+
+.admin-form-header h1 {
+  margin-bottom: 8px;
+  font-size: var(--text-heading);
+  line-height: 1.1;
+}
+
+.admin-form-header p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.admin-form-header p.dirty,
+.admin-error {
+  color: var(--orange);
+}
+
+.admin-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 10px;
+}
+
+.admin-nav-actions button,
+.admin-form-actions button,
+.cms-form button,
+.admin-login button {
+  border: 1px solid var(--navy);
+  background: #ffffff;
+  color: var(--navy);
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.admin-form-actions .primary-action,
+.cms-form > button,
+.admin-login .primary-action {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.danger-action {
+  border-color: var(--orange) !important;
+  color: var(--orange) !important;
+}
+
+.admin-form-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cms-form {
+  display: grid;
+  gap: 16px;
+  max-width: 980px;
+}
+
+.cms-field,
+.cms-nested,
+.cms-edit-item {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  padding: 16px;
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.cms-field input,
+.cms-field textarea,
+.cms-field select,
+.cms-nested input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  padding: 10px 12px;
+}
+
+.cms-field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.cms-image-field {
+  align-items: start;
+}
+
+.cms-image-preview {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.cms-image-preview img {
+  width: 120px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  object-fit: cover;
+}
+
+.cms-image-preview video {
+  width: 120px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  object-fit: cover;
+}
+
+.cms-image-preview span {
+  overflow-wrap: anywhere;
+}
+
+.cms-image-empty {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.cms-image-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cms-native-file {
+  display: none;
+}
+
+.cms-field-error {
+  color: #b42318;
+  font-weight: 650;
+}
+
+.cms-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.cms-link-row,
+.cms-inline-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.4fr) minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.cms-inline-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 34, 85, 0.24);
+  padding: 24px;
+}
+
+.admin-modal {
+  display: grid;
+  gap: 16px;
+  width: min(560px, 100%);
+  border-top: 3px solid var(--orange);
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: 0 24px 80px rgba(8, 34, 85, 0.18);
+}
+
+.admin-modal h2 {
+  font-size: var(--text-heading);
+}
+
+.admin-modal p {
+  color: var(--ink);
+}
+
+.admin-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 10px;
+}
+
+.admin-modal-actions button {
+  border: 1px solid var(--navy);
+  background: #ffffff;
+  color: var(--navy);
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.hero-copy .eyebrow {
+  color: var(--navy);
+  font-size: var(--text-heading);
+}
+
+.hero-copy {
+  padding-top: 22px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 14px;
+  color: var(--navy);
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 0.96;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: var(--text-heading);
+  line-height: 1.15;
+}
+
+h3,
+h4 {
+  margin-bottom: 8px;
+  font-size: var(--text-accent);
+}
+
+.tagline {
+  color: var(--orange);
+  max-width: 900px;
+  font-size: var(--text-heading);
+  font-weight: 650;
+}
+
+.hero-copy p:not(.eyebrow, .tagline) {
+  max-width: 760px;
+  color: var(--ink);
+  font-size: var(--text-body);
+}
+
+.leader-line {
+  border-left: 3px solid var(--orange);
+  padding-left: 18px;
+}
+
+.hero-panel {
+  display: grid;
+  margin-top: 22px;
+  align-self: center;
+  min-height: 240px;
+  place-items: center;
+  border-left: 1px solid var(--line);
+  background: linear-gradient(180deg, #ffffff, #f7f9fc);
+}
+
+.hero-panel video,
+.hero-panel img {
+  width: min(82%, 420px);
+  aspect-ratio: 4 / 3;
+  max-height: 315px;
+  object-fit: contain;
+}
+
+.section {
+  padding: 76px 0;
+  border-top: 1px solid var(--line);
+}
+
+.hero-section + .section {
+  padding-top: 44px;
+}
+
+#latest-news {
+  padding-bottom: 44px;
+}
+
+#latest-news + #featured-projects {
+  padding-top: 44px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.section-heading > div:first-child {
+  display: grid;
+  gap: 6px;
+}
+
+.section-action {
+  flex-shrink: 0;
+}
+
+.text-action {
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.news-grid,
+.contact-grid,
+.list-panel.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.news-grid {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.news-item {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.news-item time {
+  flex: 0 0 auto;
+  color: var(--orange);
+  font-weight: 750;
+}
+
+.news-item span {
+  color: var(--muted);
+}
+
+.featured-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.project-card {
+  --project-media-width: min(30vw, 340px);
+  display: grid;
+  grid-template-columns: var(--project-media-width) minmax(0, 1fr);
+  gap: 18px;
+  border: 1px solid var(--line);
+  padding: 14px;
+}
+
+.project-card.compact {
+  grid-template-columns: 1fr;
+  min-height: 0;
+}
+
+.project-media {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(8, 34, 85, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(8, 34, 85, 0.08) 1px, transparent 1px),
+    #ffffff;
+  background-size: 28px 28px;
+  perspective: 900px;
+}
+
+.project-media .blimp-cube-motion {
+  width: min(100%, 300px);
+  animation-duration: 8s;
+}
+
+.project-media .blimp-cube {
+  --cube-size: clamp(118px, 14vw, 150px);
+}
+
+.project-card.compact .project-media {
+  min-height: 160px;
+}
+
+.project-copy {
+  align-content: start;
+}
+
+.project-copy p {
+  margin-bottom: 8px;
+}
+
+.project-media strong {
+  color: var(--orange);
+  font-size: var(--text-heading);
+}
+
+.project-media img,
+.teaching-media video,
+.teaching-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-media .project-gif {
+  display: block;
+}
+
+.project-media.has-hover-gif img {
+  position: absolute;
+  inset: 0;
+  transition: opacity 180ms ease;
+}
+
+.project-media.has-hover-gif .project-gif {
+  opacity: 0;
+}
+
+.project-media.has-hover-gif:hover .project-still {
+  opacity: 0;
+}
+
+.project-media.has-hover-gif:hover .project-gif {
+  opacity: 1;
+}
+
+.media-orbit span {
+  position: absolute;
+  inset: 20%;
+  border: 1px solid var(--orange);
+  transform: rotate(18deg);
+}
+
+.media-orbit span:last-child {
+  border-color: var(--navy);
+  transform: rotate(-28deg);
+}
+
+.punchline {
+  color: var(--orange);
+  font-size: var(--text-body);
+  font-weight: 750;
+}
+
+.project-copy h3 span {
+  color: var(--muted);
+  margin-left: 10px;
+  font-size: var(--text-body);
+  font-weight: 750;
+}
+
+.project-copy p,
+.person-card p,
+.list-panel p,
+.join-layout p,
+.contact-grid p,
+address {
+  color: var(--muted);
+}
+
+.tags,
+.text-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tags span {
+  border: 1px solid var(--line);
+  padding: 6px 9px;
+  color: var(--navy);
+  font-size: var(--text-small);
+}
+
+.text-links {
+  margin-top: 18px;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.list-panel {
+  display: grid;
+  gap: 0;
+}
+
+.list-panel article {
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+
+.list-panel article:first-child {
+  border-top-color: var(--navy);
+}
+
+.list-panel h3,
+.join-sections h3 {
+  margin-bottom: 10px;
+}
+
+.publication-list {
+  display: grid;
+  gap: 20px;
+}
+
+.publication-year-group {
+  display: grid;
+  gap: 8px;
+}
+
+.publication-year-group > h3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 0;
+  color: var(--navy);
+  font-size: var(--text-heading);
+}
+
+.publication-year-group > h3::before {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+
+.publication-items article:first-child {
+  border-top-color: var(--line);
+}
+
+.publication-item {
+  display: grid;
+  gap: 6px;
+  padding: 12px 0;
+}
+
+.publication-main-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: baseline;
+}
+
+.publication-main-line h4 {
+  margin-bottom: 0;
+  color: var(--navy);
+  font-size: var(--text-body);
+}
+
+.publication-main-line span,
+.publication-main-line time {
+  color: var(--muted);
+}
+
+.publication-abstract {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.publication-abstract summary {
+  display: list-item;
+  width: 100%;
+  color: var(--navy);
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.publication-abstract summary::marker {
+  color: var(--navy);
+}
+
+.publication-abstract p {
+  margin: 6px 0 0;
+}
+
+.publication-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-left: 16px;
+  gap: 6px 16px;
+  align-items: baseline;
+  font-weight: 500;
+}
+
+.publication-actions a:not(.doi-link) {
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.publication-actions a:not(.doi-link):hover {
+  color: var(--orange);
+}
+
+.doi-link {
+  display: inline-block;
+  width: fit-content;
+  border-bottom: 1px solid rgba(96, 112, 138, 0.55);
+  color: var(--muted);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.doi-link:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.publication-links {
+  margin-top: 0;
+}
+
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 500px));
+  justify-content: space-between;
+  gap: 34px 72px;
+}
+
+.teaching-card {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.teaching-media {
+  display: grid;
+  aspect-ratio: 16 / 9;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(8, 34, 85, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(8, 34, 85, 0.08) 1px, transparent 1px),
+    #ffffff;
+  background-size: 24px 24px;
+  color: var(--orange);
+  font-size: var(--text-heading);
+  font-weight: 750;
+}
+
+.teaching-card h3 {
+  margin-bottom: 6px;
+}
+
+.teaching-card p {
+  margin-bottom: 10px;
+}
+
+.join-layout {
+  display: grid;
+  gap: 30px;
+  width: 100%;
+  max-width: none;
+}
+
+.join-layout .join-intro {
+  max-width: none;
+  color: var(--navy);
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+.join-sections {
+  display: grid;
+  gap: 0;
+}
+
+.join-sections article {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+  gap: 34px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+
+.join-sections article:first-child {
+  border-top-color: var(--navy);
+}
+
+.join-sections h3 {
+  margin-bottom: 0;
+  font-size: var(--text-accent);
+  line-height: 1.2;
+}
+
+.join-sections p {
+  margin-bottom: 0;
+  line-height: 1.65;
+}
+
+.apply-section {
+  display: grid;
+  gap: 12px;
+  padding-top: 30px;
+  border-top: 2px solid var(--navy);
+}
+
+.apply-section h3 {
+  margin-bottom: 0;
+}
+
+.apply-section p {
+  margin-bottom: 0;
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+.email-line {
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.email-line a {
+  color: var(--orange);
+}
+
+.primary-action {
+  width: fit-content;
+}
+
+address {
+  display: grid;
+  gap: 8px;
+  font-style: normal;
+}
+
+.map-embed {
+  width: 100%;
+  height: min(62vh, 620px);
+  min-height: 460px;
+  margin-top: 34px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.map-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.site-footer img {
+  width: 160px;
+}
+
+.footer-credit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 8px 18px;
+}
+
+
+.project-list {
+  display: grid;
+  gap: 14px;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 30px 28px;
+}
+
+.alumni-section {
+  display: grid;
+  gap: 20px;
+  margin-top: 44px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.alumni-section h3 {
+  margin-bottom: 0;
+  color: var(--navy);
+  font-size: var(--text-heading);
+}
+
+.person-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  min-height: 0;
+  padding: 0;
+}
+
+.person-card:only-child {
+  grid-column: auto;
+}
+
+.person-photo-wrap {
+  position: relative;
+  width: 168px;
+  height: 208px;
+  max-width: 100%;
+}
+
+.person-photo-accent {
+  position: absolute;
+  inset: 8px -6px -6px 8px;
+  border: 1px solid rgba(252, 85, 8, 0.55);
+  pointer-events: none;
+}
+
+.person-photo {
+  position: relative;
+  display: grid;
+  width: 168px;
+  height: 208px;
+  max-width: 100%;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--orange);
+  font-size: var(--text-heading);
+  font-weight: 750;
+}
+
+.person-copy {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 0;
+}
+
+.person-copy h4 {
+  margin-bottom: 0;
+  font-size: var(--text-accent);
+  line-height: 1.15;
+}
+
+.person-copy h4 a {
+  position: relative;
+  display: inline-block;
+  transition: color 180ms ease;
+}
+
+.person-copy h4 a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.person-copy h4 a:hover {
+  color: var(--orange);
+}
+
+.person-copy h4 a:hover::after {
+  transform: scaleX(1);
+}
+
+.person-copy .major {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.person-copy .role {
+  margin-bottom: 0;
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.person-copy .affiliation,
+.person-copy p {
+  margin-bottom: 0;
+}
+
+.person-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+@media (max-width: 920px) {
+  .site-header-inner,
+  .hero-section,
+  .featured-grid,
+  .project-card,
+  .person-card,
+  .classes-grid,
+  .join-layout,
+  .join-sections article,
+  .admin-app,
+  .cms-link-row,
+  .cms-inline-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-nav {
+    position: relative;
+    height: auto;
+  }
+
+  .admin-item-list,
+  .admin-form-header {
+    display: grid;
+    position: relative;
+    height: auto;
+  }
+
+  .admin-form-actions {
+    justify-content: start;
+  }
+
+  .nav-links {
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    overflow-x: visible;
+  }
+
+  .site-header-inner {
+    gap: 18px;
+    padding: 14px 0;
+  }
+
+  .brand-lockup {
+    width: 100%;
+    gap: clamp(22px, 6vw, 42px);
+  }
+
+  .brand-icon {
+    width: clamp(60px, 16vw, 92px);
+    height: clamp(60px, 16vw, 92px);
+    transform: scale(1.16);
+  }
+
+  .brand-wordmark {
+    width: auto;
+    flex: 1 1 auto;
+    max-width: calc(100vw - 40px - clamp(60px, 16vw, 92px) - clamp(22px, 6vw, 42px));
+  }
+
+  .nav-links a {
+    padding-bottom: 6px;
+  }
+
+  .hero-copy {
+    padding-top: 0;
+  }
+
+  .hero-panel {
+    margin-top: 0;
+    min-height: 300px;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .project-card {
+    --project-media-width: 100%;
+  }
+
+  .news-grid,
+  .people-grid,
+  .contact-grid,
+  .list-panel.two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-action {
+    grid-column: auto;
+  }
+
+  .person-photo-wrap {
+    width: 168px;
+    height: 208px;
+  }
+
+  .person-photo {
+    width: 168px;
+    height: 208px;
+    min-height: 0;
+  }
+
+}
+
+/* BlimpMate expanded product narrative — MacBook Neo-inspired information rhythm */
+.blimpmate-local-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #1d1d1f;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1;
+  padding: 10px 15px;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.blimpmate-local-cta:hover,
+.blimpmate-local-cta:focus-visible {
+  background: var(--blimp-orange);
+  transform: translateY(-1px);
+}
+
+.blimp-hero-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(255, 255, 255, 0.035);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(72px, 11vw, 180px);
+  letter-spacing: -0.055em;
+  line-height: 0.8;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  white-space: nowrap;
+}
+
+.blimp-facts {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.blimp-highlight-card[data-active="true"] {
+  box-shadow: 0 28px 70px rgba(7, 9, 13, 0.12);
+  transform: translateY(-4px);
+}
+
+.blimp-highlight-card--image > div > span {
+  display: block;
+  max-width: 36ch;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.blimp-highlight-card--dark {
+  background: #17191f;
+  color: #f5f5f7;
+}
+
+.blimp-highlights-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  width: min(100% - 48px, 1280px);
+  margin: 28px auto 0;
+}
+
+.blimp-highlights-pagination > div {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.08);
+  padding: 9px 12px;
+}
+
+.blimp-highlights-pagination > div button {
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.26);
+  cursor: pointer;
+  padding: 0;
+  transition: width 180ms ease, background 180ms ease;
+}
+
+.blimp-highlights-pagination > div button[aria-current="true"] {
+  width: 28px;
+  background: #1d1d1f;
+}
+
+.blimp-highlights-pause {
+  border: 0;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.08);
+  color: #1d1d1f;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+
+.blimp-centered-head,
+.blimp-section-head {
+  width: min(1280px, calc(100% - 48px));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.blimp-centered-head {
+  display: grid;
+  justify-items: center;
+  max-width: 1040px;
+  text-align: center;
+}
+
+.blimp-centered-head h2,
+.blimp-section-head h2,
+.blimp-closer h2,
+.blimp-display-stories h2,
+.blimp-intelligence h2,
+.blimp-human h2,
+.blimp-comparison h2,
+.blimp-specifications h2 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(48px, 6.7vw, 98px);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+}
+
+.blimp-centered-head > p:last-child,
+.blimp-section-head > p,
+.blimp-section-head > div + p {
+  max-width: 650px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.38;
+}
+
+.blimp-section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: clamp(40px, 8vw, 120px);
+  align-items: end;
+}
+
+.blimp-section-head > p,
+.blimp-section-head > div + p {
+  margin-bottom: 4px;
+}
+
+.blimp-design-story {
+  display: grid;
+  gap: 72px;
+  padding: clamp(110px, 15vw, 220px) 0;
+  background: #f5f5f7;
+}
+
+.blimp-design-story-image {
+  position: relative;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #dfe1e6;
+}
+
+.blimp-design-story-image img {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.blimp-design-story-image figcaption,
+.blimp-closer-diagram figcaption,
+.blimp-intelligence-figure figcaption {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  border-radius: 999px;
+  background: rgba(7, 9, 13, 0.72);
+  color: #ffffff;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+
+.blimp-design-story > .blimp-production-placeholder {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-production-placeholder {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.12);
+  border-radius: 28px;
+  background: #ffffff;
+}
+
+.blimp-production-placeholder-frame {
+  position: relative;
+  display: grid;
+  min-height: 320px;
+  place-items: center;
+  overflow: hidden;
+  border: 18px solid #f0f0f2;
+  background:
+    linear-gradient(rgba(29, 29, 31, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 29, 31, 0.045) 1px, transparent 1px),
+    #fafafa;
+  background-size: 28px 28px;
+}
+
+.blimp-production-placeholder-frame::before,
+.blimp-production-placeholder-frame::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-production-placeholder-frame::before {
+  width: min(44%, 260px);
+  aspect-ratio: 1;
+  border: 1px dashed rgba(29, 29, 31, 0.3);
+  border-radius: 50%;
+}
+
+.blimp-production-placeholder-frame::after {
+  width: 86px;
+  height: 62px;
+  border: 1px solid rgba(29, 29, 31, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 28px rgba(29, 29, 31, 0.08);
+}
+
+.blimp-production-placeholder-type,
+.blimp-production-placeholder-ratio {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  color: #6e6e73;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+}
+
+.blimp-production-placeholder-type { left: 20px; }
+.blimp-production-placeholder-ratio { right: 20px; }
+
+.blimp-production-placeholder-mark {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 20px;
+  display: flex;
+  gap: 4px;
+  align-items: end;
+  height: 32px;
+}
+
+.blimp-production-placeholder-mark i {
+  display: block;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--blimp-orange);
+}
+
+.blimp-production-placeholder-mark i:nth-child(1) { height: 44%; }
+.blimp-production-placeholder-mark i:nth-child(2) { height: 100%; }
+.blimp-production-placeholder-mark i:nth-child(3) { height: 68%; }
+
+.blimp-production-placeholder-copy {
+  display: grid;
+  align-content: center;
+  padding: clamp(30px, 5vw, 72px);
+}
+
+.blimp-production-placeholder-copy h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(30px, 3.3vw, 52px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-production-placeholder-copy p {
+  margin: 22px 0 0;
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.blimp-production-placeholder-copy span {
+  margin-top: 22px;
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.blimp-production-placeholder--compact {
+  grid-template-columns: 1fr;
+  min-height: 0;
+}
+
+.blimp-production-placeholder--compact .blimp-production-placeholder-frame {
+  min-height: 260px;
+}
+
+.blimp-production-placeholder--compact .blimp-production-placeholder-copy {
+  padding: 28px;
+}
+
+.blimp-production-placeholder--compact .blimp-production-placeholder-copy h3 {
+  font-size: clamp(26px, 2.6vw, 38px);
+}
+
+.blimp-closer {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+  background: #ffffff;
+}
+
+.blimp-closer-layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-hotspot-tabs {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.blimp-hotspot-tabs button {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  background: #f5f5f7;
+  color: #6e6e73;
+  cursor: pointer;
+  padding: 13px 18px;
+  text-align: left;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.blimp-hotspot-tabs button span {
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.blimp-hotspot-tabs button[aria-selected="true"] {
+  background: #1d1d1f;
+  color: #ffffff;
+  transform: translateX(8px);
+}
+
+.blimp-closer-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+  min-height: 660px;
+  overflow: hidden;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 38% 45%, rgba(255, 100, 43, 0.16), transparent 30%),
+    #f5f5f7;
+}
+
+.blimp-closer-model {
+  position: relative;
+  display: grid;
+  min-height: 620px;
+  place-items: center;
+}
+
+.blimp-closer-model .blimp-model-motion {
+  width: min(52vw, 700px);
+}
+
+.blimp-closer-readout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  padding: 48px 48px 48px 12px;
+}
+
+.blimp-closer-readout h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.blimp-closer-readout > p:not(.blimp-eyebrow) {
+  margin: 24px 0 32px;
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.42;
+}
+
+.blimp-closer-readout strong {
+  color: var(--blimp-orange);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.blimp-closer-readout > span {
+  margin-top: 8px;
+  color: #86868b;
+  font-size: 14px;
+}
+
+.blimp-closer-index {
+  position: absolute;
+  right: 24px;
+  bottom: 14px;
+  color: rgba(29, 29, 31, 0.07);
+  font-size: 150px;
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.blimp-closer-diagram {
+  position: relative;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #f5f5f7;
+}
+
+.blimp-closer-diagram img {
+  display: block;
+  width: 100%;
+}
+
+.blimp-endurance-story {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(40px, 8vw, 120px);
+  width: min(1280px, calc(100% - 48px));
+  margin: 72px auto 0;
+  border-radius: 28px;
+  background: #f5f5f7;
+  padding: clamp(36px, 6vw, 82px);
+}
+
+.blimp-endurance-copy h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(38px, 4.6vw, 68px);
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.blimp-endurance-copy > p:last-child {
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.blimp-endurance-modes {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+}
+
+.blimp-endurance-modes > div {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.4fr) 74px 64px;
+  gap: 12px;
+  align-items: center;
+  color: #6e6e73;
+  font-size: 13px;
+}
+
+.blimp-endurance-modes i {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.1);
+}
+
+.blimp-endurance-modes b {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blimp-orange), #ff9c78);
+}
+
+.blimp-endurance-modes strong {
+  color: #1d1d1f;
+  font-size: 13px;
+  text-align: right;
+}
+
+.blimp-endurance-modes em {
+  color: #86868b;
+  font-size: 12px;
+  font-style: normal;
+  text-align: right;
+}
+
+.blimp-display-stories {
+  display: grid;
+  gap: 72px;
+  padding: clamp(110px, 15vw, 220px) 0;
+  background: #f5f5f7;
+}
+
+.blimp-display-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-display-card {
+  overflow: hidden;
+  border-radius: 28px;
+  background: #ffffff;
+}
+
+.blimp-display-card--wide {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(280px, 0.68fr) minmax(0, 1.32fr);
+  align-items: center;
+  min-height: 520px;
+}
+
+.blimp-display-card--wide > div {
+  padding: clamp(34px, 5vw, 72px);
+}
+
+.blimp-display-card h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4.2vw, 64px);
+  letter-spacing: -0.06em;
+  line-height: 0.97;
+}
+
+.blimp-display-card p:not(.blimp-eyebrow) {
+  margin: 22px 0 0;
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.42;
+}
+
+.blimp-display-card--wide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: contain;
+  padding: 24px;
+}
+
+.blimp-display-card--metric {
+  min-height: 480px;
+  padding: clamp(34px, 5vw, 70px);
+}
+
+.blimp-display-card--metric strong {
+  display: inline-block;
+  margin-top: 60px;
+  color: var(--blimp-orange);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(78px, 10vw, 150px);
+  letter-spacing: -0.08em;
+  line-height: 0.72;
+}
+
+.blimp-display-card--metric em {
+  margin-left: 8px;
+  color: #86868b;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.blimp-display-card--metric h3 {
+  margin-top: 52px;
+  font-size: clamp(30px, 3vw, 46px);
+}
+
+.blimp-intelligence {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+  background: #ffffff;
+}
+
+.blimp-intelligence-figure {
+  position: relative;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #f5f5f7;
+}
+
+.blimp-intelligence-figure img {
+  display: block;
+  width: 100%;
+  padding: clamp(16px, 3vw, 36px);
+}
+
+.blimp-intelligence-layers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 26px;
+  background: rgba(29, 29, 31, 0.12);
+}
+
+.blimp-intelligence-layers article {
+  min-height: 280px;
+  background: #f5f5f7;
+  padding: 30px;
+}
+
+.blimp-intelligence-layers span,
+.blimp-human-principles span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-intelligence-layers h3 {
+  margin: 82px 0 12px;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.blimp-intelligence-layers p {
+  margin: 0;
+  color: #6e6e73;
+  line-height: 1.4;
+}
+
+.blimp-human {
+  display: grid;
+  gap: 72px;
+  padding: clamp(110px, 15vw, 220px) 0;
+  background: #f5f5f7;
+}
+
+.blimp-human-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-human-grid > article {
+  border-radius: 28px;
+}
+
+.blimp-human-noise,
+.blimp-human-principles {
+  min-height: 580px;
+  background: #ffffff;
+  padding: clamp(34px, 5vw, 68px);
+}
+
+.blimp-human-noise h3,
+.blimp-human-principles h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.blimp-human-bars {
+  display: grid;
+  gap: 18px;
+  margin-top: 58px;
+}
+
+.blimp-human-bars > div {
+  display: grid;
+  grid-template-columns: 130px 1fr 42px;
+  gap: 12px;
+  align-items: center;
+  color: #6e6e73;
+  font-size: 13px;
+}
+
+.blimp-human-bars i {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.08);
+}
+
+.blimp-human-bars i::after {
+  display: block;
+  width: var(--bar);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--blimp-orange);
+  content: "";
+}
+
+.blimp-human-bars strong { color: #1d1d1f; text-align: right; }
+.blimp-human-noise > p:last-child { margin-top: 34px; color: #86868b; font-size: 13px; }
+
+.blimp-human-principles > div {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 4px 10px;
+  margin-top: 38px;
+  border-top: 1px solid rgba(29, 29, 31, 0.12);
+  padding-top: 24px;
+}
+
+.blimp-human-principles > div h3 {
+  font-size: 28px;
+}
+
+.blimp-human-principles > div p {
+  grid-column: 2;
+  margin: 4px 0 0;
+  color: #6e6e73;
+  line-height: 1.4;
+}
+
+.blimp-human-grid > .blimp-production-placeholder {
+  grid-column: 1 / -1;
+}
+
+.blimp-system {
+  align-items: start;
+}
+
+.blimp-system-viewer,
+.blimp-system-layer-grid {
+  grid-column: 2;
+}
+
+.blimp-system-layer-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  margin-top: 18px;
+}
+
+.blimp-comparison,
+.blimp-specifications {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+  background: #ffffff;
+}
+
+.blimp-comparison-table {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.12);
+  border-radius: 28px;
+}
+
+.blimp-comparison-row {
+  display: grid;
+  grid-template-columns: 160px repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+}
+
+.blimp-comparison-row:first-child { border-top: 0; }
+.blimp-comparison-row > * { margin: 0; border-left: 1px solid rgba(29, 29, 31, 0.1); padding: 24px; }
+.blimp-comparison-row > *:first-child { border-left: 0; }
+.blimp-comparison-row span { color: #86868b; font-family: "Orbitron-SemiBold", Rajdhani, sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+.blimp-comparison-row p { color: #6e6e73; line-height: 1.45; }
+.blimp-comparison-row strong { color: #1d1d1f; font-size: 16px; }
+.blimp-comparison-row--head { background: #f5f5f7; }
+.blimp-comparison-row--head strong:last-child { color: var(--blimp-orange); }
+
+.blimp-specifications {
+  background: #f5f5f7;
+}
+
+.blimp-specification-groups {
+  display: grid;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  border-top: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-specification-group {
+  border-bottom: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-specification-group summary {
+  display: grid;
+  grid-template-columns: 60px 1fr 32px;
+  gap: 18px;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 30px 0;
+}
+
+.blimp-specification-group summary::-webkit-details-marker { display: none; }
+.blimp-specification-group summary > span { color: var(--blimp-orange); font-family: "Orbitron-SemiBold", Rajdhani, sans-serif; font-size: 10px; letter-spacing: 0.1em; }
+.blimp-specification-group summary h3 { margin: 0; color: #1d1d1f; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.045em; }
+.blimp-specification-group summary i { color: #86868b; font-size: 28px; font-style: normal; text-align: center; transition: transform 180ms ease; }
+.blimp-specification-group[open] summary i { transform: rotate(45deg); }
+
+.blimp-specification-group dl {
+  display: grid;
+  margin: 0 0 40px 78px;
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+}
+
+.blimp-specification-group dl div {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
+  gap: 30px;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 18px 0;
+}
+
+.blimp-specification-group dt { color: #86868b; }
+.blimp-specification-group dd { margin: 0; color: #1d1d1f; font-weight: 600; }
+
+.blimp-production-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.blimp-production-grid .blimp-production-placeholder {
+  grid-template-columns: 1fr;
+  min-height: 600px;
+}
+
+.blimp-production-grid .blimp-production-placeholder-frame { min-height: 330px; }
+.blimp-production-grid .blimp-production-placeholder-copy { padding: 34px; }
+.blimp-production-grid .blimp-production-placeholder-copy h3 { font-size: clamp(30px, 3.4vw, 48px); }
+
+.blimp-project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .blimpmate-local-nav nav { gap: 14px; font-size: 12px; }
+  .blimp-section-head { grid-template-columns: 1fr; }
+  .blimp-section-head > p,
+  .blimp-section-head > div + p { margin-top: 0; }
+  .blimp-closer-stage { grid-template-columns: 1fr; }
+  .blimp-closer-readout { padding: 20px 44px 56px; }
+  .blimp-closer-model { min-height: 480px; }
+  .blimp-endurance-story { grid-template-columns: 1fr; }
+  .blimp-display-card--wide { grid-template-columns: 1fr; }
+  .blimp-display-card--wide img { min-height: 340px; }
+  .blimp-intelligence-layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blimp-comparison-row { grid-template-columns: 130px repeat(3, minmax(230px, 1fr)); }
+  .blimp-comparison-table { overflow-x: auto; }
+  .blimp-comparison-row { min-width: 900px; }
+}
+
+@media (max-width: 820px) {
+  .blimpmate-local-nav-inner { grid-template-columns: 1fr auto; }
+  .blimpmate-local-cta { font-size: 11px; }
+  .blimp-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blimp-centered-head,
+  .blimp-section-head,
+  .blimp-design-story-image,
+  .blimp-design-story > .blimp-production-placeholder,
+  .blimp-closer-layout,
+  .blimp-closer-diagram,
+  .blimp-display-grid,
+  .blimp-intelligence-figure,
+  .blimp-intelligence-layers,
+  .blimp-human-grid,
+  .blimp-comparison-table,
+  .blimp-specification-groups {
+    width: min(100% - 32px, 1280px);
+  }
+  .blimp-production-placeholder { grid-template-columns: 1fr; }
+  .blimp-closer-layout { grid-template-columns: 1fr; }
+  .blimp-hotspot-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .blimp-hotspot-tabs button { grid-template-columns: 1fr; border-radius: 18px; text-align: center; }
+  .blimp-hotspot-tabs button[aria-selected="true"] { transform: translateY(-3px); }
+  .blimp-display-grid,
+  .blimp-human-grid,
+  .blimp-production-grid { grid-template-columns: 1fr; }
+  .blimp-display-card--wide,
+  .blimp-human-grid > .blimp-production-placeholder { grid-column: auto; }
+  .blimp-intelligence-layers { grid-template-columns: 1fr; }
+  .blimp-intelligence-layers article { min-height: 220px; }
+  .blimp-intelligence-layers h3 { margin-top: 52px; }
+  .blimp-system-viewer,
+  .blimp-system-layer-grid { grid-column: auto; }
+  .blimp-system-layer-grid { grid-template-columns: 1fr; }
+  .blimp-endurance-modes > div { grid-template-columns: 1fr 70px 58px; }
+  .blimp-endurance-modes i { grid-column: 1 / -1; grid-row: 2; }
+  .blimp-specification-group dl { margin-left: 0; }
+  .blimp-specification-group dl div { grid-template-columns: 1fr; gap: 5px; }
+}
+
+@media (max-width: 560px) {
+  .blimp-design-story,
+  .blimp-closer,
+  .blimp-display-stories,
+  .blimp-intelligence,
+  .blimp-human,
+  .blimp-comparison,
+  .blimp-specifications { gap: 46px; }
+  .blimp-centered-head h2,
+  .blimp-section-head h2,
+  .blimp-closer h2,
+  .blimp-display-stories h2,
+  .blimp-intelligence h2,
+  .blimp-human h2,
+  .blimp-comparison h2,
+  .blimp-specifications h2 { font-size: clamp(42px, 13vw, 64px); }
+  .blimp-design-story-image { border-radius: 20px; }
+  .blimp-design-story-image img { min-height: 260px; }
+  .blimp-production-placeholder,
+  .blimp-display-card,
+  .blimp-closer-stage,
+  .blimp-closer-diagram,
+  .blimp-intelligence-figure,
+  .blimp-comparison-table { border-radius: 20px; }
+  .blimp-production-placeholder-frame { border-width: 10px; }
+  .blimp-hotspot-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blimp-closer-model { min-height: 350px; }
+  .blimp-closer-model .blimp-model-motion { width: 92vw; }
+  .blimp-closer-readout { padding: 18px 24px 44px; }
+  .blimp-display-card--metric { min-height: 420px; }
+  .blimp-human-noise,
+  .blimp-human-principles { min-height: 0; }
+  .blimp-human-bars > div { grid-template-columns: 100px 1fr 40px; }
+  .blimp-specification-group summary { grid-template-columns: 34px 1fr 24px; }
+}
+</style><meta content="noindex, nofollow" name="robots"/><script src="public/assets/vendor/model-viewer.min.js" type="module"></script><style>/* BlimpMate 2026 product-page extension — product-first, scroll-led, research-grounded */
+.blimpmate-local-nav nav a[aria-current="location"] {
+  color: #1d1d1f;
+  font-weight: 650;
+}
+
+.blimpmate-local-nav nav a[aria-current="location"]::after {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 5px;
+  background: var(--blimp-orange);
+  content: "";
+}
+
+.blimpmate-local-progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blimpmate-local-progress i {
+  display: block;
+  height: 100%;
+  background: var(--blimp-orange);
+  transform-origin: left center;
+  transition: width 90ms linear;
+}
+
+.blimp-pill--dark {
+  background: #1d1d1f;
+  color: #ffffff;
+}
+
+.blimp-hero {
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-content: start;
+  min-height: min(1040px, calc(100svh - 72px));
+  padding: clamp(72px, 8vw, 118px) clamp(24px, 7vw, 112px) 24px;
+  background:
+    radial-gradient(circle at 22% 25%, rgba(255, 100, 43, 0.14), transparent 27%),
+    radial-gradient(circle at 78% 42%, rgba(82, 118, 193, 0.18), transparent 31%),
+    linear-gradient(180deg, #ffffff 0%, #f5f5f7 76%, #ececef 100%);
+  color: #1d1d1f;
+  text-align: center;
+}
+
+.blimp-hero-copy {
+  z-index: 3;
+  width: min(100%, 980px);
+  max-width: none;
+  margin: 0 auto;
+}
+
+.blimp-hero-research-badge {
+  display: inline-flex;
+  margin: 0 0 22px;
+  border: 1px solid rgba(29, 29, 31, 0.14);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #6e6e73;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.blimp-hero h1 {
+  max-width: none;
+  color: #1d1d1f;
+  font-size: clamp(66px, 10.5vw, 164px);
+  line-height: 0.82;
+}
+
+.blimp-hero-tagline {
+  margin: 26px 0 0;
+  background: linear-gradient(90deg, #1d1d1f 4%, #56698e 44%, #ff642b 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 5.4vw, 82px);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.blimp-hero-description {
+  max-width: 680px;
+  margin: 28px auto 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 1.8vw, 23px);
+}
+
+.blimp-hero-actions {
+  justify-content: center;
+}
+
+.blimp-hero .blimp-text-link,
+.blimp-hero .blimp-scroll-cue {
+  color: #1d1d1f;
+}
+
+.blimp-hero .blimp-scroll-cue {
+  margin-top: 38px;
+}
+
+.blimp-hero .blimp-scroll-cue span {
+  border-color: rgba(29, 29, 31, 0.35);
+}
+
+.blimp-hero-art {
+  min-height: clamp(420px, 50vw, 650px);
+  margin-top: -34px;
+}
+
+.blimp-hero-art .blimp-model-motion {
+  width: clamp(360px, 54vw, 690px);
+}
+
+.blimp-hero-wordmark {
+  color: rgba(29, 29, 31, 0.035);
+  font-size: clamp(88px, 16vw, 250px);
+  transform: translate(-50%, -50%);
+}
+
+.blimp-hero-art > p,
+.blimp-model-status {
+  color: rgba(29, 29, 31, 0.48);
+}
+
+.blimp-orbit {
+  width: min(72vw, 720px);
+  border-color: rgba(29, 29, 31, 0.1);
+}
+
+.blimp-orbit--two {
+  width: min(54vw, 560px);
+  border-color: rgba(255, 100, 43, 0.28);
+}
+
+.blimp-facts {
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+.blimp-facts div {
+  border-top: 0;
+  border-left: 1px solid rgba(29, 29, 31, 0.1);
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.blimp-facts div:first-child {
+  border-left: 0;
+}
+
+.blimp-facts strong {
+  color: #1d1d1f;
+}
+
+.blimp-facts span {
+  color: #86868b;
+}
+
+.blimp-presentation-states,
+.blimp-contributions,
+.blimp-future {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+}
+
+.blimp-presentation-states {
+  background: #ffffff;
+}
+
+.blimp-state-gallery {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #f5f5f7;
+  box-shadow: 0 24px 70px rgba(29, 29, 31, 0.08);
+}
+
+.blimp-state-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-bottom: 1px solid rgba(29, 29, 31, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.blimp-state-tabs button {
+  display: grid;
+  gap: 6px;
+  border: 0;
+  border-left: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 20px 18px;
+  background: transparent;
+  color: #6e6e73;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.blimp-state-tabs button:first-child {
+  border-left: 0;
+}
+
+.blimp-state-tabs button span {
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-state-tabs button[aria-selected="true"] {
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+.blimp-state-tabs button[aria-selected="true"] span {
+  color: var(--blimp-orange);
+}
+
+.blimp-state-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.55fr);
+  min-height: 670px;
+}
+
+.blimp-state-asset {
+  position: relative;
+  display: grid;
+  min-height: 670px;
+  overflow: hidden;
+  border-right: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 28px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 100, 43, 0.18), transparent 31%),
+    radial-gradient(circle at 77% 74%, rgba(78, 111, 181, 0.24), transparent 36%),
+    #12151c;
+  color: #f5f5f7;
+  isolation: isolate;
+}
+
+.blimp-state-asset-toolbar {
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(245, 245, 247, 0.62);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+}
+
+.blimp-state-asset-center {
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  max-width: 680px;
+  margin: auto;
+  border: 1px dashed rgba(245, 245, 247, 0.34);
+  border-radius: 26px;
+  padding: clamp(34px, 5vw, 72px);
+  background: rgba(7, 9, 13, 0.24);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.blimp-state-asset-center > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.blimp-state-asset-center strong {
+  margin-top: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(26px, 3vw, 44px);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.blimp-state-asset-center p {
+  max-width: 520px;
+  margin: 20px 0 0;
+  color: rgba(245, 245, 247, 0.66);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.blimp-state-asset-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.blimp-state-asset-grid i {
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+.blimp-state-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(38px, 5vw, 72px);
+}
+
+.blimp-state-copy h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(36px, 4.4vw, 62px);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.blimp-state-copy > p:not(.blimp-eyebrow) {
+  margin: 24px 0 0;
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.blimp-state-copy > span {
+  margin-top: auto;
+  padding-top: 44px;
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-contributions {
+  background: #f5f5f7;
+}
+
+.blimp-contribution-rail {
+  display: grid;
+  grid-auto-columns: minmax(340px, 410px);
+  grid-auto-flow: column;
+  gap: 18px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 max(24px, calc((100vw - 1280px) / 2)) 34px;
+  scroll-padding-inline: max(24px, calc((100vw - 1280px) / 2));
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.blimp-contribution-card {
+  position: relative;
+  display: flex;
+  min-height: 470px;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 34px;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(29, 29, 31, 0.06);
+  scroll-snap-align: start;
+}
+
+.blimp-contribution-card:nth-child(2) {
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.blimp-contribution-card:nth-child(3) {
+  background: linear-gradient(145deg, #f0e7e2, #edf1f8);
+}
+
+.blimp-contribution-card > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-contribution-card h3 {
+  margin: 86px 0 0;
+  color: inherit;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(32px, 3.2vw, 46px);
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.blimp-contribution-card p {
+  margin: 24px 0 0;
+  color: #6e6e73;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.blimp-contribution-card:nth-child(2) p {
+  color: #a1a1a6;
+}
+
+.blimp-contribution-card i {
+  margin-top: auto;
+  color: var(--blimp-orange);
+  font-size: 26px;
+  font-style: normal;
+  text-align: right;
+}
+
+.blimp-future {
+  background: #ffffff;
+}
+
+.blimp-future-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-future-card {
+  overflow: hidden;
+  border-radius: 32px;
+  background: #f5f5f7;
+}
+
+.blimp-future-placeholder {
+  position: relative;
+  display: grid;
+  min-height: 390px;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  border: 14px solid #ececef;
+  border-radius: 32px;
+  padding: 42px;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(29, 29, 31, 0.07) 49%, rgba(29, 29, 31, 0.07) 51%, transparent 52%),
+    linear-gradient(45deg, transparent 48%, rgba(29, 29, 31, 0.07) 49%, rgba(29, 29, 31, 0.07) 51%, transparent 52%),
+    #ffffff;
+  text-align: center;
+}
+
+.blimp-future-placeholder > div {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  left: 24px;
+  display: flex;
+  justify-content: space-between;
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-future-placeholder strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+
+.blimp-future-placeholder p {
+  z-index: 1;
+  max-width: 500px;
+  margin: 22px 0 0;
+  color: #6e6e73;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.blimp-future-placeholder i {
+  position: absolute;
+  width: 58%;
+  height: 58%;
+  border: 1px dashed rgba(29, 29, 31, 0.22);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.blimp-future-copy {
+  padding: 32px 34px 40px;
+}
+
+.blimp-future-copy > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-future-copy h3 {
+  margin: 18px 0 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(30px, 3.2vw, 46px);
+  letter-spacing: -0.052em;
+  line-height: 1;
+}
+
+.blimp-future-copy p {
+  margin: 18px 0 0;
+  color: #6e6e73;
+  line-height: 1.45;
+}
+
+@media (max-width: 980px) {
+  .blimp-hero {
+    min-height: auto;
+  }
+
+  .blimp-state-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .blimp-state-tabs button {
+    min-width: 170px;
+  }
+
+  .blimp-state-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-state-asset {
+    min-height: 520px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  }
+
+  .blimp-state-copy > span {
+    margin-top: 34px;
+  }
+}
+
+@media (max-width: 820px) {
+  .blimpmate-local-nav nav {
+    display: none;
+  }
+
+  .blimp-hero-art {
+    margin-top: -8px;
+  }
+
+  .blimp-hero-art .blimp-model-motion {
+    width: min(92vw, 590px);
+  }
+
+  .blimp-facts div {
+    border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+    border-left: 0;
+  }
+
+  .blimp-state-gallery,
+  .blimp-future-grid {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .blimp-future-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .blimp-hero {
+    padding-top: 56px;
+  }
+
+  .blimp-hero h1 {
+    font-size: clamp(52px, 20vw, 80px);
+  }
+
+  .blimp-hero-tagline {
+    font-size: clamp(34px, 12vw, 56px);
+  }
+
+  .blimp-hero-art {
+    min-height: 370px;
+  }
+
+  .blimp-state-gallery,
+  .blimp-future-card,
+  .blimp-future-placeholder {
+    border-radius: 22px;
+  }
+
+  .blimp-state-asset {
+    min-height: 430px;
+    padding: 18px;
+  }
+
+  .blimp-state-asset-center {
+    border-radius: 18px;
+    padding: 30px 22px;
+  }
+
+  .blimp-state-copy {
+    padding: 36px 24px;
+  }
+
+  .blimp-contribution-rail {
+    grid-auto-columns: minmax(290px, 84vw);
+  }
+
+  .blimp-contribution-card {
+    min-height: 430px;
+    border-radius: 22px;
+    padding: 28px;
+  }
+
+  .blimp-future-placeholder {
+    min-height: 330px;
+    border-width: 10px;
+    padding: 32px 24px;
+  }
+}
+
+/* Standalone preview safeguards */
+html { scroll-behavior: smooth; }
+body { margin: 0; }
+model-viewer { width: 100%; height: 100%; display: block; }
+.blimpmate-local-progress i { width: 0; }
+</style></head>
+<body>
+<div id="root"><header class="site-header site-header--blimpmate"><div class="site-header-inner"><a aria-label="PHOENIX Lab home" class="brand-lockup" href="/"><img alt="" class="brand-icon" src="public/assets/brand/icon.svg"/><img alt="PHOENIX Lab" class="brand-wordmark" src="public/assets/brand/char_only.svg"/></a><nav aria-label="Primary navigation" class="nav-links"><a class="" href="/">Home</a><a class="active" href="/projects">Projects</a><a class="" href="/people">People</a><a class="" href="/publications">Publications</a><a class="" href="/teaching">Teaching</a><a class="" href="/join-us">Join Us</a><a class="" href="/contact">Contact</a></nav></div></header><main class="blimpmate-page"><div class="blimpmate-local-nav"><div class="blimpmate-local-nav-inner"><a class="blimpmate-local-brand" href="#overview">BlimpMate <span>/ PHOENIX LAB</span></a><nav aria-label="BlimpMate sections"><a aria-current="location" href="#overview">Overview</a><a href="#performance">Performance</a><a href="#display">Display</a><a href="#scenarios">Applications</a><a href="#system">System</a><a href="#tech-specs">Tech Specs</a></nav><a class="blimpmate-local-cta" href="public/assets/blimpmate/research/blimpmate-paper.pdf" rel="noreferrer" target="_blank">Open paper</a></div><span aria-hidden="true" class="blimpmate-local-progress"><i></i></span></div><section class="blimp-hero" id="overview"><div class="blimp-hero-copy blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-hero-research-badge">UIST ’26 research prototype</p><h1>BlimpMate</h1><p class="blimp-hero-tagline">A display that comes to you.</p><p class="blimp-hero-description">A quiet, long-endurance flying display that explores soft, situated, and embodied interaction in physical space.</p><div class="blimp-hero-actions"><a class="blimp-pill blimp-pill--dark" href="#story">Explore BlimpMate</a><a class="blimp-text-link" href="public/assets/blimpmate/research/blimpmate-paper.pdf" rel="noreferrer" target="_blank">Read the research <span aria-hidden="true">↗</span></a></div><a class="blimp-scroll-cue" href="#story"><span aria-hidden="true"></span>Scroll to explore</a></div><div class="blimp-hero-art"><span aria-hidden="true" class="blimp-hero-wordmark">BLIMPMATE</span><div class="blimp-model-motion blimp-model-motion--lift blimp-model-motion--interactive" data-model-status="ready"><model-viewer alt="Interactive three-dimensional model of the BlimpMate research prototype" ar-status="not-presenting" camera-controls="" camera-orbit="0deg 72deg auto" camera-target="auto auto auto" class="blimp-model-viewer" disable-pan="" disable-zoom="" environment-image="neutral" field-of-view="28deg" interaction-prompt="none" shadow-intensity="1.1" shadow-softness="0.8" src="public/assets/blimpmate/balloon-robot.glb"></model-viewer><span aria-live="polite" class="blimp-model-status">LOADING BLIMPMATE MODEL</span></div><div class="blimp-orbit blimp-orbit--one"></div><div class="blimp-orbit blimp-orbit--two"></div><p>quiet / long-endurance / hands-free</p></div></section><section aria-label="BlimpMate key facts" class="blimp-facts"><div><strong>33″</strong><span>projected display</span></div><div><strong>47.1 dB(A)</strong><span>routine hover</span></div><div><strong>73 min</strong><span>hover + lightweight visuals</span></div><div><strong>323.7 g</strong><span>integrated prototype mass</span></div></section><section class="blimp-intro-panel" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">LOVE AT FIRST FLIGHT</p><h2>Not another screen.<br/>A new place for information.</h2><p>BlimpMate explores how a display can share the same physical world as the people and tasks it serves — without being fixed to furniture or held in the hand.</p></section><section aria-labelledby="blimp-highlights-title" class="blimp-highlights"><div class="blimp-highlights-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">GET THE HIGHLIGHTS</p><h2 id="blimp-highlights-title">The story, at a glance.</h2></div><div aria-label="Highlights controls" class="blimp-highlights-controls"><button aria-label="Previous highlight" type="button">←</button><button aria-label="Next highlight" type="button">→</button></div></div><div class="blimp-highlights-rail" tabindex="0"><article class="blimp-highlight-card blimp-highlight-card--image blimp-reveal" data-active="false" data-highlight-index="0" data-reveal="true" data-visible="true"><img alt="A user speaking to BlimpMate while it displays an expressive face." src="public/assets/blimpmate/research/hero-conversation.webp"/><div><p>Hands-free interaction</p><h3>Ask the room. See the answer nearby.</h3><span>The display remains in the surrounding space instead of asking the user to hold or approach another screen.</span></div></article><article class="blimp-highlight-card blimp-highlight-card--metric blimp-highlight-card--orange blimp-reveal" data-active="true" data-highlight-index="1" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">Large-area display</p><strong>84 cm</strong><h3>A projected image without a rigid panel.</h3><span>Approximate usable diagonal, about 33 inches, formed on the envelope itself.</span></article><article class="blimp-highlight-card blimp-highlight-card--metric blimp-highlight-card--dark blimp-reveal" data-active="false" data-highlight-index="2" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">Routine hover</p><strong>47.1 dB(A)</strong><h3>Close to the measured room background.</h3><span>The same test space measured 46.0 dB(A) of ambient background noise.</span></article><article class="blimp-highlight-card blimp-highlight-card--image blimp-reveal" data-active="false" data-highlight-index="3" data-reveal="true" data-visible="true"><img alt="Diagram of BlimpMate’s distributed interaction architecture." src="public/assets/blimpmate/research/networked-architecture.webp"/><div><p>Networked intelligence</p><h3>Light onboard. Connected by design.</h3><span>Cloud, backend, onboard, and mobile layers divide sensing, reasoning, rendering, and control.</span></div></article><article class="blimp-highlight-card blimp-highlight-card--metric blimp-highlight-card--blue blimp-reveal" data-active="false" data-highlight-index="4" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">Continuous flight</p><strong>133 min</strong><h3>Long-running mobility with the display off.</h3><span>Near-neutral buoyancy reduces the continuous thrust needed to remain airborne.</span></article><article class="blimp-highlight-card blimp-highlight-card--image blimp-reveal" data-active="false" data-highlight-index="5" data-reveal="true" data-visible="true"><img alt="BlimpMate presenting a live visual update beside a seated user." src="public/assets/blimpmate/research/hero-update.webp"/><div><p>Situated output</p><h3>Information appears where the activity is.</h3><span>The current prototype can present nearby updates, guidance, reminders, and communication views.</span></div></article></div><div aria-label="Select a highlight" class="blimp-highlights-pagination"><div><button aria-current="false" aria-label="Show highlight 1: Ask the room. See the answer nearby." type="button"></button><button aria-current="true" aria-label="Show highlight 2: A projected image without a rigid panel." type="button"></button><button aria-current="false" aria-label="Show highlight 3: Close to the measured room background." type="button"></button><button aria-current="false" aria-label="Show highlight 4: Light onboard. Connected by design." type="button"></button><button aria-current="false" aria-label="Show highlight 5: Long-running mobility with the display off." type="button"></button><button aria-current="false" aria-label="Show highlight 6: Information appears where the activity is." type="button"></button></div><button aria-label="Pause automatic highlights" class="blimp-highlights-pause" type="button">Pause</button></div></section><section class="blimp-design-story" id="story"><header class="blimp-centered-head blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">DESIGNED FOR SHARED SPACE</p><h2>It does not wait on a desk.<br/>It comes to the moment.</h2><p>BlimpMate frames the aerial robot as a mobile visual interface: quiet enough to remain nearby, light enough to stay airborne, and expressive enough to make an answer visible.</p></header><figure class="blimp-design-story-image blimp-reveal" data-reveal="true" data-visible="true"><img alt="BlimpMate conversation and live update sequence from the paper." src="public/assets/blimpmate/research/hero-dialogue.webp"/><figcaption>Paper Figure 1 · spoken request and nearby visual update</figcaption></figure><article class="blimp-production-placeholder"><div aria-label="Placeholder for Cinematic interaction sequence" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">VIDEO</span><span class="blimp-production-placeholder-ratio">21:9 · 4K</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Cinematic interaction sequence</h3><p>A single continuous shot: BlimpMate approaches, stabilizes near the user, receives a spoken request, changes the projected interface, reorients, and leaves the frame.</p><span>Needed to replace the static paper sequence in the hero narrative</span></div></article></section><section aria-labelledby="blimp-closer-title" class="blimp-closer"><header class="blimp-section-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">TAKE A CLOSER LOOK</p><h2 id="blimp-closer-title">One body. Several tightly coupled systems.</h2></div><p>Select a subsystem to rotate the product view and reveal the design tradeoff behind it.</p></header><div class="blimp-closer-layout"><div aria-label="BlimpMate product subsystems" class="blimp-hotspot-tabs blimp-reveal" data-reveal="true" data-visible="true" role="tablist"><button aria-selected="true" role="tab" type="button"><span>01</span>Envelope</button><button aria-selected="false" role="tab" type="button"><span>02</span>Projection screen</button><button aria-selected="false" role="tab" type="button"><span>03</span>Projector</button><button aria-selected="false" role="tab" type="button"><span>04</span>Motion</button><button aria-selected="false" role="tab" type="button"><span>05</span>Sensing</button><button aria-selected="false" role="tab" type="button"><span>06</span>Compute and power</button></div><div class="blimp-closer-stage blimp-reveal" data-reveal="true" data-visible="true"><div class="blimp-closer-model"><div class="blimp-model-motion blimp-model-motion--glow blimp-model-motion--interactive" data-model-status="ready"><model-viewer alt="Interactive three-dimensional model of the BlimpMate research prototype" ar-status="not-presenting" camera-controls="" camera-orbit="-50deg 72deg auto" camera-target="auto auto auto" class="blimp-model-viewer" disable-pan="" disable-zoom="" environment-image="neutral" field-of-view="28deg" interaction-prompt="none" shadow-intensity="1.1" shadow-softness="0.8" src="public/assets/blimpmate/balloon-robot.glb"></model-viewer><span aria-live="polite" class="blimp-model-status">LOADING BLIMPMATE MODEL</span></div></div><div aria-live="polite" class="blimp-closer-readout" role="tabpanel"><p class="blimp-eyebrow">01 / Envelope</p><h3>Buoyancy and optics share one body.</h3><p>The custom airtight envelope combines black OPA/Al/PE barrier film, a matte PE projection region, and a transparent PE optical window.</p><strong>64 × 64 × 64 cm</strong><span>Prototype external dimensions</span></div><span aria-hidden="true" class="blimp-closer-index">01</span></div></div><figure class="blimp-closer-diagram blimp-reveal" data-reveal="true" data-visible="true"><img alt="Annotated BlimpMate hardware platform and electronics layout." src="public/assets/blimpmate/research/hardware-platform.webp"/><figcaption>Annotated prototype platform · Paper Figure 2</figcaption></figure></section><section class="blimp-performance" id="performance"><div class="blimp-performance-sticky" style="--performance-progress: 0;"><div class="blimp-performance-copy blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">PERFORMANCE / SCROLL TO EXPLORE</p><h2>The muscle<br/><span>for calm flight.</span></h2><p>One continuous scroll timeline moves through buoyancy, projection, control, and endurance. Drag the model to inspect it from another angle.</p><div aria-live="polite" class="blimp-performance-chapter-list"><article aria-hidden="false" class="blimp-performance-chapter" data-active="true"><p class="blimp-eyebrow">01 / BUOYANT PLATFORM</p><h3>Hover without constantly fighting gravity.</h3><p>The integrated prototype weighs 323.7 g while the helium volume provides an estimated 360.0 g of equivalent lift, leaving a 36.3 g lift margin for trim and control.</p><span>323.7 G MASS / 360.0 G ESTIMATED LIFT</span></article><article aria-hidden="true" class="blimp-performance-chapter" data-active="false"><p class="blimp-eyebrow">02 / LIGHTWEIGHT DISPLAY</p><h3>Turn the envelope into the screen.</h3><p>A 24.9 g MEMS laser-scanning projector rear-projects through a transparent window onto a matte screen region, producing an image up to roughly 84 cm diagonally.</p><span>1280 × 720 / 60 HZ / 10-BIT RGB</span></article><article aria-hidden="true" class="blimp-performance-chapter" data-active="false"><p class="blimp-eyebrow">03 / DELIBERATE MOTION</p><h3>Move calmly. Keep the display oriented.</h3><p>VStab regulates vertical velocity while YawStab combines yaw-rate damping and heading hold. Measured yaw-rate tracking reached an approximate correlation of 0.97.</p><span>0.25 M/S ASCENT / 0.97 YAW CORRELATION</span></article><article aria-hidden="true" class="blimp-performance-chapter" data-active="false"><p class="blimp-eyebrow">04 / PRACTICAL ENDURANCE</p><h3>Stay present for more than a brief demo.</h3><p>The prototype ran for 73 minutes while hovering with lightweight visual content, and 45 minutes with multimedia playback under the tested conditions.</p><span>73 MIN LIGHTWEIGHT / 45 MIN MULTIMEDIA</span></article></div></div><div aria-label="Scroll-controlled BlimpMate product animation" class="blimp-performance-stage blimp-performance-stage--wave" role="region" style="--chapter-progress: 0;"><div aria-hidden="true" class="blimp-wave-field blimp-wave-field--wave" style="--wave-amplitude: 12px; --wave-opacity: 0.28; --wave-scale: 0.72; --wave-rotation: -16deg;"><div class="blimp-wave-rings"><span style="--wave-delay: 0s;"></span><span style="--wave-delay: 0.09s;"></span><span style="--wave-delay: 0.18s;"></span><span style="--wave-delay: 0.27s;"></span></div><div class="blimp-wave-beam"><span></span><span></span><span></span></div><div class="blimp-wave-bars"><span style="--bar-height: 6.4799999999999995px;"></span><span style="--bar-height: 10.44px;"></span><span style="--bar-height: 14.4px;"></span><span style="--bar-height: 9.36px;"></span><span style="--bar-height: 16.560000000000002px;"></span><span style="--bar-height: 12.24px;"></span><span style="--bar-height: 7.92px;"></span><span style="--bar-height: 13.68px;"></span><span style="--bar-height: 18px;"></span><span style="--bar-height: 11.16px;"></span><span style="--bar-height: 15.12px;"></span><span style="--bar-height: 8.64px;"></span><span style="--bar-height: 12.959999999999999px;"></span><span style="--bar-height: 9.72px;"></span><span style="--bar-height: 16.2px;"></span><span style="--bar-height: 11.52px;"></span><span style="--bar-height: 7.2px;"></span></div></div><div class="blimp-model-motion blimp-model-motion--glow blimp-model-motion--interactive" data-model-status="ready"><model-viewer alt="Interactive three-dimensional model of the BlimpMate research prototype" ar-status="not-presenting" camera-controls="" camera-orbit="-24deg 72deg auto" camera-target="auto auto auto" class="blimp-model-viewer" disable-pan="" disable-zoom="" environment-image="neutral" field-of-view="28deg" interaction-prompt="none" shadow-intensity="1.1" shadow-softness="0.8" src="public/assets/blimpmate/balloon-robot.glb"></model-viewer><span aria-live="polite" class="blimp-model-status">LOADING BLIMPMATE MODEL</span></div><p class="blimp-performance-stage-label">SCROLL-SCRUB MODEL / RESEARCH PROTOTYPE</p><div aria-live="polite" class="blimp-degree-readout"><strong>0°</strong><span>scroll rotation</span></div></div><div aria-hidden="true" class="blimp-performance-progress"><span style="width: 0%;"></span></div></div></section><section aria-labelledby="blimp-performance-evidence-title" class="blimp-performance-evidence"><div class="blimp-evidence-intro blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">MEASURED, NOT JUST IMAGINED</p><h2 id="blimp-performance-evidence-title">Quiet. Visible. Long-running.</h2><p>The integrated prototype was characterized across display performance, endurance, flight control, payload, and acoustic output.</p></div><div class="blimp-metric-grid"><article class="blimp-metric-card blimp-metric-card--hero blimp-reveal" data-reveal="true" data-visible="true"><span>Routine hover</span><strong>47.1</strong><em>dB(A)</em><p>Only 1.1 dB above the measured ambient background of 46.0 dB(A).</p></article><article class="blimp-metric-card blimp-reveal" data-reveal="true" data-visible="true"><span>Average screen luminance</span><strong>305.7</strong><em>cd/m²</em><p>Measured across a 3 × 3 grid under a full-white pattern.</p></article><article class="blimp-metric-card blimp-reveal" data-reveal="true" data-visible="true"><span>Hover + lightweight visuals</span><strong>73</strong><em>min</em><p>8.68 W average power in the matched endurance test.</p></article><article class="blimp-metric-card blimp-reveal" data-reveal="true" data-visible="true"><span>Hover + multimedia</span><strong>45</strong><em>min</em><p>14.75 W average power with animation, video, and audio.</p></article><article class="blimp-metric-card blimp-reveal" data-reveal="true" data-visible="true"><span>Resolved stripe width</span><strong>1.5</strong><em>mm</em><p>Effective spatial detail on the fully integrated screen.</p></article><article class="blimp-metric-card blimp-reveal" data-reveal="true" data-visible="true"><span>Yaw tracking correlation</span><strong>0.97</strong><em>r</em><p>Smooth commanded turning without obvious overshoot or oscillation.</p></article></div><div class="blimp-evidence-grid"><figure class="blimp-evidence-card blimp-reveal" data-reveal="true" data-visible="true"><img alt="Display luminance, viewing-angle, and spatial sharpness evaluation." src="public/assets/blimpmate/research/display-performance.webp"/><figcaption><strong>Display performance</strong><span>Luminance distribution, wide-angle output, and spatial sharpness.</span></figcaption></figure><figure class="blimp-evidence-card blimp-reveal" data-reveal="true" data-visible="true"><img alt="Vertical and yaw flight-control response plots." src="public/assets/blimpmate/research/flight-control-evaluation.webp"/><figcaption><strong>Flight control</strong><span>Repeated ascent, hover, descent, turning, and heading-hold behavior.</span></figcaption></figure></div><div class="blimp-endurance-story blimp-reveal" data-reveal="true" data-visible="true"><div class="blimp-endurance-copy"><p class="blimp-eyebrow">POWER AND ENDURANCE</p><h3>Content changes the energy story.</h3><p>Projection power depends on what is shown. Lightweight UI graphics and text draw less power than continuous animation, video, and audio.</p></div><div class="blimp-endurance-modes"><div><span>Hover stabilization · display off</span><i><b style="width: 100%;"></b></i><strong>&gt; 600 min</strong><em>&lt; 1.0 W</em></div><div><span>Continuous flight · display off</span><i><b style="width: 22.2%;"></b></i><strong>133 min</strong><em>5.0 W</em></div><div><span>Display only · lightweight visuals</span><i><b style="width: 20.7%;"></b></i><strong>124 min</strong><em>5.36 W</em></div><div><span>Display only · multimedia</span><i><b style="width: 9.7%;"></b></i><strong>58 min</strong><em>11.6 W</em></div><div><span>Hover + lightweight visuals</span><i><b style="width: 12.2%;"></b></i><strong>73 min</strong><em>8.68 W</em></div><div><span>Hover + multimedia</span><i><b style="width: 7.5%;"></b></i><strong>45 min</strong><em>14.75 W</em></div></div></div></section><section aria-labelledby="blimp-display-title" class="blimp-display-stories" id="display"><header class="blimp-centered-head blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">DISPLAY, SENSING, AND SOUND</p><h2 id="blimp-display-title">A flying interface still has to be readable.</h2><p>The paper evaluates the integrated optical system, not just the projector module in isolation.</p></header><div class="blimp-display-grid"><article class="blimp-display-card blimp-display-card--wide blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">REAR PROJECTION</p><h3>Screen and airframe become the same surface.</h3><p>A transparent window passes the beam; a matte region diffuses it; the black body contains stray light.</p></div><img alt="BlimpMate projection display architecture and MEMS scanning principle." src="public/assets/blimpmate/research/projection-subsystem.webp"/></article><article class="blimp-display-card blimp-display-card--metric blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">AVERAGE LUMINANCE</p><strong>305.7</strong><em>cd/m²</em><h3>Measured across nine screen locations.</h3><p>The sampled values ranged from 268.7 to 399.2 cd/m² under the static full-white test.</p></article><article class="blimp-display-card blimp-display-card--metric blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">SPATIAL DETAIL</p><strong>1.5</strong><em>mm</em><h3>Smallest clearly resolved stripe.</h3><p>Approximately 0.33 line pairs per millimeter on the fully integrated projection surface.</p></article><article class="blimp-display-card blimp-display-card--wide blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">INTEGRATED EVALUATION</p><h3>Brightness, angle, and sharpness — in one figure.</h3><p>Front-facing output was strongest, but measurable illuminance remained across a broad angular range at a 50 cm observation distance.</p></div><img alt="BlimpMate luminance, viewing-angle, and spatial sharpness evaluation." src="public/assets/blimpmate/research/display-performance.webp"/></article><article class="blimp-production-placeholder blimp-production-placeholder--compact"><div aria-label="Placeholder for In-flight readability study" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">VIDEO</span><span class="blimp-production-placeholder-ratio">16:9</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>In-flight readability study</h3><p>Record text and UI legibility while the platform hovers at different distances, angles, and ambient-light levels.</p><span>The paper identifies this as future evaluation; no footage is supplied.</span></div></article><article class="blimp-production-placeholder blimp-production-placeholder--compact"><div aria-label="Placeholder for Camera, microphone, and speaker close-up" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">PHOTO / VIDEO</span><span class="blimp-production-placeholder-ratio">4:5</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Camera, microphone, and speaker close-up</h3><p>A clean macro view showing the sensing and audio components in relation to the display and lower frame.</p><span>Use labels only where the hardware is clearly visible.</span></div></article></div></section><section aria-labelledby="blimp-intelligence-title" class="blimp-intelligence"><header class="blimp-section-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">NETWORKED INTELLIGENCE</p><h2 id="blimp-intelligence-title">Keep the aircraft light. Put heavier reasoning elsewhere.</h2></div><p>The prototype distributes functions instead of forcing every model, service, and interface onto the airborne payload.</p></header><figure class="blimp-intelligence-figure blimp-reveal" data-reveal="true" data-visible="true"><img alt="BlimpMate cloud, backend, onboard, mobile, and perception architecture." src="public/assets/blimpmate/research/networked-architecture.webp"/><figcaption>Prototype networked interaction architecture · Paper Figure 5</figcaption></figure><div class="blimp-intelligence-layers"><article><span>01</span><h3>Cloud</h3><p>Large multimodal models and online media services.</p></article><article><span>02</span><h3>Backend</h3><p>Dialogue, control services, interaction logic, memory, avatar rendering, and tool invocation.</p></article><article><span>03</span><h3>Onboard</h3><p>Audio I/O, projected presentation, near-field sensing, communication, and stabilization.</p></article><article><span>04</span><h3>Mobile</h3><p>High-level motion commands and low-latency video monitoring from a phone or VR device.</p></article></div></section><section aria-labelledby="blimp-presentation-title" class="blimp-presentation-states" id="interfaces">
+<header class="blimp-centered-head blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">ONE BODY, MULTIPLE PRESENTATION STATES</p><h2 id="blimp-presentation-title">The interface changes with the reason it is there.</h2><p>The prototype architecture maps outputs into avatar, notification, media, task-related, and communication views. The cards below intentionally remain production briefs where dedicated UI footage is not yet available.</p></header>
+<div class="blimp-state-gallery blimp-reveal" data-reveal="true" data-visible="true"><div aria-label="BlimpMate presentation states" class="blimp-state-tabs" role="tablist"><button aria-selected="true" data-state-id="avatar" role="tab" type="button"><span>01</span>Avatar</button><button aria-selected="false" data-state-id="notification" role="tab" type="button"><span>02</span>Notification</button><button aria-selected="false" data-state-id="media" role="tab" type="button"><span>03</span>Media</button><button aria-selected="false" data-state-id="task" role="tab" type="button"><span>04</span>Task</button><button aria-selected="false" data-state-id="communication" role="tab" type="button"><span>05</span>Communication</button></div>
+<div aria-live="polite" class="blimp-state-stage" role="tabpanel"><div aria-label="Placeholder asset brief for A face that makes system state legible." class="blimp-state-asset"><div class="blimp-state-asset-toolbar"><span>UI MOTION STUDY</span><span>1:1</span></div><div class="blimp-state-asset-center"><span>ASSET PLACEHOLDER</span><strong>Create a clean motion sequence of neutral, listening, thinking, speaking, success, uncertainty, and error states on the real projection surface.</strong><p>Use the actual projector and envelope; include state timing and audio synchronization.</p></div><div aria-hidden="true" class="blimp-state-asset-grid"><i></i><i></i><i></i><i></i></div></div><div class="blimp-state-copy"><p class="blimp-eyebrow">EXPRESSIVE PRESENCE</p><h3>A face that makes system state legible.</h3><p>The projected surface can show an avatar or expression so people nearby can understand whether BlimpMate is listening, thinking, responding, or waiting.</p><span>01 / 05</span></div></div></div></section><section class="blimp-scenarios" id="scenarios"><header class="blimp-scenarios-header blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">APPLICATION SCENARIOS</p><h2>Information with a reason to be there.</h2><p>These proof-of-concept paths illustrate hands-free guidance, proactive assistance, and spatially mobile communication. They are not an end-to-end autonomy evaluation.</p></header><div class="blimp-scenario-shell blimp-reveal" data-reveal="true" data-visible="true"><div aria-label="BlimpMate application scenarios" class="blimp-scenario-tabs" role="tablist"><button aria-selected="true" role="tab" type="button">Cooking</button><button aria-selected="false" role="tab" type="button">Assembly</button><button aria-selected="false" role="tab" type="button">Laboratory</button><button aria-selected="false" role="tab" type="button">Nutrition</button><button aria-selected="false" role="tab" type="button">Reminder</button><button aria-selected="false" role="tab" type="button">Safety</button><button aria-selected="false" role="tab" type="button">Telepresence</button></div><div aria-live="polite" class="blimp-scenario-stage" role="tabpanel"><figure><img alt="BlimpMate displaying cooking guidance near a cutting board." src="public/assets/blimpmate/research/scenario-guidance-1.webp"/><figcaption>Paper Figure 8a</figcaption></figure><div class="blimp-scenario-stage-copy"><p class="blimp-eyebrow">HANDS-FREE TASK GUIDANCE</p><h3>Keep both hands on the recipe.</h3><p>Recipe steps, ingredient order, timing cues, and reminders stay visible as the user moves between the cutting area, stove, and sink.</p><span>Paper-led interaction concept / prototype scope</span></div></div></div></section><section aria-labelledby="blimp-human-title" class="blimp-human"><header class="blimp-centered-head blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">NEAR PEOPLE BY DESIGN</p><h2 id="blimp-human-title">Quiet is a performance metric.<br/>Trust is a design requirement.</h2><p>The prototype’s measured acoustic profile supports calm indoor use. Comfort, safety, privacy, and multi-user behavior still require dedicated user studies and explicit product controls.</p></header><div class="blimp-human-grid"><article class="blimp-human-noise blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">A-WEIGHTED SOUND</p><h3>Routine hover stayed close to room background.</h3><div aria-label="Mean sound level comparison" class="blimp-human-bars"><div><span>Ambient room</span><i style="--bar: 46%;"></i><strong>46.0</strong></div><div><span>Routine hover</span><i style="--bar: 47.1%;"></i><strong>47.1</strong></div><div><span>Vertical motion</span><i style="--bar: 50.5%;"></i><strong>50.5</strong></div><div><span>Horizontal motion</span><i style="--bar: 49.7%;"></i><strong>49.7</strong></div></div><p>Mean L<sub>Aeq,120 s</sub> in dB(A), measured at 1 m under the reported conditions.</p></article><article class="blimp-human-principles blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">PRODUCT PRINCIPLES</p><div><span>01</span><h3>Calm motion</h3><p>Prioritize stable, legible repositioning over speed or spectacle.</p></div><div><span>02</span><h3>Visible state</h3><p>Make listening, recording, connection, control, and movement states understandable in the room.</p></div><div><span>03</span><h3>Human control</h3><p>Provide clear manual boundaries, emergency stop behavior, and predictable recovery.</p></div></article><article class="blimp-production-placeholder"><div aria-label="Placeholder for Close-proximity comfort and privacy study" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">USER STUDY</span><span class="blimp-production-placeholder-ratio">16:9</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Close-proximity comfort and privacy study</h3><p>Compare BlimpMate with a fixed display, voice assistant, HMD, and multirotor across approachability, comfort, safety, social presence, camera and microphone privacy, and task effectiveness.</p><span>Explicitly listed as future work in the paper</span></div></article></div></section><section class="blimp-system" id="system"><div class="blimp-system-copy blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">THE SYSTEM</p><h2>Small geometry.<br/>Large connected system.</h2><p>A 64 cm cube-shaped helium envelope carries the display, propulsion, sensing, control, and compute stack within a tightly managed payload budget.</p><a class="blimp-paper-link" href="public/assets/blimpmate/research/blimpmate-paper.pdf" rel="noreferrer" target="_blank">Open the UIST ’26 paper ↗</a></div><div class="blimp-system-viewer blimp-reveal" data-reveal="true" data-visible="true"><figure class="blimp-system-viewer-stage"><img alt="Annotated BlimpMate hardware platform." src="public/assets/blimpmate/research/hardware-platform.webp"/><figcaption>Paper figure / integrated prototype evidence</figcaption></figure><div aria-label="BlimpMate system views" class="blimp-system-tabs" role="tablist"><button aria-selected="true" role="tab" type="button">Hardware platform</button><button aria-selected="false" role="tab" type="button">Projection display</button><button aria-selected="false" role="tab" type="button">Low-level control</button><button aria-selected="false" role="tab" type="button">Networked interaction</button></div><div aria-live="polite" class="blimp-system-viewer-copy" role="tabpanel"><p class="blimp-eyebrow">01 / SYSTEM VIEW</p><h3>Hardware platform</h3><p>A custom helium envelope, carbon-fiber frame, four motors, flight controller, Raspberry Pi Compute Module 5, camera, microphone, optical-flow sensor, projector, and battery.</p></div></div><div class="blimp-system-layer-grid blimp-reveal" data-reveal="true" data-visible="true"><article><span>01</span><h3>Passive lift</h3><p>Helium supplies buoyant lift so the motors can focus on correction and movement.</p></article><article><span>02</span><h3>Optical body</h3><p>The envelope is simultaneously an airframe, light barrier, optical window, and screen.</p></article><article><span>03</span><h3>Low-level control</h3><p>Vertical velocity and yaw are actively regulated for predictable indoor operation.</p></article><article><span>04</span><h3>Distributed software</h3><p>External resources handle higher-level perception and reasoning while the aircraft stays light.</p></article></div></section><section aria-labelledby="blimp-contributions-title" class="blimp-contributions"><header class="blimp-section-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">WHY BLIMPMATE MATTERS</p><h2 id="blimp-contributions-title">Three contributions. One integrated argument.</h2></div><p>The page separates product storytelling from research claims: each contribution below reflects the paper’s stated framing and evaluation scope.</p></header><div aria-label="BlimpMate research contributions" class="blimp-contribution-rail" tabindex="0"><article class="blimp-contribution-card blimp-reveal" data-reveal="true" data-visible="true"><span>01</span><h3>An integrated flying display platform.</h3><p>Buoyant aerial mobility, a large-area projection display, multimodal sensing, low-level flight control, onboard computing, communication, and external AI-supported services are combined in one payload-constrained prototype.</p><i aria-hidden="true">↗</i></article><article class="blimp-contribution-card blimp-reveal" data-reveal="true" data-visible="true"><span>02</span><h3>A distinct human-centered aerial design space.</h3><p>The work emphasizes quiet operation, long endurance, calm motion, and a softer physical presence for sustained close-proximity indoor interaction rather than speed or spectacle.</p><i aria-hidden="true">↗</i></article><article class="blimp-contribution-card blimp-reveal" data-reveal="true" data-visible="true"><span>03</span><h3>System-level evidence and application scenarios.</h3><p>Payload, display performance, power, flight control, and acoustic output are characterized alongside hands-free guidance, situated assistance, and mobile communication scenarios.</p><i aria-hidden="true">↗</i></article></div></section><section aria-labelledby="blimp-comparison-title" class="blimp-comparison"><header class="blimp-section-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">A DISTINCT DESIGN SPACE</p><h2 id="blimp-comparison-title">Between a fixed screen and a multirotor drone.</h2></div><p>This is the paper’s design framing, not a controlled comparative user study. Exact acoustic conditions differ across cited systems.</p></header><div aria-label="Interface design-space comparison" class="blimp-comparison-table blimp-reveal" data-reveal="true" data-visible="true" role="table"><div class="blimp-comparison-row blimp-comparison-row--head" role="row"><span role="columnheader">Characteristic</span><strong role="columnheader">Fixed / handheld screen</strong><strong role="columnheader">Small multirotor</strong><strong role="columnheader">BlimpMate</strong></div><div class="blimp-comparison-row" role="row"><span role="rowheader">Position</span><p>Predetermined location or held by the user.</p><p>Mobile in three dimensions.</p><p>Mobile in three dimensions, intended to remain near the user or task.</p></div><div class="blimp-comparison-row" role="row"><span role="rowheader">Attention</span><p>Often requires a shift toward the device.</p><p>Can bring output into the surrounding space.</p><p>Frames visual information as spatially situated and nearby.</p></div><div class="blimp-comparison-row" role="row"><span role="rowheader">Acoustic profile</span><p>No flight propulsion.</p><p>The paper cites prior small-drone measurements around 70–95 dB(A) under normalized 1 m conditions.</p><p>47.1 dB(A) mean routine hover in the reported room test.</p></div><div class="blimp-comparison-row" role="row"><span role="rowheader">Physical presence</span><p>Rigid or handheld object.</p><p>Exposed high-speed rotors are a close-proximity concern.</p><p>Buoyant, softer body with compact propulsion modules.</p></div><div class="blimp-comparison-row" role="row"><span role="rowheader">Duration</span><p>Depends on mains power or device battery.</p><p>Typically constrained by continuous lift power.</p><p>Near-neutral buoyancy supports 73 min hover with lightweight visuals in the tested prototype.</p></div></div></section><section aria-labelledby="blimp-specifications-title" class="blimp-specifications" id="tech-specs"><header class="blimp-section-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">TECHNICAL SPECIFICATIONS</p><h2 id="blimp-specifications-title">The prototype, by the numbers.</h2></div><p>Measurements and component descriptions are drawn from the submitted UIST ’26 paper and refer to the current research prototype.</p></header><div class="blimp-specification-groups"><details class="blimp-specification-group blimp-reveal" data-reveal="true" data-visible="true" open=""><summary><span>01</span><h3>Body and buoyancy</h3><i aria-hidden="true">+</i></summary><dl><div><dt>Dimensions</dt><dd>Approximately 64 × 64 × 64 cm</dd></div><div><dt>Integrated mass</dt><dd>323.7 g</dd></div><div><dt>Estimated equivalent lift</dt><dd>360.0 g</dd></div><div><dt>Remaining lift margin</dt><dd>36.3 g</dd></div><div><dt>Envelope materials</dt><dd>OPA/Al/PE barrier film; matte PE screen; transparent PE window</dd></div></dl></details><details class="blimp-specification-group blimp-reveal" data-reveal="true" data-visible="true"><summary><span>02</span><h3>Display</h3><i aria-hidden="true">+</i></summary><dl><div><dt>Projection module</dt><dd>Ultimems HD309 MEMS-based LBS</dd></div><div><dt>Projector mass</dt><dd>24.9 g</dd></div><div><dt>Signal</dt><dd>1280 × 720 at 60 Hz; 10-bit RGB laser output</dd></div><div><dt>Usable display area</dt><dd>Up to approximately 84 cm diagonal</dd></div><div><dt>Average measured luminance</dt><dd>305.7 cd/m² across a 3 × 3 grid</dd></div><div><dt>Smallest clearly resolved stripe</dt><dd>1.5 mm (approximately 0.33 lp/mm)</dd></div></dl></details><details class="blimp-specification-group blimp-reveal" data-reveal="true" data-visible="true"><summary><span>03</span><h3>Motion, sensing, and compute</h3><i aria-hidden="true">+</i></summary><dl><div><dt>Propulsion</dt><dd>Four 1404 brushless motors</dd></div><div><dt>Flight controller</dt><dd>Flywoo GN405</dd></div><div><dt>Onboard compute</dt><dd>Raspberry Pi Compute Module 5</dd></div><div><dt>Sensing</dt><dd>OV5647 camera, microphone, downward optical-flow sensor</dd></div><div><dt>Battery</dt><dd>Rechargeable 3.7 V, 3000 mAh</dd></div><div><dt>Active stabilization</dt><dd>Vertical velocity and yaw / heading</dd></div></dl></details></div></section><section aria-labelledby="blimp-future-title" class="blimp-future"><header class="blimp-centered-head blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">WHAT COMES NEXT</p><h2 id="blimp-future-title">The research roadmap is part of the product story.</h2><p>The current prototype demonstrates feasibility. The following cards preserve the paper’s open questions and specify the visual evidence needed for a credible next version.</p></header><div class="blimp-future-grid"><article class="blimp-future-card blimp-reveal" data-reveal="true" data-visible="true"><div class="blimp-future-placeholder"><div><span>EXPLODED RENDER</span><span>1:1</span></div><strong>VISUAL PLACEHOLDER</strong><p>Compare the current prototype with a proposed integrated revision; label volume, mass, and serviceability changes.</p><i aria-hidden="true"></i></div><div class="blimp-future-copy"><span>01</span><h3>Smaller, more integrated hardware</h3><p>Miniaturize control electronics, tighten mechanical integration, and reduce envelope and frame mass so the platform can move more naturally through everyday indoor spaces.</p></div></article><article class="blimp-future-card blimp-reveal" data-reveal="true" data-visible="true"><div class="blimp-future-placeholder"><div><span>SYSTEM CONCEPT</span><span>16:9</span></div><strong>VISUAL PLACEHOLDER</strong><p>Show a realistic docking or wireless-charging workflow, including approach, alignment, charging state, and safe departure.</p><i aria-hidden="true"></i></div><div class="blimp-future-copy"><span>02</span><h3>Long-term power and charging</h3><p>Explore higher energy density, wireless charging, and other deployment strategies without treating extra battery mass as a free improvement.</p></div></article><article class="blimp-future-card blimp-reveal" data-reveal="true" data-visible="true"><div class="blimp-future-placeholder"><div><span>TEST VIDEO</span><span>16:9</span></div><strong>VISUAL PLACEHOLDER</strong><p>Record a controlled matrix of text sizes, icon sizes, viewing angles, distances, ambient lighting, and in-flight motion.</p><i aria-hidden="true"></i></div><div class="blimp-future-copy"><span>03</span><h3>Brighter, clearer, more legible display</h3><p>Improve screen materials, projection optics, brightness, viewing angle, glare control, and text readability across distance, motion, and ambient light.</p></div></article><article class="blimp-future-card blimp-reveal" data-reveal="true" data-visible="true"><div class="blimp-future-placeholder"><div><span>USER STUDY</span><span>16:9</span></div><strong>VISUAL PLACEHOLDER</strong><p>Document a moderated multi-user study with visible consent, recording-state indicators, privacy controls, and emergency-stop behavior.</p><i aria-hidden="true"></i></div><div class="blimp-future-copy"><span>04</span><h3>Multi-user behavior, privacy, and autonomy</h3><p>Study orientation toward multiple viewers, competing requests, shared versus private information, camera and microphone expectations, and safe user-relative repositioning.</p></div></article></div></section><section aria-labelledby="blimp-media-plan-title" class="blimp-media-plan"><div class="blimp-media-plan-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">MEDIA PRODUCTION PLAN</p><h2 id="blimp-media-plan-title">The blank spaces are specified, not hidden.</h2></div><p>Every missing image or video remains visible as an empty production card with its intended content, framing, ratio, and purpose.</p></div><div class="blimp-production-grid"><article class="blimp-production-placeholder"><div aria-label="Placeholder for Hero flight film" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">VIDEO</span><span class="blimp-production-placeholder-ratio">16:9 · 4K</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Hero flight film</h3><p>A calm, continuous sequence showing approach, stable hover, spoken request, display response, user-relative repositioning, and departure.</p><span>12–18 seconds · locked exposure · quiet indoor room</span></div></article><article class="blimp-production-placeholder"><div aria-label="Placeholder for Exploded product turntable" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">3D / VIDEO</span><span class="blimp-production-placeholder-ratio">1:1</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Exploded product turntable</h3><p>A clean 360° turntable with optional hotspots for the envelope, projector, motors, camera and microphone, optical flow, battery, compute, and controller.</p><span>Neutral background · 6 labeled stops · transparent export preferred</span></div></article><article class="blimp-production-placeholder"><div aria-label="Placeholder for In-flight display legibility" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">VIDEO</span><span class="blimp-production-placeholder-ratio">16:9</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>In-flight display legibility</h3><p>Show text, icons, and media at representative viewing distances and angles while hovering under several indoor lighting conditions.</p><span>Front / 45° / 75° views · 0.5–2 m distance · exposure chart</span></div></article><article class="blimp-production-placeholder"><div aria-label="Placeholder for Acoustic comparison" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">VIDEO + AUDIO</span><span class="blimp-production-placeholder-ratio">16:9</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Acoustic comparison</h3><p>Match a 1 m recording geometry and show ambient room, routine hover, vertical motion, yaw, horizontal repositioning, and a reference multirotor.</p><span>Calibrated level overlay · identical microphone position</span></div></article><article class="blimp-production-placeholder"><div aria-label="Placeholder for Mobile controller interface" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">SCREEN RECORDING</span><span class="blimp-production-placeholder-ratio">9:16</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Mobile controller interface</h3><p>Show camera feed, connection state, high-level motion commands, emergency stop, and the boundary between automatic stabilization and manual control.</p><span>Real device capture · visible latency and safety states</span></div></article><article class="blimp-production-placeholder"><div aria-label="Placeholder for Telepresence split view" class="blimp-production-placeholder-frame"><span class="blimp-production-placeholder-type">VIDEO</span><span class="blimp-production-placeholder-ratio">16:9</span><div aria-hidden="true" class="blimp-production-placeholder-mark"><i></i><i></i><i></i></div></div><div class="blimp-production-placeholder-copy"><h3>Telepresence split view</h3><p>Synchronize local room footage, remote participant view, movement control, and the projected face or avatar with clear media provenance.</p><span>Local / remote / robot POV · synchronized audio</span></div></article></div></section><section aria-labelledby="blimp-research-title" class="blimp-research" id="research"><div class="blimp-research-head blimp-reveal" data-reveal="true" data-visible="true"><div><p class="blimp-eyebrow">RESEARCH DETAILS</p><h2 id="blimp-research-title">Built as a system, evaluated as one.</h2></div><p>The paper frames BlimpMate as an integrated research platform rather than a passive blimp carrying a screen.</p></div><div class="blimp-research-layout"><div class="blimp-research-accordions blimp-reveal" data-reveal="true" data-visible="true"><details open=""><summary>Hardware and envelope <span>+</span></summary><p>The envelope uses a black OPA/Al/PE laminated barrier film, a matte PE projection-screen region, and a transparent PE optical window. Heavy modules are mounted low to reduce the center of mass.</p></details><details><summary>Projection display <span>+</span></summary><p>The Ultimems HD309 MEMS-based LBS module weighs 24.9 g, supports 1280 × 720 at 60 Hz with 10-bit RGB laser output, and uses a custom 180° fisheye lens for short-throw rear projection.</p></details><details><summary>Flight control <span>+</span></summary><p>Passive restoring behavior stabilizes roll and pitch. Active control concentrates on vertical motion and yaw through VStab and YawStab, using optical flow and onboard inertial sensing.</p></details><details><summary>Current limitations <span>+</span></summary><p>The paper identifies opportunities to reduce platform size, improve battery-energy tradeoffs, increase display clarity and brightness, broaden viewing angle, and study practical legibility, privacy, safety, and multi-user interaction.</p></details></div><aside class="blimp-paper-card blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">UIST ’26 PAPER</p><h3>BlimpMate: A Quiet, Long-Endurance Flying Display for Hands-Free Intelligent Interaction</h3><p>Henghao Li, Shan Lin, Yang Xu, Yixiao Wei, Hongjie Li, Suwen Mei, Xindi Lyu, Xing-Dong Yang, and Yuhua Jin.</p><dl><div><dt>Venue</dt><dd>UIST ’26 · Detroit</dd></div><div><dt>Pages</dt><dd>13</dd></div><div><dt>DOI</dt><dd>10.1145/3830398.3830527</dd></div></dl><a class="blimp-pill blimp-pill--light" href="public/assets/blimpmate/research/blimpmate-paper.pdf" rel="noreferrer" target="_blank">Open PDF</a></aside></div></section><section class="blimp-project" id="project"><div class="blimp-project-media"><div class="blimp-cube-motion blimp-cube-motion--glow"><div aria-label="A three-dimensional BlimpMate cube" class="blimp-cube" role="img"><div aria-hidden="true" class="blimp-cube-face blimp-cube-face--front"><span>Blimp</span><strong>Mate</strong></div><div aria-hidden="true" class="blimp-cube-face blimp-cube-face--back"><span>PHOENIX</span><strong>LAB</strong></div><div aria-hidden="true" class="blimp-cube-face blimp-cube-face--right"><span>SOFT</span><strong>AIR</strong></div><div aria-hidden="true" class="blimp-cube-face blimp-cube-face--left"><span>HCI</span><strong>ROBOTICS</strong></div><div aria-hidden="true" class="blimp-cube-face blimp-cube-face--top"><span>MOVE</span></div><div aria-hidden="true" class="blimp-cube-face blimp-cube-face--bottom"><span>2026</span></div></div></div><p class="blimp-project-media-note">FINAL PRODUCT FILM / PHOTO PLACEHOLDER</p></div><div class="blimp-project-copy blimp-reveal" data-reveal="true" data-visible="true"><p class="blimp-eyebrow">PHOENIX LAB PROJECT</p><h2>A quiet flying display for soft, situated interaction.</h2><div class="blimp-project-tags"><span>Flying Display</span><span>Robotics</span><span>HCI</span></div><div class="blimp-project-actions"><a class="blimp-pill blimp-pill--light" href="public/assets/blimpmate/research/blimpmate-paper.pdf" rel="noreferrer" target="_blank">Read the paper</a><button class="blimp-back-button" type="button">Back to all projects <span aria-hidden="true">↗</span></button></div></div></section></main><footer class="site-footer"><img alt="PHOENIX Lab" src="public/assets/brand/char_only.svg"/><span class="footer-credit"><span>© 2026 PHOENIX Lab</span><span>Built by Shan Lin</span></span></footer></div>
+<script>
+(() => {
+  const presentationStates = [{"id": "avatar", "label": "Avatar", "eyebrow": "EXPRESSIVE PRESENCE", "title": "A face that makes system state legible.", "body": "The projected surface can show an avatar or expression so people nearby can understand whether BlimpMate is listening, thinking, responding, or waiting.", "assetKind": "UI MOTION STUDY", "ratio": "1:1", "assetBrief": "Create a clean motion sequence of neutral, listening, thinking, speaking, success, uncertainty, and error states on the real projection surface.", "note": "Use the actual projector and envelope; include state timing and audio synchronization."}, {"id": "notification", "label": "Notification", "eyebrow": "LIGHTWEIGHT UPDATE", "title": "A glanceable answer in the surrounding space.", "body": "Compact cards can surface time, weather, reminders, and status updates without turning the blimp into a dense desktop interface.", "assetKind": "UI SCREEN / VIDEO", "ratio": "4:3", "assetBrief": "Show a restrained notification system with hierarchy for title, key value, supporting detail, urgency, and dismiss or snooze state.", "note": "Test at 0.5 m, 1 m, and 2 m under representative indoor lighting."}, {"id": "media", "label": "Media", "eyebrow": "MOVING IMAGE", "title": "Use the large projected surface when motion matters.", "body": "Animation, video, and audio are supported, but the paper shows that multimedia content has a materially higher power cost than lightweight visual content.", "assetKind": "VIDEO + AUDIO", "ratio": "16:9", "assetBrief": "Record short-form media playback with exposure locked to the projected screen and include a power overlay for lightweight versus multimedia content.", "note": "Keep the clip short and readable; document average power and runtime context."}, {"id": "task", "label": "Task", "eyebrow": "POINT-OF-ACTION GUIDANCE", "title": "Instructions that stay close to the work.", "body": "Procedural steps, object cues, timers, and safety reminders can remain visible near a cooking surface, assembly task, or laboratory workspace.", "assetKind": "SCENARIO FILM", "ratio": "21:9", "assetBrief": "Film one continuous task sequence that shows repositioning between task locations, stable hover, step transitions, and a clear completion state.", "note": "Avoid implying autonomous capabilities beyond the current predefined logic and remote-control scope."}, {"id": "communication", "label": "Communication", "eyebrow": "MOBILE TELEPRESENCE", "title": "Give a remote participant a visible place in the room.", "body": "A face or avatar can remain projected while the remote participant receives audiovisual perspective and high-level movement control through the networked system.", "assetKind": "SPLIT-SCREEN VIDEO", "ratio": "16:9", "assetBrief": "Synchronize the local room view, robot camera feed, remote participant view, control input, and projected representation in a single edit.", "note": "Include connection, privacy, mute, and manual-control indicators."}];
+  const hotspots = [{"index": "01", "label": "Envelope", "title": "Buoyancy and optics share one body.", "body": "The custom airtight envelope combines black OPA/Al/PE barrier film, a matte PE projection region, and a transparent PE optical window.", "metric": "64 × 64 × 64 cm", "detail": "Prototype external dimensions", "rotation": -26}, {"index": "02", "label": "Projection screen", "title": "A large surface with almost no panel mass.", "body": "The matte PE region diffuses the scanned light, while the black aluminized body suppresses ambient penetration and unwanted light leakage.", "metric": "≈ 33 in", "detail": "Usable projected diagonal", "rotation": -8}, {"index": "03", "label": "Projector", "title": "A 24.9 g optical engine.", "body": "The Ultimems HD309 MEMS-based laser beam scanning module uses a custom 180° fisheye lens for wide-angle projection at short throw distance.", "metric": "24.9 g", "detail": "Projector module mass", "rotation": 12}, {"index": "04", "label": "Motion", "title": "Four motors, tuned for indoor control.", "body": "Two vertical motors regulate ascent and descent. Two horizontal motors coordinate forward motion and yaw rather than pursuing aggressive flight.", "metric": "4 × 1404", "detail": "Brushless motor layout", "rotation": 34}, {"index": "05", "label": "Sensing", "title": "Near-field perception on a small payload.", "body": "An OV5647 camera and microphone support multimodal interaction, while a downward-facing optical-flow sensor estimates motion for hover stabilization.", "metric": "Cam + mic + flow", "detail": "Onboard sensing set", "rotation": 56}, {"index": "06", "label": "Compute and power", "title": "Lightweight onboard. Higher-level reasoning offboard.", "body": "A Raspberry Pi Compute Module 5 manages local sensing, communication, audio, and rendering; external services provide higher-level perception and reasoning.", "metric": "3.7 V / 3000 mAh", "detail": "Rechargeable battery", "rotation": 78}];
+  const scenarios = [{"label": "Cooking", "eyebrow": "HANDS-FREE TASK GUIDANCE", "title": "Keep both hands on the recipe.", "body": "Recipe steps, ingredient order, timing cues, and reminders stay visible as the user moves between the cutting area, stove, and sink.", "source": "Paper Figure 8a", "image": "public/assets/blimpmate/research/scenario-guidance-1.webp", "alt": "BlimpMate displaying cooking guidance near a cutting board."}, {"label": "Assembly", "eyebrow": "HANDS-FREE TASK GUIDANCE", "title": "Show the next part — and where it goes.", "body": "Step-by-step guidance can mark the relevant object, component, or assembly location so the user knows what to pick up and where to place it next.", "source": "Paper Figure 8b", "image": "public/assets/blimpmate/research/scenario-guidance-2.webp", "alt": "BlimpMate marking the next furniture assembly step beside a chair."}, {"label": "Laboratory", "eyebrow": "HANDS-BUSY LAB WORK", "title": "Instructions that stay off the bench.", "body": "Procedural steps and safety reminders remain visible without requiring a touch screen while the user wears gloves or handles sensitive materials.", "source": "Paper Figure 8c", "image": "public/assets/blimpmate/research/scenario-guidance-3.webp", "alt": "BlimpMate presenting laboratory guidance while a user works with equipment."}, {"label": "Nutrition", "eyebrow": "CONTEXT-AWARE ASSISTANCE", "title": "A little more context at the table.", "body": "Visible food items can be paired with lightweight nutritional feedback such as approximate calorie content or simple dietary suggestions.", "source": "Paper Figure 9a", "image": "public/assets/blimpmate/research/scenario-context-1.webp", "alt": "BlimpMate presenting approximate nutritional information near a meal."}, {"label": "Reminder", "eyebrow": "PROACTIVE REMINDER", "title": "A gentle check before you leave.", "body": "When keys, a phone, or an access card remain behind, the display can surface a nearby reminder before the user exits the space.", "source": "Paper Figure 9b", "image": "public/assets/blimpmate/research/scenario-context-2.webp", "alt": "BlimpMate displaying a left-behind reminder near a person leaving a room."}, {"label": "Safety", "eyebrow": "SITUATED SAFETY", "title": "Make the warning visible where it matters.", "body": "Potentially unsafe situations can trigger safety-related reminders near the workspace rather than on a separate device.", "source": "Paper Figure 9c", "image": "public/assets/blimpmate/research/scenario-context-3.webp", "alt": "BlimpMate displaying a laboratory safety alert."}, {"label": "Telepresence", "eyebrow": "MOBILE TELEPRESENCE", "title": "Give remote presence a place in the room.", "body": "A remote participant can access the robot’s audiovisual perspective and control movement while their face or avatar remains visible on the blimp surface.", "source": "Paper Figure 10", "image": "public/assets/blimpmate/research/telepresence-strip.webp", "alt": "Hands-free video calling and VR-mediated telepresence through BlimpMate."}];
+  const systemViews = [{"label": "01 / SYSTEM VIEW", "title": "Hardware platform", "body": "A custom helium envelope, carbon-fiber frame, four motors, flight controller, Raspberry Pi Compute Module 5, camera, microphone, optical-flow sensor, projector, and battery.", "image": "public/assets/blimpmate/research/hardware-platform.webp", "alt": "Annotated BlimpMate hardware platform."}, {"label": "02 / SYSTEM VIEW", "title": "Projection display", "body": "A 24.9 g MEMS laser beam scanning projector rear-projects through a transparent optical window onto a matte PE screen region integrated into the envelope.", "image": "public/assets/blimpmate/research/projection-subsystem.webp", "alt": "Rear-projection subsystem and MEMS laser scanning principle."}, {"label": "03 / SYSTEM VIEW", "title": "Low-level control", "body": "VStab regulates vertical velocity; YawStab combines yaw-rate damping, heading hold, and forward/yaw mixing for predictable indoor motion.", "image": "public/assets/blimpmate/research/flight-control-architecture.webp", "alt": "Vertical and yaw stabilization control architecture."}, {"label": "04 / SYSTEM VIEW", "title": "Networked interaction", "body": "Cloud, backend, onboard, and mobile layers form a continuous loop for multimodal input, reasoning, rendering, communication, and high-level motion control.", "image": "public/assets/blimpmate/research/networked-architecture.webp", "alt": "Distributed BlimpMate networked interaction architecture."}];
+  const q = (selector, root=document) => root.querySelector(selector);
+  const qa = (selector, root=document) => Array.from(root.querySelectorAll(selector));
+  const clamp = (value, min=0, max=1) => Math.min(max, Math.max(min, value));
+
+  // Reading progress and section-aware local navigation.
+  const localNav = q('.blimpmate-local-nav');
+  const progress = q('.blimpmate-local-progress i');
+  const navLinks = qa('.blimpmate-local-nav nav a');
+  const syncPage = () => {
+    const max = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+    const value = clamp(scrollY / max);
+    if (progress) progress.style.width = `${value * 100}%`;
+    if (localNav) localNav.classList.toggle('blimpmate-local-nav--compact', scrollY > 24);
+    let current = navLinks[0];
+    navLinks.forEach(link => {
+      const target = q(link.getAttribute('href'));
+      if (target && target.getBoundingClientRect().top <= innerHeight * .42) current = link;
+    });
+    navLinks.forEach(link => link.toggleAttribute('aria-current', link === current));
+    if (current) current.setAttribute('aria-current', 'location');
+  };
+  addEventListener('scroll', syncPage, {passive:true}); addEventListener('resize', syncPage); syncPage();
+
+  // Model loading status.
+  qa('model-viewer').forEach(viewer => {
+    const wrap = viewer.closest('[data-model-status]');
+    const ready = () => { if (wrap) wrap.dataset.modelStatus = 'ready'; };
+    viewer.addEventListener('load', ready, {once:true});
+  });
+
+  // Highlights carousel.
+  const rail = q('.blimp-highlights-rail');
+  const cards = qa('.blimp-highlight-card');
+  const dots = qa('.blimp-highlights-pagination > div button');
+  const controls = qa('.blimp-highlights-controls button');
+  const pauseButton = q('.blimp-highlights-pause');
+  let activeHighlight = Math.max(0, cards.findIndex(card => card.dataset.active === 'true'));
+  let paused = false;
+  const showHighlight = (index, smooth=true) => {
+    if (!cards.length) return;
+    activeHighlight = (index + cards.length) % cards.length;
+    cards.forEach((card, i) => card.dataset.active = String(i === activeHighlight));
+    dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === activeHighlight)));
+    const card = cards[activeHighlight];
+    if (rail && card) rail.scrollTo({left: Math.max(0, card.offsetLeft - (rail.clientWidth-card.offsetWidth)/2), behavior: smooth ? 'smooth' : 'auto'});
+  };
+  controls[0]?.addEventListener('click', () => showHighlight(activeHighlight-1));
+  controls[1]?.addEventListener('click', () => showHighlight(activeHighlight+1));
+  dots.forEach((dot,i) => dot.addEventListener('click', () => showHighlight(i)));
+  pauseButton?.addEventListener('click', () => { paused = !paused; pauseButton.textContent = paused ? 'Play' : 'Pause'; pauseButton.setAttribute('aria-label', paused ? 'Resume automatic highlights' : 'Pause automatic highlights'); });
+  setInterval(() => { if (!paused && !document.hidden) showHighlight(activeHighlight+1); }, 5200);
+
+  // Product hotspot tabs.
+  const hotspotButtons = qa('.blimp-hotspot-tabs button');
+  const readout = q('.blimp-closer-readout');
+  const closerIndex = q('.blimp-closer-index');
+  const closerViewer = q('.blimp-closer-model model-viewer');
+  const showHotspot = index => {
+    const item = hotspots[index]; if (!item || !readout) return;
+    hotspotButtons.forEach((button,i) => button.setAttribute('aria-selected', String(i===index)));
+    q('.blimp-eyebrow', readout).textContent = `${item.index} / ${item.label}`;
+    q('h3', readout).textContent = item.title;
+    const ps = qa(':scope > p', readout); if (ps[1]) ps[1].textContent = item.body;
+    q('strong', readout).textContent = item.metric; q(':scope > span', readout).textContent = item.detail;
+    if (closerIndex) closerIndex.textContent = item.index;
+    if (closerViewer) closerViewer.setAttribute('camera-orbit', `${item.rotation - 24}deg 72deg auto`);
+  };
+  hotspotButtons.forEach((button,i) => button.addEventListener('click', () => showHotspot(i)));
+
+  // Presentation-state asset brief gallery.
+  const stateButtons = qa('.blimp-state-tabs button');
+  const stateStage = q('.blimp-state-stage');
+  const showState = index => {
+    const item = presentationStates[index]; if (!item || !stateStage) return;
+    stateButtons.forEach((button,i) => button.setAttribute('aria-selected', String(i===index)));
+    const toolbar = qa('.blimp-state-asset-toolbar span', stateStage); if (toolbar[0]) toolbar[0].textContent=item.assetKind; if(toolbar[1]) toolbar[1].textContent=item.ratio;
+    q('.blimp-state-asset-center strong',stateStage).textContent=item.assetBrief;
+    q('.blimp-state-asset-center p',stateStage).textContent=item.note;
+    const asset = q('.blimp-state-asset',stateStage); if(asset) asset.setAttribute('aria-label',`Placeholder asset brief for ${item.title}`);
+    const copy=q('.blimp-state-copy',stateStage); q('.blimp-eyebrow',copy).textContent=item.eyebrow; q('h3',copy).textContent=item.title;
+    const cp=qa(':scope > p',copy); if(cp[1]) cp[1].textContent=item.body;
+    q(':scope > span',copy).textContent=`${String(index+1).padStart(2,'0')} / ${String(presentationStates.length).padStart(2,'0')}`;
+  };
+  stateButtons.forEach((button,i) => button.addEventListener('click', () => showState(i)));
+
+  // Scenario gallery.
+  const scenarioButtons=qa('.blimp-scenario-tabs button'); const scenarioStage=q('.blimp-scenario-stage');
+  const showScenario=index=>{ const item=scenarios[index]; if(!item||!scenarioStage)return; scenarioButtons.forEach((b,i)=>b.setAttribute('aria-selected',String(i===index))); const img=q('img',scenarioStage); img.src=item.image; img.alt=item.alt; q('figcaption',scenarioStage).textContent=item.source; const copy=q('.blimp-scenario-stage-copy',scenarioStage); q('.blimp-eyebrow',copy).textContent=item.eyebrow; q('h3',copy).textContent=item.title; const ps=qa(':scope > p',copy); if(ps[1])ps[1].textContent=item.body; };
+  scenarioButtons.forEach((button,i)=>button.addEventListener('click',()=>showScenario(i)));
+
+  // System evidence tabs.
+  const systemButtons=qa('.blimp-system-tabs button'); const systemRoot=q('.blimp-system-viewer');
+  const showSystem=index=>{ const item=systemViews[index]; if(!item||!systemRoot)return; systemButtons.forEach((b,i)=>b.setAttribute('aria-selected',String(i===index))); const img=q('.blimp-system-viewer-stage img',systemRoot); img.src=item.image; img.alt=item.alt; const copy=q('.blimp-system-viewer-copy',systemRoot); q('.blimp-eyebrow',copy).textContent=item.label; q('h3',copy).textContent=item.title; const ps=qa(':scope > p',copy); if(ps[1])ps[1].textContent=item.body; };
+  systemButtons.forEach((button,i)=>button.addEventListener('click',()=>showSystem(i)));
+
+  // Scroll-scrub performance story.
+  const performance=q('.blimp-performance'); const sticky=q('.blimp-performance-sticky'); const chapters=qa('.blimp-performance-chapter'); const perfViewer=q('.blimp-performance-stage model-viewer'); const degree=q('.blimp-degree-readout strong'); const perfBar=q('.blimp-performance-progress span');
+  const syncPerformance=()=>{ if(!performance||!sticky)return; const distance=Math.max(performance.offsetHeight-innerHeight,1); const p=clamp(-performance.getBoundingClientRect().top/distance); const chapter=Math.min(chapters.length-1,Math.floor(p*chapters.length)); const local=clamp(p*chapters.length-chapter); sticky.style.setProperty('--performance-progress',p); const stage=q('.blimp-performance-stage'); if(stage)stage.style.setProperty('--chapter-progress',local); chapters.forEach((el,i)=>{el.dataset.active=String(i===chapter);el.setAttribute('aria-hidden',String(i!==chapter));}); if(perfViewer)perfViewer.setAttribute('camera-orbit',`${-24+p*360}deg 72deg auto`); if(degree)degree.textContent=`${Math.round(p*360)}°`; if(perfBar)perfBar.style.width=`${p*100}%`; };
+  addEventListener('scroll',syncPerformance,{passive:true}); addEventListener('resize',syncPerformance); syncPerformance();
+
+  // Keyboard arrow behavior for all horizontal tablists.
+  qa('[role="tablist"]').forEach(list => list.addEventListener('keydown', event => {
+    if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) return;
+    const tabs=qa('[role="tab"]',list); const current=tabs.indexOf(document.activeElement); if(current<0)return; event.preventDefault();
+    const delta=['ArrowLeft','ArrowUp'].includes(event.key)?-1:1; tabs[(current+delta+tabs.length)%tabs.length].focus();
+  }));
+})();
+</script></body></html>

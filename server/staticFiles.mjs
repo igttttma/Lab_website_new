@@ -15,10 +15,14 @@ const mimeTypes = {
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
   '.gif': 'image/gif',
+  '.pdf': 'application/pdf',
   '.mp4': 'video/mp4',
   '.webm': 'video/webm',
   '.ogv': 'video/ogg',
   '.ogg': 'video/ogg',
+  '.glb': 'model/gltf-binary',
+  '.gltf': 'model/gltf+json; charset=utf-8',
+  '.bin': 'application/octet-stream',
   '.ico': 'image/x-icon',
 }
 

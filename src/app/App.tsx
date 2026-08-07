@@ -16,6 +16,10 @@ export function App() {
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [path])
+
   if (path.startsWith('/admin')) {
     return <AdminPage onNavigate={navigate} />
   }

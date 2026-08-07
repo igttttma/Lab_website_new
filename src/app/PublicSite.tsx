@@ -3,20 +3,24 @@ import { BrandHeader } from '../components/BrandHeader'
 import { Section } from '../components/Section'
 import type { LabContent, Project } from '../content/types'
 import { fetchContent, loadContent } from '../services/contentRepository'
+import { BlimpCube, BlimpMatePage } from '../features/blimpmate/BlimpMatePage'
 
 type PublicSiteProps = {
   currentPath: string
   onNavigate: (path: string) => void
 }
 
-function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
+function ProjectCard({ project, compact = false, onNavigate }: { project: Project; compact?: boolean; onNavigate: (path: string) => void }) {
   const hasImage = project.mediaKind === 'image' && Boolean(project.mediaUrl)
   const hasGif = project.mediaKind === 'image' && Boolean(project.gifUrl)
+  const isBlimpMate = project.id === 'blimpmate'
 
   return (
     <article className={compact ? 'project-card compact' : 'project-card'}>
       <div className={hasImage && hasGif ? 'project-media has-hover-gif' : 'project-media'} aria-hidden="true">
-        {hasImage || hasGif ? (
+        {isBlimpMate ? (
+          <BlimpCube scene="lift" />
+        ) : hasImage || hasGif ? (
           <>
             {hasImage ? <img className="project-still" src={project.mediaUrl} alt="" /> : null}
             {hasGif ? <img className="project-gif" src={project.gifUrl} alt="" /> : null}
@@ -43,7 +47,15 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
         </div>
         <div className="text-links">
           {project.links.map((link) => (
-            <a key={link.label} href={link.href}>
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(event) => {
+                if (!link.href.startsWith('/')) return
+                event.preventDefault()
+                onNavigate(link.href)
+              }}
+            >
               {link.label}
             </a>
           ))}
@@ -125,7 +137,7 @@ function HomePage({ content, onNavigate }: { content: LabContent; onNavigate: (p
       >
         <div className="featured-grid">
           {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} onNavigate={onNavigate} />
           ))}
         </div>
       </Section>
@@ -133,13 +145,13 @@ function HomePage({ content, onNavigate }: { content: LabContent; onNavigate: (p
   )
 }
 
-function ProjectsPage({ content }: { content: LabContent }) {
+function ProjectsPage({ content, onNavigate }: { content: LabContent; onNavigate: (path: string) => void }) {
   return (
     <main>
       <Section id="projects" title="Projects">
         <div className="project-list">
           {content.projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} onNavigate={onNavigate} />
           ))}
         </div>
       </Section>
@@ -348,7 +360,9 @@ function ContactPage({ content }: { content: LabContent }) {
 function CurrentPage({ path, content, onNavigate }: { path: string; content: LabContent; onNavigate: (path: string) => void }) {
   switch (path) {
     case '/projects':
-      return <ProjectsPage content={content} />
+      return <ProjectsPage content={content} onNavigate={onNavigate} />
+    case '/projects/blimpmate':
+      return <BlimpMatePage project={content.projects.find((project) => project.id === 'blimpmate')} onNavigate={onNavigate} />
     case '/people':
       return <PeoplePage content={content} />
     case '/publications':
@@ -402,4 +416,3 @@ export function PublicSite({ currentPath, onNavigate }: PublicSiteProps) {
     </>
   )
 }
-

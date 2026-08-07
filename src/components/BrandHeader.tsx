@@ -13,8 +13,10 @@ function navPath(label: string) {
 }
 
 export function BrandHeader({ navigation, currentPath, onNavigate }: BrandHeaderProps) {
+  const isBlimpMate = currentPath === '/projects/blimpmate'
+
   return (
-    <header className="site-header">
+    <header className={`site-header${isBlimpMate ? ' site-header--blimpmate' : ''}`}>
       <div className="site-header-inner">
         <a
           className="brand-lockup"
@@ -31,10 +33,11 @@ export function BrandHeader({ navigation, currentPath, onNavigate }: BrandHeader
         <nav className="nav-links" aria-label="Primary navigation">
           {navigation.map((item) => {
             const path = navPath(item)
+            const isActive = currentPath === path || (item === 'Projects' && currentPath.startsWith('/projects/'))
 
             return (
               <a
-                className={currentPath === path ? 'active' : ''}
+                className={isActive ? 'active' : ''}
                 key={item}
                 href={path}
                 onClick={(event) => {

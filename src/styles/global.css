@@ -19,6 +19,2302 @@
   --text-heading: 26px;
 }
 
+/* BlimpMate research-story integration */
+.blimp-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.blimp-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.blimp-pill--light {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.blimp-pill:hover,
+.blimp-pill:focus-visible {
+  background: var(--blimp-orange);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.blimp-text-link,
+.blimp-paper-link {
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.blimp-text-link:hover,
+.blimp-text-link:focus-visible,
+.blimp-paper-link:hover,
+.blimp-paper-link:focus-visible {
+  color: var(--blimp-orange);
+}
+
+.blimp-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  padding: 0 clamp(24px, 8vw, 120px);
+  background: var(--blimp-black);
+  color: #f5f5f7;
+}
+
+.blimp-facts div {
+  display: grid;
+  gap: 6px;
+  padding: 32px 0 38px;
+  border-top: 1px solid rgba(245, 245, 247, 0.18);
+}
+
+.blimp-facts strong {
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(22px, 3vw, 34px);
+  letter-spacing: 0.02em;
+}
+
+.blimp-facts span {
+  color: #a1a1a6;
+  font-size: 13px;
+}
+
+.blimp-highlights {
+  padding: clamp(90px, 12vw, 170px) 0 clamp(100px, 13vw, 190px);
+  background: #ffffff;
+}
+
+.blimp-highlights-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto 54px;
+}
+
+.blimp-highlights-head h2,
+.blimp-evidence-intro h2,
+.blimp-media-plan-head h2,
+.blimp-research-head h2 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(42px, 6vw, 84px);
+  letter-spacing: -0.065em;
+  line-height: 0.96;
+}
+
+.blimp-highlights-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.blimp-highlights-controls button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(29, 29, 31, 0.2);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1d1d1f;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.blimp-highlights-controls button:hover,
+.blimp-highlights-controls button:focus-visible {
+  background: #1d1d1f;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.blimp-highlights-rail {
+  display: flex;
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: #c7c7cc transparent;
+}
+
+.blimp-highlight-card {
+  position: relative;
+  display: flex;
+  flex: 0 0 min(440px, 72vw);
+  min-height: 440px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: #f5f5f7;
+}
+
+.blimp-highlight-card--image {
+  color: #ffffff;
+}
+
+.blimp-highlight-card--image::after {
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(180deg, transparent, rgba(7, 9, 13, 0.78));
+  content: "";
+}
+
+.blimp-highlight-card--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blimp-highlight-card--image > div {
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+  left: 30px;
+  z-index: 1;
+}
+
+.blimp-highlight-card--image p {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.blimp-highlight-card h3 {
+  max-width: 370px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-highlight-card--metric {
+  display: grid;
+  align-content: center;
+  padding: 34px;
+}
+
+.blimp-highlight-card--metric strong {
+  display: block;
+  margin: 38px 0 14px;
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(54px, 7vw, 92px);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.blimp-highlight-card--metric h3 {
+  color: #1d1d1f;
+}
+
+.blimp-highlight-card--metric > span {
+  max-width: 270px;
+  margin-top: 22px;
+  color: #6e6e73;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.blimp-highlight-card--orange {
+  background: #ffb08d;
+}
+
+.blimp-highlight-card--blue {
+  background: #b6c9ed;
+}
+
+.blimp-story-evidence {
+  position: absolute;
+  right: 0;
+  bottom: 8%;
+  z-index: 2;
+  width: clamp(150px, 18vw, 226px);
+  margin: 0;
+  overflow: hidden;
+  border: 8px solid rgba(245, 245, 247, 0.88);
+  background: #ffffff;
+  box-shadow: 0 18px 38px rgba(29, 29, 31, 0.16);
+  transform: rotate(4deg);
+}
+
+.blimp-story-evidence img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  object-fit: cover;
+}
+
+.blimp-story-evidence figcaption {
+  padding: 7px 8px 8px;
+  color: #6e6e73;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.blimp-scenario-shell {
+  overflow: hidden;
+  background: #f5f5f7;
+}
+
+.blimp-scenario-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.14);
+  scrollbar-width: none;
+}
+
+.blimp-scenario-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.blimp-scenario-tabs button,
+.blimp-system-tabs button {
+  flex: 0 0 auto;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #86868b;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 19px 22px 16px;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.blimp-scenario-tabs button[aria-selected="true"],
+.blimp-system-tabs button[aria-selected="true"] {
+  border-bottom-color: var(--blimp-orange);
+  color: #1d1d1f;
+}
+
+.blimp-scenario-tabs button:hover,
+.blimp-scenario-tabs button:focus-visible,
+.blimp-system-tabs button:hover,
+.blimp-system-tabs button:focus-visible {
+  color: #1d1d1f;
+}
+
+.blimp-scenario-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.84fr);
+  min-height: 560px;
+}
+
+.blimp-scenario-stage figure {
+  position: relative;
+  min-height: 420px;
+  margin: 0;
+  overflow: hidden;
+  background: #d7dce5;
+}
+
+.blimp-scenario-stage figure::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(7, 9, 13, 0.16), transparent 55%);
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-scenario-stage figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blimp-scenario-stage figcaption {
+  position: absolute;
+  right: 22px;
+  bottom: 20px;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-scenario-stage-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 5vw, 72px);
+}
+
+.blimp-scenario-stage-copy h3 {
+  max-width: 430px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.blimp-scenario-stage-copy > p:not(.blimp-eyebrow) {
+  max-width: 420px;
+  margin: 24px 0 28px;
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.38;
+}
+
+.blimp-scenario-stage-copy > span {
+  color: #9a9aa0;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-system-copy {
+  grid-column: 1;
+}
+
+.blimp-system-copy .blimp-paper-link {
+  display: inline-block;
+  margin-top: 30px;
+  color: #f5f5f7;
+}
+
+.blimp-system-viewer {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.blimp-system-viewer-stage {
+  position: relative;
+  min-height: 390px;
+  margin: 0;
+  overflow: hidden;
+  background: #151922;
+}
+
+.blimp-system-viewer-stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  object-fit: cover;
+}
+
+.blimp-system-viewer-stage figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  color: rgba(245, 245, 247, 0.65);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-system-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(245, 245, 247, 0.16);
+  scrollbar-width: none;
+}
+
+.blimp-system-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.blimp-system-tabs button {
+  padding-right: 16px;
+  padding-left: 16px;
+  color: #a1a1a6;
+}
+
+.blimp-system-tabs button[aria-selected="true"] {
+  color: #f5f5f7;
+}
+
+.blimp-system-viewer-copy {
+  padding: 24px 4px 0;
+}
+
+.blimp-system-viewer-copy .blimp-eyebrow {
+  margin-bottom: 12px;
+  color: var(--blimp-orange);
+  font-size: 10px;
+}
+
+.blimp-system-viewer-copy h3 {
+  margin: 0;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.055em;
+}
+
+.blimp-system-viewer-copy > p:last-child {
+  max-width: 520px;
+  margin: 14px 0 0;
+  color: #a1a1a6;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.blimp-system-layer-grid {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 38px;
+  background: rgba(245, 245, 247, 0.18);
+}
+
+.blimp-system-layer-grid article {
+  min-height: 205px;
+  padding: 22px;
+  background: var(--blimp-black);
+}
+
+.blimp-system-layer-grid article > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-system-layer-grid h3 {
+  margin: 58px 0 10px;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 25px;
+}
+
+.blimp-system-layer-grid p {
+  margin: 0;
+  color: #a1a1a6;
+  line-height: 1.35;
+}
+
+.blimp-performance-evidence {
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+  background: #ffffff;
+}
+
+.blimp-evidence-intro {
+  display: grid;
+  max-width: 780px;
+  margin-bottom: 72px;
+}
+
+.blimp-evidence-intro > p:last-child,
+.blimp-media-plan-head > p,
+.blimp-research-head > p {
+  max-width: 560px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.35;
+}
+
+.blimp-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.blimp-metric-card {
+  display: grid;
+  align-content: start;
+  min-height: 230px;
+  padding: 28px;
+  background: #f5f5f7;
+}
+
+.blimp-metric-card--hero {
+  grid-row: span 2;
+  min-height: 474px;
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.blimp-metric-card > span {
+  color: #6e6e73;
+  font-size: 13px;
+}
+
+.blimp-metric-card--hero > span {
+  color: #a1a1a6;
+}
+
+.blimp-metric-card strong {
+  margin-top: 54px;
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.blimp-metric-card--hero strong {
+  color: #f5f5f7;
+  font-size: clamp(64px, 8vw, 116px);
+}
+
+.blimp-metric-card em {
+  margin-top: 8px;
+  color: var(--blimp-orange);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.blimp-metric-card p {
+  max-width: 300px;
+  margin: 18px 0 0;
+  color: #6e6e73;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.blimp-metric-card--hero p {
+  color: #a1a1a6;
+}
+
+.blimp-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.blimp-evidence-card {
+  margin: 0;
+  overflow: hidden;
+  background: #f5f5f7;
+}
+
+.blimp-evidence-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+
+.blimp-evidence-card figcaption {
+  display: grid;
+  gap: 7px;
+  padding: 20px 24px 24px;
+}
+
+.blimp-evidence-card figcaption strong {
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 23px;
+  letter-spacing: -0.04em;
+}
+
+.blimp-evidence-card figcaption span {
+  color: #6e6e73;
+  font-size: 14px;
+}
+
+.blimp-noise-comparison {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(35px, 8vw, 120px);
+  align-items: center;
+  margin-top: 18px;
+  padding: clamp(30px, 5vw, 60px);
+  background: #f5f5f7;
+}
+
+.blimp-noise-comparison h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(32px, 4vw, 54px);
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.blimp-noise-comparison p:last-child {
+  max-width: 380px;
+  margin: 20px 0 0;
+  color: #6e6e73;
+  line-height: 1.4;
+}
+
+.blimp-bar-chart {
+  display: grid;
+  gap: 13px;
+}
+
+.blimp-bar-chart > div {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr) 46px;
+  gap: 12px;
+  align-items: center;
+  color: #6e6e73;
+  font-size: 12px;
+}
+
+.blimp-bar-chart i {
+  position: relative;
+  display: block;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d7d7dc;
+}
+
+.blimp-bar-chart i::after {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc((var(--bar-value) - 45) * 16.6667%);
+  border-radius: inherit;
+  background: var(--blimp-orange);
+  content: "";
+}
+
+.blimp-bar-chart strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 12px;
+  text-align: right;
+}
+
+.blimp-media-plan,
+.blimp-research {
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+}
+
+.blimp-media-plan {
+  background: #f5f5f7;
+}
+
+.blimp-media-plan-head,
+.blimp-research-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+  gap: 50px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+
+.blimp-media-plan-head > p,
+.blimp-research-head > p {
+  margin: 0;
+}
+
+.blimp-media-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: #d6d6da;
+}
+
+.blimp-media-plan-card {
+  display: grid;
+  align-content: start;
+  min-height: 270px;
+  padding: 26px;
+  background: #f5f5f7;
+}
+
+.blimp-media-plan-card > span {
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-media-plan-card strong {
+  margin-top: 54px;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.blimp-media-plan-card p {
+  max-width: 360px;
+  margin: 14px 0 0;
+  color: #6e6e73;
+  font-size: 14px;
+  line-height: 1.38;
+}
+
+.blimp-research {
+  background: #ffffff;
+}
+
+.blimp-research-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 18px;
+}
+
+.blimp-research-accordions {
+  border-top: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-research-accordions details {
+  border-bottom: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-research-accordions summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  color: #1d1d1f;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.blimp-research-accordions summary::-webkit-details-marker {
+  display: none;
+}
+
+.blimp-research-accordions summary span {
+  color: var(--blimp-orange);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.blimp-research-accordions details[open] summary span {
+  transform: rotate(45deg);
+}
+
+.blimp-research-accordions details p {
+  max-width: 700px;
+  margin: -2px 0 24px;
+  color: #6e6e73;
+  line-height: 1.45;
+}
+
+.blimp-paper-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: clamp(28px, 4vw, 48px);
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.blimp-paper-card h3 {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-paper-card > p:not(.blimp-eyebrow) {
+  margin: 22px 0 0;
+  color: #a1a1a6;
+  line-height: 1.4;
+}
+
+.blimp-paper-card dl {
+  display: grid;
+  width: 100%;
+  gap: 12px;
+  margin: 30px 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(245, 245, 247, 0.18);
+}
+
+.blimp-paper-card dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.blimp-paper-card dt {
+  color: #86868b;
+}
+
+.blimp-paper-card dd {
+  margin: 0;
+  color: #f5f5f7;
+  text-align: right;
+}
+
+@media (max-width: 820px) {
+  .blimp-facts {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .blimp-highlights-head {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .blimp-highlights-rail {
+    width: calc(100% - 48px);
+  }
+
+  .blimp-scenario-stage,
+  .blimp-noise-comparison,
+  .blimp-research-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-scenario-stage {
+    min-height: 0;
+  }
+
+  .blimp-scenario-stage figure {
+    min-height: 340px;
+  }
+
+  .blimp-system-copy,
+  .blimp-system-viewer,
+  .blimp-system-layer-grid {
+    grid-column: 1 / -1;
+  }
+
+  .blimp-system-viewer {
+    margin-top: 28px;
+  }
+
+  .blimp-system-layer-grid,
+  .blimp-media-plan-grid,
+  .blimp-metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .blimp-metric-card--hero {
+    grid-row: span 1;
+    min-height: 300px;
+  }
+
+  .blimp-media-plan-head,
+  .blimp-research-head {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .blimp-hero-actions {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .blimp-facts {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-facts div {
+    padding: 22px 0;
+  }
+
+  .blimp-highlights-head,
+  .blimp-highlights-rail {
+    width: calc(100% - 40px);
+  }
+
+  .blimp-highlight-card {
+    flex-basis: 82vw;
+    min-height: 360px;
+  }
+
+  .blimp-highlight-card--metric strong {
+    margin-top: 28px;
+  }
+
+  .blimp-story-evidence {
+    right: -2%;
+    width: 150px;
+  }
+
+  .blimp-scenario-tabs button {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .blimp-scenario-stage figure {
+    min-height: 260px;
+  }
+
+  .blimp-scenario-stage-copy {
+    padding: 30px 22px 38px;
+  }
+
+  .blimp-system-viewer-stage,
+  .blimp-system-viewer-stage img {
+    min-height: 260px;
+  }
+
+  .blimp-system-layer-grid,
+  .blimp-media-plan-grid,
+  .blimp-metric-grid,
+  .blimp-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-metric-card,
+  .blimp-metric-card--hero {
+    min-height: 220px;
+  }
+
+  .blimp-metric-card strong,
+  .blimp-metric-card--hero strong {
+    margin-top: 34px;
+    font-size: clamp(52px, 18vw, 82px);
+  }
+
+  .blimp-evidence-card img {
+    aspect-ratio: 1.3;
+  }
+
+  .blimp-noise-comparison {
+    padding: 28px 20px;
+  }
+
+  .blimp-bar-chart > div {
+    grid-template-columns: 68px minmax(0, 1fr) 42px;
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .blimp-media-plan-card strong {
+    margin-top: 38px;
+  }
+
+  .blimp-paper-card dl div {
+    align-items: start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .blimp-paper-card dd {
+    text-align: left;
+  }
+}
+
+/* BlimpMate product story */
+.blimpmate-page {
+  --blimp-black: #07090d;
+  --blimp-cloud: #f5f5f7;
+  --blimp-orange: #ff642b;
+  overflow: clip;
+  background: var(--blimp-cloud);
+  color: #1d1d1f;
+}
+
+.blimpmate-page [id] {
+  scroll-margin-top: 120px;
+}
+
+.blimpmate-page button,
+.blimpmate-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.blimpmate-local-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.12);
+  background: rgba(245, 245, 247, 0.78);
+  backdrop-filter: blur(18px);
+  transition: box-shadow 220ms ease, background 220ms ease;
+}
+
+.blimpmate-local-nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 26px;
+  align-items: center;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 12px 0;
+  transition: padding 220ms ease;
+}
+
+.blimpmate-local-nav--compact {
+  background: rgba(245, 245, 247, 0.94);
+  box-shadow: 0 8px 26px rgba(29, 29, 31, 0.08);
+}
+
+.blimpmate-local-nav--compact .blimpmate-local-nav-inner {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.blimpmate-local-brand {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blimpmate-local-brand span {
+  color: #86868b;
+  font-family: Rajdhani, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.blimpmate-local-nav nav {
+  display: flex;
+  gap: 22px;
+  color: #6e6e73;
+  font-size: 14px;
+}
+
+.blimpmate-local-nav nav a:hover,
+.blimpmate-local-nav nav a:focus-visible {
+  color: #1d1d1f;
+}
+
+.blimpmate-local-nav button,
+.blimp-back-button {
+  border: 0;
+  border-radius: 999px;
+  background: #1d1d1f;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 9px 15px;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.blimpmate-local-nav button:hover,
+.blimpmate-local-nav button:focus-visible,
+.blimp-back-button:hover,
+.blimp-back-button:focus-visible {
+  background: var(--blimp-orange);
+  transform: translateY(-1px);
+}
+
+.blimp-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+  min-height: min(860px, calc(100svh - 126px));
+  overflow: hidden;
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 8vw, 120px);
+  background:
+    radial-gradient(circle at 78% 48%, rgba(255, 100, 43, 0.22), transparent 25%),
+    radial-gradient(circle at 58% 18%, rgba(57, 83, 140, 0.26), transparent 26%),
+    var(--blimp-black);
+  color: #f5f5f7;
+}
+
+.blimp-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.blimp-eyebrow {
+  margin: 0 0 22px;
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.blimp-hero h1,
+.blimp-intro-panel h2,
+.blimp-story-block h2,
+.blimp-scenarios-header h2,
+.blimp-system h2,
+.blimp-project h2 {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.065em;
+}
+
+.blimp-hero h1 {
+  max-width: 780px;
+  color: #f5f5f7;
+  font-size: clamp(54px, 8vw, 124px);
+  line-height: 0.92;
+}
+
+.blimp-hero h1 em {
+  color: #8f96a7;
+  font-style: normal;
+}
+
+.blimp-hero-description {
+  max-width: 460px;
+  margin: 34px 0 0;
+  color: #b1b5c0;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
+}
+
+.blimp-scroll-cue {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 56px;
+  color: #f5f5f7;
+  font-size: 15px;
+}
+
+.blimp-scroll-cue span {
+  display: block;
+  width: 30px;
+  height: 46px;
+  border: 1px solid rgba(245, 245, 247, 0.55);
+  border-radius: 999px;
+  position: relative;
+}
+
+.blimp-scroll-cue span::after {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blimp-orange);
+  content: "";
+  transform: translateX(-50%);
+  animation: blimp-scroll-dot 1.8s ease-in-out infinite;
+}
+
+.blimp-hero-art {
+  position: relative;
+  display: grid;
+  min-height: min(62vw, 650px);
+  place-items: center;
+  perspective: 1200px;
+}
+
+.blimp-hero-art > p {
+  position: absolute;
+  right: 4%;
+  bottom: 7%;
+  margin: 0;
+  color: rgba(245, 245, 247, 0.48);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: rotate(-90deg) translateX(100%);
+  transform-origin: right bottom;
+}
+
+.blimp-cube-motion {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: clamp(260px, 38vw, 480px);
+  aspect-ratio: 1;
+  place-items: center;
+  animation: blimp-cube-float 7s ease-in-out infinite;
+}
+
+.blimp-cube-motion--interactive {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.blimp-cube-motion--interactive:active {
+  cursor: grabbing;
+}
+
+.blimp-model-motion {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: clamp(260px, 38vw, 480px);
+  aspect-ratio: 1;
+  place-items: center;
+  animation: blimp-cube-float 7s ease-in-out infinite;
+}
+
+.blimp-model-motion--interactive {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.blimp-model-motion--interactive:active {
+  cursor: grabbing;
+}
+
+.blimp-model-viewer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  --poster-color: transparent;
+  --progress-bar-color: var(--blimp-orange);
+  touch-action: pan-y;
+}
+
+.blimp-model-status {
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+  z-index: 2;
+  color: rgba(245, 245, 247, 0.48);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.blimp-model-motion[data-model-status="ready"] .blimp-model-status {
+  opacity: 0;
+}
+
+.blimp-model-motion[data-model-status="error"] .blimp-model-status {
+  color: var(--blimp-orange);
+  opacity: 1;
+}
+
+.blimp-cube {
+  --cube-size: clamp(170px, 26vw, 326px);
+  width: var(--cube-size);
+  height: var(--cube-size);
+  transform-style: preserve-3d;
+  transition: transform 900ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-cube-motion--lift .blimp-cube {
+  transform: rotateX(-18deg) rotateY(-32deg) rotateZ(3deg);
+}
+
+.blimp-cube-motion--listen .blimp-cube {
+  transform: rotateX(-12deg) rotateY(34deg) rotateZ(-2deg);
+}
+
+.blimp-cube-motion--glow .blimp-cube {
+  transform: rotateX(17deg) rotateY(-42deg) rotateZ(4deg);
+}
+
+.blimp-cube-face {
+  position: absolute;
+  display: flex;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  backface-visibility: hidden;
+  color: #ffffff;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blimp-cube-face::before {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  content: "";
+}
+
+.blimp-cube-face span,
+.blimp-cube-face strong {
+  position: relative;
+  z-index: 1;
+}
+
+.blimp-cube-face span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(10px, 1vw, 13px);
+}
+
+.blimp-cube-face strong {
+  margin-top: 8px;
+  font-size: clamp(18px, 2.7vw, 36px);
+}
+
+.blimp-cube-face--front {
+  background: linear-gradient(145deg, #ff6b30, #b52d0b);
+  transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--back {
+  background: #1d2738;
+  transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--right {
+  background: linear-gradient(160deg, #334a72, #101722);
+  transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--left {
+  background: linear-gradient(145deg, #182b4f, #080c14);
+  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--top {
+  background: linear-gradient(145deg, #f5f5f7, #aeb7c9);
+  color: #111827;
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-cube-face--top span {
+  color: #465470;
+}
+
+.blimp-cube-face--bottom {
+  background: #090b10;
+  transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.blimp-orbit {
+  position: absolute;
+  width: min(62vw, 570px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(245, 245, 247, 0.14);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.blimp-orbit--one {
+  transform: rotateX(68deg) rotateZ(16deg);
+}
+
+.blimp-orbit--two {
+  width: min(48vw, 440px);
+  border-color: rgba(255, 100, 43, 0.35);
+  transform: rotateY(66deg) rotateZ(-22deg);
+}
+
+.blimp-intro-panel {
+  display: grid;
+  justify-items: center;
+  min-height: 680px;
+  padding: clamp(120px, 18vw, 250px) 24px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.blimp-intro-panel h2 {
+  max-width: 930px;
+  font-size: clamp(42px, 7vw, 96px);
+  line-height: 0.98;
+}
+
+.blimp-intro-panel > p:last-child {
+  max-width: 500px;
+  margin: 34px 0 0;
+  color: #6e6e73;
+  font-size: clamp(19px, 2.2vw, 26px);
+  line-height: 1.3;
+}
+
+.blimp-performance {
+  position: relative;
+  min-height: 640vh;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f7f8 100%);
+}
+
+.blimp-performance-sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(30px, 7vw, 120px);
+  align-items: center;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 92px) clamp(24px, 8vw, 120px);
+  isolation: isolate;
+}
+
+.blimp-performance-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.blimp-performance-copy h2 {
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(46px, 6vw, 94px);
+  letter-spacing: -0.065em;
+  line-height: 0.94;
+}
+
+.blimp-performance-copy h2 span {
+  color: #86868b;
+}
+
+.blimp-performance-copy > p:last-child {
+  max-width: 370px;
+  margin: 30px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.35;
+}
+
+.blimp-performance-chapter-list {
+  position: relative;
+  min-height: 238px;
+  margin-top: 42px;
+}
+
+.blimp-performance-chapter {
+  position: absolute;
+  inset: 0 auto auto 0;
+  max-width: 480px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 480ms ease, transform 700ms cubic-bezier(0.2, 0.72, 0.2, 1);
+  pointer-events: none;
+}
+
+.blimp-performance-chapter[data-active="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.blimp-performance-chapter .blimp-eyebrow {
+  margin-bottom: 12px;
+  color: #86868b;
+  font-size: 10px;
+}
+
+.blimp-performance-chapter h3 {
+  max-width: 420px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-performance-chapter > p:not(.blimp-eyebrow) {
+  max-width: 410px;
+  margin: 16px 0 18px;
+  color: #6e6e73;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.blimp-performance-chapter > span {
+  color: #9a9aa0;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-performance-stage {
+  position: relative;
+  display: grid;
+  min-height: min(58vw, 620px);
+  place-items: center;
+  perspective: 1400px;
+  z-index: 1;
+}
+
+.blimp-performance-stage::before,
+.blimp-performance-stage::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-performance-stage::before {
+  width: min(66vw, 720px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(255, 100, 43, 0.2), rgba(255, 100, 43, 0) 65%);
+}
+
+.blimp-performance-stage::after {
+  width: min(54vw, 580px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  transform: rotateX(68deg) rotateZ(-18deg);
+}
+
+.blimp-performance-stage--steps {
+  --stage-accent: #ff642b;
+}
+
+.blimp-performance-stage--scan {
+  --stage-accent: #4e7cc9;
+}
+
+.blimp-performance-stage--wave {
+  --stage-accent: #ff642b;
+}
+
+.blimp-performance-stage--presence {
+  --stage-accent: #735bd6;
+}
+
+.blimp-wave-field {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  opacity: var(--wave-opacity);
+  pointer-events: none;
+  transform: rotate(var(--wave-rotation));
+  transition: opacity 300ms ease, transform 700ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-wave-field::before {
+  position: absolute;
+  width: min(54vw, 620px);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--stage-accent, var(--blimp-orange)) 45%, transparent);
+  border-radius: 50%;
+  content: "";
+  transform: scale(var(--wave-scale, 0.86));
+}
+
+.blimp-wave-rings {
+  position: absolute;
+  width: min(50vw, 560px);
+  aspect-ratio: 1;
+}
+
+.blimp-wave-rings span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--stage-accent, var(--blimp-orange)) 32%, transparent);
+  border-radius: 50%;
+  opacity: 0.72;
+  transform: scale(calc(0.36 + var(--ring-index, 0) * 0.17));
+  animation: blimp-wave-pulse 2.8s var(--wave-delay) ease-in-out infinite;
+}
+
+.blimp-wave-rings span:nth-child(1) { --ring-index: 0; }
+.blimp-wave-rings span:nth-child(2) { --ring-index: 1; }
+.blimp-wave-rings span:nth-child(3) { --ring-index: 2; }
+.blimp-wave-rings span:nth-child(4) { --ring-index: 3; }
+
+.blimp-wave-beam {
+  position: absolute;
+  display: flex;
+  width: min(50vw, 580px);
+  height: min(50vw, 580px);
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-18deg) scale(var(--wave-scale, 0.86));
+}
+
+.blimp-wave-beam span {
+  position: absolute;
+  width: 78%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--stage-accent, var(--blimp-orange)) 65%, transparent), transparent);
+  transform: rotate(calc((var(--beam-index, 0) - 1) * 7deg));
+}
+
+.blimp-wave-beam span:nth-child(1) { --beam-index: 0; opacity: 0.42; }
+.blimp-wave-beam span:nth-child(2) { --beam-index: 1; opacity: 0.82; }
+.blimp-wave-beam span:nth-child(3) { --beam-index: 2; opacity: 0.42; }
+
+.blimp-wave-bars {
+  position: absolute;
+  display: flex;
+  width: min(26vw, 300px);
+  height: 110px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transform: rotate(var(--wave-rotation));
+}
+
+.blimp-wave-bars span {
+  display: block;
+  width: 3px;
+  height: var(--bar-height);
+  border-radius: 999px;
+  background: var(--stage-accent, var(--blimp-orange));
+  opacity: 0.65;
+  transition: height 240ms ease;
+}
+
+.blimp-performance-stage-label {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  margin: 0;
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-degree-readout {
+  position: absolute;
+  right: 5%;
+  bottom: 8%;
+  display: grid;
+  gap: 4px;
+  color: #86868b;
+  text-align: right;
+}
+
+.blimp-degree-readout strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.08em;
+}
+
+.blimp-degree-readout span {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blimp-performance-progress {
+  position: absolute;
+  right: clamp(24px, 8vw, 120px);
+  bottom: 34px;
+  left: clamp(24px, 8vw, 120px);
+  height: 2px;
+  overflow: hidden;
+  background: #d2d2d7;
+}
+
+.blimp-performance-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--blimp-orange);
+  transition: width 120ms linear;
+}
+
+.blimp-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: clamp(30px, 8vw, 140px);
+  padding: clamp(100px, 12vw, 180px) clamp(24px, 8vw, 120px);
+  background: var(--blimp-cloud);
+}
+
+.blimp-story-art-sticky {
+  position: sticky;
+  top: 20vh;
+  display: grid;
+  height: 60vh;
+  min-height: 420px;
+  place-items: center;
+  align-content: center;
+  perspective: 1200px;
+}
+
+.blimp-story-art-sticky::before {
+  position: absolute;
+  width: min(46vw, 500px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 100, 43, 0.22), rgba(255, 100, 43, 0) 68%);
+  content: "";
+}
+
+.blimp-scene-label {
+  position: absolute;
+  right: 16%;
+  bottom: 4%;
+  margin: 0;
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blimp-story-copy {
+  display: grid;
+  gap: 8vh;
+}
+
+.blimp-story-block {
+  display: grid;
+  align-content: center;
+  min-height: 68vh;
+  max-width: 530px;
+}
+
+.blimp-story-block h2,
+.blimp-system h2,
+.blimp-project h2 {
+  font-size: clamp(40px, 5vw, 76px);
+  line-height: 0.98;
+}
+
+.blimp-story-block > p:last-child,
+.blimp-system-copy > p:last-child {
+  max-width: 450px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.32;
+}
+
+.blimp-scenarios {
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+  background: #ffffff;
+}
+
+.blimp-scenarios-header {
+  display: grid;
+  max-width: 760px;
+  margin-bottom: 76px;
+}
+
+.blimp-scenarios-header h2 {
+  max-width: 740px;
+  font-size: clamp(42px, 6vw, 84px);
+  line-height: 0.96;
+}
+
+.blimp-scenarios-header > p:last-child {
+  max-width: 560px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.35;
+}
+
+.blimp-scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.blimp-scenario-card {
+  display: grid;
+  min-height: 620px;
+  overflow: hidden;
+  background: #f5f5f7;
+}
+
+.blimp-scenario-card-copy {
+  display: grid;
+  align-content: start;
+  padding: 28px clamp(24px, 3vw, 42px) 38px;
+}
+
+.blimp-scenario-card-copy .blimp-eyebrow {
+  margin-bottom: 14px;
+  color: #86868b;
+  font-size: 10px;
+}
+
+.blimp-scenario-card-copy h3 {
+  max-width: 400px;
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-scenario-card-copy > p:not(.blimp-eyebrow) {
+  max-width: 430px;
+  margin: 18px 0 24px;
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.blimp-scenario-card-copy > span {
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-media-placeholder {
+  position: relative;
+  display: grid;
+  min-height: 330px;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  padding: 34px;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.92), transparent 22%),
+    linear-gradient(145deg, #d6dbe4, #aeb7c8);
+  color: #1d1d1f;
+  text-align: center;
+}
+
+.blimp-media-placeholder::before,
+.blimp-media-placeholder::after {
+  position: absolute;
+  border: 1px solid rgba(29, 29, 31, 0.16);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-media-placeholder::before {
+  width: 70%;
+  aspect-ratio: 1;
+  transform: rotateX(65deg) rotateZ(-18deg);
+}
+
+.blimp-media-placeholder::after {
+  width: 46%;
+  aspect-ratio: 1;
+  border-color: rgba(255, 100, 43, 0.34);
+  transform: rotateY(65deg) rotateZ(18deg);
+}
+
+.blimp-media-placeholder-kicker,
+.blimp-media-placeholder strong,
+.blimp-media-placeholder p {
+  position: relative;
+  z-index: 1;
+}
+
+.blimp-media-placeholder-kicker {
+  color: #5f6c80;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+.blimp-media-placeholder strong {
+  margin-top: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(22px, 2.5vw, 34px);
+  letter-spacing: -0.045em;
+}
+
+.blimp-media-placeholder p {
+  max-width: 240px;
+  margin: 12px 0 0;
+  color: #5f6c80;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.blimp-placeholder-mark {
+  position: absolute;
+  right: 28px;
+  bottom: 25px;
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 34px;
+  opacity: 0.62;
+}
+
+.blimp-placeholder-mark span {
+  display: block;
+  width: 3px;
+  height: 100%;
+  border-radius: 999px;
+  background: #ff642b;
+}
+
+.blimp-placeholder-mark span:nth-child(1) { height: 45%; }
+.blimp-placeholder-mark span:nth-child(2) { height: 85%; }
+.blimp-placeholder-mark span:nth-child(3) { height: 62%; }
+
+.blimp-system {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(40px, 9vw, 160px);
+  align-items: center;
+  padding: clamp(100px, 13vw, 190px) clamp(24px, 8vw, 120px);
+  background: var(--blimp-black);
+  color: #f5f5f7;
+}
+
+.blimp-system-copy {
+  max-width: 560px;
+}
+
+.blimp-system-copy > p:last-child {
+  color: #a1a1a6;
+}
+
+.blimp-system-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(245, 245, 247, 0.18);
+}
+
+.blimp-system-grid article {
+  min-height: 240px;
+  padding: 22px;
+  background: var(--blimp-black);
+}
+
+.blimp-system-grid article > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-system-grid h3 {
+  margin: 72px 0 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 26px;
+}
+
+.blimp-system-grid p {
+  margin: 0;
+  color: #a1a1a6;
+  line-height: 1.35;
+}
+
+.blimp-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  min-height: 720px;
+  background: #e9e9ed;
+}
+
+.blimp-project-media {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  overflow: hidden;
+  place-items: center;
+  background: #c7ccd7;
+}
+
+.blimp-project-media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(7, 9, 13, 0.28), transparent 50%);
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-project-media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blimp-project-media .blimp-cube-motion {
+  transform: scale(1.18);
+}
+
+.blimp-project-media-note {
+  position: absolute;
+  right: 26px;
+  bottom: 24px;
+  z-index: 2;
+  margin: 0;
+  color: rgba(29, 29, 31, 0.58);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-project-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(48px, 8vw, 120px);
+}
+
+.blimp-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 34px 0 42px;
+}
+
+.blimp-project-tags span {
+  border: 1px solid rgba(29, 29, 31, 0.22);
+  border-radius: 999px;
+  color: #6e6e73;
+  font-size: 13px;
+  padding: 7px 11px;
+}
+
+.blimp-back-button {
+  align-self: start;
+}
+
+.blimp-reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 800ms ease, transform 800ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.blimp-reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes blimp-cube-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@keyframes blimp-scroll-dot {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 16px);
+  }
+}
+
+@keyframes blimp-wave-pulse {
+  0%,
+  100% {
+    opacity: 0.24;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+@media (max-width: 820px) {
+  .blimpmate-local-nav-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .blimpmate-local-nav nav {
+    display: none;
+  }
+
+  .blimp-hero,
+  .blimp-performance-sticky,
+  .blimp-story,
+  .blimp-scenarios-grid,
+  .blimp-system,
+  .blimp-project {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-hero {
+    min-height: 0;
+    padding-top: 100px;
+    padding-bottom: 70px;
+  }
+
+  .blimp-hero-art {
+    min-height: 500px;
+  }
+
+  .blimp-performance {
+    min-height: 520vh;
+  }
+
+  .blimp-performance-sticky {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
+
+  .blimp-performance-stage {
+    min-height: 440px;
+  }
+
+  .blimp-performance-chapter-list {
+    min-height: 220px;
+  }
+
+  .blimp-story-art-sticky {
+    position: relative;
+    top: auto;
+    height: 500px;
+  }
+
+  .blimp-story-block {
+    min-height: 0;
+    padding: 70px 0;
+  }
+
+  .blimp-system-grid {
+    margin-top: 30px;
+  }
+
+  .blimp-project-media {
+    min-height: 440px;
+  }
+
+  .blimp-scenarios-header {
+    margin-bottom: 48px;
+  }
+
+  .blimp-scenario-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .blimpmate-local-nav-inner {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .blimpmate-local-brand {
+    font-size: 12px;
+  }
+
+  .blimpmate-local-brand span {
+    display: none;
+  }
+
+  .blimp-hero {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-hero h1 {
+    font-size: clamp(48px, 14vw, 72px);
+  }
+
+  .blimp-hero-art {
+    min-height: 380px;
+  }
+
+  .blimp-performance-sticky {
+    min-height: 100svh;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-performance {
+    min-height: 430vh;
+  }
+
+  .blimp-performance-stage {
+    min-height: 360px;
+  }
+
+  .blimp-performance-chapter-list {
+    min-height: 270px;
+    margin-top: 32px;
+  }
+
+  .blimp-performance-stage-label {
+    top: 2%;
+    left: 0;
+    font-size: 8px;
+  }
+
+  .blimp-cube-motion {
+    width: 88vw;
+  }
+
+  .blimp-model-motion {
+    width: 88vw;
+  }
+
+  .blimp-cube {
+    --cube-size: min(58vw, 250px);
+  }
+
+  .blimp-orbit {
+    width: 86vw;
+  }
+
+  .blimp-intro-panel,
+  .blimp-story,
+  .blimp-system {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-system-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-system-grid article {
+    min-height: 0;
+  }
+
+  .blimp-system-grid h3 {
+    margin-top: 34px;
+  }
+
+  .blimp-project-copy {
+    padding: 54px 20px 70px;
+  }
+
+  .blimp-scenarios {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .blimp-media-placeholder {
+    min-height: 260px;
+  }
+
+  .blimp-project-media-note {
+    right: 20px;
+    bottom: 18px;
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blimpmate-page *,
+  .blimpmate-page *::before,
+  .blimpmate-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .blimp-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @font-face {
   font-family: Rajdhani;
   src: url("/assets/fonts/Rajdhani_Medium.ttf") format("truetype");
@@ -78,6 +2374,11 @@ a {
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px);
+}
+
+.site-header--blimpmate {
+  position: relative;
+  top: auto;
 }
 
 .site-header-inner {
@@ -730,6 +3031,16 @@ h4 {
     linear-gradient(rgba(8, 34, 85, 0.08) 1px, transparent 1px),
     #ffffff;
   background-size: 28px 28px;
+  perspective: 900px;
+}
+
+.project-media .blimp-cube-motion {
+  width: min(100%, 300px);
+  animation-duration: 8s;
+}
+
+.project-media .blimp-cube {
+  --cube-size: clamp(118px, 14vw, 150px);
 }
 
 .project-card.compact .project-media {
@@ -1347,4 +3658,1625 @@ address {
     min-height: 0;
   }
 
+}
+
+/* BlimpMate expanded product narrative — MacBook Neo-inspired information rhythm */
+.blimpmate-local-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #1d1d1f;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1;
+  padding: 10px 15px;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.blimpmate-local-cta:hover,
+.blimpmate-local-cta:focus-visible {
+  background: var(--blimp-orange);
+  transform: translateY(-1px);
+}
+
+.blimp-hero-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(255, 255, 255, 0.035);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: clamp(72px, 11vw, 180px);
+  letter-spacing: -0.055em;
+  line-height: 0.8;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  white-space: nowrap;
+}
+
+.blimp-facts {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.blimp-highlight-card[data-active="true"] {
+  box-shadow: 0 28px 70px rgba(7, 9, 13, 0.12);
+  transform: translateY(-4px);
+}
+
+.blimp-highlight-card--image > div > span {
+  display: block;
+  max-width: 36ch;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.blimp-highlight-card--dark {
+  background: #17191f;
+  color: #f5f5f7;
+}
+
+.blimp-highlights-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  width: min(100% - 48px, 1280px);
+  margin: 28px auto 0;
+}
+
+.blimp-highlights-pagination > div {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.08);
+  padding: 9px 12px;
+}
+
+.blimp-highlights-pagination > div button {
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.26);
+  cursor: pointer;
+  padding: 0;
+  transition: width 180ms ease, background 180ms ease;
+}
+
+.blimp-highlights-pagination > div button[aria-current="true"] {
+  width: 28px;
+  background: #1d1d1f;
+}
+
+.blimp-highlights-pause {
+  border: 0;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.08);
+  color: #1d1d1f;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+
+.blimp-centered-head,
+.blimp-section-head {
+  width: min(1280px, calc(100% - 48px));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.blimp-centered-head {
+  display: grid;
+  justify-items: center;
+  max-width: 1040px;
+  text-align: center;
+}
+
+.blimp-centered-head h2,
+.blimp-section-head h2,
+.blimp-closer h2,
+.blimp-display-stories h2,
+.blimp-intelligence h2,
+.blimp-human h2,
+.blimp-comparison h2,
+.blimp-specifications h2 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(48px, 6.7vw, 98px);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+}
+
+.blimp-centered-head > p:last-child,
+.blimp-section-head > p,
+.blimp-section-head > div + p {
+  max-width: 650px;
+  margin: 28px 0 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.38;
+}
+
+.blimp-section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: clamp(40px, 8vw, 120px);
+  align-items: end;
+}
+
+.blimp-section-head > p,
+.blimp-section-head > div + p {
+  margin-bottom: 4px;
+}
+
+.blimp-design-story {
+  display: grid;
+  gap: 72px;
+  padding: clamp(110px, 15vw, 220px) 0;
+  background: #f5f5f7;
+}
+
+.blimp-design-story-image {
+  position: relative;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #dfe1e6;
+}
+
+.blimp-design-story-image img {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.blimp-design-story-image figcaption,
+.blimp-closer-diagram figcaption,
+.blimp-intelligence-figure figcaption {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  border-radius: 999px;
+  background: rgba(7, 9, 13, 0.72);
+  color: #ffffff;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+
+.blimp-design-story > .blimp-production-placeholder {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-production-placeholder {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.12);
+  border-radius: 28px;
+  background: #ffffff;
+}
+
+.blimp-production-placeholder-frame {
+  position: relative;
+  display: grid;
+  min-height: 320px;
+  place-items: center;
+  overflow: hidden;
+  border: 18px solid #f0f0f2;
+  background:
+    linear-gradient(rgba(29, 29, 31, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 29, 31, 0.045) 1px, transparent 1px),
+    #fafafa;
+  background-size: 28px 28px;
+}
+
+.blimp-production-placeholder-frame::before,
+.blimp-production-placeholder-frame::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.blimp-production-placeholder-frame::before {
+  width: min(44%, 260px);
+  aspect-ratio: 1;
+  border: 1px dashed rgba(29, 29, 31, 0.3);
+  border-radius: 50%;
+}
+
+.blimp-production-placeholder-frame::after {
+  width: 86px;
+  height: 62px;
+  border: 1px solid rgba(29, 29, 31, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 28px rgba(29, 29, 31, 0.08);
+}
+
+.blimp-production-placeholder-type,
+.blimp-production-placeholder-ratio {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  color: #6e6e73;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+}
+
+.blimp-production-placeholder-type { left: 20px; }
+.blimp-production-placeholder-ratio { right: 20px; }
+
+.blimp-production-placeholder-mark {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 20px;
+  display: flex;
+  gap: 4px;
+  align-items: end;
+  height: 32px;
+}
+
+.blimp-production-placeholder-mark i {
+  display: block;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--blimp-orange);
+}
+
+.blimp-production-placeholder-mark i:nth-child(1) { height: 44%; }
+.blimp-production-placeholder-mark i:nth-child(2) { height: 100%; }
+.blimp-production-placeholder-mark i:nth-child(3) { height: 68%; }
+
+.blimp-production-placeholder-copy {
+  display: grid;
+  align-content: center;
+  padding: clamp(30px, 5vw, 72px);
+}
+
+.blimp-production-placeholder-copy h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(30px, 3.3vw, 52px);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.blimp-production-placeholder-copy p {
+  margin: 22px 0 0;
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.blimp-production-placeholder-copy span {
+  margin-top: 22px;
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.blimp-production-placeholder--compact {
+  grid-template-columns: 1fr;
+  min-height: 0;
+}
+
+.blimp-production-placeholder--compact .blimp-production-placeholder-frame {
+  min-height: 260px;
+}
+
+.blimp-production-placeholder--compact .blimp-production-placeholder-copy {
+  padding: 28px;
+}
+
+.blimp-production-placeholder--compact .blimp-production-placeholder-copy h3 {
+  font-size: clamp(26px, 2.6vw, 38px);
+}
+
+.blimp-closer {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+  background: #ffffff;
+}
+
+.blimp-closer-layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-hotspot-tabs {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.blimp-hotspot-tabs button {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  background: #f5f5f7;
+  color: #6e6e73;
+  cursor: pointer;
+  padding: 13px 18px;
+  text-align: left;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.blimp-hotspot-tabs button span {
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.blimp-hotspot-tabs button[aria-selected="true"] {
+  background: #1d1d1f;
+  color: #ffffff;
+  transform: translateX(8px);
+}
+
+.blimp-closer-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+  min-height: 660px;
+  overflow: hidden;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 38% 45%, rgba(255, 100, 43, 0.16), transparent 30%),
+    #f5f5f7;
+}
+
+.blimp-closer-model {
+  position: relative;
+  display: grid;
+  min-height: 620px;
+  place-items: center;
+}
+
+.blimp-closer-model .blimp-model-motion {
+  width: min(52vw, 700px);
+}
+
+.blimp-closer-readout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  padding: 48px 48px 48px 12px;
+}
+
+.blimp-closer-readout h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.blimp-closer-readout > p:not(.blimp-eyebrow) {
+  margin: 24px 0 32px;
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.42;
+}
+
+.blimp-closer-readout strong {
+  color: var(--blimp-orange);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.blimp-closer-readout > span {
+  margin-top: 8px;
+  color: #86868b;
+  font-size: 14px;
+}
+
+.blimp-closer-index {
+  position: absolute;
+  right: 24px;
+  bottom: 14px;
+  color: rgba(29, 29, 31, 0.07);
+  font-size: 150px;
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.blimp-closer-diagram {
+  position: relative;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #f5f5f7;
+}
+
+.blimp-closer-diagram img {
+  display: block;
+  width: 100%;
+}
+
+.blimp-endurance-story {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(40px, 8vw, 120px);
+  width: min(1280px, calc(100% - 48px));
+  margin: 72px auto 0;
+  border-radius: 28px;
+  background: #f5f5f7;
+  padding: clamp(36px, 6vw, 82px);
+}
+
+.blimp-endurance-copy h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(38px, 4.6vw, 68px);
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.blimp-endurance-copy > p:last-child {
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.blimp-endurance-modes {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+}
+
+.blimp-endurance-modes > div {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.4fr) 74px 64px;
+  gap: 12px;
+  align-items: center;
+  color: #6e6e73;
+  font-size: 13px;
+}
+
+.blimp-endurance-modes i {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.1);
+}
+
+.blimp-endurance-modes b {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blimp-orange), #ff9c78);
+}
+
+.blimp-endurance-modes strong {
+  color: #1d1d1f;
+  font-size: 13px;
+  text-align: right;
+}
+
+.blimp-endurance-modes em {
+  color: #86868b;
+  font-size: 12px;
+  font-style: normal;
+  text-align: right;
+}
+
+.blimp-display-stories {
+  display: grid;
+  gap: 72px;
+  padding: clamp(110px, 15vw, 220px) 0;
+  background: #f5f5f7;
+}
+
+.blimp-display-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-display-card {
+  overflow: hidden;
+  border-radius: 28px;
+  background: #ffffff;
+}
+
+.blimp-display-card--wide {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(280px, 0.68fr) minmax(0, 1.32fr);
+  align-items: center;
+  min-height: 520px;
+}
+
+.blimp-display-card--wide > div {
+  padding: clamp(34px, 5vw, 72px);
+}
+
+.blimp-display-card h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4.2vw, 64px);
+  letter-spacing: -0.06em;
+  line-height: 0.97;
+}
+
+.blimp-display-card p:not(.blimp-eyebrow) {
+  margin: 22px 0 0;
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.42;
+}
+
+.blimp-display-card--wide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: contain;
+  padding: 24px;
+}
+
+.blimp-display-card--metric {
+  min-height: 480px;
+  padding: clamp(34px, 5vw, 70px);
+}
+
+.blimp-display-card--metric strong {
+  display: inline-block;
+  margin-top: 60px;
+  color: var(--blimp-orange);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(78px, 10vw, 150px);
+  letter-spacing: -0.08em;
+  line-height: 0.72;
+}
+
+.blimp-display-card--metric em {
+  margin-left: 8px;
+  color: #86868b;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.blimp-display-card--metric h3 {
+  margin-top: 52px;
+  font-size: clamp(30px, 3vw, 46px);
+}
+
+.blimp-intelligence {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+  background: #ffffff;
+}
+
+.blimp-intelligence-figure {
+  position: relative;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #f5f5f7;
+}
+
+.blimp-intelligence-figure img {
+  display: block;
+  width: 100%;
+  padding: clamp(16px, 3vw, 36px);
+}
+
+.blimp-intelligence-layers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 26px;
+  background: rgba(29, 29, 31, 0.12);
+}
+
+.blimp-intelligence-layers article {
+  min-height: 280px;
+  background: #f5f5f7;
+  padding: 30px;
+}
+
+.blimp-intelligence-layers span,
+.blimp-human-principles span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-intelligence-layers h3 {
+  margin: 82px 0 12px;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.blimp-intelligence-layers p {
+  margin: 0;
+  color: #6e6e73;
+  line-height: 1.4;
+}
+
+.blimp-human {
+  display: grid;
+  gap: 72px;
+  padding: clamp(110px, 15vw, 220px) 0;
+  background: #f5f5f7;
+}
+
+.blimp-human-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-human-grid > article {
+  border-radius: 28px;
+}
+
+.blimp-human-noise,
+.blimp-human-principles {
+  min-height: 580px;
+  background: #ffffff;
+  padding: clamp(34px, 5vw, 68px);
+}
+
+.blimp-human-noise h3,
+.blimp-human-principles h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.blimp-human-bars {
+  display: grid;
+  gap: 18px;
+  margin-top: 58px;
+}
+
+.blimp-human-bars > div {
+  display: grid;
+  grid-template-columns: 130px 1fr 42px;
+  gap: 12px;
+  align-items: center;
+  color: #6e6e73;
+  font-size: 13px;
+}
+
+.blimp-human-bars i {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.08);
+}
+
+.blimp-human-bars i::after {
+  display: block;
+  width: var(--bar);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--blimp-orange);
+  content: "";
+}
+
+.blimp-human-bars strong { color: #1d1d1f; text-align: right; }
+.blimp-human-noise > p:last-child { margin-top: 34px; color: #86868b; font-size: 13px; }
+
+.blimp-human-principles > div {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 4px 10px;
+  margin-top: 38px;
+  border-top: 1px solid rgba(29, 29, 31, 0.12);
+  padding-top: 24px;
+}
+
+.blimp-human-principles > div h3 {
+  font-size: 28px;
+}
+
+.blimp-human-principles > div p {
+  grid-column: 2;
+  margin: 4px 0 0;
+  color: #6e6e73;
+  line-height: 1.4;
+}
+
+.blimp-human-grid > .blimp-production-placeholder {
+  grid-column: 1 / -1;
+}
+
+.blimp-system {
+  align-items: start;
+}
+
+.blimp-system-viewer,
+.blimp-system-layer-grid {
+  grid-column: 2;
+}
+
+.blimp-system-layer-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  margin-top: 18px;
+}
+
+.blimp-comparison,
+.blimp-specifications {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+  background: #ffffff;
+}
+
+.blimp-comparison-table {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(29, 29, 31, 0.12);
+  border-radius: 28px;
+}
+
+.blimp-comparison-row {
+  display: grid;
+  grid-template-columns: 160px repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+}
+
+.blimp-comparison-row:first-child { border-top: 0; }
+.blimp-comparison-row > * { margin: 0; border-left: 1px solid rgba(29, 29, 31, 0.1); padding: 24px; }
+.blimp-comparison-row > *:first-child { border-left: 0; }
+.blimp-comparison-row span { color: #86868b; font-family: "Orbitron-SemiBold", Rajdhani, sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+.blimp-comparison-row p { color: #6e6e73; line-height: 1.45; }
+.blimp-comparison-row strong { color: #1d1d1f; font-size: 16px; }
+.blimp-comparison-row--head { background: #f5f5f7; }
+.blimp-comparison-row--head strong:last-child { color: var(--blimp-orange); }
+
+.blimp-specifications {
+  background: #f5f5f7;
+}
+
+.blimp-specification-groups {
+  display: grid;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  border-top: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-specification-group {
+  border-bottom: 1px solid rgba(29, 29, 31, 0.18);
+}
+
+.blimp-specification-group summary {
+  display: grid;
+  grid-template-columns: 60px 1fr 32px;
+  gap: 18px;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 30px 0;
+}
+
+.blimp-specification-group summary::-webkit-details-marker { display: none; }
+.blimp-specification-group summary > span { color: var(--blimp-orange); font-family: "Orbitron-SemiBold", Rajdhani, sans-serif; font-size: 10px; letter-spacing: 0.1em; }
+.blimp-specification-group summary h3 { margin: 0; color: #1d1d1f; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.045em; }
+.blimp-specification-group summary i { color: #86868b; font-size: 28px; font-style: normal; text-align: center; transition: transform 180ms ease; }
+.blimp-specification-group[open] summary i { transform: rotate(45deg); }
+
+.blimp-specification-group dl {
+  display: grid;
+  margin: 0 0 40px 78px;
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+}
+
+.blimp-specification-group dl div {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
+  gap: 30px;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 18px 0;
+}
+
+.blimp-specification-group dt { color: #86868b; }
+.blimp-specification-group dd { margin: 0; color: #1d1d1f; font-weight: 600; }
+
+.blimp-production-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.blimp-production-grid .blimp-production-placeholder {
+  grid-template-columns: 1fr;
+  min-height: 600px;
+}
+
+.blimp-production-grid .blimp-production-placeholder-frame { min-height: 330px; }
+.blimp-production-grid .blimp-production-placeholder-copy { padding: 34px; }
+.blimp-production-grid .blimp-production-placeholder-copy h3 { font-size: clamp(30px, 3.4vw, 48px); }
+
+.blimp-project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .blimpmate-local-nav nav { gap: 14px; font-size: 12px; }
+  .blimp-section-head { grid-template-columns: 1fr; }
+  .blimp-section-head > p,
+  .blimp-section-head > div + p { margin-top: 0; }
+  .blimp-closer-stage { grid-template-columns: 1fr; }
+  .blimp-closer-readout { padding: 20px 44px 56px; }
+  .blimp-closer-model { min-height: 480px; }
+  .blimp-endurance-story { grid-template-columns: 1fr; }
+  .blimp-display-card--wide { grid-template-columns: 1fr; }
+  .blimp-display-card--wide img { min-height: 340px; }
+  .blimp-intelligence-layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blimp-comparison-row { grid-template-columns: 130px repeat(3, minmax(230px, 1fr)); }
+  .blimp-comparison-table { overflow-x: auto; }
+  .blimp-comparison-row { min-width: 900px; }
+}
+
+@media (max-width: 820px) {
+  .blimpmate-local-nav-inner { grid-template-columns: 1fr auto; }
+  .blimpmate-local-cta { font-size: 11px; }
+  .blimp-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blimp-centered-head,
+  .blimp-section-head,
+  .blimp-design-story-image,
+  .blimp-design-story > .blimp-production-placeholder,
+  .blimp-closer-layout,
+  .blimp-closer-diagram,
+  .blimp-display-grid,
+  .blimp-intelligence-figure,
+  .blimp-intelligence-layers,
+  .blimp-human-grid,
+  .blimp-comparison-table,
+  .blimp-specification-groups {
+    width: min(100% - 32px, 1280px);
+  }
+  .blimp-production-placeholder { grid-template-columns: 1fr; }
+  .blimp-closer-layout { grid-template-columns: 1fr; }
+  .blimp-hotspot-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .blimp-hotspot-tabs button { grid-template-columns: 1fr; border-radius: 18px; text-align: center; }
+  .blimp-hotspot-tabs button[aria-selected="true"] { transform: translateY(-3px); }
+  .blimp-display-grid,
+  .blimp-human-grid,
+  .blimp-production-grid { grid-template-columns: 1fr; }
+  .blimp-display-card--wide,
+  .blimp-human-grid > .blimp-production-placeholder { grid-column: auto; }
+  .blimp-intelligence-layers { grid-template-columns: 1fr; }
+  .blimp-intelligence-layers article { min-height: 220px; }
+  .blimp-intelligence-layers h3 { margin-top: 52px; }
+  .blimp-system-viewer,
+  .blimp-system-layer-grid { grid-column: auto; }
+  .blimp-system-layer-grid { grid-template-columns: 1fr; }
+  .blimp-endurance-modes > div { grid-template-columns: 1fr 70px 58px; }
+  .blimp-endurance-modes i { grid-column: 1 / -1; grid-row: 2; }
+  .blimp-specification-group dl { margin-left: 0; }
+  .blimp-specification-group dl div { grid-template-columns: 1fr; gap: 5px; }
+}
+
+@media (max-width: 560px) {
+  .blimp-design-story,
+  .blimp-closer,
+  .blimp-display-stories,
+  .blimp-intelligence,
+  .blimp-human,
+  .blimp-comparison,
+  .blimp-specifications { gap: 46px; }
+  .blimp-centered-head h2,
+  .blimp-section-head h2,
+  .blimp-closer h2,
+  .blimp-display-stories h2,
+  .blimp-intelligence h2,
+  .blimp-human h2,
+  .blimp-comparison h2,
+  .blimp-specifications h2 { font-size: clamp(42px, 13vw, 64px); }
+  .blimp-design-story-image { border-radius: 20px; }
+  .blimp-design-story-image img { min-height: 260px; }
+  .blimp-production-placeholder,
+  .blimp-display-card,
+  .blimp-closer-stage,
+  .blimp-closer-diagram,
+  .blimp-intelligence-figure,
+  .blimp-comparison-table { border-radius: 20px; }
+  .blimp-production-placeholder-frame { border-width: 10px; }
+  .blimp-hotspot-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blimp-closer-model { min-height: 350px; }
+  .blimp-closer-model .blimp-model-motion { width: 92vw; }
+  .blimp-closer-readout { padding: 18px 24px 44px; }
+  .blimp-display-card--metric { min-height: 420px; }
+  .blimp-human-noise,
+  .blimp-human-principles { min-height: 0; }
+  .blimp-human-bars > div { grid-template-columns: 100px 1fr 40px; }
+  .blimp-specification-group summary { grid-template-columns: 34px 1fr 24px; }
+}
+
+/* BlimpMate 2026 product-page extension — product-first, scroll-led, research-grounded */
+.blimpmate-local-nav nav a[aria-current="location"] {
+  color: #1d1d1f;
+  font-weight: 650;
+}
+
+.blimpmate-local-nav nav a[aria-current="location"]::after {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 5px;
+  background: var(--blimp-orange);
+  content: "";
+}
+
+.blimpmate-local-progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blimpmate-local-progress i {
+  display: block;
+  height: 100%;
+  background: var(--blimp-orange);
+  transform-origin: left center;
+  transition: width 90ms linear;
+}
+
+.blimp-pill--dark {
+  background: #1d1d1f;
+  color: #ffffff;
+}
+
+.blimp-hero {
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-content: start;
+  min-height: min(1040px, calc(100svh - 72px));
+  padding: clamp(72px, 8vw, 118px) clamp(24px, 7vw, 112px) 24px;
+  background:
+    radial-gradient(circle at 22% 25%, rgba(255, 100, 43, 0.14), transparent 27%),
+    radial-gradient(circle at 78% 42%, rgba(82, 118, 193, 0.18), transparent 31%),
+    linear-gradient(180deg, #ffffff 0%, #f5f5f7 76%, #ececef 100%);
+  color: #1d1d1f;
+  text-align: center;
+}
+
+.blimp-hero-copy {
+  z-index: 3;
+  width: min(100%, 980px);
+  max-width: none;
+  margin: 0 auto;
+}
+
+.blimp-hero-research-badge {
+  display: inline-flex;
+  margin: 0 0 22px;
+  border: 1px solid rgba(29, 29, 31, 0.14);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #6e6e73;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.blimp-hero h1 {
+  max-width: none;
+  color: #1d1d1f;
+  font-size: clamp(66px, 10.5vw, 164px);
+  line-height: 0.82;
+}
+
+.blimp-hero-tagline {
+  margin: 26px 0 0;
+  background: linear-gradient(90deg, #1d1d1f 4%, #56698e 44%, #ff642b 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(34px, 5.4vw, 82px);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.blimp-hero-description {
+  max-width: 680px;
+  margin: 28px auto 0;
+  color: #6e6e73;
+  font-size: clamp(18px, 1.8vw, 23px);
+}
+
+.blimp-hero-actions {
+  justify-content: center;
+}
+
+.blimp-hero .blimp-text-link,
+.blimp-hero .blimp-scroll-cue {
+  color: #1d1d1f;
+}
+
+.blimp-hero .blimp-scroll-cue {
+  margin-top: 38px;
+}
+
+.blimp-hero .blimp-scroll-cue span {
+  border-color: rgba(29, 29, 31, 0.35);
+}
+
+.blimp-hero-art {
+  min-height: clamp(420px, 50vw, 650px);
+  margin-top: -34px;
+}
+
+.blimp-hero-art .blimp-model-motion {
+  width: clamp(360px, 54vw, 690px);
+}
+
+.blimp-hero-wordmark {
+  color: rgba(29, 29, 31, 0.035);
+  font-size: clamp(88px, 16vw, 250px);
+  transform: translate(-50%, -50%);
+}
+
+.blimp-hero-art > p,
+.blimp-model-status {
+  color: rgba(29, 29, 31, 0.48);
+}
+
+.blimp-orbit {
+  width: min(72vw, 720px);
+  border-color: rgba(29, 29, 31, 0.1);
+}
+
+.blimp-orbit--two {
+  width: min(54vw, 560px);
+  border-color: rgba(255, 100, 43, 0.28);
+}
+
+.blimp-facts {
+  border-top: 1px solid rgba(29, 29, 31, 0.1);
+  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+.blimp-facts div {
+  border-top: 0;
+  border-left: 1px solid rgba(29, 29, 31, 0.1);
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.blimp-facts div:first-child {
+  border-left: 0;
+}
+
+.blimp-facts strong {
+  color: #1d1d1f;
+}
+
+.blimp-facts span {
+  color: #86868b;
+}
+
+.blimp-presentation-states,
+.blimp-contributions,
+.blimp-future {
+  display: grid;
+  gap: 64px;
+  padding: clamp(110px, 14vw, 210px) 0;
+}
+
+.blimp-presentation-states {
+  background: #ffffff;
+}
+
+.blimp-state-gallery {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #f5f5f7;
+  box-shadow: 0 24px 70px rgba(29, 29, 31, 0.08);
+}
+
+.blimp-state-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-bottom: 1px solid rgba(29, 29, 31, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.blimp-state-tabs button {
+  display: grid;
+  gap: 6px;
+  border: 0;
+  border-left: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 20px 18px;
+  background: transparent;
+  color: #6e6e73;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.blimp-state-tabs button:first-child {
+  border-left: 0;
+}
+
+.blimp-state-tabs button span {
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-state-tabs button[aria-selected="true"] {
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+.blimp-state-tabs button[aria-selected="true"] span {
+  color: var(--blimp-orange);
+}
+
+.blimp-state-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.55fr);
+  min-height: 670px;
+}
+
+.blimp-state-asset {
+  position: relative;
+  display: grid;
+  min-height: 670px;
+  overflow: hidden;
+  border-right: 1px solid rgba(29, 29, 31, 0.1);
+  padding: 28px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 100, 43, 0.18), transparent 31%),
+    radial-gradient(circle at 77% 74%, rgba(78, 111, 181, 0.24), transparent 36%),
+    #12151c;
+  color: #f5f5f7;
+  isolation: isolate;
+}
+
+.blimp-state-asset-toolbar {
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(245, 245, 247, 0.62);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+}
+
+.blimp-state-asset-center {
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  max-width: 680px;
+  margin: auto;
+  border: 1px dashed rgba(245, 245, 247, 0.34);
+  border-radius: 26px;
+  padding: clamp(34px, 5vw, 72px);
+  background: rgba(7, 9, 13, 0.24);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.blimp-state-asset-center > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.blimp-state-asset-center strong {
+  margin-top: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(26px, 3vw, 44px);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.blimp-state-asset-center p {
+  max-width: 520px;
+  margin: 20px 0 0;
+  color: rgba(245, 245, 247, 0.66);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.blimp-state-asset-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.blimp-state-asset-grid i {
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+.blimp-state-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(38px, 5vw, 72px);
+}
+
+.blimp-state-copy h3 {
+  margin: 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(36px, 4.4vw, 62px);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.blimp-state-copy > p:not(.blimp-eyebrow) {
+  margin: 24px 0 0;
+  color: #6e6e73;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.blimp-state-copy > span {
+  margin-top: auto;
+  padding-top: 44px;
+  color: #a1a1a6;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-contributions {
+  background: #f5f5f7;
+}
+
+.blimp-contribution-rail {
+  display: grid;
+  grid-auto-columns: minmax(340px, 410px);
+  grid-auto-flow: column;
+  gap: 18px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 max(24px, calc((100vw - 1280px) / 2)) 34px;
+  scroll-padding-inline: max(24px, calc((100vw - 1280px) / 2));
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.blimp-contribution-card {
+  position: relative;
+  display: flex;
+  min-height: 470px;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 34px;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(29, 29, 31, 0.06);
+  scroll-snap-align: start;
+}
+
+.blimp-contribution-card:nth-child(2) {
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.blimp-contribution-card:nth-child(3) {
+  background: linear-gradient(145deg, #f0e7e2, #edf1f8);
+}
+
+.blimp-contribution-card > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.blimp-contribution-card h3 {
+  margin: 86px 0 0;
+  color: inherit;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(32px, 3.2vw, 46px);
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.blimp-contribution-card p {
+  margin: 24px 0 0;
+  color: #6e6e73;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.blimp-contribution-card:nth-child(2) p {
+  color: #a1a1a6;
+}
+
+.blimp-contribution-card i {
+  margin-top: auto;
+  color: var(--blimp-orange);
+  font-size: 26px;
+  font-style: normal;
+  text-align: right;
+}
+
+.blimp-future {
+  background: #ffffff;
+}
+
+.blimp-future-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blimp-future-card {
+  overflow: hidden;
+  border-radius: 32px;
+  background: #f5f5f7;
+}
+
+.blimp-future-placeholder {
+  position: relative;
+  display: grid;
+  min-height: 390px;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  border: 14px solid #ececef;
+  border-radius: 32px;
+  padding: 42px;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(29, 29, 31, 0.07) 49%, rgba(29, 29, 31, 0.07) 51%, transparent 52%),
+    linear-gradient(45deg, transparent 48%, rgba(29, 29, 31, 0.07) 49%, rgba(29, 29, 31, 0.07) 51%, transparent 52%),
+    #ffffff;
+  text-align: center;
+}
+
+.blimp-future-placeholder > div {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  left: 24px;
+  display: flex;
+  justify-content: space-between;
+  color: #86868b;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-future-placeholder strong {
+  color: #1d1d1f;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+
+.blimp-future-placeholder p {
+  z-index: 1;
+  max-width: 500px;
+  margin: 22px 0 0;
+  color: #6e6e73;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.blimp-future-placeholder i {
+  position: absolute;
+  width: 58%;
+  height: 58%;
+  border: 1px dashed rgba(29, 29, 31, 0.22);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.blimp-future-copy {
+  padding: 32px 34px 40px;
+}
+
+.blimp-future-copy > span {
+  color: var(--blimp-orange);
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.blimp-future-copy h3 {
+  margin: 18px 0 0;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(30px, 3.2vw, 46px);
+  letter-spacing: -0.052em;
+  line-height: 1;
+}
+
+.blimp-future-copy p {
+  margin: 18px 0 0;
+  color: #6e6e73;
+  line-height: 1.45;
+}
+
+@media (max-width: 980px) {
+  .blimp-hero {
+    min-height: auto;
+  }
+
+  .blimp-state-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .blimp-state-tabs button {
+    min-width: 170px;
+  }
+
+  .blimp-state-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .blimp-state-asset {
+    min-height: 520px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+  }
+
+  .blimp-state-copy > span {
+    margin-top: 34px;
+  }
+}
+
+@media (max-width: 820px) {
+  .blimpmate-local-nav nav {
+    display: none;
+  }
+
+  .blimp-hero-art {
+    margin-top: -8px;
+  }
+
+  .blimp-hero-art .blimp-model-motion {
+    width: min(92vw, 590px);
+  }
+
+  .blimp-facts div {
+    border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+    border-left: 0;
+  }
+
+  .blimp-state-gallery,
+  .blimp-future-grid {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .blimp-future-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .blimp-hero {
+    padding-top: 56px;
+  }
+
+  .blimp-hero h1 {
+    font-size: clamp(52px, 20vw, 80px);
+  }
+
+  .blimp-hero-tagline {
+    font-size: clamp(34px, 12vw, 56px);
+  }
+
+  .blimp-hero-art {
+    min-height: 370px;
+  }
+
+  .blimp-state-gallery,
+  .blimp-future-card,
+  .blimp-future-placeholder {
+    border-radius: 22px;
+  }
+
+  .blimp-state-asset {
+    min-height: 430px;
+    padding: 18px;
+  }
+
+  .blimp-state-asset-center {
+    border-radius: 18px;
+    padding: 30px 22px;
+  }
+
+  .blimp-state-copy {
+    padding: 36px 24px;
+  }
+
+  .blimp-contribution-rail {
+    grid-auto-columns: minmax(290px, 84vw);
+  }
+
+  .blimp-contribution-card {
+    min-height: 430px;
+    border-radius: 22px;
+    padding: 28px;
+  }
+
+  .blimp-future-placeholder {
+    min-height: 330px;
+    border-width: 10px;
+    padding: 32px 24px;
+  }
 }
