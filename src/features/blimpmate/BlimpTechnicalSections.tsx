@@ -1,9 +1,10 @@
 import type { KeyboardEvent } from 'react'
 import type { Project } from '../../content/types'
-import { BlimpCube, MediaPlaceholder } from './BlimpVisuals'
+import { AssetBriefDialog, BlimpCube, MediaPlaceholder } from './BlimpVisuals'
 import {
   enduranceModes,
   futureDirections,
+  paperMetadata,
   productionNeeds,
   researchAsset,
   researchContributions,
@@ -30,10 +31,10 @@ export function PerformanceEvidenceSection() {
         <p>The integrated prototype was characterized across display performance, endurance, flight control, payload, and acoustic output.</p>
       </div>
       <div className="blimp-metric-grid">
-        <article className="blimp-metric-card blimp-metric-card--hero blimp-reveal" data-reveal data-visible="false"><span>Routine hover</span><strong>47.1</strong><em>dB(A)</em><p>Only 1.1 dB above the measured ambient background of 46.0 dB(A).</p></article>
+        <article className="blimp-metric-card blimp-metric-card--hero blimp-reveal" data-reveal data-visible="false"><span>Routine hover</span><strong>47.1</strong><em>dB(A)</em><p>1.1 dB above the measured ambient background of 46.0 dB(A).</p></article>
         <article className="blimp-metric-card blimp-reveal" data-reveal data-visible="false"><span>Average screen luminance</span><strong>305.7</strong><em>cd/m²</em><p>Measured across a 3 × 3 grid under a full-white pattern.</p></article>
         <article className="blimp-metric-card blimp-reveal" data-reveal data-visible="false"><span>Hover + lightweight visuals</span><strong>73</strong><em>min</em><p>8.68 W average power in the matched endurance test.</p></article>
-        <article className="blimp-metric-card blimp-reveal" data-reveal data-visible="false"><span>Hover + multimedia</span><strong>45</strong><em>min</em><p>14.75 W average power with animation, video, and audio.</p></article>
+        <article className="blimp-metric-card blimp-reveal" data-reveal data-visible="false"><span>Hover + multimedia</span><strong>45</strong><em>min</em><p>14.75 W average power in the matched multimedia playback test.</p></article>
         <article className="blimp-metric-card blimp-reveal" data-reveal data-visible="false"><span>Resolved stripe width</span><strong>1.5</strong><em>mm</em><p>Effective spatial detail on the fully integrated screen.</p></article>
         <article className="blimp-metric-card blimp-reveal" data-reveal data-visible="false"><span>Yaw tracking correlation</span><strong>0.97</strong><em>r</em><p>Smooth commanded turning without obvious overshoot or oscillation.</p></article>
       </div>
@@ -45,7 +46,7 @@ export function PerformanceEvidenceSection() {
         <div className="blimp-endurance-copy"><p className="blimp-eyebrow">POWER AND ENDURANCE</p><h3>Content changes the energy story.</h3><p>Projection power depends on what is shown. Lightweight UI graphics and text draw less power than continuous animation, video, and audio.</p></div>
         <div className="blimp-endurance-modes">
           {enduranceModes.map((mode) => (
-            <div key={mode.label}><span>{mode.label}</span><i><b style={{ width: `${mode.bar}%` }} /></i><strong>{mode.runtime}</strong><em>{mode.power}</em></div>
+            <div data-pending={'pending' in mode && mode.pending ? 'true' : undefined} key={mode.label}><span>{mode.label}</span><i><b style={{ width: `${mode.bar}%` }} /></i><strong>{mode.runtime}</strong><em>{mode.power}</em></div>
           ))}
         </div>
       </div>
@@ -160,7 +161,7 @@ export function FutureDirectionsSection() {
               <p>{item.brief}</p>
               <i aria-hidden="true" />
             </div>
-            <div className="blimp-future-copy"><span>{item.index}</span><h3>{item.title}</h3><p>{item.body}</p></div>
+            <div className="blimp-future-copy"><span>{item.index}</span><h3>{item.title}</h3><p>{item.body}</p><AssetBriefDialog kind={item.kind} ratio={item.ratio} title={`${item.title} visual`} body={item.brief} note="Label this as a future-direction concept and keep the visual within the current paper’s stated scope." triggerLabel="Open visual brief" /></div>
           </article>
         ))}
       </div>
@@ -199,8 +200,8 @@ export function ResearchSection() {
         <aside className="blimp-paper-card blimp-reveal" data-reveal data-visible="false">
           <p className="blimp-eyebrow">UIST ’26 PAPER</p>
           <h3>BlimpMate: A Quiet, Long-Endurance Flying Display for Hands-Free Intelligent Interaction</h3>
-          <p>Henghao Li, Shan Lin, Yang Xu, Yixiao Wei, Hongjie Li, Suwen Mei, Xindi Lyu, Xing-Dong Yang, and Yuhua Jin.</p>
-          <dl><div><dt>Venue</dt><dd>UIST ’26 · Detroit</dd></div><div><dt>Pages</dt><dd>13</dd></div><div><dt>DOI</dt><dd>10.1145/3830398.3830527</dd></div></dl>
+          <p>{paperMetadata.authors}.</p>
+          <dl><div><dt>Venue</dt><dd>{paperMetadata.venue}</dd></div><div><dt>Pages</dt><dd>{paperMetadata.pages}</dd></div><div><dt>DOI</dt><dd><a className="doi-link" href={`https://doi.org/${paperMetadata.doi}`} target="_blank" rel="noreferrer">{paperMetadata.doi}</a></dd></div></dl>
           <a className="blimp-pill blimp-pill--light" href={researchAsset('blimpmate-paper.pdf')} target="_blank" rel="noreferrer">Open PDF</a>
         </aside>
       </div>

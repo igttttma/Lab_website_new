@@ -54,6 +54,7 @@ export function BlimpMatePage({ project, onNavigate }: BlimpMatePageProps) {
   const pageRef = useRef<HTMLElement | null>(null)
   const spinSectionRef = useRef<HTMLElement | null>(null)
   const highlightsRef = useRef<HTMLDivElement | null>(null)
+  const highlightScrollFrameRef = useRef(0)
   const [activeScenarioId, setActiveScenarioId] = useState<ScenarioId>('cooking')
   const [activePresentationId, setActivePresentationId] = useState<PresentationStateId>('avatar')
   const [activeSystemView, setActiveSystemView] = useState<SystemView>('hardware')
@@ -93,6 +94,23 @@ export function BlimpMatePage({ project, onNavigate }: BlimpMatePageProps) {
     setActiveHighlightIndex(normalizedIndex)
     scrollHighlightCard(normalizedIndex)
   }
+
+  const syncHighlightFromScroll = useCallback(() => {
+    const rail = highlightsRef.current
+    if (!rail || highlightScrollFrameRef.current) return
+    highlightScrollFrameRef.current = window.requestAnimationFrame(() => {
+      highlightScrollFrameRef.current = 0
+      const railCenter = rail.scrollLeft + rail.clientWidth / 2
+      const cards = Array.from(rail.querySelectorAll<HTMLElement>('[data-highlight-index]'))
+      if (cards.length === 0) return
+      const nearest = cards.reduce((best, card) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2
+        return Math.abs(cardCenter - railCenter) < Math.abs((best.offsetLeft + best.offsetWidth / 2) - railCenter) ? card : best
+      })
+      const index = Number(nearest.dataset.highlightIndex)
+      if (Number.isFinite(index)) setActiveHighlightIndex((current) => current === index ? current : index)
+    })
+  }, [])
 
   useEffect(() => {
     const page = pageRef.current
@@ -152,6 +170,10 @@ export function BlimpMatePage({ project, onNavigate }: BlimpMatePageProps) {
     }), 5200)
     return () => window.clearInterval(timer)
   }, [highlightsPaused, reducedMotion, scrollHighlightCard])
+
+  useEffect(() => () => {
+    if (highlightScrollFrameRef.current) window.cancelAnimationFrame(highlightScrollFrameRef.current)
+  }, [])
 
   useEffect(() => {
     const section = spinSectionRef.current
@@ -238,7 +260,7 @@ export function BlimpMatePage({ project, onNavigate }: BlimpMatePageProps) {
         <p>BlimpMate explores how a display can share the same physical world as the people and tasks it serves — without being fixed to furniture or held in the hand.</p>
       </section>
 
-      <HighlightsSection activeIndex={activeHighlightIndex} paused={highlightsPaused} railRef={highlightsRef} onSelect={selectHighlight} onMove={(direction) => selectHighlight(activeHighlightIndex + direction)} onTogglePause={() => setHighlightsPaused((current) => !current)} />
+      <HighlightsSection activeIndex={activeHighlightIndex} paused={highlightsPaused} railRef={highlightsRef} onSelect={selectHighlight} onMove={(direction) => selectHighlight(activeHighlightIndex + direction)} onTogglePause={() => setHighlightsPaused((current) => !current)} onScrollSync={syncHighlightFromScroll} />
       <DesignStorySection />
       <ProductViewerSection activeId={activeHotspotId} onChange={setActiveHotspotId} />
 

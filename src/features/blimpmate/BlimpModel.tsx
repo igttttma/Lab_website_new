@@ -1,5 +1,6 @@
 import '@google/model-viewer'
 import { createElement, useEffect, useState } from 'react'
+import { researchAsset } from './blimpmateData'
 
 type BlimpModelProps = {
   scene?: 'lift' | 'listen' | 'glow'
@@ -11,6 +12,7 @@ type BlimpModelProps = {
 type ModelViewerElement = HTMLElement
 
 const modelUrl = '/assets/blimpmate/balloon-robot.glb'
+const fallbackImageUrl = researchAsset('hero-update.webp')
 const sceneAngles = {
   lift: 0,
   listen: 20,
@@ -53,11 +55,12 @@ export function BlimpModel({ scene = 'glow', interactive = false, scrollRotation
     'environment-image': 'neutral',
     reveal: 'auto',
     loading: 'eager',
+    poster: fallbackImageUrl,
   })
 
   return (
     <div className={`blimp-model-motion blimp-model-motion--${scene}${interactive ? ' blimp-model-motion--interactive' : ''} ${className}`.trim()} data-model-status={status}>
-      {viewer}
+      {status === 'error' ? <img className="blimp-model-fallback" src={fallbackImageUrl} alt="BlimpMate presenting a projected visual update beside a user." /> : viewer}
       <span className="blimp-model-status" aria-live="polite">
         {status === 'error' ? 'MODEL PREVIEW UNAVAILABLE' : 'LOADING BLIMPMATE MODEL'}
       </span>

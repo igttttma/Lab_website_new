@@ -7,6 +7,22 @@ export type PresentationStateId = 'avatar' | 'notification' | 'media' | 'task' |
 
 export const researchAsset = (file: string) => `/assets/blimpmate/research/${file}`
 
+export const paperMetadata = {
+  title: 'BlimpMate: A Quiet, Long-Endurance Flying Display for Hands-Free Intelligent Interaction',
+  authors: 'Henghao Li, Shan Lin, Yang Xu, Yixiao Wei, Hongjie Li, Suwen Mei, Xindi Lyu, Xing-Dong Yang, and Yuhua Jin',
+  venue: 'UIST ’26, Detroit, MI, USA',
+  pages: '13',
+  doi: '10.1145/3830398.3830527',
+} as const
+
+export const acousticMetrics = [
+  { label: 'Ambient background', mean: '46.0', trialMaximum: '48.1' },
+  { label: 'Routine hovering', mean: '47.1', trialMaximum: '51.9' },
+  { label: 'Active vertical repositioning', mean: '50.5', trialMaximum: '56.1' },
+  { label: 'Active yaw rotation', mean: '48.3', trialMaximum: '54.6' },
+  { label: 'Active horizontal repositioning', mean: '49.7', trialMaximum: '56.2' },
+] as const
+
 export const sceneRotations: Record<Scene, { x: number; y: number; z: number }> = {
   lift: { x: -18, y: -32, z: 3 },
   listen: { x: -12, y: 34, z: -2 },
@@ -39,7 +55,7 @@ export const highlightSlides = [
     eyebrow: 'Routine hover',
     metric: '47.1 dB(A)',
     title: 'Close to the measured room background.',
-    body: 'The same test space measured 46.0 dB(A) of ambient background noise.',
+    body: 'The same room measured 46.0 dB(A) of ambient background noise under the reported test conditions.',
   },
   {
     id: 'network',
@@ -99,8 +115,8 @@ export const performanceChapters = [
     id: 'endurance',
     eyebrow: '04 / PRACTICAL ENDURANCE',
     title: 'Stay present for more than a brief demo.',
-    body: 'The prototype ran for 73 minutes while hovering with lightweight visual content, and 45 minutes with multimedia playback under the tested conditions.',
-    status: '73 MIN LIGHTWEIGHT / 45 MIN MULTIMEDIA',
+    body: 'Hovering with lightweight visual content averaged 8.68 W and ran for 73 minutes. With multimedia playback, the same hover condition averaged 14.75 W and ran for 45 minutes.',
+    status: '73 MIN HOVER + UI / 45 MIN HOVER + MEDIA',
     visual: 'presence' as PerformanceVisual,
   },
 ]

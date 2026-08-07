@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import type { CSSProperties, PointerEvent as ReactPointerEvent, ReactNode } from 'react'
 import type { PerformanceVisual, Scene } from './blimpmateData'
 import { sceneRotations } from './blimpmateData'
@@ -85,6 +85,51 @@ export function BlimpWaveField({ progress, visual }: { progress: number; visual:
   )
 }
 
+type AssetBriefDialogProps = {
+  kind: string
+  ratio: string
+  title: string
+  body: string
+  note?: string
+  triggerLabel?: string
+}
+
+export function AssetBriefDialog({ kind, ratio, title, body, note, triggerLabel = 'View production brief' }: AssetBriefDialogProps) {
+  const dialogRef = useRef<HTMLDialogElement | null>(null)
+  const titleId = useId()
+
+  const closeDialog = () => dialogRef.current?.close()
+
+  return (
+    <>
+      <button className="blimp-asset-brief-open" type="button" onClick={() => dialogRef.current?.showModal()}>
+        <span>{triggerLabel}</span><i aria-hidden="true">+</i>
+      </button>
+      <dialog
+        className="blimp-asset-brief-dialog"
+        ref={dialogRef}
+        aria-labelledby={titleId}
+        onClick={(event) => { if (event.target === event.currentTarget) closeDialog() }}
+      >
+        <article>
+          <div className="blimp-asset-brief-visual" aria-hidden="true">
+            <span>{kind}</span><span>{ratio}</span>
+            <div><i /><i /><i /></div>
+            <strong>ASSET PLACEHOLDER</strong>
+          </div>
+          <div className="blimp-asset-brief-copy">
+            <button className="blimp-asset-brief-close" type="button" onClick={closeDialog} aria-label={`Close ${title} production brief`}>×</button>
+            <p className="blimp-eyebrow">PRODUCTION BRIEF</p>
+            <h3 id={titleId}>{title}</h3>
+            <p>{body}</p>
+            {note ? <div><span>Capture constraints</span><strong>{note}</strong></div> : null}
+          </div>
+        </article>
+      </dialog>
+    </>
+  )
+}
+
 type MediaPlaceholderProps = {
   kind: string
   ratio: string
@@ -108,6 +153,7 @@ export function MediaPlaceholder({ kind, ratio, title, body, note, compact = fal
         <h3>{title}</h3>
         <p>{body}</p>
         {note ? <span>{note}</span> : null}
+        <AssetBriefDialog kind={kind} ratio={ratio} title={title} body={body} note={note} />
       </div>
     </article>
   )

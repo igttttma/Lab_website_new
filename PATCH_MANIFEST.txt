@@ -1,0 +1,18 @@
+BlimpMate Apple-style product-page patch
+
+Overlay these paths onto the original Lab_website_new-main project:
+
+BLIMPMATE_PAGE_NOTES.md
+IMPLEMENTATION_SUMMARY.md
+PATCH_README.md
+blimpmate-extended-preview.html
+src/features/blimpmate/BlimpMatePage.tsx
+src/features/blimpmate/BlimpExperienceSections.tsx
+src/features/blimpmate/BlimpTechnicalSections.tsx
+src/features/blimpmate/BlimpVisuals.tsx
+src/features/blimpmate/BlimpModel.tsx
+src/features/blimpmate/blimpmateData.ts
+src/styles/global.css
+public/assets/blimpmate/research/blimpmate-paper.pdf (verified byte-identical to supplied uist26-53.pdf)
+
+No font files, Apple archive files, node_modules, or generated dependency folders are included.

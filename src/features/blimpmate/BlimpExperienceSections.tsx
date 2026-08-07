@@ -1,7 +1,8 @@
 import type { KeyboardEvent, RefObject } from 'react'
 import { BlimpModel } from './BlimpModel'
-import { MediaPlaceholder } from './BlimpVisuals'
+import { AssetBriefDialog, MediaPlaceholder } from './BlimpVisuals'
 import {
+  acousticMetrics,
   highlightSlides,
   productHotspots,
   presentationStates,
@@ -26,6 +27,7 @@ export function HighlightsSection({
   onSelect,
   onMove,
   onTogglePause,
+  onScrollSync,
 }: {
   activeIndex: number
   paused: boolean
@@ -33,6 +35,7 @@ export function HighlightsSection({
   onSelect: (index: number) => void
   onMove: (direction: number) => void
   onTogglePause: () => void
+  onScrollSync: () => void
 }) {
   return (
     <section className="blimp-highlights" aria-labelledby="blimp-highlights-title">
@@ -43,7 +46,17 @@ export function HighlightsSection({
           <button type="button" onClick={() => onMove(1)} aria-label="Next highlight">→</button>
         </div>
       </div>
-      <div className="blimp-highlights-rail" ref={railRef} tabIndex={0}>
+      <div
+        className="blimp-highlights-rail"
+        ref={railRef}
+        tabIndex={0}
+        onScroll={onScrollSync}
+        onKeyDown={(event) => {
+          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+          event.preventDefault()
+          onMove(event.key === 'ArrowLeft' ? -1 : 1)
+        }}
+      >
         {highlightSlides.map((slide, index) => (
           <article
             className={`blimp-highlight-card blimp-highlight-card--${slide.kind}${slide.kind === 'metric' ? ` blimp-highlight-card--${slide.theme}` : ''} blimp-reveal`}
@@ -67,6 +80,7 @@ export function HighlightsSection({
             <button type="button" aria-label={`Show highlight ${index + 1}: ${slide.title}`} aria-current={index === activeIndex} onClick={() => onSelect(index)} key={slide.id} />
           ))}
         </div>
+        <span className="blimp-highlights-count" aria-live="polite">{String(activeIndex + 1).padStart(2, '0')} / {String(highlightSlides.length).padStart(2, '0')}</span>
         <button className="blimp-highlights-pause" type="button" onClick={onTogglePause} aria-label={paused ? 'Resume automatic highlights' : 'Pause automatic highlights'}>
           {paused ? 'Play' : 'Pause'}
         </button>
@@ -232,6 +246,14 @@ export function PresentationStatesSection({ activeId, onChange }: { activeId: Pr
             <p className="blimp-eyebrow">{active.eyebrow}</p>
             <h3>{active.title}</h3>
             <p>{active.body}</p>
+            <AssetBriefDialog
+              kind={active.assetKind}
+              ratio={active.ratio}
+              title={`${active.label} presentation-state asset`}
+              body={active.assetBrief}
+              note={active.note}
+              triggerLabel="Open asset brief"
+            />
             <span>{String(activeIndex + 1).padStart(2, '0')} / {String(presentationStates.length).padStart(2, '0')}</span>
           </div>
         </div>
@@ -272,14 +294,24 @@ export function HumanCompatibilitySection() {
         <p>The prototype’s measured acoustic profile supports calm indoor use. Comfort, safety, privacy, and multi-user behavior still require dedicated user studies and explicit product controls.</p>
       </header>
       <div className="blimp-human-grid">
+        <figure className="blimp-human-figure blimp-reveal" data-reveal data-visible="false">
+          <div className="blimp-human-source-card">
+            <p className="blimp-eyebrow">PAPER EVIDENCE / TABLE 3</p>
+            <h3>Five acoustic conditions.<br />One close-range profile.</h3>
+            <p>The specified UIST ’26 paper reports A-weighted sound levels for ambient background, routine hovering, vertical repositioning, yaw rotation, and horizontal repositioning.</p>
+            <span>1.0 M GEOMETRY / 120 S PER TRIAL / FIVE REPETITIONS</span>
+          </div>
+          <figcaption>Paper Table 3 · A-weighted sound levels under representative operating conditions</figcaption>
+        </figure>
         <article className="blimp-human-noise blimp-reveal" data-reveal data-visible="false">
           <p className="blimp-eyebrow">A-WEIGHTED SOUND</p><h3>Routine hover stayed close to room background.</h3>
-          <div className="blimp-human-bars" aria-label="Mean sound level comparison">
-            <div><span>Ambient room</span><i style={{ '--bar': '46%' } as React.CSSProperties} /><strong>46.0</strong></div>
-            <div><span>Routine hover</span><i style={{ '--bar': '47.1%' } as React.CSSProperties} /><strong>47.1</strong></div>
-            <div><span>Vertical motion</span><i style={{ '--bar': '50.5%' } as React.CSSProperties} /><strong>50.5</strong></div>
-            <div><span>Horizontal motion</span><i style={{ '--bar': '49.7%' } as React.CSSProperties} /><strong>49.7</strong></div>
-          </div><p>Mean L<sub>Aeq,120 s</sub> in dB(A), measured at 1 m under the reported conditions.</p>
+          <div className="blimp-acoustic-table-wrap">
+            <table className="blimp-acoustic-table">
+              <thead><tr><th scope="col">Operating condition</th><th scope="col">Mean L<sub>Aeq,120 s</sub></th><th scope="col">Mean trial-maximum L<sub>Aeq,1 s</sub></th></tr></thead>
+              <tbody>{acousticMetrics.map((metric) => <tr key={metric.label}><th scope="row">{metric.label}</th><td>{metric.mean} dB(A)</td><td>{metric.trialMaximum} dB(A)</td></tr>)}</tbody>
+            </table>
+          </div>
+          <p>Values are from Paper Table 3. Each condition was measured for 120 seconds and repeated five times at the reported close-range geometry.</p>
         </article>
         <article className="blimp-human-principles blimp-reveal" data-reveal data-visible="false">
           <p className="blimp-eyebrow">PRODUCT PRINCIPLES</p>
