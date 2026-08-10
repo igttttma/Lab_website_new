@@ -167,4 +167,39 @@ BLIMPMATE_AGENT_MAX_REQUEST_BYTES=8500000
 BLIMPMATE_AGENT_DEMO_FALLBACK=true
 ```
 
-For an integrated local run, start the Python host service from `/Users/suwen/Documents/blimpmate/BlimpMate_agent/host-service`; its macOS `run.sh` default is port 5050, which avoids the ControlCenter service commonly occupying port 5000. Then run `npm run dev`. The Node API remains the recommended browser boundary. The bridge applies an 8.5 MB bounded JSON reader, forwards upstream 4xx validation errors instead of masking them with a demo, and uses the deterministic fallback only for unavailable/5xx upstream states. The React client preserves the same distinction: validation errors remain visible, while network/5xx failures may use the labelled local preview. Public backend snapshots expose redacted state and aggregate metrics only. `VITE_BLIMPMATE_AGENT_DIRECT_URL` is only for environments that deliberately configure CORS and direct browser access; `VITE_BLIMPMATE_AGENT_TIMEOUT_MS` can optionally bound direct requests.
+For an integrated local run, start the sibling Python host service and then this site:
+
+```bash
+cd ../BlimpMate_agent-main/host-service
+./run.sh
+
+cd ../../Lab_website_new-main
+npm run dev
+```
+
+`run.sh` and the example environment use port `5050`. The same-origin Node API remains the recommended browser boundary. The bridge applies an 8.5 MB bounded JSON reader, forwards upstream 4xx validation errors instead of masking them with a demo, and uses the deterministic fallback only for unavailable/5xx upstream states. The React client preserves the same distinction: validation errors remain visible, while network/5xx failures may use the labelled local preview. Public backend snapshots expose redacted state and aggregate metrics only. `VITE_BLIMPMATE_AGENT_DIRECT_URL` is only for environments that deliberately configure CORS and direct browser access; `VITE_BLIMPMATE_AGENT_TIMEOUT_MS` can optionally bound direct requests.
+
+### Standalone Review Pages
+
+Two dependency-free review pages are included for design review when the React toolchain or host service is unavailable:
+
+- `blimpmate-extended-preview.html` — the full product narrative, paper imagery, asset-production briefs, and embedded Agent Experience section.
+- `blimpmate-agent-lab-preview.html` — the six-scene digital-twin lab with deterministic fallback behavior.
+
+Serve the repository over HTTP so local assets and module scripts have normal browser semantics:
+
+```bash
+python -m http.server 8080
+```
+
+Then open `http://127.0.0.1:8080/blimpmate-extended-preview.html` or `http://127.0.0.1:8080/blimpmate-agent-lab-preview.html`.
+
+### Render QA
+
+The review runner uses Chromium to render desktop and mobile viewports, execute an Agent Lab action, and audit horizontal overflow, broken images, duplicate IDs, console errors, page errors, and request failures:
+
+```bash
+python scripts/render-blimpmate-review.py --quick
+```
+
+Artifacts are written to `review-artifacts/`, including `RENDER_REVIEW.md`, `render-audit.json`, section captures, and `contact-sheet.png`.

@@ -35,7 +35,7 @@ function itemValue(item: AgentDisplayItem) {
 }
 
 function modeLabel(snapshot: AgentSnapshot) {
-  if (snapshot.connected && snapshot.mode === 'connected') return 'Backend connected'
+  if (snapshot.connected) return snapshot.mode === 'live-safe' ? 'Backend · safe live mode' : 'Backend connected'
   return 'Demo fallback'
 }
 

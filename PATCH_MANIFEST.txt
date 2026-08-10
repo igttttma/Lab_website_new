@@ -1,33 +1,33 @@
-BlimpMate product-page + Agent Lab website patch
+BlimpMate product-page + Agent Lab delivery manifest
 
-Overlay these paths onto the supplied Lab_website_new project:
+This archive is a complete website project, not a partial overlay. Important additions and modifications include:
 
-.env.example
 README.md
+IMPLEMENTATION_SUMMARY.md
 AGENT_LAB_IMPLEMENTATION.md
 BLIMPMATE_PAGE_NOTES.md
-IMPLEMENTATION_SUMMARY.md
-PATCH_MANIFEST.txt
-PATCH_README.md
-blimpmate-agent-lab-preview.html
 blimpmate-extended-preview.html
+blimpmate-agent-lab-preview.html
+review-artifacts/
+scripts/render-blimpmate-review.py
 server/api.mjs
 server/blimpmateAgent.mjs
 server/config.mjs
 src/app/PublicSite.tsx
 src/features/blimpmate/BlimpMatePage.tsx
-src/features/blimpmate/agent/AgentExperienceSection.tsx
-src/features/blimpmate/agent/AgentScenarioControls.tsx
-src/features/blimpmate/agent/BlimpAgentLabPage.tsx
-src/features/blimpmate/agent/BlimpAgentTwin.tsx
-src/features/blimpmate/agent/blimpmateAgentClient.ts
-src/features/blimpmate/agent/blimpmateAgentData.ts
-src/features/blimpmate/agent/useBlimpAgent.ts
+src/features/blimpmate/BlimpModel.tsx
+src/features/blimpmate/agent/
 src/styles/global.css
+public/assets/blimpmate/
 
-The patch expects the original project's existing public/assets/blimpmate and
-public/assets/brand files. It does not include font files, Apple archive files,
-node_modules, build output, caches, or generated dependency directories.
+A separate complete backend archive contains the BlimpMate Agent repository with:
 
-The same integration bundle also contains the Python host-service overlay under
-backend-patch/. Apply it to /Users/suwen/Documents/blimpmate/BlimpMate_agent.
+WEB_EXPERIENCE_API.md
+host-service/blueprints/experience.py
+host-service/tests/test_web_experience.py
+host-service/scene/safety_detector.py
+host-service/server.py
+host-service/README.md
+host-service/.env.example
+
+The website archive does not include node_modules, build output, npm caches, Apple archive files, or font files outside the project's existing public assets.
