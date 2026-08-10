@@ -1,0 +1,834 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 960
+    },
+    "document": {
+      "clientWidth": 1440,
+      "scrollWidth": 1440,
+      "scrollHeight": 44897,
+      "horizontalOverflow": false
+    },
+    "duplicateIds": [],
+    "brokenImages": [],
+    "clipped": [
+      {
+        "tag": "span",
+        "id": "",
+        "className": "blimp-hero-wordmark",
+        "client": [
+          1238,
+          184
+        ],
+        "scroll": [
+          1460,
+          236
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-closer-stage blimp-reveal",
+        "client": [
+          1012,
+          700
+        ],
+        "scroll": [
+          1012,
+          722
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-closer-model",
+        "client": [
+          597,
+          700
+        ],
+        "scroll": [
+          700,
+          700
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-performance-stage blimp-performance-stage--wave",
+        "client": [
+          710,
+          620
+        ],
+        "scroll": [
+          781,
+          706
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-production-placeholder-frame",
+        "client": [
+          593,
+          242
+        ],
+        "scroll": [
+          593,
+          252
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-production-placeholder-frame",
+        "client": [
+          593,
+          224
+        ],
+        "scroll": [
+          593,
+          243
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-agent-static-stage",
+        "client": [
+          856,
+          650
+        ],
+        "scroll": [
+          2916,
+          1372
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-agent-static-user",
+        "client": [
+          25,
+          66
+        ],
+        "scroll": [
+          32,
+          74
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "i",
+        "id": "",
+        "className": "",
+        "client": [
+          19,
+          19
+        ],
+        "scroll": [
+          29,
+          73
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-agent-static-face",
+        "client": [
+          52,
+          52
+        ],
+        "scroll": [
+          52,
+          61
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-specification-groups",
+        "client": [
+          1280,
+          731
+        ],
+        "scroll": [
+          1290,
+          731
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "details",
+        "id": "",
+        "className": "blimp-specification-group blimp-reveal",
+        "client": [
+          1280,
+          478
+        ],
+        "scroll": [
+          1290,
+          478
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "summary",
+        "id": "",
+        "className": "",
+        "client": [
+          1280,
+          125
+        ],
+        "scroll": [
+          1290,
+          125
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-research-accordions blimp-reveal",
+        "client": [
+          715,
+          683
+        ],
+        "scroll": [
+          725,
+          683
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "details",
+        "id": "",
+        "className": "",
+        "client": [
+          715,
+          148
+        ],
+        "scroll": [
+          725,
+          148
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "summary",
+        "id": "",
+        "className": "",
+        "client": [
+          715,
+          77
+        ],
+        "scroll": [
+          725,
+          77
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      }
+    ],
+    "keys": {
+      "#overview": {
+        "x": 0,
+        "y": -22521,
+        "width": 1440,
+        "height": 1332.46875,
+        "bottom": -21188.53125
+      },
+      "#agent": {
+        "x": 0,
+        "y": -1218.296875,
+        "width": 1440,
+        "height": 3943.203125,
+        "bottom": 2724.90625
+      },
+      "#performance": {
+        "x": 0,
+        "y": -15034.90625,
+        "width": 1440,
+        "height": 6144,
+        "bottom": -8890.90625
+      }
+    },
+    "console": [],
+    "request_failures": [],
+    "url": "blimpmate-extended-preview.html",
+    "prefix": "product-desktop"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "document": {
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "scrollHeight": 47529,
+      "horizontalOverflow": false
+    },
+    "duplicateIds": [],
+    "brokenImages": [],
+    "clipped": [
+      {
+        "tag": "span",
+        "id": "",
+        "className": "blimp-hero-wordmark",
+        "client": [
+          359,
+          70
+        ],
+        "scroll": [
+          558,
+          90
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-closer-stage blimp-reveal",
+        "client": [
+          358,
+          746
+        ],
+        "scroll": [
+          359,
+          768
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-performance-sticky",
+        "client": [
+          390,
+          1006
+        ],
+        "scroll": [
+          413,
+          1006
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-performance-stage blimp-performance-stage--wave",
+        "client": [
+          350,
+          360
+        ],
+        "scroll": [
+          393,
+          401
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-agent-static-stage",
+        "client": [
+          356,
+          720
+        ],
+        "scroll": [
+          1776,
+          2143
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-agent-static-face",
+        "client": [
+          52,
+          52
+        ],
+        "scroll": [
+          52,
+          61
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "span",
+        "id": "",
+        "className": "",
+        "client": [
+          130,
+          72
+        ],
+        "scroll": [
+          137,
+          72
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-specification-groups",
+        "client": [
+          358,
+          883
+        ],
+        "scroll": [
+          369,
+          883
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "details",
+        "id": "",
+        "className": "blimp-specification-group blimp-reveal",
+        "client": [
+          358,
+          634
+        ],
+        "scroll": [
+          369,
+          634
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "summary",
+        "id": "",
+        "className": "",
+        "client": [
+          358,
+          102
+        ],
+        "scroll": [
+          369,
+          102
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-research-layout",
+        "client": [
+          328,
+          1110
+        ],
+        "scroll": [
+          338,
+          1110
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-research-accordions blimp-reveal",
+        "client": [
+          328,
+          457
+        ],
+        "scroll": [
+          338,
+          457
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "details",
+        "id": "",
+        "className": "",
+        "client": [
+          328,
+          222
+        ],
+        "scroll": [
+          338,
+          222
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "summary",
+        "id": "",
+        "className": "",
+        "client": [
+          328,
+          77
+        ],
+        "scroll": [
+          338,
+          77
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "blimp-project-media",
+        "client": [
+          390,
+          440
+        ],
+        "scroll": [
+          397,
+          440
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      }
+    ],
+    "keys": {
+      "#overview": {
+        "x": 0,
+        "y": -22913.609375,
+        "width": 390,
+        "height": 1023.5625,
+        "bottom": -21890.046875
+      },
+      "#agent": {
+        "x": 0,
+        "y": -3288.8125,
+        "width": 390,
+        "height": 4464.890625,
+        "bottom": 1176.078125
+      },
+      "#performance": {
+        "x": 0,
+        "y": -16653.71875,
+        "width": 390,
+        "height": 3629.1875,
+        "bottom": -13024.53125
+      }
+    },
+    "console": [],
+    "request_failures": [],
+    "url": "blimpmate-extended-preview.html",
+    "prefix": "product-mobile"
+  },
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 960
+    },
+    "document": {
+      "clientWidth": 1440,
+      "scrollWidth": 1440,
+      "scrollHeight": 5633,
+      "horizontalOverflow": false
+    },
+    "duplicateIds": [],
+    "brokenImages": [],
+    "clipped": [
+      {
+        "tag": "section",
+        "id": "",
+        "className": "hero",
+        "client": [
+          1280,
+          797
+        ],
+        "scroll": [
+          1287,
+          797
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "twin-stage",
+        "client": [
+          928,
+          650
+        ],
+        "scroll": [
+          3316,
+          1361
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "user",
+        "client": [
+          20,
+          34
+        ],
+        "scroll": [
+          28,
+          66
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "i",
+        "id": "",
+        "className": "",
+        "client": [
+          18,
+          18
+        ],
+        "scroll": [
+          27,
+          65
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      }
+    ],
+    "keys": {
+      ".hero": {
+        "x": 80,
+        "y": -902,
+        "width": 1280,
+        "height": 797.03125,
+        "bottom": -104.96875
+      },
+      ".stage-shell": {
+        "x": 80,
+        "y": 105.03125,
+        "width": 1280,
+        "height": 750,
+        "bottom": 855.03125
+      },
+      ".controls": {
+        "x": 80,
+        "y": 1005.03125,
+        "width": 1280,
+        "height": 572.90625,
+        "bottom": 1577.9375
+      },
+      ".observability": {
+        "x": 80,
+        "y": 1727.9375,
+        "width": 1280,
+        "height": 694.9375,
+        "bottom": 2422.875
+      }
+    },
+    "console": [],
+    "request_failures": [],
+    "url": "blimpmate-agent-lab-preview.html",
+    "prefix": "agent-desktop"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "document": {
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "scrollHeight": 7433,
+      "horizontalOverflow": false
+    },
+    "duplicateIds": [],
+    "brokenImages": [],
+    "clipped": [
+      {
+        "tag": "div",
+        "id": "",
+        "className": "twin-stage",
+        "client": [
+          358,
+          720
+        ],
+        "scroll": [
+          1912,
+          2168
+        ],
+        "overflow": [
+          "hidden",
+          "hidden"
+        ]
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "className": "user",
+        "client": [
+          20,
+          34
+        ],
+        "scroll": [
+          28,
+          66
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      },
+      {
+        "tag": "i",
+        "id": "",
+        "className": "",
+        "client": [
+          18,
+          18
+        ],
+        "scroll": [
+          27,
+          65
+        ],
+        "overflow": [
+          "visible",
+          "visible"
+        ]
+      }
+    ],
+    "keys": {
+      ".hero": {
+        "x": 16,
+        "y": -1644,
+        "width": 358,
+        "height": 1202.015625,
+        "bottom": -441.984375
+      },
+      ".stage-shell": {
+        "x": 16,
+        "y": -231.984375,
+        "width": 358,
+        "height": 1307.265625,
+        "bottom": 1075.28125
+      },
+      ".controls": {
+        "x": 16,
+        "y": 1225.28125,
+        "width": 358,
+        "height": 736.375,
+        "bottom": 1961.65625
+      },
+      ".observability": {
+        "x": 16,
+        "y": 2111.65625,
+        "width": 358,
+        "height": 1259.875,
+        "bottom": 3371.53125
+      }
+    },
+    "console": [],
+    "request_failures": [],
+    "url": "blimpmate-agent-lab-preview.html",
+    "prefix": "agent-mobile"
+  }
+]

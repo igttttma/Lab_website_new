@@ -66,12 +66,20 @@ Two explicit blank-card patterns remain:
 
 The final footage should keep provenance, privacy/control state, latency, and any manual/Wizard-of-Oz intervention visible.
 
-## Static review
+## Static review and render QA
 
 From the project root:
 
 ```bash
-python3 -m http.server 8000
+python -m http.server 8080
 ```
 
-Open `http://localhost:8000/blimpmate-agent-lab-preview.html`. The static artifact attempts the same-origin API and falls back to deterministic local scene output. It expects the original project’s `public/assets/` directory to remain in place.
+Open `http://127.0.0.1:8080/blimpmate-agent-lab-preview.html`. The static artifact attempts the same-origin API and falls back to deterministic, explicitly labelled local scene output.
+
+Re-run the browser review with:
+
+```bash
+python scripts/render-blimpmate-review.py --quick
+```
+
+The included review rendered desktop and 390 px mobile layouts in Chromium, exercised an Agent Lab action, and reported no page-level horizontal overflow, broken images, duplicate IDs, console errors, or request failures. Evidence is in `review-artifacts/`.

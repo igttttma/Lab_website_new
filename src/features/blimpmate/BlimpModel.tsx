@@ -1,4 +1,3 @@
-import '@google/model-viewer'
 import { createElement, useEffect, useState } from 'react'
 import { researchAsset } from './blimpmateData'
 
@@ -9,7 +8,7 @@ type BlimpModelProps = {
   className?: string
 }
 
-type ModelViewerElement = HTMLElement
+type ModelViewerElement = HTMLElement & { loaded?: boolean }
 
 const modelUrl = '/assets/blimpmate/balloon-robot.glb'
 const fallbackImageUrl = researchAsset('hero-update.webp')
@@ -27,11 +26,27 @@ export function BlimpModel({ scene = 'glow', interactive = false, scrollRotation
   useEffect(() => {
     const model = modelElement
     if (!model) return
-    const handleLoad = () => setStatus('ready')
-    const handleError = () => setStatus('error')
+    let disposed = false
+
+    const handleLoad = () => { if (!disposed) setStatus('ready') }
+    const handleError = () => { if (!disposed) setStatus('error') }
+    const timeout = window.setTimeout(handleError, 9000)
+
     model.addEventListener('load', handleLoad)
     model.addEventListener('error', handleError)
+    if (model.loaded) handleLoad()
+
+    if ('customElements' in window) {
+      void window.customElements.whenDefined('model-viewer').then(() => {
+        if (!disposed && model.loaded) handleLoad()
+      }).catch(handleError)
+    } else {
+      handleError()
+    }
+
     return () => {
+      disposed = true
+      window.clearTimeout(timeout)
       model.removeEventListener('load', handleLoad)
       model.removeEventListener('error', handleError)
     }
@@ -60,9 +75,12 @@ export function BlimpModel({ scene = 'glow', interactive = false, scrollRotation
 
   return (
     <div className={`blimp-model-motion blimp-model-motion--${scene}${interactive ? ' blimp-model-motion--interactive' : ''} ${className}`.trim()} data-model-status={status}>
-      {status === 'error' ? <img className="blimp-model-fallback" src={fallbackImageUrl} alt="BlimpMate presenting a projected visual update beside a user." /> : viewer}
+      <img className="blimp-model-poster" src={fallbackImageUrl} alt="" aria-hidden="true" />
+      {status === 'error'
+        ? <img className="blimp-model-fallback" src={fallbackImageUrl} alt="BlimpMate presenting a projected visual update beside a user." />
+        : viewer}
       <span className="blimp-model-status" aria-live="polite">
-        {status === 'error' ? 'MODEL PREVIEW UNAVAILABLE' : 'LOADING BLIMPMATE MODEL'}
+        {status === 'error' ? 'RESEARCH IMAGE · 3D FALLBACK' : 'LOADING BLIMPMATE MODEL'}
       </span>
     </div>
   )

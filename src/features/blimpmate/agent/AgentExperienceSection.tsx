@@ -9,10 +9,22 @@ type AgentExperienceSectionProps = {
   onNavigate: (path: string) => void
 }
 
+const inputLabels: Record<AgentScenarioId, string> = {
+  guidance: 'spoken intent + step state',
+  reminder: 'departure cue + object memory',
+  nutrition: 'meal image or disclosed fixture',
+  safety: 'workspace image or scene hint',
+  telepresence: 'visitor-selected call state',
+  positioning: 'bearing + distance + elevation',
+}
+
 export function AgentExperienceSection({ onNavigate }: AgentExperienceSectionProps) {
   const [activeId, setActiveId] = useState<AgentScenarioId>('reminder')
   const { snapshot, lastResult, running, error, run } = useBlimpAgent()
   const active = getAgentScenario(activeId)
+  const activeResult = lastResult?.scenario === activeId ? lastResult : null
+  const capability = snapshot.capabilities.subsystems[active.capability] || {}
+  const provenance = activeResult?.provenance.mode || String(capability.provenance || capability.mode || 'unknown')
 
   const openRoute = (path: string) => {
     onNavigate(path)
@@ -30,11 +42,22 @@ export function AgentExperienceSection({ onNavigate }: AgentExperienceSectionPro
         <p>The website mirrors the paper’s cloud, backend, onboard, and presentation loop in a browser-safe experience. Each card declares whether its result is real, fallback, mock, or Wizard-of-Oz.</p>
       </header>
 
+      <div className="blimp-agent-loop-map blimp-reveal" data-reveal data-visible="false" aria-label="Current public agent loop">
+        <article><span>01 / INPUT</span><strong>{inputLabels[activeId]}</strong><small>visitor-provided or disclosed demo input</small></article>
+        <i aria-hidden="true">→</i>
+        <article><span>02 / REASON + TOOLS</span><strong>{active.capability}</strong><small>{provenance} provenance remains visible</small></article>
+        <i aria-hidden="true">→</i>
+        <article><span>03 / PRESENT</span><strong>{activeResult?.display.title || active.preview.title}</strong><small>unified projected display state</small></article>
+        <i aria-hidden="true">→</i>
+        <article><span>04 / MOVE PREVIEW</span><strong>unconnected setpoint</strong><small>arming and actuator writes are absent</small></article>
+      </div>
+
       <div className="blimp-agent-live-shell blimp-reveal" data-reveal data-visible="false">
-        <BlimpAgentTwin scenarioId={activeId} snapshot={snapshot} result={lastResult} compact />
+        <BlimpAgentTwin scenarioId={activeId} snapshot={snapshot} result={activeResult} compact />
         <aside className="blimp-agent-live-copy">
-          <div className="blimp-agent-live-status">
-            <span data-connected={snapshot.connected}>{snapshot.connected ? 'LIVE BACKEND' : 'DEMO FALLBACK'}</span>
+          <div className="blimp-agent-live-status" aria-live="polite">
+            <span data-connected={snapshot.connected}>{snapshot.connected ? 'LIVE-SAFE BACKEND' : 'DEMO FALLBACK'}</span>
+            <span>{String(provenance).toUpperCase()}</span>
             <span>NO PHYSICAL CONTROL</span>
           </div>
           <p className="blimp-eyebrow">{active.eyebrow}</p>
@@ -44,8 +67,8 @@ export function AgentExperienceSection({ onNavigate }: AgentExperienceSectionPro
             <button type="button" className="blimp-agent-run" onClick={runPreview} disabled={running}>{running ? 'Running agent…' : active.actionLabel}</button>
             <button type="button" className="blimp-agent-open" onClick={() => openRoute(active.route)}>Open full scene <span aria-hidden="true">↗</span></button>
           </div>
-          {lastResult?.scenario === activeId ? <p className="blimp-agent-result-note" aria-live="polite"><strong>{lastResult.provenance.mode}</strong>{lastResult.summary}</p> : null}
-          {error ? <p className="blimp-agent-result-note is-error">{error}</p> : null}
+          {activeResult ? <p className="blimp-agent-result-note" aria-live="polite"><strong>{activeResult.provenance.mode}</strong>{activeResult.summary}</p> : null}
+          {error ? <p className="blimp-agent-result-note is-error" role="alert">{error}</p> : null}
         </aside>
       </div>
 

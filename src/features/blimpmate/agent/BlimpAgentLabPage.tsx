@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { MediaPlaceholder } from '../BlimpVisuals'
 import { researchAsset } from '../blimpmateData'
 import { AgentScenarioControls } from './AgentScenarioControls'
@@ -20,11 +21,22 @@ function eventTime(result: AgentActionResult) {
 }
 
 export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) {
+  const tabsRef = useRef<HTMLDivElement | null>(null)
   const scenarioId = scenarioFromPath(path)
   const scenario = getAgentScenario(scenarioId)
   const { snapshot, lastResult, history, loadingSnapshot, running, error, refresh, run } = useBlimpAgent()
   const capability = snapshot.capabilities.subsystems[scenario.capability] || {}
   const currentResult = lastResult?.scenario === scenarioId ? lastResult : null
+  const capturedTime = new Date(snapshot.captured_at * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+
+  useEffect(() => {
+    const rail = tabsRef.current
+    const active = rail?.querySelector<HTMLElement>('[data-active="true"]')
+    if (!rail || !active) return
+
+    const left = active.offsetLeft - (rail.clientWidth - active.offsetWidth) / 2
+    rail.scrollTo({ left: Math.max(0, left), behavior: 'smooth' })
+  }, [scenarioId])
 
   const selectScenario = (route: string) => onNavigate(route)
   const runScenario = (action: string, payload: Record<string, unknown>) => run(scenarioId, action, payload)
@@ -34,7 +46,7 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
       <div className="blimp-agent-lab-nav">
         <button type="button" onClick={() => onNavigate('/projects/blimpmate')}><span aria-hidden="true">←</span> BlimpMate</button>
         <nav aria-label="Agent Lab scenes">{agentScenarios.map((item) => <button type="button" aria-current={scenarioId === item.id ? 'page' : undefined} onClick={() => selectScenario(item.route)} key={item.id}>{item.label}</button>)}</nav>
-        <div><span data-connected={snapshot.connected}>{snapshot.connected ? 'CONNECTED' : 'DEMO'}</span><button type="button" onClick={() => void refresh()} disabled={loadingSnapshot}>{loadingSnapshot ? 'Checking…' : 'Refresh'}</button></div>
+        <div><span data-connected={snapshot.connected}>{snapshot.connected ? 'LIVE SAFE' : 'DEMO'}</span><button type="button" onClick={() => void refresh()} disabled={loadingSnapshot} aria-label="Refresh backend snapshot">{loadingSnapshot ? 'Checking…' : 'Refresh'}</button></div>
       </div>
 
       <section className="blimp-agent-lab-hero">
@@ -45,6 +57,7 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
           <div className="blimp-agent-lab-hero-meta">
             <span><strong>{snapshot.connected ? 'Live' : 'Demo'}</strong>backend mode</span>
             <span><strong>{textFrom(capability.provenance || capability.mode, 'unknown')}</strong>active provenance</span>
+            <span><strong>{capturedTime}</strong>last snapshot</span>
             <span><strong>Off</strong>physical control</span>
           </div>
         </div>
@@ -55,7 +68,7 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
       </section>
 
       <section className="blimp-agent-tab-section" aria-label="Choose an agent scene">
-        <div className="blimp-agent-tabs">
+        <div className="blimp-agent-tabs" ref={tabsRef}>
           {agentScenarios.map((item) => (
             <button type="button" data-active={scenarioId === item.id} onClick={() => selectScenario(item.route)} key={item.id}>
               <span>{item.index}</span><strong>{item.label}</strong><small>{item.eyebrow}</small>
