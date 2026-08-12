@@ -6853,6 +6853,30 @@ address {
 .blimp-agent-inspector-reason p { margin: 9px 0 0; color: #6e6e73; font-size: 12px; line-height: 1.46; }
 .blimp-agent-inspector-error { margin-top: 16px; font-size: 12px; }
 
+.blimp-agent-inspector-caveats {
+  margin-top: 16px;
+  border-radius: 16px;
+  background: rgba(20, 114, 58, 0.06);
+  padding: 18px;
+}
+
+.blimp-agent-inspector-caveats > span {
+  color: #14723a;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.09em;
+}
+
+.blimp-agent-inspector-caveats ul {
+  display: grid;
+  gap: 7px;
+  margin: 11px 0 0;
+  color: #6e6e73;
+  font-size: 11px;
+  line-height: 1.45;
+  padding-left: 18px;
+}
+
 /* Scenario controls */
 .blimp-agent-controls {
   width: min(1280px, calc(100% - 48px));
@@ -7063,6 +7087,34 @@ address {
 .blimp-agent-provider-status[data-mode="real"] > span,
 .blimp-agent-provider-status[data-mode="real"] > strong {
   color: #14723a;
+}
+
+.blimp-agent-nutrition-proof {
+  max-width: 660px;
+  margin-top: 14px;
+  border-left: 2px solid #14723a;
+  color: #1d1d1f;
+  padding: 2px 0 2px 14px;
+}
+
+.blimp-agent-nutrition-proof > span {
+  color: #14723a;
+  font-family: "Orbitron-SemiBold", Rajdhani, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.09em;
+}
+
+.blimp-agent-nutrition-proof > strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.blimp-agent-nutrition-proof > p {
+  margin: 5px 0 0;
+  color: #6e6e73;
+  font-size: 10px;
+  line-height: 1.42;
 }
 
 .blimp-agent-check {
@@ -7835,6 +7887,7 @@ address {
   }
 
   .blimp-agent-control-footer { padding: 22px 20px; }
+  .blimp-agent-nutrition-proof { max-width: 100%; }
 
   .blimp-agent-event {
     grid-template-columns: 8px minmax(0, 1fr);

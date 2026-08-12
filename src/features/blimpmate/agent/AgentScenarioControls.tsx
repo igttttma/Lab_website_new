@@ -33,6 +33,7 @@ export function AgentScenarioControls({ scenarioId, running, capability, result,
   const [selectedObjects, setSelectedObjects] = useState(['keys', 'access card'])
   const [reminderScene, setReminderScene] = useState('entryway')
   const [provider, setProvider] = useState('auto')
+  const [portionGrams, setPortionGrams] = useState(150)
   const [safetyScene, setSafetyScene] = useState('laboratory bench with an uncapped container near the edge')
   const [remoteName, setRemoteName] = useState('Remote collaborator')
   const [callState, setCallState] = useState('incoming')
@@ -68,7 +69,18 @@ export function AgentScenarioControls({ scenarioId, running, capability, result,
   const capabilityMode = String(capability.provenance || capability.mode || 'unknown')
   const configuredProvider = String(capability.provider || 'none')
   const selectedProvider = provider === 'auto' ? configuredProvider : provider
-  const realVisionReady = capabilityMode === 'real' && (provider === 'auto' || selectedProvider === configuredProvider)
+  const availableProviders = Array.isArray(capability.available_providers)
+    ? capability.available_providers.map(String)
+    : configuredProvider !== 'none' ? [configuredProvider] : []
+  const realVisionReady = capabilityMode === 'real' && selectedProvider !== 'none' && availableProviders.includes(selectedProvider)
+  const isLocalFoodProvider = selectedProvider === 'local-food101'
+  const providerStatusCopy = realVisionReady
+    ? isLocalFoodProvider
+      ? `${String(capability.model || 'MobileNetV2 Food-101')} runs on this backend CPU. It classifies one dominant dish; it does not upload the photo to a cloud API.`
+      : `${String(capability.model || 'Configured multimodal model')} will process the uploaded image through ${selectedProvider}.`
+    : selectedProvider === 'local-food101'
+      ? 'The local ONNX runtime or bundled Food-101 model is unavailable. Reinstall backend requirements and verify the model checksum.'
+      : 'Choose an available provider, or configure its API key and restart the Agent backend.'
   const uploadedImagePayload = image ? {
     image: image.dataUrl,
     input_name: image.name,
@@ -92,6 +104,7 @@ export function AgentScenarioControls({ scenarioId, running, capability, result,
       case 'nutrition':
         return onRun('analyze', {
           ...(provider === 'auto' ? {} : { provider }),
+          portion_grams: portionGrams,
           ...uploadedImagePayload,
           trigger: image ? 'uploaded_image' : 'demo_meal',
         })
@@ -133,11 +146,12 @@ export function AgentScenarioControls({ scenarioId, running, capability, result,
         {scenarioId === 'nutrition' ? (
           <div className="blimp-agent-vision-grid">
             <div className="blimp-agent-vision-settings">
-              <label>Vision provider<select value={provider} onChange={(event) => setProvider(event.target.value)}><option value="auto">Auto · configured provider</option><option value="gemini">Gemini</option><option value="qwen">Qwen</option></select><small>The backend response must report <strong>real</strong> before an upload is treated as analyzed.</small></label>
+              <label>Vision provider<select value={provider} onChange={(event) => setProvider(event.target.value)}><option value="auto">Auto · configured provider</option><option value="local-food101">Local Food-101 · private CPU</option><option value="gemini">Gemini</option><option value="qwen">Qwen</option></select><small>The backend response must report <strong>real</strong> before an upload is treated as analyzed.</small></label>
+              <label>Portion weight<input type="number" min={20} max={1000} step={10} value={portionGrams} onChange={(event) => setPortionGrams(Math.max(20, Math.min(1000, Number(event.target.value) || 20)))} /><small>Entered by you. The image does not measure grams or volume.</small></label>
               <div className="blimp-agent-provider-status" data-mode={realVisionReady ? 'real' : capabilityMode}>
                 <span>VISION BACKEND</span>
-                <strong>{realVisionReady ? `${configuredProvider} ready` : 'Provider setup needed'}</strong>
-                <p>{realVisionReady ? `${String(capability.model || 'Configured multimodal model')} will process the uploaded image.` : 'Set GEMINI_API_KEY or QWEN_API_KEY in the Agent backend, restart it, then refresh this page.'}</p>
+                <strong>{realVisionReady ? `${selectedProvider} ready` : 'Provider setup needed'}</strong>
+                <p>{providerStatusCopy}</p>
               </div>
             </div>
             <ImageControl image={image} error={fileError} preparing={preparingImage} onFile={loadImage} onClear={clearImage} label="Meal image" />
@@ -169,10 +183,17 @@ export function AgentScenarioControls({ scenarioId, running, capability, result,
         <div className="blimp-agent-control-footer">
           <div>
             <p><strong>Public safety boundary.</strong> This action can inspect state, run perception/demo logic, or compute a setpoint. It cannot arm the robot or publish motor commands.</p>
-            {result?.input ? <p className="blimp-agent-last-input" data-processed={result.input.processed}><strong>Last input:</strong> {result.input.name || result.input.source} · {result.input.processed ? 'processed by the real provider' : 'demo input'}</p> : null}
+            {result?.input ? <p className="blimp-agent-last-input" data-processed={result.input.processed}><strong>Last input:</strong> {result.input.name || result.input.source} · {result.input.processed ? `processed by ${result.input.provider || 'the real provider'}` : 'demo input'}</p> : null}
+            {scenarioId === 'nutrition' && result?.display.nutrition ? (
+              <div className="blimp-agent-nutrition-proof">
+                <span>ESTIMATE BASIS</span>
+                <strong>{result.display.nutrition.calorie_available ? `${result.input?.classification_confidence ? Math.round(result.input.classification_confidence * 100) : 0}% classification · ${result.input?.portion_grams || portionGrams} g entered portion` : 'Calorie result withheld'}</strong>
+                <p>{String(result.display.nutrition.calorie_basis || 'No undisclosed nutrition assumption was applied.')}</p>
+              </div>
+            ) : null}
             {error ? <p className="blimp-agent-control-error" role="alert">{error}</p> : null}
           </div>
-          <button type="button" className="blimp-agent-run" onClick={() => void runCurrent()} disabled={running || preparingImage}>{running ? 'Running agent…' : preparingImage ? 'Preparing image…' : scenarioId === 'nutrition' ? image ? 'Analyze uploaded meal' : 'Run disclosed demo meal' : scenario.actionLabel}</button>
+          <button type="button" className="blimp-agent-run" onClick={() => void runCurrent()} disabled={running || preparingImage || (scenarioId === 'nutrition' && Boolean(image) && !realVisionReady)}>{running ? 'Running agent…' : preparingImage ? 'Preparing image…' : scenarioId === 'nutrition' ? image ? realVisionReady ? 'Analyze uploaded meal' : 'Choose a ready provider' : 'Run disclosed demo meal' : scenario.actionLabel}</button>
         </div>
       </div>
     </section>

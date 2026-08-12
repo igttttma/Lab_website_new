@@ -28,6 +28,8 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
   const { snapshot, lastResult, history, loadingSnapshot, running, error, refresh, run } = useBlimpAgent()
   const capability = snapshot.capabilities.subsystems[scenario.capability] || {}
   const currentResult = lastResult?.scenario === scenarioId ? lastResult : null
+  const nutritionDetail = scenarioId === 'nutrition' ? currentResult?.display.nutrition : undefined
+  const classification = nutritionDetail?.top_k?.[0]
   const capturedTime = new Date(snapshot.captured_at * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
           <p>Select a paper-backed scene, change its inputs, inspect the returned tool and provenance state, and watch the projected interface update. Physical flight writes are deliberately absent.</p>
           <div className="blimp-agent-lab-hero-actions">
             <a href="#agent-controls">Try this scene</a>
-            <span>{scenarioId === 'nutrition' ? 'Upload a meal photo for real multimodal analysis.' : 'Inputs run through the browser-safe Agent API.'}</span>
+            <span>{scenarioId === 'nutrition' ? 'Upload a meal photo for real local or cloud analysis; portion weight stays user-provided.' : 'Inputs run through the browser-safe Agent API.'}</span>
           </div>
           <div className="blimp-agent-lab-hero-meta">
             <span><strong>{snapshot.connected ? 'Live' : 'Demo'}</strong>backend mode</span>
@@ -99,11 +101,16 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
             <div><dt>Subsystem</dt><dd>{currentResult?.provenance.subsystem || scenario.capability}</dd></div>
             <div><dt>Input</dt><dd>{currentResult?.input?.name || currentResult?.input?.source || 'Not run'}</dd></div>
             <div><dt>Provider</dt><dd>{currentResult?.input?.provider || textFrom(capability.provider, 'not configured')}</dd></div>
+            {currentResult?.input?.model ? <div><dt>Model</dt><dd>{currentResult.input.model}</dd></div> : null}
+            {classification ? <div><dt>Classification</dt><dd>{classification.food_name || classification.label || 'Unknown'}</dd></div> : null}
+            {currentResult?.input?.classification_confidence !== undefined && currentResult.input.classification_confidence !== null ? <div><dt>Confidence</dt><dd>{Math.round(currentResult.input.classification_confidence * 100)}%</dd></div> : null}
+            {currentResult?.input?.portion_grams ? <div><dt>Portion</dt><dd>{currentResult.input.portion_grams} g · visitor entered</dd></div> : null}
             <div><dt>Provenance</dt><dd>{currentResult?.provenance.mode || textFrom(capability.provenance || capability.mode, 'unknown')}</dd></div>
             <div><dt>Latency</dt><dd>{currentResult ? `${currentResult.latency_ms.toFixed(2)} ms` : 'Not run'}</dd></div>
             <div><dt>Physical control</dt><dd>{currentResult?.physical_control ? 'Enabled' : 'Disabled'}</dd></div>
           </dl>
           <div className="blimp-agent-inspector-reason"><span>WHY THIS MODE</span><p>{error || currentResult?.provenance.reason || textFrom(capability.reason, 'Capability detail is not available yet.')}</p></div>
+          {nutritionDetail?.caveats?.length ? <div className="blimp-agent-inspector-caveats"><span>WHAT THIS ESTIMATE DOES NOT CLAIM</span><ul>{nutritionDetail.caveats.map((caveat) => <li key={caveat}>{caveat}</li>)}</ul></div> : null}
           {error ? <p className="blimp-agent-inspector-error" role="alert">{error}</p> : null}
         </aside>
       </section>

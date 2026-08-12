@@ -7,6 +7,14 @@ export type AgentCapability = {
   mode?: string
   provenance?: string
   reason?: string
+  provider?: string
+  model?: string
+  runtime?: string
+  task?: string
+  nutrition_support?: string
+  available_providers?: string[]
+  confidence_threshold?: number
+  ready?: boolean
   [key: string]: unknown
 }
 
@@ -22,6 +30,22 @@ export type AgentDisplayState = {
   metrics?: Record<string, unknown>
   target?: Record<string, unknown>
   command?: Record<string, unknown>
+  nutrition?: {
+    classification?: string
+    confidence?: number
+    confidence_threshold?: number
+    accepted?: boolean
+    portion_grams?: number
+    portion_basis?: string
+    portion_measured_from_image?: boolean
+    calorie_basis?: string
+    calorie_available?: boolean
+    reference_source?: string
+    reference_license?: string
+    top_k?: Array<{ food_name?: string; label?: string; confidence?: number }>
+    caveats?: string[]
+    [key: string]: unknown
+  }
   [key: string]: unknown
 }
 
@@ -76,6 +100,10 @@ export type AgentActionResult = {
     processed?: boolean
     provider?: string
     model?: string
+    portion_grams?: number
+    classification_confidence?: number | null
+    calorie_basis?: string
+    portion_measured_from_image?: boolean
   } | null
   audit_recorded: boolean
   control_authority?: Record<string, unknown>
@@ -155,7 +183,7 @@ export const agentScenarios: AgentScenario[] = [
     label: 'Nutrition',
     eyebrow: 'MULTIMODAL MEAL FEEDBACK',
     title: 'Turn a visible meal into lightweight feedback.',
-    summary: 'The card sends an optional image to the configured vision provider and renders explicit real/mock provenance.',
+    summary: 'Upload a meal photo for image-dependent dish classification, then combine it with an explicit user-entered portion and attributed calorie reference.',
     source: 'Paper Figure 9a · meal-time feedback',
     image: researchAsset('scenario-context-1.webp'),
     alt: 'BlimpMate displaying approximate nutritional feedback beside a meal.',
@@ -163,10 +191,10 @@ export const agentScenarios: AgentScenario[] = [
     action: 'analyze',
     actionLabel: 'Analyze the demo meal',
     capability: 'vision_food',
-    defaultPayload: { provider: 'gemini' },
+    defaultPayload: { provider: 'auto', portion_grams: 150 },
     preview: {
       kind: 'nutrition', eyebrow: 'MEAL-TIME FEEDBACK', title: 'About 620 kcal',
-      body: 'Approximate values for the visible meal; not medical advice.', emotion: 'helpful',
+      body: 'Disclosed fixed fixture. Uploaded images use real provider provenance and explicit portion assumptions.', emotion: 'helpful',
       metrics: { calories: 620, protein_g: 31, carbs_g: 68, fat_g: 24 },
       items: [{ name: 'rice bowl', calories: 360 }, { name: 'grilled protein', calories: 260 }],
     },

@@ -23,7 +23,7 @@ function textFrom(value: unknown, fallback = '') {
 }
 
 function itemLabel(item: AgentDisplayItem) {
-  return textFrom(item.label || item.name || item.object_name || item.description, 'Agent output')
+  return textFrom(item.food_name || item.label || item.name || item.object_name || item.description, 'Agent output')
 }
 
 function itemValue(item: AgentDisplayItem) {
@@ -31,6 +31,7 @@ function itemValue(item: AgentDisplayItem) {
   if (item.state !== undefined) return textFrom(item.state)
   if (item.level !== undefined) return textFrom(item.level)
   if (item.calories !== undefined) return `${textFrom(item.calories)} kcal`
+  if (item.confidence !== undefined) return `${Math.round(numberFrom(item.confidence) * 100)}%`
   if (item.location_hint !== undefined) return textFrom(item.location_hint)
   return ''
 }
