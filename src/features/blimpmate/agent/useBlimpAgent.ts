@@ -30,6 +30,7 @@ export function useBlimpAgent() {
   const run = useCallback(async (scenario: AgentScenarioId, action: string, payload: Record<string, unknown>) => {
     setRunning(true)
     setError('')
+    setLastResult(null)
     try {
       const result = await executeAgentAction(scenario, action, payload)
       setLastResult(result)

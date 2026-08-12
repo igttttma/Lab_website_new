@@ -68,6 +68,15 @@ export type AgentActionResult = {
   display: AgentDisplayState
   tools: Array<Record<string, unknown>>
   summary: string
+  input?: {
+    source?: string
+    name?: string
+    mime_type?: string | null
+    size_bytes?: number
+    processed?: boolean
+    provider?: string
+    model?: string
+  } | null
   audit_recorded: boolean
   control_authority?: Record<string, unknown>
   interaction_boundary: string

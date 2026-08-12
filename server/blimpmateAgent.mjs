@@ -286,6 +286,10 @@ function mayUseFallback(error) {
   return serverConfig.blimpmateAgentDemoFallback && (!status || status >= 500)
 }
 
+function hasUploadedImage(payload) {
+  return typeof payload?.image === 'string' && payload.image.startsWith('data:image/')
+}
+
 export async function handleBlimpMateAgent(request, response, url) {
   if (request.method === 'GET' && url.pathname === '/api/blimpmate-agent/snapshot') {
     try {
@@ -349,10 +353,12 @@ export async function handleBlimpMateAgent(request, response, url) {
       })
       sendAgentJson(response, 200, { ...data, upstream: { available: true } })
     } catch (error) {
-      if (!mayUseFallback(error)) {
+      if (hasUploadedImage(payload) || !mayUseFallback(error)) {
         sendAgentJson(response, error?.status || 503, {
           success: false,
-          error: errorReason(error),
+          error: hasUploadedImage(payload)
+            ? `Uploaded image analysis failed: ${errorReason(error).replace(/[.\s]+$/, '')}. No demo result was substituted.`
+            : errorReason(error),
           upstream: { available: false, status: error?.status || 503 },
         })
       } else {

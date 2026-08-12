@@ -9,6 +9,7 @@ type BlimpAgentTwinProps = {
   scenarioId: AgentScenarioId
   snapshot: AgentSnapshot
   result?: AgentActionResult | null
+  error?: string
   compact?: boolean
 }
 
@@ -39,14 +40,24 @@ function modeLabel(snapshot: AgentSnapshot) {
   return 'Demo fallback'
 }
 
-function displayFor(scenarioId: AgentScenarioId, result?: AgentActionResult | null): AgentDisplayState {
+function displayFor(scenarioId: AgentScenarioId, result?: AgentActionResult | null, error?: string): AgentDisplayState {
   if (result?.scenario === scenarioId) return result.display
-  return getAgentScenario(scenarioId).preview
+  const preview = getAgentScenario(scenarioId).preview
+  if (!error) return preview
+  return {
+    ...preview,
+    eyebrow: 'RUN NOT COMPLETED',
+    title: 'Analysis unavailable',
+    body: 'The requested input was not processed. No demo result was substituted.',
+    emotion: 'alert',
+    metrics: {},
+    items: [],
+  }
 }
 
-export function BlimpAgentTwin({ scenarioId, snapshot, result, compact = false }: BlimpAgentTwinProps) {
+export function BlimpAgentTwin({ scenarioId, snapshot, result, error, compact = false }: BlimpAgentTwinProps) {
   const scenario = getAgentScenario(scenarioId)
-  const display = displayFor(scenarioId, result)
+  const display = displayFor(scenarioId, result, error)
   const target = display.target || {}
   const command = display.command || {}
   const bearing = numberFrom(target.bearing_deg, scenarioId === 'positioning' ? 18 : 0)
@@ -55,7 +66,7 @@ export function BlimpAgentTwin({ scenarioId, snapshot, result, compact = false }
   const markerY = Math.max(18, Math.min(84, 78 - distance * 14))
   const screenItems = (display.items || []).slice(0, compact ? 2 : 3)
   const metrics = Object.entries(display.metrics || {}).slice(0, compact ? 2 : 4)
-  const provenance = result?.scenario === scenarioId ? result.provenance.mode : snapshot.capabilities.subsystems[scenario.capability]?.provenance || snapshot.capabilities.subsystems[scenario.capability]?.mode || 'unknown'
+  const provenance = error ? 'error' : result?.scenario === scenarioId ? result.provenance.mode : snapshot.capabilities.subsystems[scenario.capability]?.provenance || snapshot.capabilities.subsystems[scenario.capability]?.mode || 'unknown'
   const style = {
     '--agent-user-x': `${markerX}%`,
     '--agent-user-y': `${markerY}%`,

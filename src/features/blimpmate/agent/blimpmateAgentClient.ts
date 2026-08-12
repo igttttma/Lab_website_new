@@ -2,8 +2,8 @@ import type { AgentActionResult, AgentScenarioId, AgentSnapshot } from './blimpm
 import { createDemoResult, createDemoSnapshot } from './blimpmateAgentData'
 
 const directBase = String(import.meta.env.VITE_BLIMPMATE_AGENT_DIRECT_URL || '').replace(/\/$/, '')
-const configuredTimeout = Number(import.meta.env.VITE_BLIMPMATE_AGENT_TIMEOUT_MS || 5000)
-const timeoutMs = Number.isFinite(configuredTimeout) ? Math.max(250, Math.min(30000, configuredTimeout)) : 5000
+const configuredTimeout = Number(import.meta.env.VITE_BLIMPMATE_AGENT_TIMEOUT_MS || 30000)
+const timeoutMs = Number.isFinite(configuredTimeout) ? Math.max(250, Math.min(30000, configuredTimeout)) : 30000
 
 class AgentRequestError extends Error {
   readonly status: number
@@ -84,6 +84,8 @@ export async function executeAgentAction(
       body: JSON.stringify({ scenario, action, payload }),
     })
   } catch (error) {
+    const hasUploadedImage = typeof payload.image === 'string' && payload.image.startsWith('data:image/')
+    if (hasUploadedImage) throw error
     if (shouldUseLocalDemo(error)) return createDemoResult(scenario, action, reasonFromError(error))
     throw error
   }
@@ -96,4 +98,67 @@ export function readImageAsDataUrl(file: File): Promise<string> {
     reader.addEventListener('error', () => reject(reader.error || new Error('Image could not be read')))
     reader.readAsDataURL(file)
   })
+}
+
+export type PreparedAgentImage = {
+  dataUrl: string
+  name: string
+  mimeType: string
+  sizeBytes: number
+  originalSizeBytes: number
+  width: number
+  height: number
+  resized: boolean
+}
+
+const supportedImageTypes = new Set(['image/jpeg', 'image/png', 'image/webp'])
+const maxSourceImageBytes = 20_000_000
+const targetImageBytes = 4_500_000
+const maxImageSide = 1920
+
+export async function prepareImageForAgent(file: File): Promise<PreparedAgentImage> {
+  if (!supportedImageTypes.has(file.type)) throw new Error('Choose a JPEG, PNG, or WebP image.')
+  if (file.size > maxSourceImageBytes) throw new Error('Choose an image below 20 MB.')
+
+  const bitmap = await createImageBitmap(file)
+  try {
+    const scale = Math.min(1, maxImageSide / Math.max(bitmap.width, bitmap.height))
+    const width = Math.max(1, Math.round(bitmap.width * scale))
+    const height = Math.max(1, Math.round(bitmap.height * scale))
+    const shouldResize = scale < 1 || file.size > targetImageBytes
+    if (!shouldResize) {
+      return {
+        dataUrl: await readImageAsDataUrl(file),
+        name: file.name,
+        mimeType: file.type,
+        sizeBytes: file.size,
+        originalSizeBytes: file.size,
+        width,
+        height,
+        resized: false,
+      }
+    }
+
+    const canvas = document.createElement('canvas')
+    canvas.width = width
+    canvas.height = height
+    const context = canvas.getContext('2d')
+    if (!context) throw new Error('This browser cannot prepare the image.')
+    context.drawImage(bitmap, 0, 0, width, height)
+    const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.86))
+    if (!blob || blob.size > 6_000_000) throw new Error('The prepared image is still too large. Choose a smaller image.')
+    const prepared = new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' })
+    return {
+      dataUrl: await readImageAsDataUrl(prepared),
+      name: prepared.name,
+      mimeType: prepared.type,
+      sizeBytes: prepared.size,
+      originalSizeBytes: file.size,
+      width,
+      height,
+      resized: true,
+    }
+  } finally {
+    bitmap.close()
+  }
 }

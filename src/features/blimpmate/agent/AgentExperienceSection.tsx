@@ -12,7 +12,7 @@ type AgentExperienceSectionProps = {
 const inputLabels: Record<AgentScenarioId, string> = {
   guidance: 'spoken intent + step state',
   reminder: 'departure cue + object memory',
-  nutrition: 'meal image or disclosed fixture',
+  nutrition: 'disclosed fixture · open Agent Lab to upload',
   safety: 'workspace image or scene hint',
   telepresence: 'visitor-selected call state',
   positioning: 'bearing + distance + elevation',

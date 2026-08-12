@@ -22,6 +22,7 @@ function eventTime(result: AgentActionResult) {
 
 export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) {
   const tabsRef = useRef<HTMLDivElement | null>(null)
+  const stageRef = useRef<HTMLElement | null>(null)
   const scenarioId = scenarioFromPath(path)
   const scenario = getAgentScenario(scenarioId)
   const { snapshot, lastResult, history, loadingSnapshot, running, error, refresh, run } = useBlimpAgent()
@@ -39,7 +40,11 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
   }, [scenarioId])
 
   const selectScenario = (route: string) => onNavigate(route)
-  const runScenario = (action: string, payload: Record<string, unknown>) => run(scenarioId, action, payload)
+  const runScenario = async (action: string, payload: Record<string, unknown>) => {
+    const result = await run(scenarioId, action, payload)
+    if (result) window.setTimeout(() => stageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80)
+    return result
+  }
 
   return (
     <main className="blimpmate-page blimp-agent-lab-page">
@@ -54,6 +59,10 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
           <p className="blimp-eyebrow">BLIMPMATE AGENT LAB / PUBLIC DIGITAL TWIN</p>
           <h1>Experience one agent loop at a time.</h1>
           <p>Select a paper-backed scene, change its inputs, inspect the returned tool and provenance state, and watch the projected interface update. Physical flight writes are deliberately absent.</p>
+          <div className="blimp-agent-lab-hero-actions">
+            <a href="#agent-controls">Try this scene</a>
+            <span>{scenarioId === 'nutrition' ? 'Upload a meal photo for real multimodal analysis.' : 'Inputs run through the browser-safe Agent API.'}</span>
+          </div>
           <div className="blimp-agent-lab-hero-meta">
             <span><strong>{snapshot.connected ? 'Live' : 'Demo'}</strong>backend mode</span>
             <span><strong>{textFrom(capability.provenance || capability.mode, 'unknown')}</strong>active provenance</span>
@@ -77,25 +86,27 @@ export function BlimpAgentLabPage({ path, onNavigate }: BlimpAgentLabPageProps) 
         </div>
       </section>
 
-      <section className="blimp-agent-lab-stage">
-        <BlimpAgentTwin scenarioId={scenarioId} snapshot={snapshot} result={currentResult} />
+      <AgentScenarioControls key={scenarioId} scenarioId={scenarioId} running={running} capability={capability} result={currentResult} error={error} onRun={runScenario} />
+
+      <section className="blimp-agent-lab-stage" ref={stageRef}>
+        <BlimpAgentTwin scenarioId={scenarioId} snapshot={snapshot} result={currentResult} error={error} />
         <aside className="blimp-agent-inspector">
           <p className="blimp-eyebrow">RUN INSPECTOR</p>
-          <h2>{currentResult?.display.title || scenario.preview.title}</h2>
-          <p>{currentResult?.display.body || scenario.preview.body}</p>
+          <h2>{error ? 'Run not completed' : currentResult?.display.title || scenario.preview.title}</h2>
+          <p>{error ? 'The requested input was not processed, and the page did not substitute a demo result.' : currentResult?.display.body || scenario.preview.body}</p>
           <dl>
             <div><dt>Scenario</dt><dd>{scenario.label}</dd></div>
             <div><dt>Subsystem</dt><dd>{currentResult?.provenance.subsystem || scenario.capability}</dd></div>
+            <div><dt>Input</dt><dd>{currentResult?.input?.name || currentResult?.input?.source || 'Not run'}</dd></div>
+            <div><dt>Provider</dt><dd>{currentResult?.input?.provider || textFrom(capability.provider, 'not configured')}</dd></div>
             <div><dt>Provenance</dt><dd>{currentResult?.provenance.mode || textFrom(capability.provenance || capability.mode, 'unknown')}</dd></div>
             <div><dt>Latency</dt><dd>{currentResult ? `${currentResult.latency_ms.toFixed(2)} ms` : 'Not run'}</dd></div>
             <div><dt>Physical control</dt><dd>{currentResult?.physical_control ? 'Enabled' : 'Disabled'}</dd></div>
           </dl>
-          <div className="blimp-agent-inspector-reason"><span>WHY THIS MODE</span><p>{currentResult?.provenance.reason || textFrom(capability.reason, 'Capability detail is not available yet.')}</p></div>
-          {error ? <p className="blimp-agent-inspector-error">{error}</p> : null}
+          <div className="blimp-agent-inspector-reason"><span>WHY THIS MODE</span><p>{error || currentResult?.provenance.reason || textFrom(capability.reason, 'Capability detail is not available yet.')}</p></div>
+          {error ? <p className="blimp-agent-inspector-error" role="alert">{error}</p> : null}
         </aside>
       </section>
-
-      <AgentScenarioControls key={scenarioId} scenarioId={scenarioId} running={running} onRun={runScenario} />
 
       <section className="blimp-agent-observability">
         <header><div><p className="blimp-eyebrow">OBSERVABILITY</p><h2>Every run leaves a visible trace.</h2></div><p>Tool names, provenance, latency, and output state are shown to the visitor instead of being hidden behind an “AI” label.</p></header>

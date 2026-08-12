@@ -13,7 +13,7 @@ function navPath(label: string) {
 }
 
 export function BrandHeader({ navigation, currentPath, onNavigate }: BrandHeaderProps) {
-  const isBlimpMate = currentPath === '/projects/blimpmate'
+  const isBlimpMate = currentPath.startsWith('/projects/blimpmate')
 
   return (
     <header className={`site-header${isBlimpMate ? ' site-header--blimpmate' : ''}`}>

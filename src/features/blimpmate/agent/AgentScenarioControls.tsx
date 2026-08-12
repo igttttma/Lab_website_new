@@ -1,11 +1,15 @@
-import { useState } from 'react'
-import { readImageAsDataUrl } from './blimpmateAgentClient'
-import type { AgentScenarioId } from './blimpmateAgentData'
+import { useId, useState } from 'react'
+import { prepareImageForAgent } from './blimpmateAgentClient'
+import type { PreparedAgentImage } from './blimpmateAgentClient'
+import type { AgentActionResult, AgentCapability, AgentScenarioId } from './blimpmateAgentData'
 import { getAgentScenario } from './blimpmateAgentData'
 
 type AgentScenarioControlsProps = {
   scenarioId: AgentScenarioId
   running: boolean
+  capability: AgentCapability
+  result?: AgentActionResult | null
+  error?: string
   onRun: (action: string, payload: Record<string, unknown>) => Promise<unknown> | unknown
 }
 
@@ -22,22 +26,22 @@ const reminderObjects = [
   { name: 'phone', location_hint: 'kitchen counter', importance_score: 0.88 },
 ]
 
-export function AgentScenarioControls({ scenarioId, running, onRun }: AgentScenarioControlsProps) {
+export function AgentScenarioControls({ scenarioId, running, capability, result, error, onRun }: AgentScenarioControlsProps) {
   const scenario = getAgentScenario(scenarioId)
   const [stepIndex, setStepIndex] = useState(1)
   const [transcript, setTranscript] = useState('Show me the next step.')
   const [selectedObjects, setSelectedObjects] = useState(['keys', 'access card'])
   const [reminderScene, setReminderScene] = useState('entryway')
-  const [provider, setProvider] = useState('gemini')
+  const [provider, setProvider] = useState('auto')
   const [safetyScene, setSafetyScene] = useState('laboratory bench with an uncapped container near the edge')
   const [remoteName, setRemoteName] = useState('Remote collaborator')
   const [callState, setCallState] = useState('incoming')
   const [bearing, setBearing] = useState(18)
   const [distance, setDistance] = useState(1.6)
   const [elevation, setElevation] = useState(0)
-  const [image, setImage] = useState('')
-  const [imageName, setImageName] = useState('')
+  const [image, setImage] = useState<PreparedAgentImage | null>(null)
   const [fileError, setFileError] = useState('')
+  const [preparingImage, setPreparingImage] = useState(false)
 
   const toggleObject = (name: string) => {
     setSelectedObjects((current) => current.includes(name) ? current.filter((item) => item !== name) : [...current, name])
@@ -45,22 +49,33 @@ export function AgentScenarioControls({ scenarioId, running, onRun }: AgentScena
 
   const loadImage = async (file?: File) => {
     if (!file) return
-    if (!file.type.startsWith('image/')) {
-      setFileError('Choose an image file.')
-      return
-    }
-    if (file.size > 6_000_000) {
-      setFileError('Keep the image below 6 MB.')
-      return
-    }
+    setPreparingImage(true)
     try {
-      setImage(await readImageAsDataUrl(file))
-      setImageName(file.name)
+      setImage(await prepareImageForAgent(file))
       setFileError('')
     } catch (error) {
       setFileError(error instanceof Error ? error.message : 'The image could not be read.')
+    } finally {
+      setPreparingImage(false)
     }
   }
+
+  const clearImage = () => {
+    setImage(null)
+    setFileError('')
+  }
+
+  const capabilityMode = String(capability.provenance || capability.mode || 'unknown')
+  const configuredProvider = String(capability.provider || 'none')
+  const selectedProvider = provider === 'auto' ? configuredProvider : provider
+  const realVisionReady = capabilityMode === 'real' && (provider === 'auto' || selectedProvider === configuredProvider)
+  const uploadedImagePayload = image ? {
+    image: image.dataUrl,
+    input_name: image.name,
+    input_mime: image.mimeType,
+    input_size: image.sizeBytes,
+    trigger: 'uploaded_image',
+  } : {}
 
   const runCurrent = () => {
     switch (scenarioId) {
@@ -75,9 +90,13 @@ export function AgentScenarioControls({ scenarioId, running, onRun }: AgentScena
           transcript: 'I am leaving now.',
         })
       case 'nutrition':
-        return onRun('analyze', { provider, image, trigger: image ? 'uploaded_image' : 'demo_meal' })
+        return onRun('analyze', {
+          ...(provider === 'auto' ? {} : { provider }),
+          ...uploadedImagePayload,
+          trigger: image ? 'uploaded_image' : 'demo_meal',
+        })
       case 'safety':
-        return onRun('scan', { scene_hint: safetyScene, image, trigger: image ? 'uploaded_image' : 'scene_hint' })
+        return onRun('scan', { scene_hint: safetyScene, ...uploadedImagePayload, trigger: image ? 'uploaded_image' : 'scene_hint' })
       case 'telepresence':
         return onRun(callState, { call_state: callState, remote_name: remoteName, trigger: 'web_card' })
       case 'positioning':
@@ -86,7 +105,7 @@ export function AgentScenarioControls({ scenarioId, running, onRun }: AgentScena
   }
 
   return (
-    <section className="blimp-agent-controls" aria-labelledby="blimp-agent-controls-title">
+    <section className="blimp-agent-controls" id="agent-controls" aria-labelledby="blimp-agent-controls-title">
       <header>
         <div><p className="blimp-eyebrow">SCENARIO CONTROLS</p><h2 id="blimp-agent-controls-title">{scenario.title}</h2></div>
         <p>{scenario.summary}</p>
@@ -112,16 +131,23 @@ export function AgentScenarioControls({ scenarioId, running, onRun }: AgentScena
         ) : null}
 
         {scenarioId === 'nutrition' ? (
-          <div className="blimp-agent-form-grid">
-            <label>Vision provider<select value={provider} onChange={(event) => setProvider(event.target.value)}><option value="gemini">Gemini</option><option value="qwen">Qwen</option></select><small>The response will disclose real or mock provenance.</small></label>
-            <ImageControl imageName={imageName} error={fileError} onFile={loadImage} label="Optional meal image" />
+          <div className="blimp-agent-vision-grid">
+            <div className="blimp-agent-vision-settings">
+              <label>Vision provider<select value={provider} onChange={(event) => setProvider(event.target.value)}><option value="auto">Auto · configured provider</option><option value="gemini">Gemini</option><option value="qwen">Qwen</option></select><small>The backend response must report <strong>real</strong> before an upload is treated as analyzed.</small></label>
+              <div className="blimp-agent-provider-status" data-mode={realVisionReady ? 'real' : capabilityMode}>
+                <span>VISION BACKEND</span>
+                <strong>{realVisionReady ? `${configuredProvider} ready` : 'Provider setup needed'}</strong>
+                <p>{realVisionReady ? `${String(capability.model || 'Configured multimodal model')} will process the uploaded image.` : 'Set GEMINI_API_KEY or QWEN_API_KEY in the Agent backend, restart it, then refresh this page.'}</p>
+              </div>
+            </div>
+            <ImageControl image={image} error={fileError} preparing={preparingImage} onFile={loadImage} onClear={clearImage} label="Meal image" />
           </div>
         ) : null}
 
         {scenarioId === 'safety' ? (
-          <div className="blimp-agent-form-grid">
+          <div className="blimp-agent-vision-grid">
             <label>Scene description<textarea value={safetyScene} onChange={(event) => setSafetyScene(event.target.value)} rows={4} /></label>
-            <ImageControl imageName={imageName} error={fileError} onFile={loadImage} label="Optional workspace image" />
+            <ImageControl image={image} error={fileError} preparing={preparingImage} onFile={loadImage} onClear={clearImage} label="Workspace image" />
           </div>
         ) : null}
 
@@ -141,17 +167,42 @@ export function AgentScenarioControls({ scenarioId, running, onRun }: AgentScena
         ) : null}
 
         <div className="blimp-agent-control-footer">
-          <p><strong>Public safety boundary.</strong> This action can inspect state, run perception/demo logic, or compute a setpoint. It cannot arm the robot or publish motor commands.</p>
-          <button type="button" className="blimp-agent-run" onClick={() => void runCurrent()} disabled={running}>{running ? 'Running agent…' : scenario.actionLabel}</button>
+          <div>
+            <p><strong>Public safety boundary.</strong> This action can inspect state, run perception/demo logic, or compute a setpoint. It cannot arm the robot or publish motor commands.</p>
+            {result?.input ? <p className="blimp-agent-last-input" data-processed={result.input.processed}><strong>Last input:</strong> {result.input.name || result.input.source} · {result.input.processed ? 'processed by the real provider' : 'demo input'}</p> : null}
+            {error ? <p className="blimp-agent-control-error" role="alert">{error}</p> : null}
+          </div>
+          <button type="button" className="blimp-agent-run" onClick={() => void runCurrent()} disabled={running || preparingImage}>{running ? 'Running agent…' : preparingImage ? 'Preparing image…' : scenarioId === 'nutrition' ? image ? 'Analyze uploaded meal' : 'Run disclosed demo meal' : scenario.actionLabel}</button>
         </div>
       </div>
     </section>
   )
 }
 
-function ImageControl({ imageName, error, label, onFile }: { imageName: string; error: string; label: string; onFile: (file?: File) => void }) {
+function ImageControl({ image, error, preparing, label, onFile, onClear }: { image: PreparedAgentImage | null; error: string; preparing: boolean; label: string; onFile: (file?: File) => void; onClear: () => void }) {
+  const inputId = useId()
+  const formatBytes = (value: number) => `${(value / 1_000_000).toFixed(value >= 1_000_000 ? 1 : 2)} MB`
+  const choosePrompt = label === 'Meal image' ? 'Choose a meal photo' : 'Choose a workspace photo'
   return (
-    <label className="blimp-agent-upload">{label}<input type="file" accept="image/*" onChange={(event) => void onFile(event.target.files?.[0])} /><span>{imageName || 'Choose an image up to 6 MB'}</span>{error ? <small className="is-error">{error}</small> : <small>Without an upload, the backend uses its documented demo path.</small>}</label>
+    <div className="blimp-agent-upload-control">
+      <div className="blimp-agent-upload-heading"><label htmlFor={inputId}>{label}</label>{image ? <button type="button" onClick={onClear}>Remove</button> : null}</div>
+      <label className="blimp-agent-upload" htmlFor={inputId} data-has-image={Boolean(image)}>
+        <input
+          id={inputId}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={(event) => {
+            const file = event.target.files?.[0]
+            event.target.value = ''
+            void onFile(file)
+          }}
+        />
+        <span>
+          {image ? <><img src={image.dataUrl} alt="Selected upload preview" /><span><strong>{image.name}</strong><small>{image.width} × {image.height} · {formatBytes(image.sizeBytes)}{image.resized ? ` · optimized from ${formatBytes(image.originalSizeBytes)}` : ''}</small><em>Choose another image</em></span></> : <><i aria-hidden="true">+</i><span><strong>{preparing ? 'Preparing image…' : choosePrompt}</strong><small>JPEG, PNG, or WebP · large photos are optimized before upload</small></span></>}
+        </span>
+      </label>
+      {error ? <small className="is-error" role="alert">{error}</small> : <small>Without an upload, the backend runs a clearly labelled fixed demo fixture.</small>}
+    </div>
   )
 }
 

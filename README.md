@@ -162,7 +162,7 @@ Configure the bridge with:
 
 ```text
 BLIMPMATE_AGENT_URL=http://127.0.0.1:5050
-BLIMPMATE_AGENT_TIMEOUT_MS=3500
+BLIMPMATE_AGENT_TIMEOUT_MS=30000
 BLIMPMATE_AGENT_MAX_REQUEST_BYTES=8500000
 BLIMPMATE_AGENT_DEMO_FALLBACK=true
 ```
@@ -177,7 +177,7 @@ cd ../../Lab_website_new-main
 npm run dev
 ```
 
-`run.sh` and the example environment use port `5050`. The same-origin Node API remains the recommended browser boundary. The bridge applies an 8.5 MB bounded JSON reader, forwards upstream 4xx validation errors instead of masking them with a demo, and uses the deterministic fallback only for unavailable/5xx upstream states. The React client preserves the same distinction: validation errors remain visible, while network/5xx failures may use the labelled local preview. Public backend snapshots expose redacted state and aggregate metrics only. `VITE_BLIMPMATE_AGENT_DIRECT_URL` is only for environments that deliberately configure CORS and direct browser access; `VITE_BLIMPMATE_AGENT_TIMEOUT_MS` can optionally bound direct requests.
+`run.sh` and the example environment use port `5050`. The same-origin Node API remains the recommended browser boundary. The bridge applies an 8.5 MB bounded JSON reader, forwards upstream 4xx validation errors instead of masking them with a demo, and uses the deterministic fallback only for unavailable/5xx upstream states. Uploaded vision requests are stricter: a provider failure remains visible and is never replaced with synthetic calories or hazards. The default 30 second timeout leaves enough time for multimodal inference. Public backend snapshots expose redacted state and aggregate metrics only. `VITE_BLIMPMATE_AGENT_DIRECT_URL` is only for environments that deliberately configure CORS and direct browser access; `VITE_BLIMPMATE_AGENT_TIMEOUT_MS` can optionally bound direct requests.
 
 ### Standalone Review Pages
 
